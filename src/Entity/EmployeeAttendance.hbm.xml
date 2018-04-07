@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2018 2:53:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.EmployeeAttendance" table="employee_attendance" catalog="amgad_sc" optimistic-lock="version">
+        <id name="eaId" type="long">
+            <column name="EA_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="staff" class="Entity.Staff" fetch="select">
+            <column name="ST_ID" />
+        </many-to-one>
+        <many-to-one name="teacher" class="Entity.Teacher" fetch="select">
+            <column name="T_ID" />
+        </many-to-one>
+        <property name="eaDate" type="timestamp">
+            <column name="EA_DATE" length="19" not-null="true" />
+        </property>
+        <property name="status" type="boolean">
+            <column name="STATUS" not-null="true" />
+        </property>
+        <property name="abscent" type="java.lang.Boolean">
+            <column name="ABSCENT" />
+        </property>
+        <property name="abscenceType" type="string">
+            <column name="ABSCENCE_TYPE" length="1" />
+        </property>
+        <property name="arrive" type="java.lang.Boolean">
+            <column name="ARRIVE" />
+        </property>
+        <property name="leave" type="java.lang.Boolean">
+            <column name="LEAVE" />
+        </property>
+        <property name="timeAmount" type="string">
+            <column name="TIME_AMOUNT" length="5" />
+        </property>
+        <property name="eaDesc" type="string">
+            <column name="EA_DESC" length="100" />
+        </property>
+    </class>
+</hibernate-mapping>

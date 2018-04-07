@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2018 2:53:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.Classes" table="classes" catalog="amgad_sc" optimistic-lock="version">
+        <id name="CId" type="int">
+            <column name="C_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="classDesc" type="string">
+            <column name="CLASS_DESC" length="20" not-null="true" />
+        </property>
+        <set name="classStudentses" table="class_students" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="C_ID" />
+            </key>
+            <one-to-many class="Entity.ClassStudents" />
+        </set>
+        <set name="schedules" table="schedule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="C_ID" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Schedule" />
+        </set>
+        <set name="staffs" table="staff_classes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="C_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="Entity.Staff">
+                <column name="ST_ID" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

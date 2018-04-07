@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2018 2:53:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.Users" table="users" catalog="amgad_sc" optimistic-lock="version">
+        <id name="UId" type="int">
+            <column name="U_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="persons" class="Entity.Persons" fetch="select">
+            <column name="P_ID" />
+        </many-to-one>
+        <property name="UName" type="string">
+            <column name="U_NAME" length="10" not-null="true" />
+        </property>
+        <property name="pass" type="string">
+            <column name="PASS" length="10" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="1" not-null="true" />
+        </property>
+        <property name="activeDate" type="timestamp">
+            <column name="ACTIVE_DATE" length="19" not-null="true" />
+        </property>
+        <property name="permission" type="string">
+            <column name="PERMISSION" length="1" not-null="true" />
+        </property>
+        <set name="userLogs" table="user_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="U_ID" not-null="true" />
+            </key>
+            <one-to-many class="Entity.UserLog" />
+        </set>
+    </class>
+</hibernate-mapping>

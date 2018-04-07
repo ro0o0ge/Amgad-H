@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2018 2:53:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.LectureDatetime" table="lecture_datetime" catalog="amgad_sc" optimistic-lock="version">
+        <id name="lecId" type="int">
+            <column name="LEC_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="lecDay" type="string">
+            <column name="LEC_DAY" length="10" not-null="true" />
+        </property>
+        <property name="lecTime" type="string">
+            <column name="LEC_TIME" length="10" not-null="true" />
+        </property>
+        <set name="schedules" table="schedule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="LEC_ID" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Schedule" />
+        </set>
+    </class>
+</hibernate-mapping>

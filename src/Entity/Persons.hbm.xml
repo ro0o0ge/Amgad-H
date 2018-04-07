@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2018 2:53:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.Persons" table="persons" catalog="amgad_sc" optimistic-lock="version">
+        <id name="PId" type="long">
+            <column name="P_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="NAME" length="50" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="GENDER" length="1" not-null="true" />
+        </property>
+        <property name="nationality" type="string">
+            <column name="NATIONALITY" length="3" not-null="true" />
+        </property>
+        <property name="religion" type="string">
+            <column name="RELIGION" length="1" not-null="true" />
+        </property>
+        <property name="nationalId" type="string">
+            <column name="NATIONAL_ID" length="20" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="ADDRESS" length="200" not-null="true" />
+        </property>
+        <property name="dob" type="date">
+            <column name="DOB" length="10" not-null="true" />
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="CREATED_DATE" length="19" not-null="true" />
+        </property>
+        <property name="maritalStatus" type="string">
+            <column name="MARITAL_STATUS" length="1" />
+        </property>
+        <property name="modifiedDate" type="timestamp">
+            <column name="MODIFIED_DATE" length="19" not-null="true" />
+        </property>
+        <property name="hiringDate" type="timestamp">
+            <column name="HIRING_DATE" length="19" not-null="true" />
+        </property>
+        <property name="qualification" type="string">
+            <column name="QUALIFICATION" length="30" />
+        </property>
+        <property name="gradYear" type="string">
+            <column name="GRAD_YEAR" length="4" />
+        </property>
+        <set name="contactses" table="contacts" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="P_ID" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Contacts" />
+        </set>
+        <set name="userses" table="users" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="P_ID" />
+            </key>
+            <one-to-many class="Entity.Users" />
+        </set>
+        <set name="students" table="student" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="P_ID" />
+            </key>
+            <one-to-many class="Entity.Student" />
+        </set>
+        <set name="teachers" table="teacher" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="P_ID" />
+            </key>
+            <one-to-many class="Entity.Teacher" />
+        </set>
+        <set name="staffs" table="staff" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="P_ID" />
+            </key>
+            <one-to-many class="Entity.Staff" />
+        </set>
+    </class>
+</hibernate-mapping>

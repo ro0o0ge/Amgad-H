@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.MainController">
+   <children>
+       <BorderPane>
+           <center>
+               <BorderPane prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+                   <top>
+                       <MenuBar prefHeight="25.0" prefWidth="702.0" BorderPane.alignment="CENTER">
+                           <menus>
+                               <Menu mnemonicParsing="false" text="ملف">
+                                   <items>
+                                       <MenuItem mnemonicParsing="false" text="تسجيل الدخول" />
+                                       <MenuItem mnemonicParsing="false" onAction="#handleExit" text="اغلاق" />
+                                   </items>
+                               </Menu>
+                               <Menu mnemonicParsing="false" text="عن النظام">
+                                   <items>
+                                       <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="من نحن" />
+                                   </items>
+                               </Menu>
+                           </menus>
+                       </MenuBar>
+                   </top>
+                   <center>
+                       <AnchorPane>
+                           <children>
+                               <ImageView fitHeight="580.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                   <image>
+                                       <Image url="@../resources/3.jpg" />
+                                   </image>
+                               </ImageView>
+                           </children>
+                       </AnchorPane>
+                   </center>
+               </BorderPane>
+           </center>
+       </BorderPane>
+   </children>
+</AnchorPane>

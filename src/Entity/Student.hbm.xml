@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2018 2:53:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.Student" table="student" catalog="amgad_sc" optimistic-lock="version">
+        <id name="SId" type="long">
+            <column name="S_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="persons" class="Entity.Persons" fetch="select">
+            <column name="P_ID" />
+        </many-to-one>
+        <property name="status" type="string">
+            <column name="STATUS" length="1" not-null="true" />
+        </property>
+        <property name="ageOnOct" type="date">
+            <column name="AGE_ON_OCT" length="10" not-null="true" />
+        </property>
+        <property name="serialNo" type="string">
+            <column name="SERIAL_NO" length="3" not-null="true" />
+        </property>
+        <property name="secretNo" type="string">
+            <column name="SECRET_NO" length="10" />
+        </property>
+        <property name="seatingNo" type="string">
+            <column name="SEATING_NO" length="10" />
+        </property>
+        <set name="studentExpenseses" table="student_expenses" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="S_ID" />
+            </key>
+            <one-to-many class="Entity.StudentExpenses" />
+        </set>
+        <set name="studentAttendances" table="student_attendance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="S_ID" />
+            </key>
+            <one-to-many class="Entity.StudentAttendance" />
+        </set>
+        <set name="SGLogs" table="s_g_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="S_ID" />
+            </key>
+            <one-to-many class="Entity.SGLog" />
+        </set>
+        <set name="actualGradeses" table="actual_grades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="S_ID" />
+            </key>
+            <one-to-many class="Entity.ActualGrades" />
+        </set>
+        <set name="classStudentses" table="class_students" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="S_ID" />
+            </key>
+            <one-to-many class="Entity.ClassStudents" />
+        </set>
+        <set name="studentNoteses" table="student_notes" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="S_ID" />
+            </key>
+            <one-to-many class="Entity.StudentNotes" />
+        </set>
+    </class>
+</hibernate-mapping>

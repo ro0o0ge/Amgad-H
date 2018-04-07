@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterTeacherController">
+    <children>
+        <SplitPane orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <GridPane layoutX="321.0" layoutY="78.0" prefHeight="387.0" prefWidth="343.0" vgap="15.0" AnchorPane.bottomAnchor="110.0" AnchorPane.rightAnchor="34.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="221.0" minWidth="10.0" prefWidth="221.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Label contentDisplay="RIGHT" text="اسم المدرس" GridPane.columnIndex="1">
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                </Label>
+                                <Label text="النوع" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <GridPane.margin>
+                                        <Insets left="10.0" />
+                                    </GridPane.margin>
+                                </Label>
+                                <Label text="الجنسية" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                    <GridPane.margin>
+                                        <Insets left="10.0" />
+                                    </GridPane.margin>
+                                </Label>
+                                <Label text="تاريخ الميلاد" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                    <GridPane.margin>
+                                        <Insets left="10.0" />
+                                    </GridPane.margin>
+                                </Label>
+                                <TextField />
+                                <RadioButton alignment="CENTER_LEFT" mnemonicParsing="false" selected="true" text="انثى" GridPane.rowIndex="3">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="g1" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" selected="true" text="ذكر" toggleGroup="$g1" GridPane.rowIndex="3">
+                                    <GridPane.margin>
+                                        <Insets left="100.0" />
+                                    </GridPane.margin>
+                                </RadioButton>
+                                <TextField GridPane.rowIndex="4" />
+                                <DatePicker prefHeight="25.0" prefWidth="112.0" GridPane.rowIndex="6">
+                                    <GridPane.margin>
+                                        <Insets left="75.0" />
+                                    </GridPane.margin>
+                                </DatePicker>
+                                <Label text="العنوان" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                </Label>
+                                <Label text="رقم تحقيق الشخصية" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                </Label>
+                                <TextField GridPane.rowIndex="8" />
+                                <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                                <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                                <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+                                <TextField GridPane.rowIndex="10" />
+                                <Label text="تاريخ الإلتحاق" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                </Label>
+                                <Separator layoutX="10.0" layoutY="239.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="11" />
+                                <Label text="المؤهل الدراسي" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                                    <GridPane.margin>
+                                        <Insets left="10.0" />
+                                    </GridPane.margin>
+                                </Label>
+                                <Label contentDisplay="RIGHT" text="الحالة الإجتماعية" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <padding>
+                                        <Insets left="10.0" />
+                                    </padding>
+                                </Label>
+                                <RadioButton mnemonicParsing="false" selected="true" text="مطلق" GridPane.rowIndex="1">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="g2" />
+                                    </toggleGroup>
+                                    <GridPane.margin>
+                                        <Insets left="150.0" />
+                                    </GridPane.margin>
+                                </RadioButton>
+                                <RadioButton mnemonicParsing="false" text="أرمل" toggleGroup="$g2" GridPane.rowIndex="1">
+                                    <GridPane.margin>
+                                        <Insets left="100.0" />
+                                    </GridPane.margin>
+                                </RadioButton>
+                                <RadioButton mnemonicParsing="false" text="أعزب" toggleGroup="$g2" GridPane.rowIndex="1">
+                                    <GridPane.margin>
+                                        <Insets left="50.0" />
+                                    </GridPane.margin>
+                                </RadioButton>
+                                <RadioButton mnemonicParsing="false" text="متزوج" toggleGroup="$g2" GridPane.rowIndex="1" />
+                                <DatePicker prefHeight="25.0" prefWidth="112.0" GridPane.rowIndex="12">
+                                    <GridPane.margin>
+                                        <Insets left="75.0" />
+                                    </GridPane.margin>
+                                </DatePicker>
+                                <Label text="سنة التخرج" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                                    <GridPane.margin>
+                                        <Insets left="10.0" />
+                                    </GridPane.margin>
+                                </Label>
+                                <DatePicker prefHeight="25.0" prefWidth="112.0" GridPane.rowIndex="14">
+                                    <GridPane.margin>
+                                        <Insets left="75.0" />
+                                    </GridPane.margin>
+                                </DatePicker>
+                                <TextField GridPane.rowIndex="15" />
+                                <Label text="الديانة" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <GridPane.margin>
+                                        <Insets left="10.0" />
+                                    </GridPane.margin>
+                                </Label>
+                                <RadioButton contentDisplay="CENTER" lineSpacing="10.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" selected="true" text="مسلم" GridPane.rowIndex="2">
+                                    <GridPane.margin>
+                                        <Insets left="100.0" />
+                                    </GridPane.margin>
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="g3" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton alignment="CENTER_LEFT" mnemonicParsing="false" selected="true" text="مسيحي" toggleGroup="$g3" GridPane.rowIndex="2" />
+                                <RadioButton mnemonicParsing="false" text="لا يعمل" GridPane.rowIndex="13">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="g21" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton mnemonicParsing="false" selected="true" text="يعمل" toggleGroup="$g21" GridPane.rowIndex="13">
+                                    <GridPane.margin>
+                                        <Insets left="150.0" />
+                                    </GridPane.margin>
+                                </RadioButton>
+                                <Label text="الحالة" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                    <GridPane.margin>
+                                        <Insets left="10.0" />
+                                    </GridPane.margin>
+                                </Label>
+                            </children>
+                        </GridPane>
+                        <HBox layoutX="280.0" layoutY="513.0" spacing="10.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="280.0">
+                            <children>
+                                <Button defaultButton="true" mnemonicParsing="false"  text="حفظ" />
+                                <Button cancelButton="true" mnemonicParsing="false"  text="إغلاق" />
+                            </children>
+                        </HBox>
+                        <Label layoutX="121.0" layoutY="67.0" text="جهات الاتصال" AnchorPane.bottomAnchor="553.0">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="476.0" layoutY="67.0" text="بيانات المدرس" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="67.0">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <Separator layoutX="293.0" layoutY="66.0" orientation="VERTICAL" prefHeight="467.0" prefWidth="6.0" AnchorPane.bottomAnchor="101.0" AnchorPane.leftAnchor="293.0" />
+                        <Separator layoutX="5.0" layoutY="494.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="101.0" AnchorPane.leftAnchor="5.0" />
+                        <Label layoutX="91.0" layoutY="235.0" text="بيانات المواد" AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="91.0">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <HBox fx:id="salary" layoutX="53.0" layoutY="442.0" prefHeight="27.0" prefWidth="200.0" AnchorPane.bottomAnchor="129.0" AnchorPane.leftAnchor="53.0">
+                            <children>
+                                <TextField />
+                                <Label contentDisplay="RIGHT" text="المرتب">
+                                    <HBox.margin>
+                                        <Insets left="10.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <TableView editable="true" layoutX="25.0" layoutY="64.0" prefHeight="164.0" prefWidth="255.0" AnchorPane.bottomAnchor="370.0" AnchorPane.leftAnchor="25.0">
+                            <columns>
+                                <TableColumn prefWidth="115.0" text="الرقم" />
+                                <TableColumn prefWidth="135.0" text="الاسم" />
+                            </columns>
+                        </TableView>
+                        <TableView layoutX="72.0" layoutY="271.0" prefHeight="152.0" prefWidth="112.0" AnchorPane.bottomAnchor="175.0" AnchorPane.leftAnchor="72.0">
+                            <columns>
+                                <TableColumn prefWidth="107.0" text="اسم المادة" />
+                            </columns>
+                        </TableView>
+                        <Label layoutX="237.0" layoutY="14.0" text="تسجيل مدرس جديد">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

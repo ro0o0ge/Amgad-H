@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2018 2:53:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.Teacher" table="teacher" catalog="amgad_sc" optimistic-lock="version">
+        <id name="TId" type="int">
+            <column name="T_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="persons" class="Entity.Persons" fetch="select">
+            <column name="P_ID" />
+        </many-to-one>
+        <property name="monthlySalary" type="big_decimal">
+            <column name="MONTHLY_SALARY" precision="7" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" length="1" not-null="true" />
+        </property>
+        <set name="payrolls" table="payroll" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="T_ID" />
+            </key>
+            <one-to-many class="Entity.Payroll" />
+        </set>
+        <set name="subjectses" table="teacher_subjects" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="T_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="Entity.Subjects">
+                <column name="SU_ID" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="schedules" table="schedule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="T_ID" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Schedule" />
+        </set>
+        <set name="employeeAttendances" table="employee_attendance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="T_ID" />
+            </key>
+            <one-to-many class="Entity.EmployeeAttendance" />
+        </set>
+    </class>
+</hibernate-mapping>

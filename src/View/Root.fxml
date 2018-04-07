@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RootViewController">
+   <children>
+   
+       <BorderPane>
+           <center>
+               <BorderPane prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+                   <top>
+                       <MenuBar prefHeight="25.0" prefWidth="702.0" BorderPane.alignment="CENTER">
+                           <menus>
+                               <Menu mnemonicParsing="false" text="ملف">
+                                   <items>
+                              <MenuItem mnemonicParsing="false" text="اغلاق" />
+                                   </items>
+                               </Menu>
+                               <Menu mnemonicParsing="false" text="شئون الطلاب">
+                                   <items>
+                                       <MenuItem mnemonicParsing="false" text="تسجيل طالب جديد" />
+                                       <MenuItem mnemonicParsing="false" text="تعديل البيانات الشخصية للطلاب" />
+                                       <SeparatorMenuItem mnemonicParsing="false" />
+                                       <MenuItem mnemonicParsing="false" text="تسجيل قوائم الفصول" />
+                                       <MenuItem mnemonicParsing="false" text="تسجيل الغياب" />
+                                       <MenuItem mnemonicParsing="false" text="تسجيل الدرجات" />
+                                       <SeparatorMenuItem mnemonicParsing="false" />
+                                       <MenuItem mnemonicParsing="false" text="متابعة المصاريف" />
+                                   </items>
+                               </Menu>
+                               <Menu mnemonicParsing="false" text="هيئة التدريس">
+                                   <items>
+                                       <MenuItem mnemonicParsing="false" text="تسجيل مدرس جديد" />
+                                       <MenuItem mnemonicParsing="false" text="تعديل البيانات الشخصية للمدرسين" />
+                                       <SeparatorMenuItem mnemonicParsing="false" />
+                                       <MenuItem mnemonicParsing="false" text="جدول الحصص" />
+                                       <SeparatorMenuItem mnemonicParsing="false" />
+                                       <MenuItem mnemonicParsing="false" text="تسجيل الحضور والإنصراف" />
+                                   </items>
+                               </Menu>
+                               <Menu mnemonicParsing="false" text="الإدارة">
+                                   <items>
+                                       <MenuItem mnemonicParsing="false" text="تسجيل موظف جديد" />
+                                       <MenuItem mnemonicParsing="false" text="تعديل بيانات الموظفين" />
+                                       <SeparatorMenuItem mnemonicParsing="false" />
+                                       <MenuItem mnemonicParsing="false" text="تسجيل الحضور والإنصراف" />
+                                       <SeparatorMenuItem mnemonicParsing="false" />
+                                       <MenuItem mnemonicParsing="false" text="المصاريف والمرتبات" />
+                                   </items>
+                               </Menu>
+                               <Menu mnemonicParsing="false" text="عن النظام">
+                                   <items>
+                                       <MenuItem mnemonicParsing="false" text="من نحن" />
+                                   </items>
+                               </Menu>
+                           </menus>
+                       </MenuBar>
+                   </top>
+                   <center>
+                       <AnchorPane>
+                           <children>
+                               <ImageView fitHeight="580.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                                   <image>
+                                       <Image url="@../resources/3.jpg" />
+                                   </image>
+                               </ImageView>
+                           </children>
+                       </AnchorPane>
+                   </center>
+               </BorderPane>
+           </center>
+       </BorderPane>
+   </children>
+</AnchorPane>

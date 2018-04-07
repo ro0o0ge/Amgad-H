@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2018 2:53:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.Subjects" table="subjects" catalog="amgad_sc" optimistic-lock="version">
+        <id name="suId" type="int">
+            <column name="SU_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="studyYears" class="Entity.StudyYears" fetch="select">
+            <column name="SY_ID" />
+        </many-to-one>
+        <property name="suDesc" type="string">
+            <column name="SU_DESC" length="30" not-null="true" />
+        </property>
+        <property name="mandatoryFlag" type="string">
+            <column name="MANDATORY_FLAG" length="1" not-null="true" />
+        </property>
+        <set name="finalGradeses" table="final_grades" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SU_ID" />
+            </key>
+            <one-to-many class="Entity.FinalGrades" />
+        </set>
+        <set name="schedules" table="schedule" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SU_ID" not-null="true" />
+            </key>
+            <one-to-many class="Entity.Schedule" />
+        </set>
+        <set name="teachers" table="teacher_subjects" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SU_ID" not-null="true" />
+            </key>
+            <many-to-many entity-name="Entity.Teacher">
+                <column name="T_ID" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="SGLogs" table="s_g_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SU_ID" />
+            </key>
+            <one-to-many class="Entity.SGLog" />
+        </set>
+    </class>
+</hibernate-mapping>

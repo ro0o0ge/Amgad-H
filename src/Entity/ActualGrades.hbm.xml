@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 23, 2018 2:53:58 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Entity.ActualGrades" table="actual_grades" catalog="amgad_sc" optimistic-lock="version">
+        <id name="agId" type="long">
+            <column name="AG_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="gradeDetail" class="Entity.GradeDetail" fetch="select">
+            <column name="GD_ID" />
+        </many-to-one>
+        <many-to-one name="student" class="Entity.Student" fetch="select">
+            <column name="S_ID" />
+        </many-to-one>
+        <property name="grade" type="big_decimal">
+            <column name="GRADE" precision="4" not-null="true" />
+        </property>
+        <property name="GDate" type="timestamp">
+            <column name="G_DATE" length="19" not-null="true" />
+        </property>
+        <property name="GDesc" type="string">
+            <column name="G_DESC" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>

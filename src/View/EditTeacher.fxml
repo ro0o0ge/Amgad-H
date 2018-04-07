@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditTeacherController">
+    <children>
+      <SplitPane dividerPositions="0.39464882943143814" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <HBox layoutX="46.0" layoutY="97.0" prefHeight="-111.0" prefWidth="173.0" spacing="10.0" AnchorPane.bottomAnchor="247.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="479.0" AnchorPane.topAnchor="97.0">
+                     <children>
+                        <Button defaultButton="true" mnemonicParsing="false"  text="جديد" />
+                        <Button cancelButton="true" mnemonicParsing="false"  text="تعديل" />
+                        <Button mnemonicParsing="false" text="عرض" />
+                     </children>
+                  </HBox>
+                  <Label layoutX="474.0" layoutY="25.0" text="بيانات المدرسين" underline="true" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="25.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="292.0" orientation="VERTICAL" prefHeight="369.0" prefWidth="0.0" AnchorPane.rightAnchor="400.0" />
+                  <HBox layoutX="318.0" layoutY="77.0" prefHeight="27.0" prefWidth="322.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="77.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="بحث" />
+                        <TextField>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                        <ComboBox prefHeight="25.0" prefWidth="108.0" promptText="البحث">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="EmpList" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn editable="false" prefWidth="199.0" text="اسم المدرس" />
+                        <TableColumn editable="false" prefWidth="129.0" text="المادة" />
+                        <TableColumn editable="false" prefWidth="129.0" text="تاريخ الالتحاق" />
+                        <TableColumn editable="false" prefWidth="111.0" text="الحالة الاجتماعية" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
