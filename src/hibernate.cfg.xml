@@ -47,29 +47,5 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/amgad_sc?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">123456</property>
-    <mapping resource="Entity/FinalGrades.hbm.xml"/>
-    <mapping resource="Entity/Staff.hbm.xml"/>
-    <mapping resource="Entity/StudentExpenses.hbm.xml"/>
-    <mapping resource="Entity/LectureDatetime.hbm.xml"/>
-    <mapping resource="Entity/ClassStudents.hbm.xml"/>
-    <mapping resource="Entity/Schedule.hbm.xml"/>
-    <mapping resource="Entity/Subjects.hbm.xml"/>
-    <mapping resource="Entity/GradeDetail.hbm.xml"/>
-    <mapping resource="Entity/UserLog.hbm.xml"/>
-    <mapping resource="Entity/StudentNotes.hbm.xml"/>
-    <mapping resource="Entity/Payroll.hbm.xml"/>
-    <mapping resource="Entity/ActualGrades.hbm.xml"/>
-    <mapping resource="Entity/EmployeeAttendance.hbm.xml"/>
-    <mapping resource="Entity/SchoolExpenses.hbm.xml"/>
-    <mapping resource="Entity/Contacts.hbm.xml"/>
-    <mapping resource="Entity/BoardDecisions.hbm.xml"/>
-    <mapping resource="Entity/Persons.hbm.xml"/>
-    <mapping resource="Entity/SGLog.hbm.xml"/>
-    <mapping resource="Entity/Student.hbm.xml"/>
-    <mapping resource="Entity/Users.hbm.xml"/>
-    <mapping resource="Entity/StudentAttendance.hbm.xml"/>
-    <mapping resource="Entity/Teacher.hbm.xml"/>
-    <mapping resource="Entity/StudyYears.hbm.xml"/>
-    <mapping resource="Entity/Classes.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

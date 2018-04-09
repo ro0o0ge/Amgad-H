@@ -5,10 +5,13 @@
  */
 package Controller;
 
+import Util.LoginSec;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.NodeOrientation;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -23,18 +26,35 @@ public class RootViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-       /**
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    /**
      * Opens an about dialog.
      */
     @FXML
     private void handleAbout() {
-//        Dialogs.create()
-//                .title("المروة")
-//                .masthead("معلومات")
-//                .message(
-//                        "بواسطة : عبدالله رمضان \n للتواصل: abdo.ramadan29@gmail.com")
-//                .showInformation();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("مدرسة الأمجاد الخاصة");
+        alert.setHeaderText("معلومات");
+        alert.setContentText("بواسطة : عبدالله رمضان \n للتواصل: abdo.ramadan29@gmail.com");
+        alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+        alert.showAndWait();
     }
 
     /**
@@ -42,7 +62,17 @@ public class RootViewController implements Initializable {
      */
     @FXML
     private void handleExit() {
+        try {
+            LoginSec ls = new LoginSec();
+            ls.HandleLogout();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("يوجد خطأ");
+            alert.setHeaderText("برجاء مراجعة مالك البرنمج");
+            alert.setContentText(e.getMessage());
+            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            alert.showAndWait();
+        }
         System.exit(0);
     }
 }
-    

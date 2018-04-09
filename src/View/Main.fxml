@@ -6,17 +6,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.MainController">
+<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainController">
    <children>
-       <BorderPane>
+       <BorderPane prefHeight="380.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <center>
-               <BorderPane prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+               <BorderPane prefHeight="380.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                    <top>
-                       <MenuBar prefHeight="25.0" prefWidth="702.0" BorderPane.alignment="CENTER">
+                       <MenuBar prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                            <menus>
                                <Menu mnemonicParsing="false" text="ملف">
                                    <items>
-                                       <MenuItem mnemonicParsing="false" text="تسجيل الدخول" />
+                                       <MenuItem mnemonicParsing="false" onAction="#handleLogin" text="تسجيل الدخول" />
                                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="اغلاق" />
                                    </items>
                                </Menu>

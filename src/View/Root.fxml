@@ -17,7 +17,7 @@
                            <menus>
                                <Menu mnemonicParsing="false" text="ملف">
                                    <items>
-                              <MenuItem mnemonicParsing="false" text="اغلاق" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleExit" text="اغلاق" />
                                    </items>
                                </Menu>
                                <Menu mnemonicParsing="false" text="شئون الطلاب">
@@ -52,9 +52,19 @@
                                        <MenuItem mnemonicParsing="false" text="المصاريف والمرتبات" />
                                    </items>
                                </Menu>
+                        <Menu mnemonicParsing="false" text="تقارير">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="تسجيل موظف جديد" />
+                              <MenuItem mnemonicParsing="false" text="تعديل بيانات الموظفين" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" text="تسجيل الحضور والإنصراف" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" text="المصاريف والمرتبات" />
+                           </items>
+                        </Menu>
                                <Menu mnemonicParsing="false" text="عن النظام">
                                    <items>
-                                       <MenuItem mnemonicParsing="false" text="من نحن" />
+                                       <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="من نحن" />
                                    </items>
                                </Menu>
                            </menus>

@@ -6,14 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
     <children>
       <Pane layoutX="75.0" layoutY="45.0" prefHeight="200.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label layoutX="62.0" layoutY="62.0" text="Username" />
             <Label layoutX="64.0" layoutY="97.0" text="Password" />
             <PasswordField fx:id="Pass" layoutX="140.0" layoutY="93.0" promptText="Password" />
-            <Button layoutX="168.0" layoutY="147.0" mnemonicParsing="false" onAction="#login" text="Login" />
+            <Button defaultButton="true" layoutX="168.0" layoutY="147.0" mnemonicParsing="false" onAction="#login" text="Login" />
             <TextField fx:id="userName" layoutX="140.0" layoutY="58.0" promptText="Username" />
          </children>
       </Pane>
