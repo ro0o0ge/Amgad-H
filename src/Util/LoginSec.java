@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,15 +28,16 @@ public class LoginSec {
 
     HibernateUtil HU;
     private static Users LoggedUser;
-    SessionFactory sf = HibernateUtil.getSessionFactory();
+    SessionFactory sf;
     Session s;
 
     public static Users getLoggedUser() {
         return LoggedUser;
     }
 
-    public String HandleLogin(String uName, String Pass) {
+    public String HandleLogin(String uName, String Pass) throws HibernateException {
         String status = "";
+        sf = HibernateUtil.getSessionFactory();
         s = sf.openSession();
 
         Transaction t = s.beginTransaction();
@@ -57,8 +59,9 @@ public class LoginSec {
         return status;
     }
 
-    public void HandleLogout() {
+    public void HandleLogout() throws Exception {
         UserLog ul = new UserLog();
+        sf = HibernateUtil.getSessionFactory();
         s = sf.openSession();
         Transaction t = s.beginTransaction();
         ul.setUId(LoggedUser);

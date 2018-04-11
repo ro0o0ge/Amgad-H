@@ -15,6 +15,7 @@ import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.hibernate.HibernateException;
 
 /**
  * FXML Controller class
@@ -64,10 +65,18 @@ public class LoginController implements Initializable {
                 main.rootView();
                 System.out.println("manager or admin");
             }
-        } catch (Exception e) {
+        } catch (HibernateException he){
+            System.out.println("error at db ");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("يوجد خطأ في الاتصال بالداتابيز");
+            alert.setHeaderText("برجاء مراجعة مالك البرنامج");
+            alert.setContentText(he.getMessage());
+            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            alert.showAndWait();
+        }catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");
-            alert.setHeaderText("برجاء مراجعة مالك البرنمج");
+            alert.setHeaderText("برجاء مراجعة مالك البرنامج");
             alert.setContentText(e.getMessage());
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();

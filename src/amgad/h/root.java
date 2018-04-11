@@ -5,6 +5,8 @@
  */
 package amgad.h;
 
+import Controller.LoginController;
+import Controller.RootViewController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.NodeOrientation;
@@ -23,6 +25,7 @@ public class root {
     private Stage primaryStage;
     private AnchorPane rootLayout;
     
+    
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -39,27 +42,20 @@ public class root {
             Scene scene = new Scene(rootLayout, 580, 600);
             scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             this.primaryStage.setScene(scene);
-            System.out.println("amgad.h.root.InitRoot()  "+LoginSec.getLoggedUser().getUName() );
-//            MainController Mcontroller = loader.getController();
-//            
-//            Mcontroller.setMainApp(this);
+            System.out.println("amgad.h.root.InitRoot()  "+LoginSec.getLoggedUser().getUName());
             
+            Management m = new Management();
+            StudentAffair sa = new StudentAffair();
+            TeachingStaff ts = new TeachingStaff();
+            m.setMainApp(this);
+            sa.setMainApp(this);
+            ts.setMainApp(this);
+            
+            RootViewController Rcontroller = loader.getController();
+            Rcontroller.setMainApp(m,sa,ts);
+            
+
             this.primaryStage.show();
-            
-//            Parent root = FXMLLoader.load(getClass().getResource("/View/Root.fxml"));
-//            Stage dialogStage = new Stage();
-//            dialogStage.getIcons().add(new Image(root.class.
-//                    getResourceAsStream("/resources/6.jpg")));
-//            dialogStage.setTitle("مدرسة الأمجاد الخاصة");
-//            dialogStage.initModality(Modality.WINDOW_MODAL);
-////            dialogStage.initOwner(MainApp.getPrimaryStage());
-//            Scene scene = new Scene(root);
-//            scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-//            dialogStage.setScene(scene);
-//            // Show the dialog and wait until the user closes it
-////            this.ah.getPrimaryStage()
-//            dialogStage.show();
-            // return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
         }

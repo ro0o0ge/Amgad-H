@@ -6,6 +6,10 @@
 package Controller;
 
 import Util.LoginSec;
+import amgad.h.Management;
+import amgad.h.StudentAffair;
+import amgad.h.TeachingStaff;
+import amgad.h.root;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -26,6 +30,17 @@ public class RootViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+    
+  
+    private Management man;
+    private StudentAffair sa;
+    private TeachingStaff ts;
+
+    public void setMainApp(Management m,StudentAffair s,TeachingStaff t) {
+        this.man = m;
+        this.sa = s;
+        this.ts = t;
     }
     
     

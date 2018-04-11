@@ -19,41 +19,16 @@ import javafx.stage.Stage;
  * @author Abdo
  */
 public class Management {
-    private Main MainApp;
+    private root MainApp;
 
-	public void setMainApp(Main mainApp) {
+	public void setMainApp(root mainApp) {
 		this.MainApp = mainApp;
 	}
         
         public void ShowCode1() {
 		try {
-			// Load the fxml file and create a new stage for the popup dialog.
-			FXMLLoader loader = new FXMLLoader(
-					Main.class.getResource("/view/Code/CodeSafe.fxml"));
-			// loader.setLocation(Main.class.getResource("/view/Code/CodeSafe.fxml"));
-			AnchorPane page = (AnchorPane) loader.load();
-
-//			CodeSafeController controller = loader.getController();
-
-//			controller.setMainApp(MainApp);
-//			controller.setSafe(cs);
-
-			// Create the dialog Stage.
-			Stage dialogStage = new Stage();
-			dialogStage.getIcons().add(
-					new Image(Main.class
-							.getResourceAsStream("/view/Icon-1.png")));
-			dialogStage.setTitle("تكويد الخزن");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(MainApp.getPrimaryStage());
-			Scene scene = new Scene(page);
-			scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-			dialogStage.setScene(scene);
-			// Show the dialog and wait until the user closes it
-			dialogStage.showAndWait();
-			// return controller.isOkClicked();
-//			return true;
-		} catch (IOException e) {
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 //			return false;
 		}

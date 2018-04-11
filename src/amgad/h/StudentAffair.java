@@ -10,9 +10,9 @@ package amgad.h;
  * @author Abdo
  */
 public class StudentAffair {
-    private Main MainApp;
+    private root MainApp;
 
-	public void setMainApp(Main mainApp) {
+	public void setMainApp(root mainApp) {
 		this.MainApp = mainApp;
 	}
 }
