@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -43,7 +44,7 @@ public class ClassStudents implements Serializable {
     @OneToMany(mappedBy = "csId")
     private List<FinalGrades> finalGradesList;
     @JoinColumn(name = "S_ID", referencedColumnName = "S_ID")
-    @ManyToOne
+    @OneToOne
     private Student sId;
     @JoinColumn(name = "C_ID", referencedColumnName = "C_ID")
     @ManyToOne

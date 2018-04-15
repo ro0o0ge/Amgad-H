@@ -8,6 +8,8 @@ package Entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,6 +20,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -93,14 +96,14 @@ public class Persons implements Serializable {
     private String qualification;
     @Column(name = "GRAD_YEAR")
     private String gradYear;
-    @OneToMany(mappedBy = "pId")
-    private List<Student> studentList;
-    @OneToMany(mappedBy = "pId")
-    private List<Teacher> teacherList;
-    @OneToMany(mappedBy = "pId")
-    private List<Staff> staffList;
-    @OneToMany(mappedBy = "pId")
-    private List<Users> usersList;
+    @OneToOne(mappedBy = "pId")
+    private Student studentList;
+    @OneToOne(mappedBy = "pId")
+    private Teacher teacherList;
+    @OneToOne(mappedBy = "pId")
+    private Staff staffList;
+    @OneToOne(mappedBy = "pId")
+    private Users usersList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pId")
     private List<Contacts> contactsList;
 
@@ -135,6 +138,10 @@ public class Persons implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public StringProperty NameProperty() {
+        return new SimpleStringProperty(name);
     }
 
     public void setName(String name) {
@@ -185,12 +192,20 @@ public class Persons implements Serializable {
         return dob;
     }
 
+    public StringProperty DOBProperty() {
+        return new SimpleStringProperty(dob.toString());
+    }
+
     public void setDob(Date dob) {
         this.dob = dob;
     }
 
     public Date getCreatedDate() {
         return createdDate;
+    }
+
+    public StringProperty createdDateProperty() {
+        return new SimpleStringProperty(createdDate.toString());
     }
 
     public void setCreatedDate(Date createdDate) {
@@ -238,38 +253,38 @@ public class Persons implements Serializable {
     }
 
     @XmlTransient
-    public List<Student> getStudentList() {
+    public Student getStudentList() {
         return studentList;
     }
 
-    public void setStudentList(List<Student> studentList) {
+    public void setStudentList(Student studentList) {
         this.studentList = studentList;
     }
 
     @XmlTransient
-    public List<Teacher> getTeacherList() {
+    public Teacher getTeacherList() {
         return teacherList;
     }
 
-    public void setTeacherList(List<Teacher> teacherList) {
+    public void setTeacherList(Teacher teacherList) {
         this.teacherList = teacherList;
     }
 
     @XmlTransient
-    public List<Staff> getStaffList() {
+    public Staff getStaffList() {
         return staffList;
     }
 
-    public void setStaffList(List<Staff> staffList) {
+    public void setStaffList(Staff staffList) {
         this.staffList = staffList;
     }
 
     @XmlTransient
-    public List<Users> getUsersList() {
+    public Users getUsersList() {
         return usersList;
     }
 
-    public void setUsersList(List<Users> usersList) {
+    public void setUsersList(Users usersList) {
         this.usersList = usersList;
     }
 
@@ -306,5 +321,5 @@ public class Persons implements Serializable {
     public String toString() {
         return "Entity.Persons[ pId=" + pId + " ]";
     }
-    
+
 }

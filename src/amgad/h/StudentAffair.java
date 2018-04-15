@@ -46,10 +46,22 @@ public class StudentAffair {
     private static Contacts C;
     UserLog ul;
 
+    static Student edit;//STUDENT TO BE EDITED
+
     ObservableList<Contacts> ContactsList = FXCollections.observableArrayList();
 
     public ObservableList<Contacts> getContactsList() {
         return ContactsList;
+    }
+
+    static ObservableList<Student> PersonsList = FXCollections.observableArrayList();
+
+    public static ObservableList<Student> getPersonsList() {
+        return PersonsList;
+    }
+
+    public static void setC(Contacts con) {
+        C = con;
     }
 
     public static Contacts getContacts() {
@@ -60,7 +72,7 @@ public class StudentAffair {
         return dialogStage;
     }
 
-    //bta3 el contacts fxml
+    //bta3 el contacts 
     public static Stage getDialogStage2() {
         return dialogStage2;
     }
@@ -68,14 +80,23 @@ public class StudentAffair {
     public void setMainApp(root mainApp) {
         this.MainApp = mainApp;
     }
+
     SessionFactory sf = HibernateUtil.getSessionFactory();
     Session s;
+
+    public static void setEdit(Student edit) {
+        StudentAffair.edit = edit;
+    }
+
+    public static Student getEdit() {
+        return edit;
+    }
 
     public List<StudyYears> getSY() {
         s = sf.openSession();
 
         s.beginTransaction();
-        Query query = s.createQuery("from StudyYears");
+        Query query = s.getNamedQuery("StudyYears.findAll");
         List<StudyYears> sy = query.list();
         s.close();
         return sy;
@@ -114,8 +135,10 @@ public class StudentAffair {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
+            this.dialogStage.close();
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
 
@@ -140,7 +163,7 @@ public class StudentAffair {
     }
 
     public void newCon() {
-        C = new Contacts();
+//        C = new Contacts();
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/Contact.fxml"));
@@ -155,8 +178,7 @@ public class StudentAffair {
             dialogStage2.setScene(scene);
             dialogStage2.showAndWait();
 
-            ContactsList.add(C);
-
+//            ContactsList.add(C);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -164,14 +186,12 @@ public class StudentAffair {
 
     public void editStud() {
         try {
-
+            PersonsList.addAll(getStudents());
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/EditStud.fxml"));
             AnchorPane page = loader.load();
-
             dialogStage = new Stage();
             dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
-
             dialogStage.setTitle("تعدبل الطلاب");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(this.MainApp.getPrimaryStage());
@@ -180,12 +200,39 @@ public class StudentAffair {
             dialogStage.setScene(scene);
 
             dialogStage.showAndWait();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    
-    
-    
+    public List<Student> getStudents() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Student.findAll");
+        List<Student> sy = query.list();
+        s.close();
+        return sy;
+    }
+
+    public void editStudDetail() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/EditStudDetail.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("تعديل بيانات الطالب");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

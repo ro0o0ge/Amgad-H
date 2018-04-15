@@ -7,6 +7,8 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -69,6 +71,10 @@ public class Classes implements Serializable {
 
     public String getClassDesc() {
         return classDesc;
+    }
+    
+    public StringProperty classDescProperty() {
+        return new SimpleStringProperty(classDesc);
     }
 
     public void setClassDesc(String classDesc) {

@@ -10,16 +10,18 @@ import Entity.Classes;
 import Entity.Contacts;
 import Entity.Persons;
 import Entity.Student;
-import Entity.StudyYears;
 import amgad.h.StudentAffair;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.sql.Date;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
@@ -38,7 +40,7 @@ import javafx.scene.control.ToggleGroup;
  *
  * @author Abdo
  */
-public class RegisterStudController implements Initializable {
+public class EditStudDetailController implements Initializable {
 
     @FXML
     private Label ageCalc;
@@ -95,14 +97,15 @@ public class RegisterStudController implements Initializable {
 
     StudentAffair SA;
 
+    private Student current = StudentAffair.getEdit();
+    ObservableList<Contacts> tempCon = FXCollections.observableArrayList(current.getPId().getContactsList());
+
     /**
      * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
         male.setUserData("ذكر");
         female.setUserData("انثى");
         R1.setUserData("مسلم");
@@ -114,30 +117,29 @@ public class RegisterStudController implements Initializable {
         sNationality.getItems().removeAll(sNationality.getItems());
         sNationality.getItems().addAll("EGY", "SAU", "OMN", "BHR", "KWT",
                 "UAE", "JOR", "PSE", "LBR");
+        sNationality.getSelectionModel().select(current.getPId().getNationality());
 
         sClass.getItems().removeAll(sClass.getItems());
         sClass.getItems().addAll(getClasses());
+        if (current.getClassStudentsList() != null) {
+            sClass.getSelectionModel().select(current.getClassStudentsList().getCId().getClassDesc());
+        }
 
         sDOB.valueProperty().addListener((ov, oldValue, newValue) -> {
             LocalDate currentDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR), 10, 1);
             ageCalc.setText(currentDate.until(newValue).toString().replace("P-", ""));
         });
 
-        ContactsTable.setItems(SA.getContactsList());
+//        sDOB.setValue(current.getPId().getDob().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        sDOB.setValue(LocalDate.from(current.getPId().getDob().toInstant()));
+
+        
+        ContactsTable.setItems(tempCon);
+
         NameColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .NameProperty());
         NumColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .ConDeatailsProperty());
-    }
-
-    //no usage
-    private List<String> getStudyYear() {
-        SA = new StudentAffair();
-        List<String> StudY = new ArrayList<>();
-        for (Iterator<StudyYears> iterator = SA.getSY().iterator(); iterator.hasNext();) {
-            StudY.add(iterator.next().getSyDesc());
-        }
-        return StudY;
     }
 
     private List<String> getClasses() {
@@ -219,14 +221,12 @@ public class RegisterStudController implements Initializable {
 
     @FXML
     public void handleClose() {
-        SA.getDialogStage().close();
+        SA.getDialogStage2().close();
     }
 
     @FXML
     public void handleAddCont() {
-        SA.setC(new Contacts());
         SA.newCon();
-        SA.getContactsList().add(SA.getContacts());
     }
 
     @FXML

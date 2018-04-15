@@ -8,6 +8,8 @@ package Entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +21,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -64,14 +67,14 @@ public class Student implements Serializable {
     @OneToMany(mappedBy = "sId")
     private List<SGLog> sGLogList;
     @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
-    @ManyToOne
+    @OneToOne
     private Persons pId;
     @OneToMany(mappedBy = "sId")
     private List<StudentAttendance> studentAttendanceList;
     @OneToMany(mappedBy = "sId")
     private List<ActualGrades> actualGradesList;
-    @OneToMany(mappedBy = "sId")
-    private List<ClassStudents> classStudentsList;
+    @OneToOne(mappedBy = "sId")
+    private ClassStudents classStudentsList;
     @OneToMany(mappedBy = "sId")
     private List<StudentExpenses> studentExpensesList;
     @OneToMany(mappedBy = "sId")
@@ -101,6 +104,17 @@ public class Student implements Serializable {
 
     public String getStatus() {
         return status;
+    }
+
+    public StringProperty statusProperty() {
+        if (status.equals("1")) {
+            return new SimpleStringProperty("مقبول");
+        } else if (status.equals("2")) {
+            return new SimpleStringProperty("مرفوض");
+        } else {
+            return new SimpleStringProperty("منتظر");
+        }
+
     }
 
     public void setStatus(String status) {
@@ -175,11 +189,11 @@ public class Student implements Serializable {
     }
 
     @XmlTransient
-    public List<ClassStudents> getClassStudentsList() {
+    public ClassStudents getClassStudentsList() {
         return classStudentsList;
     }
 
-    public void setClassStudentsList(List<ClassStudents> classStudentsList) {
+    public void setClassStudentsList(ClassStudents classStudentsList) {
         this.classStudentsList = classStudentsList;
     }
 
@@ -225,5 +239,5 @@ public class Student implements Serializable {
     public String toString() {
         return "Entity.Student[ sId=" + sId + " ]";
     }
-    
+
 }

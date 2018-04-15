@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.EditStudController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditStudController">
     <children>
       <SplitPane dividerPositions="0.39464882943143814" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -14,10 +14,9 @@
                <children>
                   <HBox layoutX="46.0" layoutY="97.0" prefHeight="-111.0" prefWidth="213.0" spacing="10.0" AnchorPane.bottomAnchor="247.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="439.0" AnchorPane.topAnchor="97.0">
                      <children>
-                        <Button defaultButton="true" mnemonicParsing="false" text="جديد" />
-                        <Button cancelButton="true" mnemonicParsing="false" text="تعديل" />
-                        <Button mnemonicParsing="false" text="عرض" />
-                        <Button mnemonicParsing="false" text="ملاحظات" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#handleEdit" text="تعديل" />
+                        <Button mnemonicParsing="false" onAction="#handleView" text="عرض" />
+                        <Button mnemonicParsing="false" onAction="#handleNotes" text="ملاحظات" />
                      </children>
                   </HBox>
                   <Label layoutX="474.0" layoutY="25.0" text="تعديل بيانات الطلاب" underline="true" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="25.0">
@@ -28,8 +27,8 @@
                   <Separator layoutX="292.0" orientation="VERTICAL" prefHeight="369.0" prefWidth="0.0" AnchorPane.rightAnchor="400.0" />
                   <HBox layoutX="318.0" layoutY="77.0" prefHeight="27.0" prefWidth="322.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="77.0">
                      <children>
-                        <Button mnemonicParsing="false" text="بحث" />
-                        <TextField>
+                        <Button mnemonicParsing="false" onAction="#Search" text="بحث" />
+                        <TextField fx:id="SearchQuery">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -48,13 +47,13 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="EmpList" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="StudentsTable" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn editable="false" prefWidth="199.0" text="اسم الطالب" />
-                      <TableColumn editable="false" prefWidth="129.0" text="الحالة" />
-                        <TableColumn editable="false" prefWidth="129.0" text="السنة الدراسية" />
-                        <TableColumn editable="false" prefWidth="129.0" text="تاريخ التقديم" />
-                        <TableColumn editable="false" prefWidth="111.0" text="تاريخ الميلاد" />
+                      <TableColumn fx:id="NameColumn" editable="false" prefWidth="199.0" text="اسم الطالب" />
+                      <TableColumn fx:id="StatusColumn" editable="false" prefWidth="129.0" text="الحالة" />
+                        <TableColumn fx:id="ClassColumn" editable="false" prefWidth="129.0" text="الفصل " />
+                        <TableColumn fx:id="AdmissionDateColumn" editable="false" prefWidth="129.0" text="تاريخ التقديم" />
+                        <TableColumn fx:id="DOBColumn" editable="false" prefWidth="111.0" text="تاريخ الميلاد" />
                     </columns>
                   </TableView>
                </children>

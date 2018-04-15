@@ -6,7 +6,8 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="617.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterStudController">
+<AnchorPane id="AnchorPane" prefHeight="617.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditStudDetailController">
+    
     <children>
         <SplitPane orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -58,9 +59,9 @@
                                 </Label>
                                 <TextField fx:id="sName" GridPane.rowIndex="2" />
                                 <RadioButton fx:id="female" alignment="CENTER_LEFT" mnemonicParsing="false" text="انثى" GridPane.rowIndex="3">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="sType" />
-                           </toggleGroup>
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="sType" />
+                                    </toggleGroup>
                                 </RadioButton>
                                 <RadioButton fx:id="male" contentDisplay="CENTER" lineSpacing="10.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" selected="true" text="ذكر" toggleGroup="$sType" GridPane.rowIndex="3">
                                     <GridPane.margin>
@@ -98,9 +99,9 @@
                                     </GridPane.margin>
                                 </Label>
                                 <RadioButton fx:id="S3" mnemonicParsing="false" text="مقبول" GridPane.rowIndex="14">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="sReligion" />
-                           </toggleGroup>
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="sReligion" />
+                                    </toggleGroup>
                                 </RadioButton>
                                 <RadioButton fx:id="S2" mnemonicParsing="false" selected="true" text="منتظر" toggleGroup="$sReligion" GridPane.rowIndex="14">
                                     <GridPane.margin>
@@ -136,21 +137,21 @@
                                     <GridPane.margin>
                                         <Insets left="100.0" />
                                     </GridPane.margin>
-                           <toggleGroup>
-                              <ToggleGroup fx:id="sStatus" />
-                           </toggleGroup>
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="sStatus" />
+                                    </toggleGroup>
                                 </RadioButton>
                                 <RadioButton fx:id="R2" alignment="CENTER_LEFT" mnemonicParsing="false" text="مسيحي" toggleGroup="$sStatus" GridPane.rowIndex="5" />
-                        <ComboBox fx:id="sNationality" prefHeight="25.0" prefWidth="138.0" GridPane.rowIndex="4">
-                           <GridPane.margin>
-                              <Insets left="50.0" />
-                           </GridPane.margin>
-                        </ComboBox>
-                        <ComboBox fx:id="sClass" prefHeight="25.0" prefWidth="138.0" GridPane.rowIndex="12">
-                           <GridPane.margin>
-                              <Insets left="50.0" />
-                           </GridPane.margin>
-                        </ComboBox>
+                                <ComboBox fx:id="sNationality" prefHeight="25.0" prefWidth="138.0" GridPane.rowIndex="4">
+                                    <GridPane.margin>
+                                        <Insets left="50.0" />
+                                    </GridPane.margin>
+                                </ComboBox>
+                                <ComboBox fx:id="sClass" prefHeight="25.0" prefWidth="138.0" GridPane.rowIndex="12">
+                                    <GridPane.margin>
+                                        <Insets left="50.0" />
+                                    </GridPane.margin>
+                                </ComboBox>
                             </children>
                         </GridPane>
                         <HBox layoutX="280.0" layoutY="552.0" prefHeight="25.0" prefWidth="152.0" spacing="10.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="280.0">
@@ -208,25 +209,26 @@
                                 <TableColumn fx:id="NameColumn" prefWidth="135.0" text="الاسم" />
                             </columns>
                         </TableView>
-                        <Label layoutX="250.0" layoutY="14.0" text="تسجيل طالب جديد" underline="true">
+                        <Label layoutX="250.0" layoutY="14.0" text="تعديل طالب" underline="true">
                             <font>
                                 <Font size="24.0" />
                             </font>
                         </Label>
-                  <HBox layoutX="50.0" layoutY="322.0" spacing="10.0">
-                     <children>
-                        <Button defaultButton="true" mnemonicParsing="false" onAction="#handleAddCont" text="جديد" />
-                        <Button layoutX="192.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleDeleteCont" text="مسح" />
-                     </children>
-                  </HBox>
-                  <Label layoutX="155.0" layoutY="324.0" text="التحكم في جهات الاتصال">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
+                        <HBox layoutX="50.0" layoutY="322.0" spacing="10.0">
+                            <children>
+                                <Button defaultButton="true" mnemonicParsing="false" onAction="#handleAddCont" text="جديد" />
+                                <Button layoutX="192.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleDeleteCont" text="مسح" />
+                            </children>
+                        </HBox>
+                        <Label layoutX="155.0" layoutY="324.0" text="التحكم في جهات الاتصال">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
                     </children>
                 </AnchorPane>
             </items>
         </SplitPane>
     </children>
+
 </AnchorPane>
