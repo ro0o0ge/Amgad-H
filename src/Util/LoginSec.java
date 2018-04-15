@@ -26,9 +26,8 @@ public class LoginSec {
     public LoginSec() {
     }
 
-    HibernateUtil HU;
     private static Users LoggedUser;
-    SessionFactory sf;
+    SessionFactory sf = HibernateUtil.getSessionFactory();
     Session s;
 
     public static Users getLoggedUser() {
@@ -37,9 +36,7 @@ public class LoginSec {
 
     public String HandleLogin(String uName, String Pass) throws HibernateException {
         String status = "";
-        sf = HibernateUtil.getSessionFactory();
         s = sf.openSession();
-
         Transaction t = s.beginTransaction();
         Query query = s.createQuery("from Users where U_NAME= :s and PASS= :p");
         query.setParameter("s", uName).setParameter("p", Pass);
@@ -61,7 +58,6 @@ public class LoginSec {
 
     public void HandleLogout() throws Exception {
         UserLog ul = new UserLog();
-        sf = HibernateUtil.getSessionFactory();
         s = sf.openSession();
         Transaction t = s.beginTransaction();
         ul.setUId(LoggedUser);

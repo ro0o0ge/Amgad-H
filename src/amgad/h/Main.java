@@ -18,6 +18,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import amgad.h.root;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
+import javafx.stage.WindowEvent;
 
 /**
  *
@@ -42,18 +45,23 @@ public class Main extends Application {
             this.primaryStage = primaryStage;
             this.primaryStage.setTitle("مدرسة الأمجاد الخاصة");
             this.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
-            
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/Main.fxml"));
             mainLayout = loader.load();
             Scene scene = new Scene(mainLayout, 580, 600);
             scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             this.primaryStage.setScene(scene);
-            
+
             MainController Mcontroller = loader.getController();
             Mcontroller.setMainApp(this);
-            
+
             this.primaryStage.show();
+
+            this.primaryStage.setOnCloseRequest((WindowEvent t) -> {
+                Platform.exit();
+                System.exit(0);
+            });
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");
@@ -62,56 +70,38 @@ public class Main extends Application {
             alert.showAndWait();
         }
     }
-    
-    public void rootView(){
-        this.primaryStage.close();
+
+    public void rootView() {
         root r = new root();
         r.InitRoot();
+        this.primaryStage.close();
     }
 
     public void login() {
         try {
-            
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/Login.fxml"));
             AnchorPane page = loader.load();
-            
+
             Stage dialogStage = new Stage();
             dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
-            
+
             dialogStage.setTitle("تسجيل الدخول");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(this.getPrimaryStage());
             Scene scene = new Scene(page);
             scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             dialogStage.setScene(scene);
-            
+
             LoginController Lcontroller = loader.getController();
             Lcontroller.setMainApp(this);
-            
+
             dialogStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-//    public void initRootLayout() {
-//        try {
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(Main.class.getResource("/View/Main.fxml"));
-//            mainLayout = loader.load();
-//            Scene scene = new Scene(mainLayout, 580, 600);
-//            scene.setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-//            this.primaryStage.setScene(scene);
-//            MainController Mcontroller = loader.getController();
-//            
-//            Mcontroller.setMainApp(this);
-//            
-//            this.primaryStage.show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     public static void main(String[] args) {
         launch(args);

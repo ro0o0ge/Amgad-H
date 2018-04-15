@@ -51,7 +51,6 @@ public class Student implements Serializable {
     @Basic(optional = false)
     @Column(name = "STATUS")
     private String status;
-    @Basic(optional = false)
     @Column(name = "AGE_ON_OCT")
     @Temporal(TemporalType.DATE)
     private Date ageOnOct;

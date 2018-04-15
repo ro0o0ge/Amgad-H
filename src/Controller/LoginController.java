@@ -65,7 +65,7 @@ public class LoginController implements Initializable {
                 main.rootView();
                 System.out.println("manager or admin");
             }
-        } catch (HibernateException he){
+        } catch (HibernateException he) {
             System.out.println("error at db ");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ في الاتصال بالداتابيز");
@@ -73,7 +73,7 @@ public class LoginController implements Initializable {
             alert.setContentText(he.getMessage());
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();
-        }catch (Exception e) {
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");
             alert.setHeaderText("برجاء مراجعة مالك البرنامج");

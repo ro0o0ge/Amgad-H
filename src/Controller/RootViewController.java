@@ -43,8 +43,16 @@ public class RootViewController implements Initializable {
         this.ts = t;
     }
     
+    @FXML
+    private void handleNewStud() {
+        sa.newStud();
+    }
     
     
+    @FXML
+    private void handleEditStud() {
+        sa.editStud();
+    }
     
     
     

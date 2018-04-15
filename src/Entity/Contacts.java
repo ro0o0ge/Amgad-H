@@ -6,6 +6,8 @@
 package Entity;
 
 import java.io.Serializable;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +48,7 @@ public class Contacts implements Serializable {
     @Column(name = "CON_DEATAILS")
     private String conDeatails;
     @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private Persons pId;
 
     public Contacts() {
@@ -72,6 +74,14 @@ public class Contacts implements Serializable {
 
     public String getConName() {
         return conName;
+    }
+
+    public StringProperty NameProperty() {
+        return new SimpleStringProperty(conName);
+    }
+
+    public StringProperty ConDeatailsProperty() {
+        return new SimpleStringProperty(conDeatails);
     }
 
     public void setConName(String conName) {
@@ -118,5 +128,5 @@ public class Contacts implements Serializable {
     public String toString() {
         return "Entity.Contacts[ cId=" + cId + " ]";
     }
-    
+
 }

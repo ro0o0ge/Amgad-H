@@ -22,8 +22,8 @@
                                </Menu>
                                <Menu mnemonicParsing="false" text="شئون الطلاب">
                                    <items>
-                                       <MenuItem mnemonicParsing="false" text="تسجيل طالب جديد" />
-                                       <MenuItem mnemonicParsing="false" text="تعديل البيانات الشخصية للطلاب" />
+                                       <MenuItem mnemonicParsing="false" onAction="#handleNewStud" text="تسجيل طالب جديد" />
+                                       <MenuItem mnemonicParsing="false" onAction="#handleEditStud" text="تعديل البيانات الشخصية للطلاب" />
                                        <SeparatorMenuItem mnemonicParsing="false" />
                                        <MenuItem mnemonicParsing="false" text="تسجيل قوائم الفصول" />
                                        <MenuItem mnemonicParsing="false" text="تسجيل الغياب" />

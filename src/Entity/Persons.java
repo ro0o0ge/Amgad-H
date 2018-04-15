@@ -83,11 +83,9 @@ public class Persons implements Serializable {
     private Date createdDate;
     @Column(name = "MARITAL_STATUS")
     private String maritalStatus;
-    @Basic(optional = false)
     @Column(name = "MODIFIED_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date modifiedDate;
-    @Basic(optional = false)
     @Column(name = "HIRING_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date hiringDate;
