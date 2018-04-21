@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TeacherSubjects.findAll", query = "SELECT t FROM TeacherSubjects t")
+    ,@NamedQuery(name = "TeacherSubjects.deleteByTID", query = "DELETE  FROM TeacherSubjects t where t.tId = :tId")
     , @NamedQuery(name = "TeacherSubjects.findByTSID", query = "SELECT t FROM TeacherSubjects t WHERE t.tSID = :tSID")})
 public class TeacherSubjects implements Serializable {
 
@@ -99,5 +100,5 @@ public class TeacherSubjects implements Serializable {
     public String toString() {
         return "Entity.TeacherSubjects[ tSID=" + tSID + " ]";
     }
-    
+
 }

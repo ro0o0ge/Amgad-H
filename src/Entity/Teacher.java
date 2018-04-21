@@ -8,10 +8,13 @@ package Entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,6 +26,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -55,6 +60,7 @@ public class Teacher implements Serializable {
     private Persons pId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tId")
     private List<Schedule> scheduleList;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tId")
     private List<TeacherSubjects> teacherSubjectsList;
     @OneToMany(mappedBy = "tId")
@@ -92,6 +98,14 @@ public class Teacher implements Serializable {
 
     public String getStatus() {
         return status;
+    }
+
+    public StringProperty statusProperty() {
+        if (status.equals("1")) {
+            return new SimpleStringProperty("يعمل");
+        } else {
+            return new SimpleStringProperty("لا يعمل");
+        }
     }
 
     public void setStatus(String status) {
@@ -166,5 +180,5 @@ public class Teacher implements Serializable {
     public String toString() {
         return "Entity.Teacher[ tId=" + tId + " ]";
     }
-    
+
 }

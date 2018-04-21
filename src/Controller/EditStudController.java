@@ -27,6 +27,23 @@ import javafx.scene.control.TextField;
  */
 public class EditStudController implements Initializable {
 
+    
+    @FXML
+    private TextField SearchQuery;
+    @FXML
+    private ComboBox ComboSearch;
+    @FXML
+    private TableView<Student> StudentsTable;
+    @FXML
+    private TableColumn<Student, String> NameColumn;
+    @FXML
+    private TableColumn<Student, String> StatusColumn;
+    @FXML
+    private TableColumn<Student, String> ClassColumn;
+    @FXML
+    private TableColumn<Student, String> AdmissionDateColumn;
+    @FXML
+    private TableColumn<Student, String> DOBColumn;
     /**
      * Initializes the controller class.
      *
@@ -61,22 +78,7 @@ public class EditStudController implements Initializable {
 
     StudentAffair SA;
 
-    @FXML
-    private TextField SearchQuery;
-    @FXML
-    private ComboBox ComboSearch;
-    @FXML
-    private TableView<Student> StudentsTable;
-    @FXML
-    private TableColumn<Student, String> NameColumn;
-    @FXML
-    private TableColumn<Student, String> StatusColumn;
-    @FXML
-    private TableColumn<Student, String> ClassColumn;
-    @FXML
-    private TableColumn<Student, String> AdmissionDateColumn;
-    @FXML
-    private TableColumn<Student, String> DOBColumn;
+    
 
     @FXML
     public void Search() {
@@ -135,9 +137,7 @@ public class EditStudController implements Initializable {
     public void handleEdit() {
         int selectedIndex = StudentsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            System.out.println("selection " + StudentsTable.getItems().get(selectedIndex).getPId().getName());
             StudentAffair.setEdit(StudentsTable.getItems().get(selectedIndex));
-            System.out.println("to be edited " + StudentAffair.getEdit().getPId().getContactsList().size());
             SA.editStudDetail();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);

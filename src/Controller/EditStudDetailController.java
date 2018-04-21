@@ -8,15 +8,11 @@ package Controller;
 import Entity.ClassStudents;
 import Entity.Classes;
 import Entity.Contacts;
-import Entity.Persons;
 import Entity.Student;
 import amgad.h.StudentAffair;
 import java.net.URL;
 import java.sql.Date;
-//import ;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -108,7 +104,6 @@ public class EditStudDetailController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        System.out.println("size 1 "+tempCon.size());
         male.setUserData("ذكر");
         female.setUserData("انثى");
         R1.setUserData("مسلم");

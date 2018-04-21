@@ -15,7 +15,12 @@ import amgad.h.TeachingStaff;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
@@ -34,7 +39,7 @@ import javafx.scene.layout.HBox;
  *
  * @author Abdo
  */
-public class RegisterTeacherController implements Initializable {
+public class EditTeacherDetailController implements Initializable {
 
     @FXML
     DatePicker tSignDate;
@@ -96,22 +101,22 @@ public class RegisterTeacherController implements Initializable {
     private TableColumn<Subjects, String> SubjectNameColumn;
 
     TeachingStaff TA;
-    private Persons pers;
-    private Teacher teac;
-    
-    
+//    private Persons pers;
+//    private Teacher teac;
+
+    static private Teacher current;
+    static ObservableList<Contacts> tempCon = FXCollections.observableArrayList();
+    static ObservableList<Subjects> tempSub = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        TA = new TeachingStaff();
-        tNationality.getItems().removeAll(tNationality.getItems());
-        tNationality.getItems().addAll("EGY", "SAU", "OMN", "BHR", "KWT",
-                "UAE", "JOR", "PSE", "LBR");
-
         t1.setUserData("ذكر");
         t2.setUserData("انثى");
         r1.setUserData("مسلم");
@@ -123,91 +128,156 @@ public class RegisterTeacherController implements Initializable {
         soc3.setUserData("أعزب");
         soc4.setUserData("متزوج");
 
-        ContactsTable.setItems(TA.getContactsList());
+        TA = new TeachingStaff();
+        current = TeachingStaff.getEdit();
+
+        if (current.getPId().getGender().equals("1")) {
+            gType.selectToggle(t1);
+        } else {
+            gType.selectToggle(t2);
+        }
+
+        if (current.getStatus().equals("1")) {
+            gStatus.selectToggle(s1);
+        } else {
+            gStatus.selectToggle(s2);
+        }
+
+        if (current.getPId().getMaritalStatus().equals("1")) {
+            gSocial.selectToggle(soc1);
+        } else if (current.getPId().getMaritalStatus().equals("2")) {
+            gSocial.selectToggle(soc2);
+        } else if (current.getPId().getMaritalStatus().equals("3")) {
+            gSocial.selectToggle(soc3);
+        } else {
+            gSocial.selectToggle(soc4);
+        }
+
+        if (current.getPId().getGender().equals("1")) {
+            gReligion.selectToggle(r1);
+        } else {
+            gReligion.selectToggle(r2);
+        }
+
+        tNationality.getItems().removeAll(tNationality.getItems());
+        tNationality.getItems().addAll("EGY", "SAU", "OMN", "BHR", "KWT",
+                "UAE", "JOR", "PSE", "LBR");
+        tNationality.getSelectionModel().select(current.getPId().getNationality());
+
+        if (tempCon.size() > 0) {
+            tempCon.clear();
+        }
+        tempCon = FXCollections.observableArrayList(current.getPId().getContactsList());
+        List<Subjects> TeSubList = new ArrayList<Subjects>();
+        for (TeacherSubjects sub : current.getTeacherSubjectsList()) {
+            TeSubList.add(sub.getSuId());
+        }
+        tempSub = FXCollections.observableArrayList(TeSubList);
+
+        ContactsTable.setItems(tempCon);
         NameColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .NameProperty());
         NumColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .ConDeatailsProperty());
 
-        SubjectsTable.setItems(TA.getSubjectsList());
+        SubjectsTable.setItems(tempSub);
         SubjectNameColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .SubDescProperty());
 
-        System.out.println("Permission "+LoginSec.getLoggedUser().getPermission()+
-                " name "+ LoginSec.getLoggedUser().getUName());
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(current.getPId().getHiringDate());
+        LocalDate date = LocalDate.of(cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+        tSignDate.setValue(date);
+
+        cal = Calendar.getInstance();
+        cal.setTime(current.getPId().getDob());
+        date = LocalDate.of(cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+        tDOB.setValue(date);
+
+//        cal = Calendar.getInstance();
+//        cal.setTime(current.getPId().getGradYear());
+//        date = LocalDate.of(cal.get(Calendar.YEAR),
+//                cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+//        tDOB.setValue(date);
+        tName.setText(current.getPId().getName());
+        tNatNo.setText(current.getPId().getNationalId());
+        tAddress.setText(current.getPId().getAddress());
+
+        tQual.setText(current.getPId().getQualification());
+
         if (LoginSec.getLoggedUser().getPermission().equals("2")) {
             salary.setVisible(true);
+            tSalary.setText(current.getMonthlySalary().toString());
+            System.out.println("Salary " + current.getMonthlySalary());
         }
 
     }
 
     @FXML
     public void handleSave() {
-        pers = new Persons();
-        teac = new Teacher();
         if (!tName.getText().equals("") || tNationality.getSelectionModel().isEmpty()
                 || !tNatNo.getText().equals("") || !tNatNo.getText().matches("[0-9]+")
                 || !tAddress.getText().equals("") || tDOB.getValue() != null
                 || tSignDate.getValue() != null) {
             try {
-                pers.setName(tName.getText());
+                current.getPId().setName(tName.getText());
                 if (gType.getSelectedToggle().getUserData().toString().equals("ذكر")) {
-                    pers.setGender("1");
+                    current.getPId().setGender("1");
                 } else {
-                    pers.setGender("2");
+                    current.getPId().setGender("2");
                 }
-                pers.setNationality(tNationality.getSelectionModel().getSelectedItem().toString());
+                current.getPId().setNationality(tNationality.getSelectionModel().getSelectedItem().toString());
                 if (gReligion.getSelectedToggle().getUserData().toString().equals("مسلم")) {
-                    pers.setReligion("1");
+                    current.getPId().setReligion("1");
                 } else {
-                    pers.setReligion("2");
+                    current.getPId().setReligion("2");
                 }
 
                 if (gSocial.getSelectedToggle().getUserData().toString().equals("مطلق")) {
-                    pers.setMaritalStatus("1");
+                    current.getPId().setMaritalStatus("1");
                 } else if (gSocial.getSelectedToggle().getUserData().toString().equals("أرمل")) {
-                    pers.setMaritalStatus("2");
+                    current.getPId().setMaritalStatus("2");
                 } else if (gSocial.getSelectedToggle().getUserData().toString().equals("أعزب")) {
-                    pers.setMaritalStatus("3");
+                    current.getPId().setMaritalStatus("3");
                 } else {
-                    pers.setMaritalStatus("4");
+                    current.getPId().setMaritalStatus("4");
                 }
-                pers.setNationalId(tNatNo.getText());
-                pers.setAddress(tAddress.getText());
-                pers.setDob(Date.valueOf(tDOB.getValue()));
-                pers.setCreatedDate(Date.valueOf(LocalDate.now()));
-                pers.setHiringDate(Date.valueOf(tSignDate.getValue()));
+                current.getPId().setNationalId(tNatNo.getText());
+                current.getPId().setAddress(tAddress.getText());
+                current.getPId().setDob(Date.valueOf(tDOB.getValue()));
+                current.getPId().setCreatedDate(Date.valueOf(LocalDate.now()));
+                current.getPId().setHiringDate(Date.valueOf(tSignDate.getValue()));
 
                 if (tGradDate.getValue() != null) {
                     LocalDate localDate = tGradDate.getValue();
-                    pers.setGradYear(String.valueOf(localDate.getYear()));
+                    current.getPId().setGradYear(String.valueOf(localDate.getYear()));
                 }
 
                 if (!tQual.getText().equals("")) {
-                    pers.setQualification(tQual.getText());
+                    current.getPId().setQualification(tQual.getText());
                 }
 
-                teac.setPId(pers);
-
                 if (gStatus.getSelectedToggle().getUserData().toString().equals("يعمل")) {
-                    teac.setStatus("1");
+                    current.setStatus("1");
                 } else {
-                    teac.setStatus("2");
+                    current.setStatus("2");
                 }
 
                 if (!tSalary.getText().isEmpty()) {
-                    teac.setMonthlySalary(Double.valueOf(tSalary.getText()));
+                    current.setMonthlySalary(Double.valueOf(tSalary.getText()));
                 }
-
-                TA.PersistNewTeac(pers, teac);
-
+                TA.UpdateTeacher(current, tempCon, tempSub);
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("يوجد خطأ");
                 alert.setHeaderText("خطأ");
                 alert.setContentText("برجاء مراجعة مالك البرنامج");
                 alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                System.out.println("error " + e.getLocalizedMessage());
                 alert.showAndWait();
+                throw e;
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -221,14 +291,14 @@ public class RegisterTeacherController implements Initializable {
 
     @FXML
     public void handleClose() {
-        TA.getDialogStage().close();
+        TeachingStaff.getDialogStage2().close();
     }
 
     @FXML
     public void handleAddCont() {
-        TA.setC(new Contacts());
+        TeachingStaff.setC(new Contacts());
         TA.newCon();
-        TA.getContactsList().add(TA.getContacts());
+        tempCon.add(TeachingStaff.getContacts());
     }
 
     @FXML
@@ -239,7 +309,7 @@ public class RegisterTeacherController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");
             alert.setHeaderText("لم يتم تحديد العنصر المراد حذفه");
-            alert.setContentText("من فضلك قم بتحديد العنصر من جدول جهات الاتصال");
+            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();
         }
@@ -247,10 +317,10 @@ public class RegisterTeacherController implements Initializable {
 
     @FXML
     public void handleAddSub() {
-        TA.setS(new TeacherSubjects());
+        TeachingStaff.setS(new TeacherSubjects());
         TA.newSub();
-        TA.getTss().add(TA.getS());
-        TA.getSubjectsList().add(TA.getS().getSuId());
+        TA.getTss().add(TeachingStaff.getS());
+        tempSub.add(TeachingStaff.getS().getSuId());
     }
 
     @FXML

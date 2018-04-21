@@ -216,6 +216,18 @@ public class Persons implements Serializable {
     public String getMaritalStatus() {
         return maritalStatus;
     }
+    
+    public StringProperty maritalStatusProperty() {
+        if (maritalStatus.equals("1")) {
+            return new SimpleStringProperty("مطلق");
+        } else if (maritalStatus.equals("2")) {
+            return new SimpleStringProperty("أرمل");
+        } else if (maritalStatus.equals("3")) {
+            return new SimpleStringProperty("أعزب");
+        }else{
+            return new SimpleStringProperty("متزوج");
+        }
+    }
 
     public void setMaritalStatus(String maritalStatus) {
         this.maritalStatus = maritalStatus;
@@ -231,6 +243,9 @@ public class Persons implements Serializable {
 
     public Date getHiringDate() {
         return hiringDate;
+    }
+    public StringProperty HiringDateProperty() {
+        return new SimpleStringProperty(hiringDate.toString());
     }
 
     public void setHiringDate(Date hiringDate) {

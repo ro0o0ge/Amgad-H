@@ -115,7 +115,6 @@ public class Student implements Serializable {
         } else {
             return new SimpleStringProperty("مقبول");
         }
-
     }
 
     public void setStatus(String status) {

@@ -9,7 +9,6 @@ import Util.LoginSec;
 import amgad.h.Management;
 import amgad.h.StudentAffair;
 import amgad.h.TeachingStaff;
-import amgad.h.root;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -58,6 +57,11 @@ public class RootViewController implements Initializable {
     @FXML
     private void handleNewTeacher() {
         ts.newTeacher();
+    }
+    
+    @FXML
+    private void handleEditTeacher() {
+        ts.editTeacher();
     }
     
     

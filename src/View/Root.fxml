@@ -35,7 +35,7 @@
                                <Menu mnemonicParsing="false" text="هيئة التدريس">
                                    <items>
                                        <MenuItem mnemonicParsing="false" onAction="#handleNewTeacher" text="تسجيل مدرس جديد" />
-                                       <MenuItem mnemonicParsing="false" text="تعديل البيانات الشخصية للمدرسين" />
+                                       <MenuItem mnemonicParsing="false" onAction="#handleEditTeacher" text="تعديل البيانات الشخصية للمدرسين" />
                                        <SeparatorMenuItem mnemonicParsing="false" />
                                        <MenuItem mnemonicParsing="false" text="جدول الحصص" />
                                        <SeparatorMenuItem mnemonicParsing="false" />

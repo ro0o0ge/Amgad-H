@@ -47,11 +47,9 @@ public class TeachingStaff {
     private static Stage dialogStage2;
     private static Contacts C;
     private static TeacherSubjects TS;
-//    private static Subjects TempS;
     UserLog ul;
     private List<TeacherSubjects> tss = new ArrayList<>();
     static Teacher edit;//Teacher TO BE EDITED
-    
 
     SessionFactory sf = HibernateUtil.getSessionFactory();
     Session s;
@@ -67,7 +65,7 @@ public class TeachingStaff {
     public ObservableList<Subjects> getSubjectsList() {
         return SubjectsList;
     }
-    
+
     public List<TeacherSubjects> getTss() {
         return tss;
     }
@@ -88,16 +86,6 @@ public class TeachingStaff {
         TS = Sub;
     }
 
-//    public static Subjects getTempS() {
-//        return TempS;
-//    }
-//
-//    public static void setTempS(Subjects TemS) {
-//        TempS = TemS;
-//    }
-    
-    
-
     public void setMainApp(root mainApp) {
         this.MainApp = mainApp;
     }
@@ -105,11 +93,25 @@ public class TeachingStaff {
     public Stage getDialogStage() {
         return dialogStage;
     }
-    
+
     public static Stage getDialogStage2() {
         return dialogStage2;
     }
-    
+
+    public static Teacher getEdit() {
+        return edit;
+    }
+
+    public static void setEdit(Teacher edit) {
+        TeachingStaff.edit = edit;
+    }
+
+    static ObservableList<Teacher> PersonsList = FXCollections.observableArrayList();
+
+    public static ObservableList<Teacher> getPersonsList() {
+        return PersonsList;
+    }
+
     public List<StudyYears> getStudyYears() {
         s = sf.openSession();
         s.beginTransaction();
@@ -118,7 +120,7 @@ public class TeachingStaff {
         s.close();
         return sy;
     }
-    
+
     public StudyYears getStudyYearsByDesc(String desc) {
         s = sf.openSession();
         s.beginTransaction();
@@ -127,7 +129,7 @@ public class TeachingStaff {
         s.close();
         return sy.get(0);
     }
-    
+
     public List<Subjects> getStudyYearSubjects(StudyYears sty) {
         s = sf.openSession();
         s.beginTransaction();
@@ -136,8 +138,8 @@ public class TeachingStaff {
         s.close();
         return sub;
     }
-    
-    public Subjects getSubjectsByDesc(String desc,String YDesc) {
+
+    public Subjects getSubjectsByDesc(String desc, String YDesc) {
         s = sf.openSession();
         s.beginTransaction();
         Query query = s.getNamedQuery("Subjects.findBySuDescAndSyId").
@@ -156,13 +158,13 @@ public class TeachingStaff {
             log += " -- new Person with id " + p.getPId();
             s.persist(te);
             log += " -- new Teacer with id " + te.getTId();
-            
+
             for (Contacts c : ContactsList) {
                 c.setPId(p);
                 s.persist(c);
                 log += " -- new Contact with id " + c.getCId();
             }
-            
+
             for (TeacherSubjects su : tss) {
 //                TeacherSubjects teSu = new TeacherSubjects();
 //                teSu.setSuId(su);
@@ -170,7 +172,7 @@ public class TeachingStaff {
                 s.persist(su);
                 log += " -- new Teacher Subject with id " + su.getTSID();
             }
-            
+
             ul = new UserLog();
             ul.setUId(LoginSec.getLoggedUser());
             ul.setLogDate(new Timestamp(new Date().getTime()));
@@ -182,6 +184,52 @@ public class TeachingStaff {
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
+    }
+
+    public void UpdateTeacher(Teacher st, List<Contacts> cons, List<Subjects> subs) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(st);
+            log += " --  Person with id " + st.getPId();
+            log += " --  Teacher with id " + st.getTId();
+
+            for (Contacts c : cons) {
+                c.setPId(st.getPId());
+                s.saveOrUpdate(c);
+                log += " -- Contact with id " + c.getCId();
+            }
+
+            Query query = s.getNamedQuery("TeacherSubjects.deleteByTID").setParameter("tId", st);
+            query.executeUpdate();
+            TeacherSubjects trss;
+            for (Subjects c : subs) {
+                trss = new TeacherSubjects();
+                trss.setSuId(c);
+                trss.setTId(st);
+                s.persist(trss);
+                log += " -- Subject with id " + c.getSuId();
+            }
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            s.update(st.getPId());
+            t.commit();
+            TeachingStaff.dialogStage2.close();
+            PersonsList.clear();
+            PersonsList.addAll(getTeachers());
+            System.out.println("All Done");
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e.getLocalizedMessage());
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+            throw e;
+        }
+
     }
 
     public void newTeacher() {
@@ -237,6 +285,58 @@ public class TeachingStaff {
             scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
             dialogStage2.setScene(scene);
             dialogStage2.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Teacher> getTeachers() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Teacher.findAll");
+        List<Teacher> sy = query.list();
+        s.close();
+        return sy;
+    }
+
+    public void editTeacher() {
+        try {
+            PersonsList.addAll(getTeachers());
+            System.out.println("Prson List Size " + PersonsList.size());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/EditTeacher.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("تعدبل المدرسين");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+
+            dialogStage.showAndWait();
+            PersonsList.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editTeacherDetail() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/EditTeacherDetail.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("تعديل بيانات الطالب");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

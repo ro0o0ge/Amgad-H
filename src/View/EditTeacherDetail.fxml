@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterTeacherController">
+<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditTeacherDetailController">
     <children>
         <SplitPane orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -219,7 +219,7 @@
                                 <TableColumn fx:id="SubjectNameColumn" prefWidth="107.0" text="اسم المادة" />
                             </columns>
                         </TableView>
-                        <Label layoutX="237.0" layoutY="14.0" text="تسجيل مدرس جديد">
+                        <Label layoutX="254.0" layoutY="14.0" text="تعديل بيانات مدرس">
                             <font>
                                 <Font size="18.0" />
                             </font>
