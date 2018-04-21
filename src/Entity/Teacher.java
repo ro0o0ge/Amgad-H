@@ -46,7 +46,7 @@ public class Teacher implements Serializable {
     private Integer tId;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "MONTHLY_SALARY")
-    private BigDecimal monthlySalary;
+    private Double monthlySalary;
     @Basic(optional = false)
     @Column(name = "STATUS")
     private String status;
@@ -82,11 +82,11 @@ public class Teacher implements Serializable {
         this.tId = tId;
     }
 
-    public BigDecimal getMonthlySalary() {
+    public Double getMonthlySalary() {
         return monthlySalary;
     }
 
-    public void setMonthlySalary(BigDecimal monthlySalary) {
+    public void setMonthlySalary(Double monthlySalary) {
         this.monthlySalary = monthlySalary;
     }
 

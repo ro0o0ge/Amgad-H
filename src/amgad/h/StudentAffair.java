@@ -45,6 +45,9 @@ public class StudentAffair {
     private static Stage dialogStage2;
     private static Contacts C;
     UserLog ul;
+    
+    SessionFactory sf = HibernateUtil.getSessionFactory();
+    Session s;
 
     static Student edit;//STUDENT TO BE EDITED
 
@@ -72,7 +75,7 @@ public class StudentAffair {
         return dialogStage;
     }
 
-    //bta3 el contacts 
+    //bta3 el contacts w el edit w ay 7aga tanya
     public static Stage getDialogStage2() {
         return dialogStage2;
     }
@@ -80,9 +83,6 @@ public class StudentAffair {
     public void setMainApp(root mainApp) {
         this.MainApp = mainApp;
     }
-
-    SessionFactory sf = HibernateUtil.getSessionFactory();
-    Session s;
 
     public static void setEdit(Student edit) {
         StudentAffair.edit = edit;
@@ -110,6 +110,12 @@ public class StudentAffair {
         s.close();
         return sy;
     }
+    
+    public ClassStudents getClassStudent(Student st) {
+        Query query = s.getNamedQuery("ClassStudents.findBysId").setParameter("sId", st);
+        List<ClassStudents> sy = query.list();
+        return sy.get(0);
+    }
 
     public void PersistNewStud(Persons p, Student st, ClassStudents cs) {
         try {
@@ -124,8 +130,8 @@ public class StudentAffair {
                 s.persist(cs);
                 log += " -- Register -- Student in a Class with id " + cs.getCsId();
             }
-            for (Iterator<Contacts> iterator = ContactsList.iterator(); iterator.hasNext();) {
-                Contacts c = iterator.next();
+            for (Contacts c : ContactsList) {
+                c.setPId(p);
                 s.persist(c);
                 log += " -- new Contact with id " + c.getCId();
             }
@@ -137,6 +143,44 @@ public class StudentAffair {
             t.commit();
             this.dialogStage.close();
         } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
+
+    public void UpdateStud(Student st, ClassStudents cs,List<Contacts> cons) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(st);
+            log += " --  Person with id " + st.getPId();
+            log += " --  Student with id " + st.getSId();
+            if (cs != null) {
+                ClassStudents tempCS = getClassStudent(st);
+                tempCS.setCId(cs.getCId());
+                s.saveOrUpdate(tempCS);
+                log += " -- Register -- Student in a Class with id " + cs.getCsId();
+            }
+            
+            for (Contacts c : cons) {
+                c.setPId(st.getPId());
+                s.saveOrUpdate(c);
+                log += " -- Contact with id " + c.getCId();
+            }
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            s.update(st.getPId());
+            t.commit();
+            StudentAffair.dialogStage2.close();
+            PersonsList.clear();
+            PersonsList.addAll(getStudents());
+            System.out.println("All Done");
+        } catch (Exception e) {
+             System.err.println("ERROR IN HIBERNATE : " + e.getLocalizedMessage());
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
@@ -163,10 +207,9 @@ public class StudentAffair {
     }
 
     public void newCon() {
-//        C = new Contacts();
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("/View/Contact.fxml"));
+            loader.setLocation(Main.class.getResource("/View/StudContact.fxml"));
             AnchorPane page = loader.load();
             dialogStage2 = new Stage();
             dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
@@ -177,8 +220,6 @@ public class StudentAffair {
             scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
             dialogStage2.setScene(scene);
             dialogStage2.showAndWait();
-
-//            ContactsList.add(C);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -200,7 +241,7 @@ public class StudentAffair {
             dialogStage.setScene(scene);
 
             dialogStage.showAndWait();
-
+            PersonsList.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }

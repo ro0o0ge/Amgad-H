@@ -63,7 +63,7 @@ public class LoginController implements Initializable {
                 alert.showAndWait();
             } else {
                 main.rootView();
-                System.out.println("manager or admin");
+//                System.out.println("user");
             }
         } catch (HibernateException he) {
             System.out.println("error at db ");

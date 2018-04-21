@@ -12,10 +12,9 @@
             <children>
                 <Label layoutX="205.0" layoutY="61.0" text="اسم جهة الاتصال" />
                 <Label layoutX="209.0" layoutY="96.0" text="وسيلة الاتصال" />
-                <Button defaultButton="true" layoutX="87.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleConfirm" text="تأكيد" />
+                <Button defaultButton="true" layoutX="104.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleConfirm" text="تأكيد" />
                 <TextField fx:id="conName" layoutX="30.0" layoutY="57.0" />
             <TextField fx:id="conNum" layoutX="30.0" layoutY="92.0" />
-            <Button cancelButton="true" layoutX="150.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleCancel" text="إلغاء" />
             </children>
         </Pane>
     </children>

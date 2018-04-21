@@ -55,6 +55,11 @@ public class RootViewController implements Initializable {
     }
     
     
+    @FXML
+    private void handleNewTeacher() {
+        ts.newTeacher();
+    }
+    
     
     
     

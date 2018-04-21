@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ClassStudents.findAll", query = "SELECT c FROM ClassStudents c")
+        ,@NamedQuery(name = "ClassStudents.findBysId", query = "SELECT c FROM ClassStudents c WHERE c.sId = :sId")
     , @NamedQuery(name = "ClassStudents.findByCsId", query = "SELECT c FROM ClassStudents c WHERE c.csId = :csId")})
 public class ClassStudents implements Serializable {
 

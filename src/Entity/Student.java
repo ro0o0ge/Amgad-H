@@ -13,6 +13,7 @@ import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -67,13 +68,13 @@ public class Student implements Serializable {
     @OneToMany(mappedBy = "sId")
     private List<SGLog> sGLogList;
     @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     private Persons pId;
     @OneToMany(mappedBy = "sId")
     private List<StudentAttendance> studentAttendanceList;
     @OneToMany(mappedBy = "sId")
     private List<ActualGrades> actualGradesList;
-    @OneToOne(mappedBy = "sId")
+    @OneToOne(mappedBy = "sId",fetch = FetchType.EAGER)
     private ClassStudents classStudentsList;
     @OneToMany(mappedBy = "sId")
     private List<StudentExpenses> studentExpensesList;
@@ -108,11 +109,11 @@ public class Student implements Serializable {
 
     public StringProperty statusProperty() {
         if (status.equals("1")) {
-            return new SimpleStringProperty("مقبول");
-        } else if (status.equals("2")) {
             return new SimpleStringProperty("مرفوض");
-        } else {
+        } else if (status.equals("2")) {
             return new SimpleStringProperty("منتظر");
+        } else {
+            return new SimpleStringProperty("مقبول");
         }
 
     }

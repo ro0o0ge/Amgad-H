@@ -13,7 +13,9 @@ import Entity.Student;
 import amgad.h.StudentAffair;
 import java.net.URL;
 import java.sql.Date;
+//import ;
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -90,15 +92,15 @@ public class EditStudDetailController implements Initializable {
     @FXML
     private TableColumn<Contacts, String> NumColumn;
 
-    private Student stud;
-    private Persons pers;
+//    private Student stud;
+//    private Persons pers;
     private ClassStudents classStud;
     private List<Classes> css;
 
     StudentAffair SA;
 
-    private Student current = StudentAffair.getEdit();
-    ObservableList<Contacts> tempCon = FXCollections.observableArrayList(current.getPId().getContactsList());
+    static private Student current;
+    static ObservableList<Contacts> tempCon = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -106,6 +108,7 @@ public class EditStudDetailController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        System.out.println("size 1 "+tempCon.size());
         male.setUserData("ذكر");
         female.setUserData("انثى");
         R1.setUserData("مسلم");
@@ -113,6 +116,11 @@ public class EditStudDetailController implements Initializable {
         S1.setUserData("مرفوض");
         S2.setUserData("منتظر");
         S3.setUserData("مقبول");
+        current = StudentAffair.getEdit();
+        if (tempCon.size() > 0) {
+            tempCon.clear();
+        }
+        tempCon = FXCollections.observableArrayList(current.getPId().getContactsList());
 
         sNationality.getItems().removeAll(sNationality.getItems());
         sNationality.getItems().addAll("EGY", "SAU", "OMN", "BHR", "KWT",
@@ -130,16 +138,47 @@ public class EditStudDetailController implements Initializable {
             ageCalc.setText(currentDate.until(newValue).toString().replace("P-", ""));
         });
 
-//        sDOB.setValue(current.getPId().getDob().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        sDOB.setValue(LocalDate.from(current.getPId().getDob().toInstant()));
-
-        
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(current.getPId().getDob());
+        LocalDate date = LocalDate.of(cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+        sDOB.setValue(date);
+        if (!ContactsTable.getItems().isEmpty()) {
+            ContactsTable.getItems().clear();
+        }
         ContactsTable.setItems(tempCon);
 
         NameColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .NameProperty());
         NumColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .ConDeatailsProperty());
+
+        serialNo.setText(current.getSerialNo());
+        sName.setText(current.getPId().getName());
+        sNatNo.setText(current.getPId().getNationalId());
+        sAddress.setText(current.getPId().getAddress());
+
+        if (current.getPId().getGender().equals("1")) {
+            sType.selectToggle(male);
+        } else {
+            sType.selectToggle(female);
+        }
+        
+        if (current.getStatus().equals("2")) {
+            sStatus.selectToggle(S2);
+        } else if (current.getStatus().equals("1")) {
+            sStatus.selectToggle(S1);
+        } else {
+            sStatus.selectToggle(S3);
+        }
+        if (current.getPId().getReligion().equals("1")) {
+            sReligion.selectToggle(R1);
+        } else {
+            sReligion.selectToggle(R2);
+        }
+
+        sSecretNo.setText(current.getSecretNo());
+        sSeatingNo.setText(current.getSeatingNo());
     }
 
     private List<String> getClasses() {
@@ -154,54 +193,54 @@ public class EditStudDetailController implements Initializable {
 
     @FXML
     public void handleSave() {
-        stud = new Student();
-        pers = new Persons();
         if (!sName.getText().equals("") || sNationality.getSelectionModel().isEmpty()
                 || !sNatNo.getText().equals("") || !sNatNo.getText().matches("[0-9]+")
                 || !sAddress.getText().equals("") || sDOB.getValue() != null
                 || !serialNo.getText().equals("") || !serialNo.getText().matches("[0-9]+")) {
             try {
-                pers.setName(sName.getText());
-                if (sType.getSelectedToggle().getUserData().toString().equals("ذكر")) {
-                    pers.setGender("1");
-                } else {
-                    pers.setGender("2");
-                }
-                pers.setNationality(sNationality.getSelectionModel().getSelectedItem().toString());
-                if (sReligion.getSelectedToggle().getUserData().toString().equals("مسلم")) {
-                    pers.setReligion("1");
-                } else {
-                    pers.setReligion("2");
-                }
-                pers.setNationalId(sNatNo.getText());
-                pers.setAddress(sAddress.getText());
-                pers.setDob(Date.valueOf(sDOB.getValue()));
-                pers.setCreatedDate(Date.valueOf(LocalDate.now()));
 
-                stud.setPId(pers);
+                current.getPId().setName(sName.getText());
+                if (sType.getSelectedToggle().getUserData().toString().equals("ذكر")) {
+                    current.getPId().setGender("1");
+                } else {
+                    current.getPId().setGender("2");
+                }
+                current.getPId().setNationality(sNationality.getSelectionModel().getSelectedItem().toString());
+
+                if (sReligion.getSelectedToggle().getUserData().toString().equals("مسلم")) {
+                    current.getPId().setReligion("1");
+                } else {
+                    current.getPId().setReligion("2");
+                }
+                current.getPId().setNationalId(sNatNo.getText());
+                current.getPId().setAddress(sAddress.getText());
+                current.getPId().setDob(Date.valueOf(sDOB.getValue()));
+                current.getPId().setModifiedDate(Date.valueOf(LocalDate.now()));
 
                 if (sStatus.getSelectedToggle().getUserData().toString().equals("مرفوض")) {
-                    stud.setStatus("1");
+                    current.setStatus("1");
                 } else if (sStatus.getSelectedToggle().getUserData().toString().equals("منتظر")) {
-                    stud.setStatus("2");
+                    current.setStatus("2");
                 } else {
-                    stud.setStatus("3");
+                    current.setStatus("3");
                 }
-                stud.setSerialNo(serialNo.getText());
+                current.setSerialNo(serialNo.getText());
+
                 if (!sClass.getSelectionModel().isEmpty()) {
                     Classes c = new Classes();
-                    for (Iterator<Classes> iterator = css.iterator(); iterator.hasNext();) {
-                        if (iterator.next().getClassDesc().equals(sClass.getSelectionModel().getSelectedItem().toString())) {
-                            c = iterator.next();
+                    for (Classes r : css) {
+                        if (r.getClassDesc().equals(sClass.getSelectionModel().getSelectedItem().toString())) {
+                            c = r;
                         }
                     }
                     classStud = new ClassStudents();
-                    classStud.setSId(stud);
                     classStud.setCId(c);
+                    classStud.setSId(current);
+                    current.setClassStudentsList(classStud);
                 }
-
-                SA.PersistNewStud(pers, stud, classStud);
+                SA.UpdateStud(current, classStud,tempCon);
             } catch (Exception e) {
+                System.err.println("Erorr in " + Class.class.getName() + " " + e.getLocalizedMessage());
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("يوجد خطأ");
                 alert.setHeaderText("خطأ");
@@ -221,12 +260,14 @@ public class EditStudDetailController implements Initializable {
 
     @FXML
     public void handleClose() {
-        SA.getDialogStage2().close();
+        StudentAffair.getDialogStage2().close();
     }
 
     @FXML
     public void handleAddCont() {
+        StudentAffair.setC(new Contacts());
         SA.newCon();
+        tempCon.add(StudentAffair.getContacts());
     }
 
     @FXML

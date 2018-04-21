@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterEmpController">
+<AnchorPane id="AnchorPane" prefHeight="622.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterEmpController">
     <children>
         <SplitPane orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -58,17 +58,16 @@
                                     </GridPane.margin>
                                 </Label>
                                 <TextField />
-                                <RadioButton alignment="CENTER_LEFT" mnemonicParsing="false" selected="true" text="انثى" GridPane.rowIndex="3">
-                                    <toggleGroup>
-                                        <ToggleGroup fx:id="g1" />
-                                    </toggleGroup>
+                                <RadioButton alignment="CENTER_LEFT" mnemonicParsing="false" text="انثى" GridPane.rowIndex="3">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="gType" />
+                           </toggleGroup>
                                 </RadioButton>
-                                <RadioButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" selected="true" text="ذكر" toggleGroup="$g1" GridPane.rowIndex="3">
+                                <RadioButton contentDisplay="CENTER" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" selected="true" text="ذكر" toggleGroup="$gType" GridPane.rowIndex="3">
                                     <GridPane.margin>
                                         <Insets left="100.0" />
                                     </GridPane.margin>
                                 </RadioButton>
-                                <TextField GridPane.rowIndex="4" />
                                 <DatePicker prefHeight="25.0" prefWidth="112.0" GridPane.rowIndex="6">
                                     <GridPane.margin>
                                         <Insets left="75.0" />
@@ -106,24 +105,24 @@
                                     </padding>
                                 </Label>
                                 <RadioButton mnemonicParsing="false" text="مطلق" GridPane.rowIndex="1">
-                                    <toggleGroup>
-                                        <ToggleGroup fx:id="g2" />
-                                    </toggleGroup>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="gSocial" />
+                           </toggleGroup>
                                     <GridPane.margin>
                                         <Insets left="150.0" />
                                     </GridPane.margin>
                                 </RadioButton>
-                                <RadioButton mnemonicParsing="false" text="أرمل" toggleGroup="$g2" GridPane.rowIndex="1">
+                                <RadioButton mnemonicParsing="false" text="أرمل" toggleGroup="$gSocial" GridPane.rowIndex="1">
                                     <GridPane.margin>
                                         <Insets left="100.0" />
                                     </GridPane.margin>
                                 </RadioButton>
-                                <RadioButton mnemonicParsing="false" selected="true" text="أعزب" toggleGroup="$g2" GridPane.rowIndex="1">
+                                <RadioButton mnemonicParsing="false" selected="true" text="أعزب" toggleGroup="$gSocial" GridPane.rowIndex="1">
                                     <GridPane.margin>
                                         <Insets left="50.0" />
                                     </GridPane.margin>
                                 </RadioButton>
-                                <RadioButton mnemonicParsing="false" text="متزوج" toggleGroup="$g2" GridPane.rowIndex="1" />
+                                <RadioButton mnemonicParsing="false" text="متزوج" toggleGroup="$gSocial" GridPane.rowIndex="1" />
                                 <DatePicker prefHeight="25.0" prefWidth="112.0" GridPane.rowIndex="12">
                                     <GridPane.margin>
                                         <Insets left="75.0" />
@@ -145,55 +144,60 @@
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <RadioButton contentDisplay="CENTER" lineSpacing="10.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" selected="true" text="مسلم" GridPane.rowIndex="2">
+                                <RadioButton contentDisplay="CENTER" lineSpacing="10.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="88.0" text="مسلم" GridPane.rowIndex="2">
                                     <GridPane.margin>
                                         <Insets left="100.0" />
                                     </GridPane.margin>
-                                    <toggleGroup>
-                                        <ToggleGroup fx:id="g3" />
-                                    </toggleGroup>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="gReligion" />
+                           </toggleGroup>
                                 </RadioButton>
-                                <RadioButton alignment="CENTER_LEFT" mnemonicParsing="false" selected="true" text="مسيحي" toggleGroup="$g3" GridPane.rowIndex="2" />
+                                <RadioButton alignment="CENTER_LEFT" mnemonicParsing="false" selected="true" text="مسيحي" toggleGroup="$gReligion" GridPane.rowIndex="2" />
                                 <Label text="الحالة" GridPane.columnIndex="1" GridPane.rowIndex="13">
                                     <GridPane.margin>
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
                                 <RadioButton mnemonicParsing="false" selected="true" text="يعمل" GridPane.rowIndex="13">
-                                    <toggleGroup>
-                                        <ToggleGroup fx:id="g21" />
-                                    </toggleGroup>
                                     <GridPane.margin>
                                         <Insets left="150.0" />
                                     </GridPane.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="gStatus" />
+                           </toggleGroup>
                                 </RadioButton>
-                                <RadioButton mnemonicParsing="false" text="لا يعمل" toggleGroup="$g21" GridPane.rowIndex="13" />
+                                <RadioButton mnemonicParsing="false" text="لا يعمل" toggleGroup="$gStatus" GridPane.rowIndex="13" />
+                        <ComboBox fx:id="sNationality" prefHeight="25.0" prefWidth="138.0" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </ComboBox>
                             </children>
                         </GridPane>
-                        <HBox layoutX="280.0" layoutY="543.0" spacing="10.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="280.0">
+                        <HBox layoutX="279.0" layoutY="581.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="279.0">
                             <children>
-                                <Button defaultButton="true" mnemonicParsing="false"  text="حفظ" />
+                                <Button defaultButton="true" mnemonicParsing="false" text="حفظ" />
                                 <Button cancelButton="true" mnemonicParsing="false" text="إغلاق" />
                             </children>
                         </HBox>
-                        <Label layoutX="85.0" layoutY="55.0" text="جهات الاتصال" AnchorPane.bottomAnchor="516.0" AnchorPane.leftAnchor="85.0">
+                        <Label layoutX="85.0" layoutY="50.0" text="جهات الاتصال" AnchorPane.bottomAnchor="543.0" AnchorPane.leftAnchor="85.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="449.0" layoutY="55.0" text="بيانات الموظف" AnchorPane.bottomAnchor="516.0" AnchorPane.rightAnchor="162.0">
+                        <Label layoutX="449.0" layoutY="57.0" text="بيانات الموظف" AnchorPane.bottomAnchor="536.0" AnchorPane.rightAnchor="162.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <Separator layoutX="293.0" layoutY="30.0" orientation="VERTICAL" prefHeight="471.0" prefWidth="5.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="293.0" />
-                        <Separator layoutX="5.0" layoutY="524.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="71.0" AnchorPane.leftAnchor="5.0" />
-                        <Label layoutX="91.0" layoutY="265.0" text="بيانات الفصول" AnchorPane.bottomAnchor="306.0" AnchorPane.leftAnchor="91.0">
+                        <Separator layoutX="294.0" layoutY="100.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="5.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="294.0" />
+                        <Separator layoutX="5.0" layoutY="569.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="5.0" />
+                        <Label layoutX="194.0" layoutY="364.0" text="بيانات الفصول" AnchorPane.bottomAnchor="229.0" AnchorPane.leftAnchor="194.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <HBox fx:id="salary" layoutX="53.0" layoutY="472.0" prefHeight="27.0" prefWidth="200.0" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="53.0">
+                        <HBox fx:id="salary" layoutX="49.0" layoutY="533.0" prefHeight="27.0" prefWidth="200.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="49.0">
                             <children>
                                 <TextField />
                                 <Label contentDisplay="RIGHT" text="المرتب">
@@ -203,15 +207,15 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <TableView editable="true" layoutX="25.0" layoutY="94.0" prefHeight="164.0" prefWidth="255.0" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="25.0">
+                        <TableView editable="true" layoutX="26.0" layoutY="77.0" prefHeight="164.0" prefWidth="255.0" AnchorPane.bottomAnchor="379.0" AnchorPane.leftAnchor="26.0">
                             <columns>
-                                <TableColumn prefWidth="115.0" text="الرقم" />
-                                <TableColumn prefWidth="135.0" text="الاسم" />
+                                <TableColumn fx:id="NumColumn" prefWidth="115.0" text="الرقم" />
+                                <TableColumn fx:id="NameColumn" prefWidth="135.0" text="الاسم" />
                             </columns>
                         </TableView>
-                        <TableView layoutX="72.0" layoutY="301.0" prefHeight="152.0" prefWidth="112.0" AnchorPane.bottomAnchor="145.0" AnchorPane.leftAnchor="72.0">
+                        <TableView fx:id="SubjectsTable" layoutX="54.0" layoutY="302.0" prefHeight="152.0" prefWidth="112.0" AnchorPane.bottomAnchor="166.0" AnchorPane.leftAnchor="54.0">
                             <columns>
-                                <TableColumn prefWidth="107.0" text="اسم الفصل" />
+                                <TableColumn fx:id="SubjectName" prefWidth="107.0" text="اسم الفصل" />
                             </columns>
                         </TableView>
                         <Label layoutX="253.0" layoutY="14.0" text="تسجيل موظف جديد">
@@ -219,6 +223,28 @@
                                 <Font size="18.0" />
                             </font>
                         </Label>
+                  <Label layoutX="164.0" layoutY="255.0" text="التحكم في جهات الاتصال">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutX="53.0" layoutY="253.0" spacing="10.0">
+                     <children>
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#handleAddCont" text="جديد" />
+                        <Button layoutX="192.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleDeleteCont" text="مسح" />
+                     </children>
+                  </HBox>
+                  <Label layoutX="179.0" layoutY="476.0" text="التحكم في بيانات الفصول">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <HBox layoutX="70.0" layoutY="474.0" spacing="10.0">
+                     <children>
+                        <Button defaultButton="true" mnemonicParsing="false" onAction="#handleAddSub" text="جديد" />
+                        <Button layoutX="192.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleDeleteSub" text="مسح" />
+                     </children>
+                  </HBox>
                     </children>
                 </AnchorPane>
             </items>

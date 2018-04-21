@@ -5,16 +5,10 @@
  */
 package Controller;
 
-import Entity.ClassStudents;
-import Entity.Classes;
-import Entity.Persons;
 import Entity.Student;
-import Entity.StudyYears;
 import amgad.h.StudentAffair;
 import java.net.URL;
-import java.util.Iterator;
 import java.util.ResourceBundle;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,7 +19,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.util.Callback;
 
 /**
  * FXML Controller class
@@ -36,6 +29,9 @@ public class EditStudController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -43,7 +39,10 @@ public class EditStudController implements Initializable {
         ComboSearch.getItems().removeAll(ComboSearch.getItems());
         ComboSearch.getItems().addAll("الاسم", "حالة الطالب", "الفصل");
         ComboSearch.getSelectionModel().select(1);
-
+        if (!StudentsTable.getItems().isEmpty()) {
+            StudentsTable.getItems().clear();
+        }
+        
         StudentsTable.setItems(StudentAffair.getPersonsList());
 
         NameColumn.setCellValueFactory(cellData -> cellData.getValue().getPId().NameProperty());
@@ -78,7 +77,6 @@ public class EditStudController implements Initializable {
     private TableColumn<Student, String> AdmissionDateColumn;
     @FXML
     private TableColumn<Student, String> DOBColumn;
-
 
     @FXML
     public void Search() {
@@ -137,8 +135,9 @@ public class EditStudController implements Initializable {
     public void handleEdit() {
         int selectedIndex = StudentsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            System.out.println("selection " + StudentsTable.getItems().get(selectedIndex));
+            System.out.println("selection " + StudentsTable.getItems().get(selectedIndex).getPId().getName());
             StudentAffair.setEdit(StudentsTable.getItems().get(selectedIndex));
+            System.out.println("to be edited " + StudentAffair.getEdit().getPId().getContactsList().size());
             SA.editStudDetail();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);

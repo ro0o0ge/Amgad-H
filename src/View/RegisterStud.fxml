@@ -97,17 +97,16 @@
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <RadioButton fx:id="S3" mnemonicParsing="false" text="مقبول" GridPane.rowIndex="14">
+                                <RadioButton fx:id="S3" mnemonicParsing="false" text="مقبول" toggleGroup="$sType" GridPane.rowIndex="14" />
+                                <RadioButton fx:id="S2" mnemonicParsing="false" selected="true" text="منتظر" GridPane.rowIndex="14">
                            <toggleGroup>
-                              <ToggleGroup fx:id="sReligion" />
+                              <ToggleGroup fx:id="sStatus" />
                            </toggleGroup>
-                                </RadioButton>
-                                <RadioButton fx:id="S2" mnemonicParsing="false" selected="true" text="منتظر" toggleGroup="$sReligion" GridPane.rowIndex="14">
                                     <GridPane.margin>
                                         <Insets left="75.0" />
                                     </GridPane.margin>
                                 </RadioButton>
-                                <RadioButton fx:id="S1" mnemonicParsing="false" text="مرفوض" toggleGroup="$sReligion" GridPane.rowIndex="14">
+                                <RadioButton fx:id="S1" mnemonicParsing="false" text="مرفوض" toggleGroup="$sStatus" GridPane.rowIndex="14">
                                     <GridPane.margin>
                                         <Insets left="150.0" />
                                     </GridPane.margin>
@@ -137,10 +136,10 @@
                                         <Insets left="100.0" />
                                     </GridPane.margin>
                            <toggleGroup>
-                              <ToggleGroup fx:id="sStatus" />
+                              <ToggleGroup fx:id="sReligion" />
                            </toggleGroup>
                                 </RadioButton>
-                                <RadioButton fx:id="R2" alignment="CENTER_LEFT" mnemonicParsing="false" text="مسيحي" toggleGroup="$sStatus" GridPane.rowIndex="5" />
+                                <RadioButton fx:id="R2" alignment="CENTER_LEFT" mnemonicParsing="false" text="مسيحي" toggleGroup="$sReligion" GridPane.rowIndex="5" />
                         <ComboBox fx:id="sNationality" prefHeight="25.0" prefWidth="138.0" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets left="50.0" />

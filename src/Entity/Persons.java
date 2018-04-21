@@ -14,6 +14,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -96,15 +97,15 @@ public class Persons implements Serializable {
     private String qualification;
     @Column(name = "GRAD_YEAR")
     private String gradYear;
-    @OneToOne(mappedBy = "pId")
+    @OneToOne(mappedBy = "pId",fetch = FetchType.EAGER)
     private Student studentList;
-    @OneToOne(mappedBy = "pId")
+    @OneToOne(mappedBy = "pId",fetch = FetchType.EAGER)
     private Teacher teacherList;
-    @OneToOne(mappedBy = "pId")
+    @OneToOne(mappedBy = "pId",fetch = FetchType.EAGER)
     private Staff staffList;
     @OneToOne(mappedBy = "pId")
     private Users usersList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pId",fetch = FetchType.EAGER)
     private List<Contacts> contactsList;
 
     public Persons() {

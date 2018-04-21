@@ -7,10 +7,13 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -31,7 +34,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Subjects.findAll", query = "SELECT s FROM Subjects s")
     , @NamedQuery(name = "Subjects.findBySuId", query = "SELECT s FROM Subjects s WHERE s.suId = :suId")
+    , @NamedQuery(name = "Subjects.findBySyId", query = "SELECT s FROM Subjects s WHERE s.syId = :syId")
     , @NamedQuery(name = "Subjects.findBySuDesc", query = "SELECT s FROM Subjects s WHERE s.suDesc = :suDesc")
+    , @NamedQuery(name = "Subjects.findBySuDescAndSyId", query = "SELECT s FROM Subjects s WHERE s.suDesc = :suDesc and s.syId.syDesc = :syDesc")
     , @NamedQuery(name = "Subjects.findByMandatoryFlag", query = "SELECT s FROM Subjects s WHERE s.mandatoryFlag = :mandatoryFlag")})
 public class Subjects implements Serializable {
 
@@ -51,7 +56,7 @@ public class Subjects implements Serializable {
     @OneToMany(mappedBy = "suId")
     private List<FinalGrades> finalGradesList;
     @JoinColumn(name = "SY_ID", referencedColumnName = "SY_ID")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private StudyYears syId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "suId")
     private List<Schedule> scheduleList;
@@ -81,6 +86,10 @@ public class Subjects implements Serializable {
 
     public String getSuDesc() {
         return suDesc;
+    }
+
+    public StringProperty SubDescProperty() {
+        return new SimpleStringProperty(suDesc);
     }
 
     public void setSuDesc(String suDesc) {
@@ -163,5 +172,5 @@ public class Subjects implements Serializable {
     public String toString() {
         return "Entity.Subjects[ suId=" + suId + " ]";
     }
-    
+
 }
