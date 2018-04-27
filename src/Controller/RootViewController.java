@@ -64,6 +64,18 @@ public class RootViewController implements Initializable {
         ts.editTeacher();
     }
     
+    @FXML
+    private void handleNewEmp() {
+        man.newEmp();
+    }
+    
+    @FXML
+    private void handleEditEmp() {
+        man.editEmp();
+    }
+    
+    
+    
     
     
     

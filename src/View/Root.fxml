@@ -44,8 +44,8 @@
                                </Menu>
                                <Menu mnemonicParsing="false" text="الإدارة">
                                    <items>
-                                       <MenuItem mnemonicParsing="false" text="تسجيل موظف جديد" />
-                                       <MenuItem mnemonicParsing="false" text="تعديل بيانات الموظفين" />
+                                       <MenuItem mnemonicParsing="false" onAction="#handleNewEmp" text="تسجيل موظف جديد" />
+                                       <MenuItem mnemonicParsing="false" onAction="#handleEditEmp" text="تعديل بيانات الموظفين" />
                                        <SeparatorMenuItem mnemonicParsing="false" />
                                        <MenuItem mnemonicParsing="false" text="تسجيل الحضور والإنصراف" />
                                        <SeparatorMenuItem mnemonicParsing="false" />

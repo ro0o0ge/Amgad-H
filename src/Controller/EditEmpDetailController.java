@@ -7,14 +7,19 @@ package Controller;
 
 import Entity.Classes;
 import Entity.Contacts;
-import Entity.Persons;
 import Entity.Staff;
 import Entity.StaffClasses;
 import Util.LoginSec;
 import amgad.h.Management;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
@@ -27,17 +32,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
-import java.sql.Date;
 
 /**
  * FXML Controller class
  *
  * @author Abdo
  */
-public class RegisterEmpController implements Initializable {
-    
-    
-    
+public class EditEmpDetailController implements Initializable {
+
     @FXML
     DatePicker tSignDate;
     @FXML
@@ -97,23 +99,18 @@ public class RegisterEmpController implements Initializable {
     @FXML
     private TableColumn<Classes, String> ClassNameColumn;
 
-    
     Management MA;
-    private Persons pers;
-    private Staff teac;
-    
+
+    static private Staff current;
+    static ObservableList<Contacts> tempCon = FXCollections.observableArrayList();
+    static ObservableList<Classes> tempSub = FXCollections.observableArrayList();
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-         MA = new Management();
-        tNationality.getItems().removeAll(tNationality.getItems());
-        tNationality.getItems().addAll("EGY", "SAU", "OMN", "BHR", "KWT",
-                "UAE", "JOR", "PSE", "LBR");
-
         t1.setUserData("ذكر");
         t2.setUserData("انثى");
         r1.setUserData("مسلم");
@@ -125,92 +122,151 @@ public class RegisterEmpController implements Initializable {
         soc3.setUserData("أعزب");
         soc4.setUserData("متزوج");
 
-        ContactsTable.setItems(MA.getContactsList());
+        MA = new Management();
+        current = Management.getEdit();
+
+        if (current.getPId().getGender().equals("1")) {
+            gType.selectToggle(t1);
+        } else {
+            gType.selectToggle(t2);
+        }
+
+        if (current.getStatus().equals("1")) {
+            gStatus.selectToggle(s1);
+        } else {
+            gStatus.selectToggle(s2);
+        }
+
+        if (current.getPId().getMaritalStatus().equals("1")) {
+            gSocial.selectToggle(soc1);
+        } else if (current.getPId().getMaritalStatus().equals("2")) {
+            gSocial.selectToggle(soc2);
+        } else if (current.getPId().getMaritalStatus().equals("3")) {
+            gSocial.selectToggle(soc3);
+        } else {
+            gSocial.selectToggle(soc4);
+        }
+
+        if (current.getPId().getGender().equals("1")) {
+            gReligion.selectToggle(r1);
+        } else {
+            gReligion.selectToggle(r2);
+        }
+
+        tNationality.getItems().removeAll(tNationality.getItems());
+        tNationality.getItems().addAll("EGY", "SAU", "OMN", "BHR", "KWT",
+                "UAE", "JOR", "PSE", "LBR");
+        tNationality.getSelectionModel().select(current.getPId().getNationality());
+
+        if (tempCon.size() > 0) {
+            tempCon.clear();
+        }
+        tempCon = FXCollections.observableArrayList(current.getPId().getContactsList());
+        List<Classes> TeSubList = new ArrayList<Classes>();
+        for (StaffClasses sub : current.getStaffClassesList()) {
+            TeSubList.add(sub.getCId());
+        }
+        tempSub = FXCollections.observableArrayList(TeSubList);
+
+        ContactsTable.setItems(tempCon);
         NameColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .NameProperty());
         NumColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .ConDeatailsProperty());
 
-        ClassesTable.setItems(MA.getSubjectsList());
+        ClassesTable.setItems(tempSub);
         ClassNameColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .ClassDescProperty());
 
-        System.out.println("Permission "+LoginSec.getLoggedUser().getPermission()+
-                " name "+ LoginSec.getLoggedUser().getUName());
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(current.getPId().getHiringDate());
+        LocalDate date = LocalDate.of(cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+        tSignDate.setValue(date);
+
+        cal = Calendar.getInstance();
+        cal.setTime(current.getPId().getDob());
+        date = LocalDate.of(cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
+        tDOB.setValue(date);
+        tName.setText(current.getPId().getName());
+        tNatNo.setText(current.getPId().getNationalId());
+        tAddress.setText(current.getPId().getAddress());
+
+        tQual.setText(current.getPId().getQualification());
+
         if (LoginSec.getLoggedUser().getPermission().equals("2")) {
             salary.setVisible(true);
+            tSalary.setText(String.valueOf(current.getMonthlySalary()));
+            System.out.println("Salary " + current.getMonthlySalary());
         }
-    }  
-    
-    
-    
+    }
+
     @FXML
     public void handleSave() {
-        pers = new Persons();
-        teac = new Staff();
         if (!tName.getText().equals("") || tNationality.getSelectionModel().isEmpty()
                 || !tNatNo.getText().equals("") || !tNatNo.getText().matches("[0-9]+")
                 || !tAddress.getText().equals("") || tDOB.getValue() != null
                 || tSignDate.getValue() != null) {
             try {
-                pers.setName(tName.getText());
+                current.getPId().setName(tName.getText());
                 if (gType.getSelectedToggle().getUserData().toString().equals("ذكر")) {
-                    pers.setGender("1");
+                    current.getPId().setGender("1");
                 } else {
-                    pers.setGender("2");
+                    current.getPId().setGender("2");
                 }
-                pers.setNationality(tNationality.getSelectionModel().getSelectedItem().toString());
+                current.getPId().setNationality(tNationality.getSelectionModel().getSelectedItem().toString());
                 if (gReligion.getSelectedToggle().getUserData().toString().equals("مسلم")) {
-                    pers.setReligion("1");
+                    current.getPId().setReligion("1");
                 } else {
-                    pers.setReligion("2");
+                    current.getPId().setReligion("2");
                 }
 
                 if (gSocial.getSelectedToggle().getUserData().toString().equals("مطلق")) {
-                    pers.setMaritalStatus("1");
+                    current.getPId().setMaritalStatus("1");
                 } else if (gSocial.getSelectedToggle().getUserData().toString().equals("أرمل")) {
-                    pers.setMaritalStatus("2");
+                    current.getPId().setMaritalStatus("2");
                 } else if (gSocial.getSelectedToggle().getUserData().toString().equals("أعزب")) {
-                    pers.setMaritalStatus("3");
+                    current.getPId().setMaritalStatus("3");
                 } else {
-                    pers.setMaritalStatus("4");
+                    current.getPId().setMaritalStatus("4");
                 }
-                pers.setNationalId(tNatNo.getText());
-                pers.setAddress(tAddress.getText());
-                pers.setDob(Date.valueOf(tDOB.getValue()));
-                pers.setCreatedDate(Date.valueOf(LocalDate.now()));
-                pers.setHiringDate(Date.valueOf(tSignDate.getValue()));
+                current.getPId().setNationalId(tNatNo.getText());
+                current.getPId().setAddress(tAddress.getText());
+                current.getPId().setDob(Date.valueOf(tDOB.getValue()));
+                current.getPId().setCreatedDate(Date.valueOf(LocalDate.now()));
+                current.getPId().setHiringDate(Date.valueOf(tSignDate.getValue()));
 
                 if (tGradDate.getValue() != null) {
                     LocalDate localDate = tGradDate.getValue();
-                    pers.setGradYear(String.valueOf(localDate.getYear()));
+                    current.getPId().setGradYear(String.valueOf(localDate.getYear()));
                 }
 
-                if (!tQual.getText().equals("")) {
-                    pers.setQualification(tQual.getText());
-                }
+                
 
-                teac.setPId(pers);
+                if (tQual.getText()!=null) {
+                    current.getPId().setQualification(tQual.getText());
+                }
 
                 if (gStatus.getSelectedToggle().getUserData().toString().equals("يعمل")) {
-                    teac.setStatus("1");
+                    current.setStatus("1");
                 } else {
-                    teac.setStatus("2");
+                    current.setStatus("2");
                 }
 
                 if (!tSalary.getText().isEmpty()) {
-                    teac.setMonthlySalary(Double.valueOf(tSalary.getText()));
+                    current.setMonthlySalary(Double.valueOf(tSalary.getText()));
                 }
-
-                MA.PersistNewTeac(pers, teac);
-
+                MA.UpdateTeacher(current, tempCon, tempSub);
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("يوجد خطأ");
                 alert.setHeaderText("خطأ");
                 alert.setContentText("برجاء مراجعة مالك البرنامج");
                 alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                System.out.println("error " + e.getLocalizedMessage());
                 alert.showAndWait();
+                throw e;
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -224,14 +280,14 @@ public class RegisterEmpController implements Initializable {
 
     @FXML
     public void handleClose() {
-        Management.getDialogStage().close();
+        Management.getDialogStage2().close();
     }
 
     @FXML
     public void handleAddCont() {
         Management.setC(new Contacts());
         MA.newCon();
-        MA.getContactsList().add(Management.getContacts());
+        tempCon.add(Management.getContacts());
     }
 
     @FXML
@@ -242,7 +298,7 @@ public class RegisterEmpController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");
             alert.setHeaderText("لم يتم تحديد العنصر المراد حذفه");
-            alert.setContentText("من فضلك قم بتحديد العنصر من جدول جهات الاتصال");
+            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();
         }
@@ -253,7 +309,7 @@ public class RegisterEmpController implements Initializable {
         Management.setSC(new StaffClasses());
         MA.newSub();
         MA.getTss().add(Management.getSC());
-        MA.getSubjectsList().add(Management.getSC().getCId());
+        tempSub.add(Management.getSC().getCId());
     }
 
     @FXML

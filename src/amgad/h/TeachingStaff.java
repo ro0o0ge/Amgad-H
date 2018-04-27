@@ -5,11 +5,8 @@
  */
 package amgad.h;
 
-import Entity.ClassStudents;
-import Entity.Classes;
 import Entity.Contacts;
 import Entity.Persons;
-import Entity.Student;
 import Entity.StudyYears;
 import Entity.Subjects;
 import Entity.Teacher;
@@ -166,8 +163,6 @@ public class TeachingStaff {
             }
 
             for (TeacherSubjects su : tss) {
-//                TeacherSubjects teSu = new TeacherSubjects();
-//                teSu.setSuId(su);
                 su.setTId(te);
                 s.persist(su);
                 log += " -- new Teacher Subject with id " + su.getTSID();

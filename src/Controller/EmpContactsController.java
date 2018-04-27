@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import amgad.h.TeachingStaff;
+import amgad.h.Management;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -19,28 +19,27 @@ import javafx.scene.control.TextField;
  *
  * @author Abdo
  */
-public class TeacContactController implements Initializable {
+public class EmpContactsController implements Initializable {
 
-     @FXML
+    @FXML
     private TextField conName;
     @FXML
     private TextField conNum;
-
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-
+    }    
+    
     @FXML
     private void handleConfirm() {
         if (!conName.getText().equals("") || 
                 !conNum.getText().equals("") ) {
-            TeachingStaff.getContacts().setConName(conName.getText());
-            TeachingStaff.getContacts().setConDeatails(conNum.getText());
-            TeachingStaff.getDialogStage2().close();
+            Management.getContacts().setConName(conName.getText());
+            Management.getContacts().setConDeatails(conNum.getText());
+            Management.getDialogStage2().close();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");
@@ -50,4 +49,5 @@ public class TeacContactController implements Initializable {
             alert.showAndWait();
         }
     }
+    
 }

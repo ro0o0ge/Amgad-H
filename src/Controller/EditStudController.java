@@ -68,7 +68,7 @@ public class EditStudController implements Initializable {
         StatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
         ClassColumn.setCellValueFactory((TableColumn.CellDataFeatures<Student, String> cellData) -> {
             if (cellData.getValue().getClassStudentsList() != null) {
-                return cellData.getValue().getClassStudentsList().getCId().classDescProperty();
+                return cellData.getValue().getClassStudentsList().getCId().ClassDescProperty();
             } else {
                 return null;
             }

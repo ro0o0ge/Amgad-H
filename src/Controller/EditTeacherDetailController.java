@@ -6,7 +6,6 @@
 package Controller;
 
 import Entity.Contacts;
-import Entity.Persons;
 import Entity.Subjects;
 import Entity.Teacher;
 import Entity.TeacherSubjects;
@@ -101,8 +100,6 @@ public class EditTeacherDetailController implements Initializable {
     private TableColumn<Subjects, String> SubjectNameColumn;
 
     TeachingStaff TA;
-//    private Persons pers;
-//    private Teacher teac;
 
     static private Teacher current;
     static ObservableList<Contacts> tempCon = FXCollections.observableArrayList();
@@ -195,21 +192,19 @@ public class EditTeacherDetailController implements Initializable {
         date = LocalDate.of(cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
         tDOB.setValue(date);
-
-//        cal = Calendar.getInstance();
-//        cal.setTime(current.getPId().getGradYear());
-//        date = LocalDate.of(cal.get(Calendar.YEAR),
-//                cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
-//        tDOB.setValue(date);
         tName.setText(current.getPId().getName());
         tNatNo.setText(current.getPId().getNationalId());
         tAddress.setText(current.getPId().getAddress());
 
-        tQual.setText(current.getPId().getQualification());
+        if (current.getPId().getQualification() != null) {
+            tQual.setText(current.getPId().getQualification());
+        }
 
         if (LoginSec.getLoggedUser().getPermission().equals("2")) {
             salary.setVisible(true);
-            tSalary.setText(current.getMonthlySalary().toString());
+            if (current.getMonthlySalary() != null) {
+                tSalary.setText(current.getMonthlySalary().toString());
+            }
             System.out.println("Salary " + current.getMonthlySalary());
         }
 

@@ -73,9 +73,10 @@ public class Classes implements Serializable {
         return classDesc;
     }
     
-    public StringProperty classDescProperty() {
+    public StringProperty ClassDescProperty() {
         return new SimpleStringProperty(classDesc);
     }
+  
 
     public void setClassDesc(String classDesc) {
         this.classDesc = classDesc;
