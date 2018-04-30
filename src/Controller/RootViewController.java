@@ -47,10 +47,14 @@ public class RootViewController implements Initializable {
         sa.newStud();
     }
     
-    
     @FXML
     private void handleEditStud() {
         sa.editStud();
+    }
+    
+    @FXML
+    private void handleStudAbsent() {
+        sa.AbsentStud();
     }
     
     

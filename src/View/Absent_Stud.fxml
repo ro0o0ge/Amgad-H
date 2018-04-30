@@ -6,16 +6,16 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.Absent_StudController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Absent_StudController">
     <children>
         <SplitPane dividerPositions="0.5" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <TableView fx:id="EmpList" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="StudentsTable" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columns>
-                                <TableColumn editable="false" prefWidth="199.0" text="اسم الطالب" />
-                                <TableColumn editable="false" prefWidth="129.0" text="الفصل" />
+                                <TableColumn fx:id="NameColumn" editable="false" prefWidth="199.0" text="اسم الطالب" />
+                                <TableColumn fx:id="ClassColumn" editable="false" prefWidth="129.0" text="الفصل" />
                             </columns>
                         </TableView>
                     </children>
@@ -29,8 +29,8 @@
                         </Label>
                         <HBox layoutX="12.0" layoutY="73.0" prefHeight="27.0" prefWidth="322.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="73.0">
                             <children>
-                                <Button mnemonicParsing="false" text="بحث" />
-                                <TextField>
+                                <Button mnemonicParsing="false" onAction="#Search" text="بحث" />
+                                <TextField fx:id="SearchQuery">
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
@@ -44,13 +44,13 @@
                         </HBox>
                         <HBox layoutX="52.0" layoutY="514.0" prefHeight="-111.0" prefWidth="182.0" spacing="10.0">
                             <children>
-                                <Button defaultButton="true" mnemonicParsing="false" text="حفظ" />
-                                <Button cancelButton="true" mnemonicParsing="false" text="إلغاء" />
+                                <Button defaultButton="true" mnemonicParsing="false" onAction="#handleNewAbsent" text="حفظ" />
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="إلغاء" />
                             </children>
                         </HBox>
                         <Separator layoutY="153.0" prefHeight="0.0" prefWidth="346.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="153.0" />
-                        <DatePicker layoutX="25.0" layoutY="253.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="253.0" />
-                        <TextArea layoutX="25.0" layoutY="300.0" prefHeight="115.0" prefWidth="200.0" wrapText="true" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="300.0" />
+                        <DatePicker fx:id="AbsentDate" layoutX="25.0" layoutY="253.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="253.0" />
+                        <TextArea fx:id="Notes" layoutX="25.0" layoutY="300.0" prefHeight="115.0" prefWidth="200.0" wrapText="true" AnchorPane.rightAnchor="121.0" AnchorPane.topAnchor="300.0" />
                         <Label layoutX="258.0" layoutY="257.0" text="تاريخ الغياب" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="257.0" />
                         <Label layoutX="264.0" layoutY="341.0" text="ملاحظات" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="341.0" />
                     </children>

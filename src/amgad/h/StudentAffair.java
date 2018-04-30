@@ -12,10 +12,12 @@ import Entity.Persons;
 import Entity.StudyYears;
 import Entity.UserLog;
 import Entity.Student;
+import Entity.StudentAttendance;
 import Util.HibernateUtil;
 import Util.LoginSec;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -43,7 +45,9 @@ public class StudentAffair {
     private static Stage dialogStage2;
     private static Contacts C;
     UserLog ul;
-    
+
+    StudentAttendance suA;
+
     SessionFactory sf = HibernateUtil.getSessionFactory();
     Session s;
 
@@ -108,7 +112,7 @@ public class StudentAffair {
         s.close();
         return sy;
     }
-    
+
     public ClassStudents getClassStudent(Student st) {
         Query query = s.getNamedQuery("ClassStudents.findBysId").setParameter("sId", st);
         List<ClassStudents> sy = query.list();
@@ -146,7 +150,7 @@ public class StudentAffair {
         }
     }
 
-    public void UpdateStud(Student st, ClassStudents cs,List<Contacts> cons) {
+    public void UpdateStud(Student st, ClassStudents cs, List<Contacts> cons) {
         try {
             String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
             s = sf.openSession();
@@ -160,7 +164,7 @@ public class StudentAffair {
                 s.saveOrUpdate(tempCS);
                 log += " -- Register -- Student in a Class with id " + cs.getCsId();
             }
-            
+
             for (Contacts c : cons) {
                 c.setPId(st.getPId());
                 s.saveOrUpdate(c);
@@ -178,7 +182,7 @@ public class StudentAffair {
             PersonsList.addAll(getStudents());
             System.out.println("All Done");
         } catch (Exception e) {
-             System.err.println("ERROR IN HIBERNATE : " + e.getLocalizedMessage());
+            System.err.println("ERROR IN HIBERNATE : " + e.getLocalizedMessage());
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
@@ -254,6 +258,15 @@ public class StudentAffair {
         return sy;
     }
 
+    public List<Student> getActiveStudents() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Student.findByStatus").setParameter("status", "3");
+        List<Student> sy = query.list();
+        s.close();
+        return sy;
+    }
+
     public void editStudDetail() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -271,6 +284,56 @@ public class StudentAffair {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void AbsentStud() {
+        try {
+            PersonsList.addAll(getActiveStudents());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/Absent_Stud.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("تسجيل غياب الطلاب");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+            PersonsList.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean PersistNewAbsent(String Notes, Student su, Date dt) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            suA = new StudentAttendance();
+            suA.setAbDesc(Notes);
+            suA.setAbsentDay(dt);
+            suA.setSId(su);
+            suA.setEntryDate(java.sql.Date.valueOf(LocalDate.now()));
+            s.persist(suA);
+            log += " -- new Student Absence with id " + suA.getSAtId();
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            System.out.println("P1 Size "+PersonsList.size());
+            PersonsList.clear();
+            PersonsList.addAll(getActiveStudents());
+            System.out.println("P2 Size "+PersonsList.size());
+            return true;
+        } catch (Exception e) {
+            System.err.println("El72 "+e.getMessage());
+            return false;
         }
     }
 
