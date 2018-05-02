@@ -7,6 +7,7 @@ package amgad.h;
 
 import Entity.Classes;
 import Entity.Contacts;
+import Entity.EmployeeAttendance;
 import Entity.Persons;
 import Entity.Staff;
 import Entity.StaffClasses;
@@ -43,13 +44,15 @@ public class Management {
     private static Stage dialogStage2;
     private static Contacts C;
     UserLog ul;
-    
+
     private static StaffClasses SC;
-    
+
     private List<StaffClasses> tss = new ArrayList<>();
-    
+
     static Staff edit;//staff TO BE EDITED
-    
+
+    EmployeeAttendance EA;
+
     SessionFactory sf = HibernateUtil.getSessionFactory();
     Session s;
 
@@ -58,7 +61,7 @@ public class Management {
     public ObservableList<Contacts> getContactsList() {
         return ContactsList;
     }
-    
+
     ObservableList<Classes> SubjectsList = FXCollections.observableArrayList();
 
     public ObservableList<Classes> getSubjectsList() {
@@ -72,7 +75,7 @@ public class Management {
     public static void setSC(StaffClasses SC) {
         Management.SC = SC;
     }
-    
+
     public static void setC(Contacts con) {
         C = con;
     }
@@ -80,7 +83,7 @@ public class Management {
     public static Contacts getContacts() {
         return C;
     }
-    
+
     public static Staff getEdit() {
         return edit;
     }
@@ -92,17 +95,26 @@ public class Management {
     public List<StaffClasses> getTss() {
         return tss;
     }
-    
+
     static ObservableList<Staff> PersonsList = FXCollections.observableArrayList();
 
     public static ObservableList<Staff> getPersonsList() {
         return PersonsList;
     }
-    
+
     public List<Staff> getTeachers() {
         s = sf.openSession();
         s.beginTransaction();
         Query query = s.getNamedQuery("Staff.findAll");
+        List<Staff> sy = query.list();
+        s.close();
+        return sy;
+    }
+
+    public List<Staff> getActiveTeachers() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Staff.findByStatus").setParameter("status", "1");
         List<Staff> sy = query.list();
         s.close();
         return sy;
@@ -115,7 +127,7 @@ public class Management {
     public static Stage getDialogStage2() {
         return dialogStage2;
     }
-    
+
     public List<Classes> getStudyYears() {
         s = sf.openSession();
         s.beginTransaction();
@@ -124,7 +136,7 @@ public class Management {
         s.close();
         return sy;
     }
-    
+
     public Classes getClassesByDesc(String desc) {
         s = sf.openSession();
         s.beginTransaction();
@@ -138,8 +150,7 @@ public class Management {
     public void setMainApp(root mainApp) {
         this.MainApp = mainApp;
     }
-    
-    
+
     public void newEmp() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -159,7 +170,7 @@ public class Management {
             e.printStackTrace();
         }
     }
-    
+
     public void PersistNewTeac(Persons p, Staff te) {
         try {
             String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
@@ -194,7 +205,7 @@ public class Management {
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
-          
+
     public void editEmp() {
         try {
             PersonsList.addAll(getTeachers());
@@ -217,7 +228,7 @@ public class Management {
             e.printStackTrace();
         }
     }
-    
+
     public void editTeacherDetail() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -237,8 +248,8 @@ public class Management {
             e.printStackTrace();
         }
     }
-    
-     public void UpdateTeacher(Staff st, List<Contacts> cons, List<Classes> subs) {
+
+    public void UpdateTeacher(Staff st, List<Contacts> cons, List<Classes> subs) {
         try {
             String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
             s = sf.openSession();
@@ -284,7 +295,6 @@ public class Management {
 
     }
 
-    
     public void newCon() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -323,9 +333,77 @@ public class Management {
         }
     }
 
+    public void AbsentEmp() {
+        try {
+            PersonsList.addAll(getActiveTeachers());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/Absent_Emp.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("تسجيل غياب الموظفين");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+            PersonsList.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public boolean PersistNewAbsent(String Notes, Staff su, Date dt, String Type,
+            String DurationType, String Duration) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            EA = new EmployeeAttendance();
 
-    
-    
+            EA.setStatus(true);
+            if (Notes.equals("")) {
+                EA.setEaDesc(null);
+            }
+            EA.setEaDate(dt);
+            EA.setStId(su);
+            EA.setTimeAmount(Integer.parseInt(Duration));
+            if (DurationType.equals("دقائق")) {
+                EA.setTimeType("1");
+            } else {
+                EA.setTimeType("2");
+            }
+
+            if (Type.equals("تأخير")) {
+                EA.setAbscenceType("1");
+            } else if (Type.equals("استئذان")) {
+                EA.setAbscenceType("2");
+            } else if (Type.equals("عارضة")) {
+                EA.setAbscenceType("3");
+            } else if (Type.equals("مرضي")) {
+                EA.setAbscenceType("4");
+            } else if (Type.equals("سنوية")) {
+                EA.setAbscenceType("5");
+            } else {
+                EA.setAbscenceType("6");
+            }
+            s.persist(EA);
+            log += " -- new Employee Absence with id " + EA.getEaId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            PersonsList.clear();
+            PersonsList.addAll(getActiveTeachers());
+            return true;
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+            return false;
+        }
+    }
 
 }

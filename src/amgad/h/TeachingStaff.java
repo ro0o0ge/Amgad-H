@@ -6,6 +6,7 @@
 package amgad.h;
 
 import Entity.Contacts;
+import Entity.EmployeeAttendance;
 import Entity.Persons;
 import Entity.StudyYears;
 import Entity.Subjects;
@@ -47,6 +48,8 @@ public class TeachingStaff {
     UserLog ul;
     private List<TeacherSubjects> tss = new ArrayList<>();
     static Teacher edit;//Teacher TO BE EDITED
+    
+    EmployeeAttendance EA;
 
     SessionFactory sf = HibernateUtil.getSessionFactory();
     Session s;
@@ -293,11 +296,19 @@ public class TeachingStaff {
         s.close();
         return sy;
     }
+    
+    public List<Teacher> getActiveTeachers() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Teacher.findByStatus").setParameter("status", "1");
+        List<Teacher> sy = query.list();
+        s.close();
+        return sy;
+    }
 
     public void editTeacher() {
         try {
             PersonsList.addAll(getTeachers());
-            System.out.println("Prson List Size " + PersonsList.size());
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/EditTeacher.fxml"));
             AnchorPane page = loader.load();
@@ -309,7 +320,6 @@ public class TeachingStaff {
             Scene scene = new Scene(page);
             scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
             dialogStage.setScene(scene);
-
             dialogStage.showAndWait();
             PersonsList.clear();
         } catch (IOException e) {
@@ -334,6 +344,80 @@ public class TeachingStaff {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public void AbsentTeacher() {
+        try {
+            PersonsList.addAll(getActiveTeachers());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/Absent_Teacher.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("تسجيل غياب المدرسين");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+            PersonsList.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    
+    public boolean PersistNewAbsent(String Notes, Teacher su, Date dt, String Type,
+            String DurationType, String Duration) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            EA = new EmployeeAttendance();
+
+            EA.setStatus(true);
+            if (Notes.equals("")) {
+                EA.setEaDesc(null);
+            }
+            EA.setEaDate(dt);
+            EA.setTId(su);
+            EA.setTimeAmount(Integer.parseInt(Duration));
+            if (DurationType.equals("دقائق")) {
+                EA.setTimeType("1");
+            } else {
+                EA.setTimeType("2");
+            }
+
+            if (Type.equals("تأخير")) {
+                EA.setAbscenceType("1");
+            } else if (Type.equals("استئذان")) {
+                EA.setAbscenceType("2");
+            } else if (Type.equals("عارضة")) {
+                EA.setAbscenceType("3");
+            } else if (Type.equals("مرضي")) {
+                EA.setAbscenceType("4");
+            } else if (Type.equals("سنوية")) {
+                EA.setAbscenceType("5");
+            } else {
+                EA.setAbscenceType("6");
+            }
+            s.persist(EA);
+            log += " -- new Teacher Absence with id " + EA.getEaId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            PersonsList.clear();
+            PersonsList.addAll(getActiveTeachers());
+            return true;
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+            return false;
         }
     }
 

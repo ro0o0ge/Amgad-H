@@ -11,6 +11,8 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import javafx.geometry.NodeOrientation;
+import javafx.scene.control.Alert;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -27,7 +29,7 @@ public class LoginSec {
     }
 
     private static Users LoggedUser;
-    SessionFactory sf = HibernateUtil.getSessionFactory();
+    SessionFactory sf;
     Session s;
 
     public static Users getLoggedUser() {
@@ -36,6 +38,7 @@ public class LoginSec {
 
     public String HandleLogin(String uName, String Pass) throws HibernateException {
         String status = "";
+        sf = HibernateUtil.getSessionFactory();
         s = sf.openSession();
         Transaction t = s.beginTransaction();
         Query query = s.createQuery("from Users where U_NAME= :s and PASS= :p");
@@ -53,6 +56,7 @@ public class LoginSec {
             t.commit();
         }
         s.close();
+
         return status;
     }
 

@@ -326,10 +326,8 @@ public class StudentAffair {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
-            System.out.println("P1 Size "+PersonsList.size());
             PersonsList.clear();
             PersonsList.addAll(getActiveStudents());
-            System.out.println("P2 Size "+PersonsList.size());
             return true;
         } catch (Exception e) {
             System.err.println("El72 "+e.getMessage());

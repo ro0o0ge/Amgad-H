@@ -61,12 +61,14 @@ public class EmployeeAttendance implements Serializable {
     private String abscenceType;
     @Column(name = "ARRIVE")
     private Boolean arrive;
-    @Column(name = "LEAVE")
+    @Column(name = "LEAV")
     private Boolean leave;
     @Column(name = "TIME_AMOUNT")
-    private String timeAmount;
+    private int timeAmount;
     @Column(name = "EA_DESC")
     private String eaDesc;
+    @Column(name = "TIME_TYPE")
+    private String timeType;
     @JoinColumn(name = "T_ID", referencedColumnName = "T_ID")
     @ManyToOne
     private Teacher tId;
@@ -143,14 +145,22 @@ public class EmployeeAttendance implements Serializable {
         this.leave = leave;
     }
 
-    public String getTimeAmount() {
+    public int getTimeAmount() {
         return timeAmount;
     }
 
-    public void setTimeAmount(String timeAmount) {
+    public void setTimeAmount(int timeAmount) {
         this.timeAmount = timeAmount;
     }
 
+    public String getTimeType() {
+        return timeType;
+    }
+
+    public void setTimeType(String timeType) {
+        this.timeType = timeType;
+    }
+    
     public String getEaDesc() {
         return eaDesc;
     }

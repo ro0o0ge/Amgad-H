@@ -69,6 +69,11 @@ public class RootViewController implements Initializable {
     }
     
     @FXML
+    private void handleTeacherAbsent() {
+        ts.AbsentTeacher();
+    }
+    
+    @FXML
     private void handleNewEmp() {
         man.newEmp();
     }
@@ -76,6 +81,11 @@ public class RootViewController implements Initializable {
     @FXML
     private void handleEditEmp() {
         man.editEmp();
+    }
+    
+    @FXML
+    private void handleEmpAbsent() {
+        man.AbsentEmp();
     }
     
     
@@ -116,7 +126,7 @@ public class RootViewController implements Initializable {
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");
-            alert.setHeaderText("برجاء مراجعة مالك البرنمج");
+            alert.setHeaderText("برجاء مراجعة مالك البرنامج");
             alert.setContentText(e.getMessage());
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();
