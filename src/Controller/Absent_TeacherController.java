@@ -30,7 +30,8 @@ import javafx.scene.control.TextField;
  * @author Abdo
  */
 public class Absent_TeacherController implements Initializable {
-@FXML
+
+    @FXML
     private TextField SearchQuery;
     @FXML
     private TextField Duration;
@@ -155,6 +156,6 @@ public class Absent_TeacherController implements Initializable {
     @FXML
     public void handleClose() {
         MA.getDialogStage().close();
-    } 
-    
+    }
+
 }

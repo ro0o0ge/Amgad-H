@@ -7,6 +7,8 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -77,6 +79,10 @@ public class BoardDecisions implements Serializable {
     public String getTitle() {
         return title;
     }
+    
+    public StringProperty TitleProperty() {
+        return new SimpleStringProperty(title);
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -92,6 +98,10 @@ public class BoardDecisions implements Serializable {
 
     public Date getDDate() {
         return dDate;
+    }
+    
+    public StringProperty DDateProperty() {
+        return new SimpleStringProperty(dDate.toString());
     }
 
     public void setDDate(Date dDate) {

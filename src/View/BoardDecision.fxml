@@ -1,29 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BoardDecisionController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.BoardDecisionController">
     <children>
-      <Pane layoutX="75.0" layoutY="45.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <TextField layoutX="39.0" layoutY="50.0" prefHeight="25.0" prefWidth="313.0" />
-            <TextArea layoutX="39.0" layoutY="91.0" prefHeight="201.0" prefWidth="313.0" />
-            <Label layoutX="385.0" layoutY="54.0" text="العنوان" />
-            <Label layoutX="385.0" layoutY="91.0" text="المحتوى" />
-            <HBox layoutX="155.0" layoutY="311.0" prefHeight="25.0" prefWidth="96.0">
-               <children>
-                  <Button defaultButton="true" mnemonicParsing="false" text="حفظ" />
-                  <Button cancelButton="true" mnemonicParsing="false" text="إلغاء">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-   </children>
+        <SplitPane dividerPositions="0.5" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <TableView fx:id="DecisionsTable" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn fx:id="TitleColumn" editable="false" prefWidth="237.0" text="عنوان القرار" />
+                                <TableColumn fx:id="DateColumn" editable="false" prefWidth="99.0" text="تاريخ القرار" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <Label layoutX="122.0" layoutY="14.0" text="قرارات الإدارة" underline="true" AnchorPane.rightAnchor="117.0" AnchorPane.topAnchor="14.0">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <HBox layoutX="80.0" layoutY="481.0" prefHeight="25.0" prefWidth="149.0" spacing="10.0" AnchorPane.rightAnchor="117.0" AnchorPane.topAnchor="481.0">
+                            <children>
+                                <Button defaultButton="true" mnemonicParsing="false" onAction="#handleNew" text="جديد" />
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#handleEdit" text="تعديل" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="إغلاق" />
+                            </children>
+                        </HBox>
+                        <HBox layoutX="14.0" layoutY="75.0" prefHeight="27.0" prefWidth="322.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="75.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#Search" text="بحث" />
+                                <TextField fx:id="SearchQuery">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextField>
+                        <ComboBox fx:id="ComboSearch" prefHeight="25.0" prefWidth="89.0">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </ComboBox>
+                            </children>
+                        </HBox>
+                  <Label layoutX="279.0" layoutY="319.0" text="المحتوى" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="319.0" />
+                  <Label layoutX="282.0" layoutY="189.0" text="العنوان" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="189.0" />
+                  <TextArea fx:id="Notes" layoutX="8.0" layoutY="235.0" prefHeight="201.0" prefWidth="240.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="235.0" />
+                  <TextField fx:id="Title" layoutX="8.0" layoutY="185.0" prefHeight="25.0" prefWidth="240.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="185.0" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>

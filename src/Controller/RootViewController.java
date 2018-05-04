@@ -88,7 +88,10 @@ public class RootViewController implements Initializable {
         man.AbsentEmp();
     }
     
-    
+    @FXML
+    private void handleBoardDecision() {
+        man.BoardDecision();
+    }
     
     
     

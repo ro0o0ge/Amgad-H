@@ -50,6 +50,7 @@
                                         <MenuItem mnemonicParsing="false" onAction="#handleEmpAbsent" text="تسجيل الحضور والإنصراف" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
                                         <MenuItem mnemonicParsing="false" text="المصاريف والمرتبات" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleBoardDecision" text="قرارات الادارة" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="تقارير">

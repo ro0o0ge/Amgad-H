@@ -62,6 +62,7 @@ public class LoginSec {
 
     public void HandleLogout() throws Exception {
         UserLog ul = new UserLog();
+        sf = HibernateUtil.getSessionFactory();
         s = sf.openSession();
         Transaction t = s.beginTransaction();
         ul.setUId(LoggedUser);

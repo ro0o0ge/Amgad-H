@@ -5,6 +5,7 @@
  */
 package amgad.h;
 
+import Entity.BoardDecisions;
 import Entity.Classes;
 import Entity.Contacts;
 import Entity.EmployeeAttendance;
@@ -68,6 +69,12 @@ public class Management {
         return SubjectsList;
     }
 
+    static ObservableList<BoardDecisions> BoardDecisionList = FXCollections.observableArrayList();
+
+    public static ObservableList<BoardDecisions> getBoardDecisionList() {
+        return BoardDecisionList;
+    }
+
     public static StaffClasses getSC() {
         return SC;
     }
@@ -116,6 +123,15 @@ public class Management {
         s.beginTransaction();
         Query query = s.getNamedQuery("Staff.findByStatus").setParameter("status", "1");
         List<Staff> sy = query.list();
+        s.close();
+        return sy;
+    }
+
+    public List<BoardDecisions> getBoardDecision() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("BoardDecisions.findAll");
+        List<BoardDecisions> sy = query.list();
         s.close();
         return sy;
     }
@@ -406,4 +422,69 @@ public class Management {
         }
     }
 
+    public void BoardDecision() {
+        try {
+            BoardDecisionList.addAll(getBoardDecision());
+            System.out.println("Dec Size "+BoardDecisionList.size());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/BoardDecision.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("قرارات الادارة");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+            BoardDecisionList.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void PersistDecision(BoardDecisions bd) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.persist(bd);
+            log += " -- new Board Decision with id " + bd.getBdId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            BoardDecisionList.clear();
+            BoardDecisionList.addAll(getBoardDecision());
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+        }
+    }
+
+    public void UpdateDecision(BoardDecisions bd) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(bd);
+            log += " -- Board Decision with id " + bd.getBdId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            BoardDecisionList.clear();
+            BoardDecisionList.addAll(getBoardDecision());
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+        }
+    }
+
+    
 }
