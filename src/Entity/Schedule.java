@@ -9,6 +9,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,8 +31,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Schedule.findByScheduleId", query = "SELECT s FROM Schedule s WHERE s.scheduleId = :scheduleId")})
 public class Schedule implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "SU_ID")
+    private String suId;
+
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "SCHEDULE_ID")
     private Integer scheduleId;
@@ -38,15 +45,12 @@ public class Schedule implements Serializable {
     @ManyToOne(optional = false)
     private LectureDatetime lecId;
     @JoinColumn(name = "T_ID", referencedColumnName = "T_ID")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Teacher tId;
     @JoinColumn(name = "C_ID", referencedColumnName = "C_ID")
     @ManyToOne(optional = false)
     private Classes cId;
-    @JoinColumn(name = "SU_ID", referencedColumnName = "SU_ID")
-    @ManyToOne(optional = false)
-    private Subjects suId;
-
+ 
     public Schedule() {
     }
 
@@ -86,14 +90,6 @@ public class Schedule implements Serializable {
         this.cId = cId;
     }
 
-    public Subjects getSuId() {
-        return suId;
-    }
-
-    public void setSuId(Subjects suId) {
-        this.suId = suId;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -117,6 +113,14 @@ public class Schedule implements Serializable {
     @Override
     public String toString() {
         return "Entity.Schedule[ scheduleId=" + scheduleId + " ]";
+    }
+
+    public String getSuId() {
+        return suId;
+    }
+
+    public void setSuId(String suId) {
+        this.suId = suId;
     }
     
 }

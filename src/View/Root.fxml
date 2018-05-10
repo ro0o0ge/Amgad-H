@@ -37,7 +37,7 @@
                                         <MenuItem mnemonicParsing="false" onAction="#handleNewTeacher" text="تسجيل مدرس جديد" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleEditTeacher" text="تعديل البيانات الشخصية للمدرسين" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem mnemonicParsing="false" text="جدول الحصص" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleScedule" text="جدول الحصص" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleTeacherAbsent" text="تسجيل الحضور والإنصراف" />
                                     </items>

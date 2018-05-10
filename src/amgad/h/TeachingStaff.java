@@ -5,9 +5,12 @@
  */
 package amgad.h;
 
+import Entity.Classes;
 import Entity.Contacts;
 import Entity.EmployeeAttendance;
+import Entity.LectureDatetime;
 import Entity.Persons;
+import Entity.Schedule;
 import Entity.StudyYears;
 import Entity.Subjects;
 import Entity.Teacher;
@@ -48,7 +51,7 @@ public class TeachingStaff {
     UserLog ul;
     private List<TeacherSubjects> tss = new ArrayList<>();
     static Teacher edit;//Teacher TO BE EDITED
-    
+
     EmployeeAttendance EA;
 
     SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -296,7 +299,7 @@ public class TeachingStaff {
         s.close();
         return sy;
     }
-    
+
     public List<Teacher> getActiveTeachers() {
         s = sf.openSession();
         s.beginTransaction();
@@ -346,7 +349,7 @@ public class TeachingStaff {
             e.printStackTrace();
         }
     }
-    
+
     public void AbsentTeacher() {
         try {
             PersonsList.addAll(getActiveTeachers());
@@ -368,7 +371,6 @@ public class TeachingStaff {
         }
     }
 
-    
     public boolean PersistNewAbsent(String Notes, Teacher su, Date dt, String Type,
             String DurationType, String Duration) {
         try {
@@ -418,6 +420,74 @@ public class TeachingStaff {
         } catch (Exception e) {
             System.err.println("El72 " + e.getMessage());
             return false;
+        }
+    }
+
+    public List<Classes> getClasses() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Classes.findAll");
+        List<Classes> sy = query.list();
+        s.close();
+        return sy;
+    }
+
+    public Classes getClassesByDesc(String desc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Classes.findByClassDesc").
+                setParameter("classDesc", desc);
+        List<Classes> sy = query.list();
+        s.close();
+        return sy.get(0);
+    }
+
+    public List<LectureDatetime> getLectures() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("LectureDatetime.findAll");
+        List<LectureDatetime> sy = query.list();
+        s.close();
+        return sy;
+    }
+
+    public void schedule() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/Schedule.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("جدول الحصص");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void PersistNewSchedule(Schedule sc) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.persist(sc);
+            log += " -- new Schedule with id " + sc.getScheduleId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            TeachingStaff.dialogStage.close();
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
 

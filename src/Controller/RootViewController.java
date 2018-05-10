@@ -74,6 +74,11 @@ public class RootViewController implements Initializable {
     }
     
     @FXML
+    private void handleScedule() {
+        ts.schedule();
+    }
+    
+    @FXML
     private void handleNewEmp() {
         man.newEmp();
     }
