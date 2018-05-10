@@ -6,8 +6,9 @@
 package Entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +35,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "SchoolExpenses.findByAmount", query = "SELECT s FROM SchoolExpenses s WHERE s.amount = :amount")
     , @NamedQuery(name = "SchoolExpenses.findBySceType", query = "SELECT s FROM SchoolExpenses s WHERE s.sceType = :sceType")
     , @NamedQuery(name = "SchoolExpenses.findBySceDate", query = "SELECT s FROM SchoolExpenses s WHERE s.sceDate = :sceDate")
-    , @NamedQuery(name = "SchoolExpenses.findByIssuedBy", query = "SELECT s FROM SchoolExpenses s WHERE s.issuedBy = :issuedBy")})
+    , @NamedQuery(name = "SchoolExpenses.findByIssuedBy", query = "SELECT s FROM SchoolExpenses s WHERE s.issuedBy = :issuedBy")
+    , @NamedQuery(name = "SchoolExpenses.findByIssuedTo", query = "SELECT s FROM SchoolExpenses s WHERE s.issuedTo = :issuedTo")})
 public class SchoolExpenses implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,17 +48,17 @@ public class SchoolExpenses implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "AMOUNT")
-    private BigDecimal amount;
-    @Basic(optional = false)
+    private Double amount;
     @Column(name = "SCE_TYPE")
     private String sceType;
     @Basic(optional = false)
     @Column(name = "SCE_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date sceDate;
-    @Basic(optional = false)
     @Column(name = "ISSUED_BY")
     private String issuedBy;
+    @Column(name = "ISSUED_TO")
+    private String issuedTo;
 
     public SchoolExpenses() {
     }
@@ -65,12 +67,10 @@ public class SchoolExpenses implements Serializable {
         this.sceId = sceId;
     }
 
-    public SchoolExpenses(Long sceId, BigDecimal amount, String sceType, Date sceDate, String issuedBy) {
+    public SchoolExpenses(Long sceId, Double amount, Date sceDate) {
         this.sceId = sceId;
         this.amount = amount;
-        this.sceType = sceType;
         this.sceDate = sceDate;
-        this.issuedBy = issuedBy;
     }
 
     public Long getSceId() {
@@ -81,11 +81,11 @@ public class SchoolExpenses implements Serializable {
         this.sceId = sceId;
     }
 
-    public BigDecimal getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
@@ -100,6 +100,10 @@ public class SchoolExpenses implements Serializable {
     public Date getSceDate() {
         return sceDate;
     }
+    
+    public StringProperty DDateProperty() {
+        return new SimpleStringProperty(sceDate.toString());
+    }
 
     public void setSceDate(Date sceDate) {
         this.sceDate = sceDate;
@@ -108,9 +112,25 @@ public class SchoolExpenses implements Serializable {
     public String getIssuedBy() {
         return issuedBy;
     }
+    
+    public StringProperty IssuedByProperty() {
+        return new SimpleStringProperty(issuedBy);
+    }
 
     public void setIssuedBy(String issuedBy) {
         this.issuedBy = issuedBy;
+    }
+
+    public String getIssuedTo() {
+        return issuedTo;
+    }
+    
+    public StringProperty IssuedToProperty() {
+        return new SimpleStringProperty(issuedTo);
+    }
+
+    public void setIssuedTo(String issuedTo) {
+        this.issuedTo = issuedTo;
     }
 
     @Override

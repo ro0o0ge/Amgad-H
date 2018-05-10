@@ -98,8 +98,10 @@ public class RootViewController implements Initializable {
         man.BoardDecision();
     }
     
-    
-    
+    @FXML
+    private void handleSchoolExpense() {
+        man.newSchoolExpense();
+    }
     
     
     

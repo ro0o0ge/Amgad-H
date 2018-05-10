@@ -10,6 +10,7 @@ import Entity.Classes;
 import Entity.Contacts;
 import Entity.EmployeeAttendance;
 import Entity.Persons;
+import Entity.SchoolExpenses;
 import Entity.Staff;
 import Entity.StaffClasses;
 import Entity.UserLog;
@@ -75,6 +76,12 @@ public class Management {
         return BoardDecisionList;
     }
 
+    static ObservableList<SchoolExpenses> SchoolExpensesList = FXCollections.observableArrayList();
+
+    public static ObservableList<SchoolExpenses> getSchoolExpensesList() {
+        return SchoolExpensesList;
+    }
+
     public static StaffClasses getSC() {
         return SC;
     }
@@ -136,6 +143,15 @@ public class Management {
         return sy;
     }
 
+    public List<SchoolExpenses> getSchoolExpenses() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("SchoolExpenses.findAll");
+        List<SchoolExpenses> sy = query.list();
+        s.close();
+        return sy;
+    }
+
     public static Stage getDialogStage() {
         return dialogStage;
     }
@@ -180,7 +196,6 @@ public class Management {
             Scene scene = new Scene(page);
             scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
             dialogStage.setScene(scene);
-
             dialogStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
@@ -425,7 +440,6 @@ public class Management {
     public void BoardDecision() {
         try {
             BoardDecisionList.addAll(getBoardDecision());
-            System.out.println("Dec Size "+BoardDecisionList.size());
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/BoardDecision.fxml"));
             AnchorPane page = loader.load();
@@ -486,5 +500,67 @@ public class Management {
         }
     }
 
-    
+    public void newSchoolExpense() {
+        try {
+            SchoolExpensesList.addAll(getSchoolExpenses());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/SchoolExpenses.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("مصاريف المدرسة");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+            SchoolExpensesList.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void PersistSchoolExpense(SchoolExpenses bd) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.persist(bd);
+            log += " -- new School Expense with id " + bd.getSceId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            SchoolExpensesList.clear();
+            SchoolExpensesList.addAll(getSchoolExpenses());
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+        }
+    }
+
+    public void UpdateSchoolExpense(SchoolExpenses bd) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(bd);
+            log += " -- School Expenses with id " + bd.getSceId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            SchoolExpensesList.clear();
+            SchoolExpensesList.addAll(getSchoolExpenses());
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+        }
+    }
+
 }

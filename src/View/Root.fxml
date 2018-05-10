@@ -49,8 +49,10 @@
                                         <SeparatorMenuItem mnemonicParsing="false" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleEmpAbsent" text="تسجيل الحضور والإنصراف" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem mnemonicParsing="false" text="المصاريف والمرتبات" />
+                                        <MenuItem mnemonicParsing="false" text="المرتبات" />
                               <MenuItem mnemonicParsing="false" onAction="#handleBoardDecision" text="قرارات الادارة" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleSchoolExpense" text="مصاريف المدرسة" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="تقارير">

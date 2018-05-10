@@ -125,7 +125,9 @@ public class BoardDecisionController implements Initializable {
             st.setTitle(Title.getText());
             st.setBody(Notes.getText());
             st.setDDate(Date.valueOf(LocalDate.now()));
+            System.out.println("Time " + st.getDDate());
             MA.PersistDecision(st);
+            showDetails(null);
 //            MA.getBoardDecisionList().add(st);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -144,8 +146,8 @@ public class BoardDecisionController implements Initializable {
             st.setTitle(Title.getText());
             st.setBody(Notes.getText());
             st.setDDate(Date.valueOf(LocalDate.now()));
-            
-        }else {
+            MA.UpdateDecision(st);
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");
             alert.setHeaderText("خطأ");
