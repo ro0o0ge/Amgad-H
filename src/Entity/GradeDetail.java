@@ -6,11 +6,14 @@
 package Entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -31,19 +34,21 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "GradeDetail.findAll", query = "SELECT g FROM GradeDetail g")
     , @NamedQuery(name = "GradeDetail.findByGdId", query = "SELECT g FROM GradeDetail g WHERE g.gdId = :gdId")
+    , @NamedQuery(name = "GradeDetail.findBySubjectId", query = "SELECT g FROM GradeDetail g WHERE g.gId.suId = :suId")
     , @NamedQuery(name = "GradeDetail.findByGrade", query = "SELECT g FROM GradeDetail g WHERE g.grade = :grade")
     , @NamedQuery(name = "GradeDetail.findByGradeDetail", query = "SELECT g FROM GradeDetail g WHERE g.gradeDetail = :gradeDetail")})
 public class GradeDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "GD_ID")
     private Integer gdId;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "GRADE")
-    private BigDecimal grade;
+    private double grade;
     @Basic(optional = false)
     @Column(name = "GRADE_DETAIL")
     private String gradeDetail;
@@ -60,7 +65,7 @@ public class GradeDetail implements Serializable {
         this.gdId = gdId;
     }
 
-    public GradeDetail(Integer gdId, BigDecimal grade, String gradeDetail) {
+    public GradeDetail(Integer gdId, double grade, String gradeDetail) {
         this.gdId = gdId;
         this.grade = grade;
         this.gradeDetail = gradeDetail;
@@ -74,16 +79,24 @@ public class GradeDetail implements Serializable {
         this.gdId = gdId;
     }
 
-    public BigDecimal getGrade() {
+    public double getGrade() {
         return grade;
     }
+    
+    public StringProperty GradeProperty() {
+        return new SimpleStringProperty(String.valueOf(grade));
+    }
 
-    public void setGrade(BigDecimal grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 
     public String getGradeDetail() {
         return gradeDetail;
+    }
+    
+    public StringProperty GradeDescProperty() {
+        return new SimpleStringProperty(gradeDetail);
     }
 
     public void setGradeDetail(String gradeDetail) {
@@ -131,5 +144,5 @@ public class GradeDetail implements Serializable {
     public String toString() {
         return "Entity.GradeDetail[ gdId=" + gdId + " ]";
     }
-    
+
 }

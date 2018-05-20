@@ -7,6 +7,8 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "StudentNotes.findAll", query = "SELECT s FROM StudentNotes s")
+    ,@NamedQuery(name = "StudentNotes.deleteByNId", query = "DELETE  FROM StudentNotes t where t.nId = :nId")
     , @NamedQuery(name = "StudentNotes.findByNDesc", query = "SELECT s FROM StudentNotes s WHERE s.nDesc = :nDesc")
     , @NamedQuery(name = "StudentNotes.findByNDate", query = "SELECT s FROM StudentNotes s WHERE s.nDate = :nDate")
     , @NamedQuery(name = "StudentNotes.findByNId", query = "SELECT s FROM StudentNotes s WHERE s.nId = :nId")})
@@ -68,12 +71,24 @@ public class StudentNotes implements Serializable {
         return nDesc;
     }
 
+    public StringProperty TitleProperty() {
+        if (nDesc.length() > 15) {
+            return new SimpleStringProperty(nDesc.substring(0, 15));
+        } else {
+            return new SimpleStringProperty(nDesc);
+        }
+    }
+
     public void setNDesc(String nDesc) {
         this.nDesc = nDesc;
     }
 
     public Date getNDate() {
         return nDate;
+    }
+
+    public StringProperty DateProperty() {
+        return new SimpleStringProperty(nDate.toString());
     }
 
     public void setNDate(Date nDate) {
@@ -120,5 +135,5 @@ public class StudentNotes implements Serializable {
     public String toString() {
         return "Entity.StudentNotes[ nId=" + nId + " ]";
     }
-    
+
 }

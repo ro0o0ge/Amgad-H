@@ -57,6 +57,10 @@ public class RootViewController implements Initializable {
         sa.AbsentStud();
     }
     
+    @FXML
+    private void handleClassStuds() {
+        sa.ClassStudents();
+    }
     
     @FXML
     private void handleNewTeacher() {
@@ -76,6 +80,11 @@ public class RootViewController implements Initializable {
     @FXML
     private void handleScedule() {
         ts.schedule();
+    }
+    
+    @FXML
+    private void handleFinalGrades() {
+        ts.FinalGrades();
     }
     
     @FXML

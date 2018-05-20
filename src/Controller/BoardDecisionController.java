@@ -98,7 +98,6 @@ public class BoardDecisionController implements Initializable {
                 }
                 DecisionsTable.setItems(TempList);
             } else {//date
-                System.out.println("size " + TempList.size());
                 for (int i = 0; i < TempList.size(); i++) {
                     if (!TempList.get(i).DDateProperty().toString().contains(SearchQuery.getText())) {
                         TempList.remove(i);

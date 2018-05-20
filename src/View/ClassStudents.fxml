@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ClassStudentsController">
+    <children>
+      <SplitPane dividerPositions="0.44816053511705684" orientation="VERTICAL" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.46551724137931033" prefHeight="351.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TableView fx:id="StudentsInClassTable" prefHeight="349.0" prefWidth="321.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="StudNameColumn" prefWidth="196.0" text="اسماء الطلاب المقيدين بالفصل" />
+                                    <TableColumn fx:id="StudSerialColumn" prefWidth="119.0" text="مسلسل" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <Label layoutX="103.0" layoutY="14.0" prefHeight="34.0" prefWidth="112.0" text="قوائم الفصول" underline="true" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="14.0">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="ComboClass" layoutX="65.0" layoutY="57.0" prefWidth="150.0" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="57.0" />
+                              <Label layoutX="255.0" layoutY="59.0" text="الفصل" AnchorPane.rightAnchor="82.0" AnchorPane.topAnchor="59.0">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <HBox layoutX="40.0" layoutY="222.0" prefHeight="27.0" prefWidth="289.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="222.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#Search" text="بحث" />
+                                    <TextField fx:id="SearchQuery">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Label text="بحث باسم الطالب">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <Separator layoutY="210.0" prefHeight="2.0" prefWidth="369.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="210.0" />
+                              <VBox layoutX="103.0" layoutY="101.0" prefHeight="61.0" prefWidth="112.0" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="101.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#handleAdd" prefHeight="25.0" prefWidth="116.0" text="إضافة الطالب للفصل" />
+                                    <Button mnemonicParsing="false" onAction="#handleDel" prefHeight="25.0" prefWidth="114.0" text="مسح الطالب من الفصل">
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="StudentsTable" prefHeight="327.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="NameColumn" editable="false" prefWidth="199.0" text="اسم الطالب" />
+                        <TableColumn fx:id="StatusColumn" editable="false" prefWidth="129.0" text="الحالة" />
+                        <TableColumn fx:id="ClassColumn" editable="false" prefWidth="129.0" text="الفصل " />
+                        <TableColumn fx:id="AdmissionDateColumn" editable="false" prefWidth="129.0" text="تاريخ التقديم" />
+                        <TableColumn fx:id="DOBColumn" editable="false" prefWidth="111.0" text="تاريخ الميلاد" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

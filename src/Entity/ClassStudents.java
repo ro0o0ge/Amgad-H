@@ -6,7 +6,6 @@
 package Entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,11 +16,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,7 +29,9 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ClassStudents.findAll", query = "SELECT c FROM ClassStudents c")
-        ,@NamedQuery(name = "ClassStudents.findBysId", query = "SELECT c FROM ClassStudents c WHERE c.sId = :sId")
+    ,@NamedQuery(name = "ClassStudents.deleteBycsId", query = "DELETE  FROM ClassStudents t where t.csId = :csId")
+    ,@NamedQuery(name = "ClassStudents.findBysId", query = "SELECT c FROM ClassStudents c WHERE c.sId = :sId")
+    , @NamedQuery(name = "ClassStudents.findByCDesc", query = "SELECT c FROM ClassStudents c WHERE c.cId.classDesc = :classDesc")
     , @NamedQuery(name = "ClassStudents.findByCsId", query = "SELECT c FROM ClassStudents c WHERE c.csId = :csId")})
 public class ClassStudents implements Serializable {
 
@@ -42,8 +41,6 @@ public class ClassStudents implements Serializable {
     @Basic(optional = false)
     @Column(name = "CS_ID")
     private Integer csId;
-    @OneToMany(mappedBy = "csId")
-    private List<FinalGrades> finalGradesList;
     @JoinColumn(name = "S_ID", referencedColumnName = "S_ID")
     @OneToOne
     private Student sId;
@@ -64,15 +61,6 @@ public class ClassStudents implements Serializable {
 
     public void setCsId(Integer csId) {
         this.csId = csId;
-    }
-
-    @XmlTransient
-    public List<FinalGrades> getFinalGradesList() {
-        return finalGradesList;
-    }
-
-    public void setFinalGradesList(List<FinalGrades> finalGradesList) {
-        this.finalGradesList = finalGradesList;
     }
 
     public Student getSId() {
@@ -115,5 +103,5 @@ public class ClassStudents implements Serializable {
     public String toString() {
         return "Entity.ClassStudents[ csId=" + csId + " ]";
     }
-    
+
 }

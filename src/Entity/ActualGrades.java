@@ -6,7 +6,6 @@
 package Entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -47,7 +46,7 @@ public class ActualGrades implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "GRADE")
-    private BigDecimal grade;
+    private double grade;
     @Basic(optional = false)
     @Column(name = "G_DATE")
     @Temporal(TemporalType.TIMESTAMP)
@@ -68,7 +67,7 @@ public class ActualGrades implements Serializable {
         this.agId = agId;
     }
 
-    public ActualGrades(Long agId, BigDecimal grade, Date gDate) {
+    public ActualGrades(Long agId, double grade, Date gDate) {
         this.agId = agId;
         this.grade = grade;
         this.gDate = gDate;
@@ -82,11 +81,11 @@ public class ActualGrades implements Serializable {
         this.agId = agId;
     }
 
-    public BigDecimal getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(BigDecimal grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 

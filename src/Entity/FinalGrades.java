@@ -18,6 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "FinalGrades.findAll", query = "SELECT f FROM FinalGrades f")
     , @NamedQuery(name = "FinalGrades.findByGId", query = "SELECT f FROM FinalGrades f WHERE f.gId = :gId")
+    , @NamedQuery(name = "FinalGrades.findBysuId", query = "SELECT f FROM FinalGrades f WHERE f.suId = :suId")
     , @NamedQuery(name = "FinalGrades.findByGrade", query = "SELECT f FROM FinalGrades f WHERE f.grade = :grade")})
 public class FinalGrades implements Serializable {
 
@@ -44,11 +46,11 @@ public class FinalGrades implements Serializable {
     @Basic(optional = false)
     @Column(name = "GRADE")
     private int grade;
-    @JoinColumn(name = "CS_ID", referencedColumnName = "CS_ID")
+    @JoinColumn(name = "C_ID", referencedColumnName = "C_ID")
     @ManyToOne
-    private ClassStudents csId;
+    private Classes cId;
     @JoinColumn(name = "SU_ID", referencedColumnName = "SU_ID")
-    @ManyToOne
+    @OneToOne
     private Subjects suId;
     @OneToMany(mappedBy = "gId")
     private List<GradeDetail> gradeDetailList;
@@ -81,12 +83,12 @@ public class FinalGrades implements Serializable {
         this.grade = grade;
     }
 
-    public ClassStudents getCsId() {
-        return csId;
+    public Classes getCsId() {
+        return cId;
     }
 
-    public void setCsId(ClassStudents csId) {
-        this.csId = csId;
+    public void setCsId(Classes cId) {
+        this.cId = cId;
     }
 
     public Subjects getSuId() {
@@ -130,5 +132,5 @@ public class FinalGrades implements Serializable {
     public String toString() {
         return "Entity.FinalGrades[ gId=" + gId + " ]";
     }
-    
+
 }

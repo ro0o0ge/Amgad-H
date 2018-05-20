@@ -18,7 +18,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,6 +27,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -74,10 +75,11 @@ public class Student implements Serializable {
     private List<StudentAttendance> studentAttendanceList;
     @OneToMany(mappedBy = "sId")
     private List<ActualGrades> actualGradesList;
-    @OneToOne(mappedBy = "sId",fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "sId", fetch = FetchType.EAGER)
     private ClassStudents classStudentsList;
     @OneToMany(mappedBy = "sId")
     private List<StudentExpenses> studentExpensesList;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "sId")
     private List<StudentNotes> studentNotesList;
 
@@ -131,6 +133,10 @@ public class Student implements Serializable {
 
     public String getSerialNo() {
         return serialNo;
+    }
+
+    public StringProperty serialProperty() {
+        return new SimpleStringProperty(serialNo);
     }
 
     public void setSerialNo(String serialNo) {

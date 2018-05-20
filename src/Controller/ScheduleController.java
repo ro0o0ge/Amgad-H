@@ -8,7 +8,6 @@ package Controller;
 import Entity.Classes;
 import Entity.LectureDatetime;
 import Entity.Schedule;
-import amgad.h.Management;
 import amgad.h.TeachingStaff;
 import java.net.URL;
 import java.util.ArrayList;
@@ -117,6 +116,45 @@ public class ScheduleController implements Initializable {
         // TODO
         MA = new TeachingStaff();
         comboClass.getItems().addAll(getClasses());
+        
+        comboClass.valueProperty().addListener((ov, oldValue, newValue) -> {
+            List<Schedule> s = MA.getSchedulebyClassDesc(newValue.toString());
+            Sun1.setText(s.get(0).getSuId());
+            Sun2.setText(s.get(1).getSuId());
+            Sun3.setText(s.get(2).getSuId());
+            Sun4.setText(s.get(3).getSuId());
+            Sun5.setText(s.get(4).getSuId());
+            Sun6.setText(s.get(5).getSuId());
+            Sun7.setText(s.get(6).getSuId());
+            Mon1.setText(s.get(7).getSuId());
+            Mon2.setText(s.get(8).getSuId());
+            Mon3.setText(s.get(9).getSuId());
+            Mon4.setText(s.get(10).getSuId());
+            Mon5.setText(s.get(11).getSuId());
+            Mon6.setText(s.get(12).getSuId());
+            Mon7.setText(s.get(13).getSuId());
+            Tue1.setText(s.get(14).getSuId());
+            Tue2.setText(s.get(15).getSuId());
+            Tue3.setText(s.get(16).getSuId());
+            Tue4.setText(s.get(17).getSuId());
+            Tue5.setText(s.get(18).getSuId());
+            Tue6.setText(s.get(19).getSuId());
+            Tue7.setText(s.get(20).getSuId());
+            Wed1.setText(s.get(21).getSuId());
+            Wed2.setText(s.get(22).getSuId());
+            Wed3.setText(s.get(23).getSuId());
+            Wed4.setText(s.get(24).getSuId());
+            Wed5.setText(s.get(25).getSuId());
+            Wed6.setText(s.get(26).getSuId());
+            Wed7.setText(s.get(27).getSuId());
+            Thu1.setText(s.get(28).getSuId());
+            Thu2.setText(s.get(29).getSuId());
+            Thu3.setText(s.get(30).getSuId());
+            Thu4.setText(s.get(31).getSuId());
+            Thu5.setText(s.get(32).getSuId());
+            Thu6.setText(s.get(33).getSuId());
+            Thu7.setText(s.get(34).getSuId());
+        });
 
     }
 
@@ -130,7 +168,6 @@ public class ScheduleController implements Initializable {
 
     @FXML
     public void SerachSC() {
-
     }
 
     public void createNew(String s, LectureDatetime ldt) {
@@ -229,6 +266,6 @@ public class ScheduleController implements Initializable {
 
     @FXML
     public void Cancel() {
-        MA.getDialogStage().close();
+        MA.getDialogStage2().close();
     }
 }

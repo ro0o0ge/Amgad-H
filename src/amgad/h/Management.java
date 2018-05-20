@@ -240,7 +240,6 @@ public class Management {
     public void editEmp() {
         try {
             PersonsList.addAll(getTeachers());
-            System.out.println("Prson List Size " + PersonsList.size());
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/EditEmp.fxml"));
             AnchorPane page = loader.load();

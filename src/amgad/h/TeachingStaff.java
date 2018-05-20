@@ -5,9 +5,12 @@
  */
 package amgad.h;
 
+import Controller.GradesController;
 import Entity.Classes;
 import Entity.Contacts;
 import Entity.EmployeeAttendance;
+import Entity.FinalGrades;
+import Entity.GradeDetail;
 import Entity.LectureDatetime;
 import Entity.Persons;
 import Entity.Schedule;
@@ -69,6 +72,15 @@ public class TeachingStaff {
         return SubjectsList;
     }
 
+    public List<StudyYears> getSY() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("StudyYears.findAll");
+        List<StudyYears> sy = query.list();
+        s.close();
+        return sy;
+    }
+
     public List<TeacherSubjects> getTss() {
         return tss;
     }
@@ -110,16 +122,36 @@ public class TeachingStaff {
     }
 
     static ObservableList<Teacher> PersonsList = FXCollections.observableArrayList();
-
+    
     public static ObservableList<Teacher> getPersonsList() {
         return PersonsList;
     }
 
+    public List<Schedule> getSchedulebyClassDesc(String YDesc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Schedule.findByClassDesc")
+                .setParameter("classDesc", YDesc);
+        List<Schedule> sy = query.list();
+        s.close();
+        return sy;
+    }
+    
     public List<StudyYears> getStudyYears() {
         s = sf.openSession();
         s.beginTransaction();
         Query query = s.createQuery("from StudyYears");
         List<StudyYears> sy = query.list();
+        s.close();
+        return sy;
+    }
+
+    public List<Subjects> getSubjectsByStudyYearDesc(String YDesc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Subjects.findBySyDesc")
+                .setParameter("syDesc", YDesc);
+        List<Subjects> sy = query.list();
         s.close();
         return sy;
     }
@@ -142,7 +174,26 @@ public class TeachingStaff {
         return sub;
     }
 
-    public Subjects getSubjectsByDesc(String desc, String YDesc) {
+    static ObservableList<GradeDetail> GradeDetailList = FXCollections.observableArrayList();
+
+    public static ObservableList<GradeDetail> getGradeDetailList() {
+        return GradeDetailList;
+    }
+
+    public void LoadGradeDetails(String a, String b) {
+        GradeDetailList = FXCollections.observableArrayList(getGradeDetails(getSubjectsByDescAndYDesc(a, b)));
+    }
+
+    public List<GradeDetail> getGradeDetails(Subjects fg) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("GradeDetail.findBySubjectId").setParameter("suId", fg);
+        List<GradeDetail> sub = query.list();
+        s.close();
+        return sub;
+    }
+
+    public Subjects getSubjectsByDescAndYDesc(String desc, String YDesc) {
         s = sf.openSession();
         s.beginTransaction();
         Query query = s.getNamedQuery("Subjects.findBySuDescAndSyId").
@@ -150,6 +201,20 @@ public class TeachingStaff {
         List<Subjects> sy = query.list();
         s.close();
         return sy.get(0);
+    }
+
+    public String getFinalGrade(Subjects desc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("FinalGrades.findBysuId").
+                setParameter("suId", desc);
+        List<FinalGrades> sy = query.list();
+        s.close();
+        if (sy.size() < 1) {
+            return "";
+        }
+        GradesController.setFG(sy.get(0));
+        return String.valueOf(sy.get(0).getGrade());
     }
 
     public void PersistNewTeac(Persons p, Teacher te) {
@@ -456,15 +521,15 @@ public class TeachingStaff {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/Schedule.fxml"));
             AnchorPane page = loader.load();
-            dialogStage = new Stage();
-            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
-            dialogStage.setTitle("جدول الحصص");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("جدول الحصص");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.MainApp.getPrimaryStage());
             Scene scene = new Scene(page);
             scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-            dialogStage.setScene(scene);
-            dialogStage.showAndWait();
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -485,6 +550,65 @@ public class TeachingStaff {
             s.persist(ul);
             t.commit();
             TeachingStaff.dialogStage.close();
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
+
+    public void FinalGrades() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/FinalGrades.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("الدرجات النهائية");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void PersistNewFinalGrade(FinalGrades sc) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.persist(sc);
+            log += " -- new Final Grade with id " + sc.getGId();
+            GradesController.setFG(sc);
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
+
+    public void PersistNewGradeDetail(GradeDetail sc) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.persist(sc);
+            log += " -- new Grade Detail with id " + sc.getGdId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());

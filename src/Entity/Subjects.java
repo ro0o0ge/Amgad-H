@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Subjects.findAll", query = "SELECT s FROM Subjects s")
     , @NamedQuery(name = "Subjects.findBySuId", query = "SELECT s FROM Subjects s WHERE s.suId = :suId")
     , @NamedQuery(name = "Subjects.findBySyId", query = "SELECT s FROM Subjects s WHERE s.syId = :syId")
+    , @NamedQuery(name = "Subjects.findBySyDesc", query = "SELECT s FROM Subjects s WHERE s.syId.syDesc = :syDesc")
     , @NamedQuery(name = "Subjects.findBySuDesc", query = "SELECT s FROM Subjects s WHERE s.suDesc = :suDesc")
     , @NamedQuery(name = "Subjects.findBySuDescAndSyId", query = "SELECT s FROM Subjects s WHERE s.suDesc = :suDesc and s.syId.syDesc = :syDesc")
     , @NamedQuery(name = "Subjects.findByMandatoryFlag", query = "SELECT s FROM Subjects s WHERE s.mandatoryFlag = :mandatoryFlag")})
@@ -53,8 +55,8 @@ public class Subjects implements Serializable {
     private String mandatoryFlag;
     @OneToMany(mappedBy = "suId")
     private List<SGLog> sGLogList;
-    @OneToMany(mappedBy = "suId")
-    private List<FinalGrades> finalGradesList;
+    @OneToOne(mappedBy = "suId")
+    private FinalGrades finalGradesList;
     @JoinColumn(name = "SY_ID", referencedColumnName = "SY_ID")
     @ManyToOne(fetch = FetchType.EAGER)
     private StudyYears syId;
@@ -114,11 +116,11 @@ public class Subjects implements Serializable {
     }
 
     @XmlTransient
-    public List<FinalGrades> getFinalGradesList() {
+    public FinalGrades getFinalGradesList() {
         return finalGradesList;
     }
 
-    public void setFinalGradesList(List<FinalGrades> finalGradesList) {
+    public void setFinalGradesList(FinalGrades finalGradesList) {
         this.finalGradesList = finalGradesList;
     }
 

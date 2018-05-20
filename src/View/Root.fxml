@@ -25,7 +25,7 @@
                                         <MenuItem mnemonicParsing="false" onAction="#handleNewStud" text="تسجيل طالب جديد" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleEditStud" text="تعديل البيانات الطلاب" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem mnemonicParsing="false" text="تسجيل قوائم الفصول" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleClassStuds" text="تسجيل قوائم الفصول" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleStudAbsent" text="تسجيل الغياب" />
                                         <MenuItem mnemonicParsing="false" text="تسجيل الدرجات" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
@@ -40,6 +40,8 @@
                                         <MenuItem mnemonicParsing="false" onAction="#handleScedule" text="جدول الحصص" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleTeacherAbsent" text="تسجيل الحضور والإنصراف" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleFinalGrades" text="تسجيل الدرجات النهائية" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="الإدارة">

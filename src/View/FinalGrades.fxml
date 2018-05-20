@@ -6,7 +6,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.GradesController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GradesController">
     <children>
         <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -29,7 +29,7 @@
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <TextField GridPane.rowIndex="3">
+                                <TextField fx:id="FinalGrade" GridPane.rowIndex="3">
                                     <GridPane.margin>
                                         <Insets left="125.0" />
                                     </GridPane.margin>
@@ -39,8 +39,8 @@
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <ComboBox prefHeight="25.0" prefWidth="179.0" />
-                                <ComboBox prefHeight="25.0" prefWidth="179.0" GridPane.rowIndex="1" />
+                                <ComboBox fx:id="ComboYear" prefHeight="25.0" prefWidth="179.0" />
+                                <ComboBox fx:id="ComboSubject" prefHeight="25.0" prefWidth="179.0" GridPane.rowIndex="1" />
                                 <Label text="المادة" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <GridPane.margin>
                                         <Insets left="10.0" />
@@ -50,8 +50,8 @@
                         </GridPane>
                         <HBox layoutX="28.0" layoutY="119.0" spacing="10.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="119.0">
                             <children>
-                                <Button defaultButton="true" mnemonicParsing="false" text="إعتماد الدرجة" />
-                                <Button cancelButton="true" mnemonicParsing="false" text="إلغاء" />
+                                <Button defaultButton="true" mnemonicParsing="false" onAction="#handleNewFinalGrade" text="إعتماد الدرجة" />
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="إلغاء" />
                             </children>
                         </HBox>
                         <Label layoutX="219.0" layoutY="14.0" text="الدرجات النهائية" underline="true">
@@ -67,10 +67,10 @@
                             <items>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                     <children>
-                                        <TableView layoutX="-15.0" prefHeight="244.0" prefWidth="236.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <TableView fx:id="GradeDetailTable" layoutX="-15.0" prefHeight="244.0" prefWidth="236.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columns>
-                                                <TableColumn prefWidth="103.0" text="الدرجة" />
-                                                <TableColumn prefWidth="130.0" text="الوصف" />
+                                                <TableColumn fx:id="GradeDescColumn" prefWidth="180.0" text="الوصف" />
+                                                <TableColumn fx:id="GradeColumn" prefWidth="103.0" text="الدرجة" />
                                             </columns>
                                         </TableView>
                                     </children>
@@ -89,7 +89,7 @@
                                                         <Insets left="10.0" />
                                                     </GridPane.margin>
                                                 </Label>
-                                                <TextField prefHeight="25.0" prefWidth="102.0">
+                                                <TextField fx:id="Grade" prefHeight="25.0" prefWidth="102.0">
                                                     <GridPane.margin>
                                                         <Insets left="125.0" />
                                                     </GridPane.margin>
@@ -99,7 +99,7 @@
                                                         <Insets left="10.0" />
                                                     </GridPane.margin>
                                                 </Label>
-                                                <TextArea prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.rowIndex="1" GridPane.rowSpan="3" />
+                                                <TextArea fx:id="GradeDesc" prefHeight="200.0" prefWidth="200.0" wrapText="true" GridPane.rowIndex="1" GridPane.rowSpan="3" />
                                             </children>
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="197.0" minWidth="10.0" prefWidth="170.0" />
@@ -112,13 +112,14 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                         </GridPane>
-                                        <HBox layoutX="53.0" layoutY="174.0" spacing="10.0">
+                                        <HBox layoutX="14.0" layoutY="168.0" spacing="10.0">
                                             <children>
-                                                <Button mnemonicParsing="false" text="جديد" />
-                                                <Button layoutX="192.0" layoutY="257.0" mnemonicParsing="false" text="تعديل" />
-                                                <Button mnemonicParsing="false" text="حذف" />
+                                                <Button mnemonicParsing="false" onAction="#handleNew" text="جديد" />
+                                                <Button layoutX="192.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleEdit" text="تعديل" />
+                                                <Button mnemonicParsing="false" onAction="#handleDelete" text="حذف" />
                                             </children>
                                         </HBox>
+                              <Button layoutX="188.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleSaveAll" prefHeight="25.0" prefWidth="77.0" text="حفظ الكل" />
                                     </children>
                                 </AnchorPane>
                             </items>

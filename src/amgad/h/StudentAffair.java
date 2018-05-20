@@ -13,6 +13,7 @@ import Entity.StudyYears;
 import Entity.UserLog;
 import Entity.Student;
 import Entity.StudentAttendance;
+import Entity.StudentNotes;
 import Util.HibernateUtil;
 import Util.LoginSec;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -65,12 +67,34 @@ public class StudentAffair {
         return PersonsList;
     }
 
+    static ObservableList<ClassStudents> StudentsInClassList = FXCollections.observableArrayList();
+
+    public static ObservableList<ClassStudents> getStudentsInClassList() {
+        return StudentsInClassList;
+    }
+
+    static ObservableList<StudentNotes> StudentNotesList = FXCollections.observableArrayList();
+
+    public static ObservableList<StudentNotes> getStudentNotesList() {
+        return StudentNotesList;
+    }
+
     public static void setC(Contacts con) {
         C = con;
     }
 
     public static Contacts getContacts() {
         return C;
+    }
+
+    public Classes getClassesByDesc(String desc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Classes.findByClassDesc").
+                setParameter("classDesc", desc);
+        List<Classes> sy = query.list();
+        s.close();
+        return sy.get(0);
     }
 
     public Stage getDialogStage() {
@@ -96,7 +120,6 @@ public class StudentAffair {
 
     public List<StudyYears> getSY() {
         s = sf.openSession();
-
         s.beginTransaction();
         Query query = s.getNamedQuery("StudyYears.findAll");
         List<StudyYears> sy = query.list();
@@ -117,6 +140,19 @@ public class StudentAffair {
         Query query = s.getNamedQuery("ClassStudents.findBysId").setParameter("sId", st);
         List<ClassStudents> sy = query.list();
         return sy.get(0);
+    }
+
+    public void LoadStudentsInClass(String a) {
+        StudentsInClassList = FXCollections.observableArrayList(getStudInClass(a));
+    }
+
+    public List<ClassStudents> getStudInClass(String fg) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("ClassStudents.findByCDesc").setParameter("classDesc", fg);
+        List<ClassStudents> sub = query.list();
+        s.close();
+        return sub;
     }
 
     public void PersistNewStud(Persons p, Student st, ClassStudents cs) {
@@ -287,6 +323,27 @@ public class StudentAffair {
         }
     }
 
+    public void StudNotes() {
+        try {
+            StudentNotesList.addAll(getEdit().getStudentNotesList());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/StudNotes.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("ملاحظات");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+            StudentNotesList.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void AbsentStud() {
         try {
             PersonsList.addAll(getActiveStudents());
@@ -330,9 +387,130 @@ public class StudentAffair {
             PersonsList.addAll(getActiveStudents());
             return true;
         } catch (Exception e) {
-            System.err.println("El72 "+e.getMessage());
+            System.err.println("El72 " + e.getMessage());
             return false;
         }
     }
 
+    public void ClassStudents() {
+        try {
+            PersonsList.addAll(getStudents());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/ClassStudents.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("تسجيل قوائم الفصول");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+            PersonsList.clear();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void PersistNewClassStudent(ClassStudents sc) {
+        try {
+            PersonsList.clear();
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.persist(sc);
+            log += " -- new Class Student with id " + sc.getCsId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            PersonsList.addAll(getStudents());
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("يوجد خطأ");
+            alert.setHeaderText("الطالب المراد اضافته مسجل في فصل بالفعل");
+            alert.setContentText("برجاء التأكد من اختياراتك");
+            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            alert.showAndWait();
+        }
+    }
+
+    public void RemoveClassStudent(ClassStudents sc) {
+        try {
+            PersonsList.clear();
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Deleted";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            Query query = s.getNamedQuery("ClassStudents.deleteBycsId").setParameter("csId", sc.getCsId());
+            log += " -- Class Student with id " + sc.getCsId();
+            query.executeUpdate();
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            PersonsList.addAll(getStudents());
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
+
+    public void PersistNewStudentNote(StudentNotes sc) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.persist(sc);
+            log += " -- new Student Note with id " + sc.getNId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            this.dialogStage2.close();
+            PersonsList.clear();
+            PersonsList.addAll(getStudents());
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+//            Alert alert = new Alert(Alert.AlertType.WARNING);
+//            alert.setTitle("يوجد خطأ");
+//            alert.setHeaderText("الطالب المراد اضافته مسجل في فصل بالفعل");
+//            alert.setContentText("برجاء التأكد من اختياراتك");
+//            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+//            alert.showAndWait();
+        }
+    }
+
+    public void RemoveStudentNote(StudentNotes sc) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Deleted";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            Query query = s.getNamedQuery("StudentNotes.deleteByNId").setParameter("nId", sc.getNId());
+            log += " -- Class Student with id " + sc.getNId();
+            query.executeUpdate();
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            PersonsList.clear();
+            PersonsList.addAll(getStudents());
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
 }

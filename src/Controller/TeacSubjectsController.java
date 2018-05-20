@@ -72,7 +72,7 @@ public class TeacSubjectsController implements Initializable {
     private void handleConfirm() {
         if (!SUCombo.getValue().equals("")) {
             ts = new TeachingStaff();
-            TeachingStaff.getS().setSuId(ts.getSubjectsByDesc
+            TeachingStaff.getS().setSuId(ts.getSubjectsByDescAndYDesc
         (SUCombo.getValue().toString(),STYCombo.getValue().toString()));
             TeachingStaff.getDialogStage2().close();
         } else {

@@ -5,9 +5,14 @@
  */
 package Controller;
 
+import Entity.ClassStudents;
+import Entity.Classes;
 import Entity.Student;
 import amgad.h.StudentAffair;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,13 +30,12 @@ import javafx.scene.control.TextField;
  *
  * @author Abdo
  */
-public class EditStudController implements Initializable {
+public class ClassStudentsController implements Initializable {
 
-    
+    @FXML
+    private ComboBox ComboClass;
     @FXML
     private TextField SearchQuery;
-    @FXML
-    private ComboBox ComboSearch;
     @FXML
     private TableView<Student> StudentsTable;
     @FXML
@@ -44,6 +48,16 @@ public class EditStudController implements Initializable {
     private TableColumn<Student, String> AdmissionDateColumn;
     @FXML
     private TableColumn<Student, String> DOBColumn;
+
+    @FXML
+    private TableView<ClassStudents> StudentsInClassTable;
+    @FXML
+    private TableColumn<ClassStudents, String> StudNameColumn;
+    @FXML
+    private TableColumn<ClassStudents, String> StudSerialColumn;
+
+    StudentAffair SA;
+
     /**
      * Initializes the controller class.
      *
@@ -53,15 +67,19 @@ public class EditStudController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ComboSearch.getItems().removeAll(ComboSearch.getItems());
-        ComboSearch.getItems().addAll("الاسم", "حالة الطالب", "الفصل");
-        ComboSearch.getSelectionModel().select(1);
+        SA = new StudentAffair();
+        ComboClass.getItems().clear();
+        ComboClass.getItems().addAll(getClasses());
+        ComboClass.valueProperty().addListener((ov, oldValue, newValue) -> {
+            SA.LoadStudentsInClass(newValue.toString());
+            StudentsInClassTable.setItems(SA.getStudentsInClassList());
+        });
+
         if (!StudentsTable.getItems().isEmpty()) {
             StudentsTable.getItems().clear();
         }
-        
+        //table el students
         StudentsTable.setItems(StudentAffair.getPersonsList());
-
         NameColumn.setCellValueFactory(cellData -> cellData.getValue().getPId().NameProperty());
         DOBColumn.setCellValueFactory(cellData -> cellData.getValue().getPId().DOBProperty());
         AdmissionDateColumn.setCellValueFactory(cellData -> cellData.getValue().getPId().createdDateProperty());
@@ -73,56 +91,32 @@ public class EditStudController implements Initializable {
                 return null;
             }
         });
-        SA = new StudentAffair();
+        //table el students in class
+        StudNameColumn.setCellValueFactory(cellData -> cellData.getValue().getSId().getPId().NameProperty());
+        StudSerialColumn.setCellValueFactory(cellData -> cellData.getValue().getSId().serialProperty());
     }
 
-    StudentAffair SA;
-
-    
+    private List<String> getClasses() {
+        SA = new StudentAffair();
+        List<String> StudY = new ArrayList<String>();
+        for (Iterator<Classes> iterator = SA.getClasses().iterator(); iterator.hasNext();) {
+            StudY.add(iterator.next().getClassDesc());
+        }
+        return StudY;
+    }
 
     @FXML
     public void Search() {
         if (!SearchQuery.getText().equals("")) {
             ObservableList<Student> TempList = FXCollections.observableArrayList(SA.getStudents());
             StudentsTable.getItems().clear();
-            if (ComboSearch.getSelectionModel().isSelected(0)) {//name
-                for (int i = 0; i < TempList.size(); i++) {
-                    if (!TempList.get(i).getPId().getName().contains(SearchQuery.getText())) {
-                        TempList.remove(i);
-                        i--;
-                    }
+            for (int i = 0; i < TempList.size(); i++) {
+                if (!TempList.get(i).getPId().getName().contains(SearchQuery.getText())) {
+                    TempList.remove(i);
+                    i--;
                 }
-                StudentsTable.setItems(TempList);
-            } else if (ComboSearch.getSelectionModel().isSelected(1)) {//status
-                System.out.println("size " + TempList.size());
-                for (int i = 0; i < TempList.size(); i++) {
-                    if (!TempList.get(i).statusProperty().toString().contains(SearchQuery.getText())) {
-                        TempList.remove(i);
-                        i--;
-                    }
-                }
-                StudentsTable.setItems(TempList);
-            } else {//class
-                for (int i = 0; i < TempList.size(); i++) {
-                    if (SearchQuery.getText().equals("  ")) {
-                        if (TempList.get(i).getClassStudentsList() != null) {
-                            TempList.remove(i);
-                            i--;
-                        }
-                        break;
-                    }
-                    if (TempList.get(i).getClassStudentsList() != null) {
-                        if (!TempList.get(i).getClassStudentsList().getCId().getClassDesc().contains(SearchQuery.getText())) {
-                            TempList.remove(i);
-                            i--;
-                        }
-                    } else if (TempList.get(i).getClassStudentsList() == null) {
-                        TempList.remove(i);
-                        i--;
-                    }
-                }
-                StudentsTable.setItems(TempList);
             }
+            StudentsTable.setItems(TempList);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");
@@ -134,48 +128,43 @@ public class EditStudController implements Initializable {
     }
 
     @FXML
-    public void handleEdit() {
+    public void handleAdd() {
         int selectedIndex = StudentsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            StudentAffair.setEdit(StudentsTable.getItems().get(selectedIndex));
-            SA.editStudDetail();
+            ClassStudents cs = new ClassStudents();
+            cs.setCId(SA.getClassesByDesc(ComboClass.getSelectionModel().getSelectedItem().toString()));
+            cs.setSId(StudentsTable.getItems().get(selectedIndex));
+            SA.PersistNewClassStudent(cs);
+            
+            StudentsTable.setItems(StudentAffair.getPersonsList());
+            SA.LoadStudentsInClass(ComboClass.getSelectionModel().getSelectedItem().toString());
+            StudentsInClassTable.setItems(SA.getStudentsInClassList());
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");
-            alert.setHeaderText("لم يتم تحديد العنصر المراد تعديله");
-            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+            alert.setHeaderText("لم يتم تحديد العنصر المراد إضافته");
+            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول بالأسفل");
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();
         }
     }
 
     @FXML
-    public void handleView() {
-        int selectedIndex = StudentsTable.getSelectionModel().getSelectedIndex();
+    public void handleDel() {
+        int selectedIndex = StudentsInClassTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-//            edit = StudentsTable.getItems().get(selectedIndex);
-
+            
+            SA.RemoveClassStudent(StudentsInClassTable.getItems().get(selectedIndex));
+            SA.getStudentsInClassList().remove(StudentsInClassTable.getItems().get(selectedIndex));
+            
+            StudentsTable.setItems(StudentAffair.getPersonsList());
+            SA.LoadStudentsInClass(ComboClass.getSelectionModel().getSelectedItem().toString());
+            StudentsInClassTable.setItems(SA.getStudentsInClassList());
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");
-            alert.setHeaderText("لم يتم تحديد العنصر المراد عرضه");
-            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
-            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-            alert.showAndWait();
-        }
-    }
-
-    @FXML
-    public void handleNotes() {
-        int selectedIndex = StudentsTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            StudentAffair.setEdit(StudentsTable.getItems().get(selectedIndex));
-            SA.StudNotes();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("يوجد خطأ");
-            alert.setHeaderText("لم يتم تحديد العنصر المراد إضافة ملاحظات له");
-            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+            alert.setHeaderText("لم يتم تحديد العنصر المراد حذفه");
+            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول الجانبي");
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();
         }

@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Schedule.findAll", query = "SELECT s FROM Schedule s")
+    , @NamedQuery(name = "Schedule.findByClassDesc", query = "SELECT c FROM Schedule c WHERE c.cId.classDesc = :classDesc order by c.lecId")
     , @NamedQuery(name = "Schedule.findByScheduleId", query = "SELECT s FROM Schedule s WHERE s.scheduleId = :scheduleId")})
 public class Schedule implements Serializable {
 
@@ -50,7 +51,7 @@ public class Schedule implements Serializable {
     @JoinColumn(name = "C_ID", referencedColumnName = "C_ID")
     @ManyToOne(optional = false)
     private Classes cId;
- 
+
     public Schedule() {
     }
 
@@ -122,5 +123,5 @@ public class Schedule implements Serializable {
     public void setSuId(String suId) {
         this.suId = suId;
     }
-    
+
 }

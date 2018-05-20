@@ -88,8 +88,6 @@ public class EditStudDetailController implements Initializable {
     @FXML
     private TableColumn<Contacts, String> NumColumn;
 
-//    private Student stud;
-//    private Persons pers;
     private ClassStudents classStud;
     private List<Classes> css;
 
@@ -100,6 +98,8 @@ public class EditStudDetailController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
