@@ -13,7 +13,10 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -35,6 +38,10 @@ import org.hibernate.annotations.LazyCollectionOption;
     , @NamedQuery(name = "Classes.findByCId", query = "SELECT c FROM Classes c WHERE c.cId = :cId")
     , @NamedQuery(name = "Classes.findByClassDesc", query = "SELECT c FROM Classes c WHERE c.classDesc = :classDesc")})
 public class Classes implements Serializable {
+
+    @JoinColumn(name = "SY_ID", referencedColumnName = "SY_ID")
+    @ManyToOne(fetch = FetchType.EAGER)
+    private StudyYears syId;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -135,6 +142,14 @@ public class Classes implements Serializable {
     @Override
     public String toString() {
         return "Entity.Classes[ cId=" + cId + " ]";
+    }
+
+    public StudyYears getSyId() {
+        return syId;
+    }
+
+    public void setSyId(StudyYears syId) {
+        this.syId = syId;
     }
     
 }

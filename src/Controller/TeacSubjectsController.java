@@ -5,14 +5,11 @@
  */
 package Controller;
 
-import Entity.Classes;
 import Entity.StudyYears;
 import Entity.Subjects;
-import amgad.h.StudentAffair;
 import amgad.h.TeachingStaff;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;

@@ -8,6 +8,7 @@ package Controller;
 import Entity.Classes;
 import Entity.LectureDatetime;
 import Entity.Schedule;
+import Entity.Teacher;
 import amgad.h.TeachingStaff;
 import java.net.URL;
 import java.util.ArrayList;
@@ -100,10 +101,83 @@ public class ScheduleController implements Initializable {
     @FXML
     private ComboBox comboClass;
 
+    @FXML
+    private ComboBox TSun1;
+    @FXML
+    private ComboBox TSun2;
+    @FXML
+    private ComboBox TSun3;
+    @FXML
+    private ComboBox TSun4;
+    @FXML
+    private ComboBox TSun5;
+    @FXML
+    private ComboBox TSun6;
+    @FXML
+    private ComboBox TSun7;
+    @FXML
+    private ComboBox TMon1;
+    @FXML
+    private ComboBox TMon2;
+    @FXML
+    private ComboBox TMon3;
+    @FXML
+    private ComboBox TMon4;
+    @FXML
+    private ComboBox TMon5;
+    @FXML
+    private ComboBox TMon6;
+    @FXML
+    private ComboBox TMon7;
+    @FXML
+    private ComboBox TTue1;
+    @FXML
+    private ComboBox TTue2;
+    @FXML
+    private ComboBox TTue3;
+    @FXML
+    private ComboBox TTue4;
+    @FXML
+    private ComboBox TTue5;
+    @FXML
+    private ComboBox TTue6;
+    @FXML
+    private ComboBox TTue7;
+    @FXML
+    private ComboBox TWed1;
+    @FXML
+    private ComboBox TWed2;
+    @FXML
+    private ComboBox TWed3;
+    @FXML
+    private ComboBox TWed4;
+    @FXML
+    private ComboBox TWed5;
+    @FXML
+    private ComboBox TWed6;
+    @FXML
+    private ComboBox TWed7;
+    @FXML
+    private ComboBox TThu1;
+    @FXML
+    private ComboBox TThu2;
+    @FXML
+    private ComboBox TThu3;
+    @FXML
+    private ComboBox TThu4;
+    @FXML
+    private ComboBox TThu5;
+    @FXML
+    private ComboBox TThu6;
+    @FXML
+    private ComboBox TThu7;
+
     TeachingStaff MA;
     Schedule sc;
     Classes c;
     List<LectureDatetime> lecList;
+
+    int tempcheck = 0;
 
     /**
      * Initializes the controller class.
@@ -119,6 +193,82 @@ public class ScheduleController implements Initializable {
 
         comboClass.valueProperty().addListener((ov, oldValue, newValue) -> {
             List<Schedule> s = MA.getSchedulebyClassDesc(newValue.toString());
+            List<String> Ts = MA.getClassTeachers(newValue.toString());
+            if (Ts.size() > 0 && s.isEmpty()) {
+                tempcheck = 1;
+                TSun1.getItems().setAll(Ts);
+                TSun2.getItems().setAll(Ts);
+                TSun3.getItems().setAll(Ts);
+                TSun4.getItems().setAll(Ts);
+                TSun5.getItems().setAll(Ts);
+                TSun6.getItems().setAll(Ts);
+                TSun7.getItems().setAll(Ts);
+                TMon1.getItems().setAll(Ts);
+                TMon2.getItems().setAll(Ts);
+                TMon3.getItems().setAll(Ts);
+                TMon4.getItems().setAll(Ts);
+                TMon5.getItems().setAll(Ts);
+                TMon6.getItems().setAll(Ts);
+                TMon7.getItems().setAll(Ts);
+                TTue1.getItems().setAll(Ts);
+                TTue2.getItems().setAll(Ts);
+                TTue3.getItems().setAll(Ts);
+                TTue4.getItems().setAll(Ts);
+                TTue5.getItems().setAll(Ts);
+                TTue6.getItems().setAll(Ts);
+                TTue7.getItems().setAll(Ts);
+                TWed1.getItems().setAll(Ts);
+                TWed2.getItems().setAll(Ts);
+                TWed3.getItems().setAll(Ts);
+                TWed4.getItems().setAll(Ts);
+                TWed5.getItems().setAll(Ts);
+                TWed6.getItems().setAll(Ts);
+                TWed7.getItems().setAll(Ts);
+                TThu1.getItems().setAll(Ts);
+                TThu2.getItems().setAll(Ts);
+                TThu3.getItems().setAll(Ts);
+                TThu4.getItems().setAll(Ts);
+                TThu5.getItems().setAll(Ts);
+                TThu6.getItems().setAll(Ts);
+                TThu7.getItems().setAll(Ts);
+            } else if (tempcheck == 1) {
+                TSun1.getItems().clear();
+                TSun2.getItems().clear();
+                TSun3.getItems().clear();
+                TSun4.getItems().clear();
+                TSun5.getItems().clear();
+                TSun6.getItems().clear();
+                TSun7.getItems().clear();
+                TMon1.getItems().clear();
+                TMon2.getItems().clear();
+                TMon3.getItems().clear();
+                TMon4.getItems().clear();
+                TMon5.getItems().clear();
+                TMon6.getItems().clear();
+                TMon7.getItems().clear();
+                TTue1.getItems().clear();
+                TTue2.getItems().clear();
+                TTue3.getItems().clear();
+                TTue4.getItems().clear();
+                TTue5.getItems().clear();
+                TTue6.getItems().clear();
+                TTue7.getItems().clear();
+                TWed1.getItems().clear();
+                TWed2.getItems().clear();
+                TWed3.getItems().clear();
+                TWed4.getItems().clear();
+                TWed5.getItems().clear();
+                TWed6.getItems().clear();
+                TWed7.getItems().clear();
+                TThu1.getItems().clear();
+                TThu2.getItems().clear();
+                TThu3.getItems().clear();
+                TThu4.getItems().clear();
+                TThu5.getItems().clear();
+                TThu6.getItems().clear();
+                TThu7.getItems().clear();
+            }
+
             if (s.size() < 1) {
                 Sun1.setText("");
                 Sun2.setText("");
@@ -191,6 +341,42 @@ public class ScheduleController implements Initializable {
                 Thu5.setText(s.get(32).getSuId());
                 Thu6.setText(s.get(33).getSuId());
                 Thu7.setText(s.get(34).getSuId());
+
+                TSun1.setValue(MA.getTeacherNameByID(s.get(0).getTId().getTId()));
+                TSun2.setValue(MA.getTeacherNameByID(s.get(1).getTId().getTId()));
+                TSun3.setValue(MA.getTeacherNameByID(s.get(2).getTId().getTId()));
+                TSun4.setValue(MA.getTeacherNameByID(s.get(3).getTId().getTId()));
+                TSun5.setValue(MA.getTeacherNameByID(s.get(4).getTId().getTId()));
+                TSun6.setValue(MA.getTeacherNameByID(s.get(5).getTId().getTId()));
+                TSun7.setValue(MA.getTeacherNameByID(s.get(6).getTId().getTId()));
+                TMon1.setValue(MA.getTeacherNameByID(s.get(7).getTId().getTId()));
+                TMon2.setValue(MA.getTeacherNameByID(s.get(8).getTId().getTId()));
+                TMon3.setValue(MA.getTeacherNameByID(s.get(9).getTId().getTId()));
+                TMon4.setValue(MA.getTeacherNameByID(s.get(10).getTId().getTId()));
+                TMon5.setValue(MA.getTeacherNameByID(s.get(11).getTId().getTId()));
+                TMon6.setValue(MA.getTeacherNameByID(s.get(12).getTId().getTId()));
+                TMon7.setValue(MA.getTeacherNameByID(s.get(13).getTId().getTId()));
+                TTue1.setValue(MA.getTeacherNameByID(s.get(14).getTId().getTId()));
+                TTue2.setValue(MA.getTeacherNameByID(s.get(15).getTId().getTId()));
+                TTue3.setValue(MA.getTeacherNameByID(s.get(16).getTId().getTId()));
+                TTue4.setValue(MA.getTeacherNameByID(s.get(17).getTId().getTId()));
+                TTue5.setValue(MA.getTeacherNameByID(s.get(18).getTId().getTId()));
+                TTue6.setValue(MA.getTeacherNameByID(s.get(19).getTId().getTId()));
+                TTue7.setValue(MA.getTeacherNameByID(s.get(20).getTId().getTId()));
+                TWed1.setValue(MA.getTeacherNameByID(s.get(21).getTId().getTId()));
+                TWed2.setValue(MA.getTeacherNameByID(s.get(22).getTId().getTId()));
+                TWed3.setValue(MA.getTeacherNameByID(s.get(23).getTId().getTId()));
+                TWed4.setValue(MA.getTeacherNameByID(s.get(24).getTId().getTId()));
+                TWed5.setValue(MA.getTeacherNameByID(s.get(25).getTId().getTId()));
+                TWed6.setValue(MA.getTeacherNameByID(s.get(26).getTId().getTId()));
+                TWed7.setValue(MA.getTeacherNameByID(s.get(27).getTId().getTId()));
+                TThu1.setValue(MA.getTeacherNameByID(s.get(28).getTId().getTId()));
+                TThu2.setValue(MA.getTeacherNameByID(s.get(29).getTId().getTId()));
+                TThu3.setValue(MA.getTeacherNameByID(s.get(30).getTId().getTId()));
+                TThu4.setValue(MA.getTeacherNameByID(s.get(31).getTId().getTId()));
+                TThu5.setValue(MA.getTeacherNameByID(s.get(32).getTId().getTId()));
+                TThu6.setValue(MA.getTeacherNameByID(s.get(33).getTId().getTId()));
+                TThu7.setValue(MA.getTeacherNameByID(s.get(34).getTId().getTId()));
             }
         });
 
@@ -204,89 +390,126 @@ public class ScheduleController implements Initializable {
         return StudY;
     }
 
-    public void createNew(String s, LectureDatetime ldt) {
+    public void createNew(String s, LectureDatetime ldt, Teacher tId) {
         sc.setCId(c);
         sc.setLecId(ldt);
         sc.setSuId(s);
+        sc.setTId(tId);
         MA.PersistNewSchedule(sc);
     }
 
     @FXML
     public void Save() {
+        // n check 3ala kol 7aga :(
         if (!comboClass.getValue().equals("")) {
             sc = new Schedule();
             c = MA.getClassesByDesc(comboClass.getValue().toString());
             lecList = MA.getLectures();
 
-            createNew(Sun1.getText(), lecList.get(0));
+            createNew(Sun1.getText(), lecList.get(0),
+                    MA.getTeacherByName(TSun1.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Sun2.getText(), lecList.get(1));
+            createNew(Sun2.getText(), lecList.get(1),
+                    MA.getTeacherByName(TSun2.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Sun3.getText(), lecList.get(2));
+            createNew(Sun3.getText(), lecList.get(2),
+                    MA.getTeacherByName(TSun3.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Sun4.getText(), lecList.get(3));
+            createNew(Sun4.getText(), lecList.get(3),
+                    MA.getTeacherByName(TSun4.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Sun5.getText(), lecList.get(4));
+            createNew(Sun5.getText(), lecList.get(4),
+                    MA.getTeacherByName(TSun5.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Sun6.getText(), lecList.get(5));
+            createNew(Sun6.getText(), lecList.get(5),
+                    MA.getTeacherByName(TSun6.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Sun7.getText(), lecList.get(6));
+            createNew(Sun7.getText(), lecList.get(6),
+                    MA.getTeacherByName(TSun7.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Mon1.getText(), lecList.get(7));
+            createNew(Mon1.getText(), lecList.get(7),
+                    MA.getTeacherByName(TMon1.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Mon2.getText(), lecList.get(8));
+            createNew(Mon2.getText(), lecList.get(8),
+                    MA.getTeacherByName(TMon2.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Mon3.getText(), lecList.get(9));
+            createNew(Mon3.getText(), lecList.get(9),
+                    MA.getTeacherByName(TMon3.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Mon4.getText(), lecList.get(10));
+            createNew(Mon4.getText(), lecList.get(10),
+                    MA.getTeacherByName(TMon4.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Mon5.getText(), lecList.get(11));
+            createNew(Mon5.getText(), lecList.get(11),
+                    MA.getTeacherByName(TMon5.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Mon6.getText(), lecList.get(12));
+            createNew(Mon6.getText(), lecList.get(12),
+                    MA.getTeacherByName(TMon6.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Mon7.getText(), lecList.get(13));
+            createNew(Mon7.getText(), lecList.get(13),
+                    MA.getTeacherByName(TMon7.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Tue1.getText(), lecList.get(14));
+            createNew(Tue1.getText(), lecList.get(14),
+                    MA.getTeacherByName(TTue1.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Tue2.getText(), lecList.get(15));
+            createNew(Tue2.getText(), lecList.get(15),
+                    MA.getTeacherByName(TTue2.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Tue3.getText(), lecList.get(16));
+            createNew(Tue3.getText(), lecList.get(16),
+                    MA.getTeacherByName(TTue3.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Tue4.getText(), lecList.get(17));
+            createNew(Tue4.getText(), lecList.get(17),
+                    MA.getTeacherByName(TTue4.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Tue5.getText(), lecList.get(18));
+            createNew(Tue5.getText(), lecList.get(18),
+                    MA.getTeacherByName(TTue5.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Tue6.getText(), lecList.get(19));
+            createNew(Tue6.getText(), lecList.get(19),
+                    MA.getTeacherByName(TTue6.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Tue7.getText(), lecList.get(20));
+            createNew(Tue7.getText(), lecList.get(20),
+                    MA.getTeacherByName(TTue7.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Wed1.getText(), lecList.get(21));
+            createNew(Wed1.getText(), lecList.get(21),
+                    MA.getTeacherByName(TWed1.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Wed2.getText(), lecList.get(22));
+            createNew(Wed2.getText(), lecList.get(22),
+                    MA.getTeacherByName(TWed2.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Wed3.getText(), lecList.get(23));
+            createNew(Wed3.getText(), lecList.get(23),
+                    MA.getTeacherByName(TWed3.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Wed4.getText(), lecList.get(24));
+            createNew(Wed4.getText(), lecList.get(24),
+                    MA.getTeacherByName(TWed4.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Wed5.getText(), lecList.get(25));
+            createNew(Wed5.getText(), lecList.get(25),
+                    MA.getTeacherByName(TWed5.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Wed6.getText(), lecList.get(26));
+            createNew(Wed6.getText(), lecList.get(26),
+                    MA.getTeacherByName(TWed6.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Wed7.getText(), lecList.get(27));
+            createNew(Wed7.getText(), lecList.get(27),
+                    MA.getTeacherByName(TWed7.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Thu1.getText(), lecList.get(28));
+            createNew(Thu1.getText(), lecList.get(28),
+                    MA.getTeacherByName(TThu1.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Thu2.getText(), lecList.get(29));
+            createNew(Thu2.getText(), lecList.get(29),
+                    MA.getTeacherByName(TThu2.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Thu3.getText(), lecList.get(30));
+            createNew(Thu3.getText(), lecList.get(30),
+                    MA.getTeacherByName(TThu3.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Thu4.getText(), lecList.get(31));
+            createNew(Thu4.getText(), lecList.get(31),
+                    MA.getTeacherByName(TThu4.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Thu5.getText(), lecList.get(32));
+            createNew(Thu5.getText(), lecList.get(32),
+                    MA.getTeacherByName(TThu5.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Thu6.getText(), lecList.get(33));
+            createNew(Thu6.getText(), lecList.get(33),
+                    MA.getTeacherByName(TThu6.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
             sc = new Schedule();
-            createNew(Thu7.getText(), lecList.get(34));
+            createNew(Thu7.getText(), lecList.get(34),
+                    MA.getTeacherByName(TThu7.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
 
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

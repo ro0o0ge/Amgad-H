@@ -10,6 +10,7 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -30,6 +31,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "StudyYears.findBySyId", query = "SELECT s FROM StudyYears s WHERE s.syId = :syId")
     , @NamedQuery(name = "StudyYears.findBySyDesc", query = "SELECT s FROM StudyYears s WHERE s.syDesc = :syDesc")})
 public class StudyYears implements Serializable {
+
+    @OneToMany(mappedBy = "syId", fetch = FetchType.EAGER)
+    private List<Classes> classesList;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -102,6 +106,15 @@ public class StudyYears implements Serializable {
     @Override
     public String toString() {
         return "Entity.StudyYears[ syId=" + syId + " ]";
+    }
+
+    @XmlTransient
+    public List<Classes> getClassesList() {
+        return classesList;
+    }
+
+    public void setClassesList(List<Classes> classesList) {
+        this.classesList = classesList;
     }
     
 }

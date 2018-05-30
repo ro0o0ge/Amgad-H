@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -365,6 +366,25 @@ public class TeachingStaff {
         return sy;
     }
 
+    public String getTeacherNameByID(int id) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Teacher.findByTId").setParameter("tId", id);
+        List<Teacher> sy = query.list();
+        s.close();
+        return sy.get(0).getPId().getName();
+    }
+    
+    public Teacher getTeacherByName(String Name,String Desc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Teacher.findByName").setParameter("name", Name)
+                .setParameter("classDesc", Desc);
+        List<Teacher> sy = query.list();
+        s.close();
+        return sy.get(0);
+    }
+
     public List<Teacher> getActiveTeachers() {
         s = sf.openSession();
         s.beginTransaction();
@@ -372,6 +392,19 @@ public class TeachingStaff {
         List<Teacher> sy = query.list();
         s.close();
         return sy;
+    }
+
+    public List<String> getClassTeachers(String Desc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Teacher.findByClassDesc").setParameter("classDesc", Desc);
+        List<Teacher> sy = query.list();
+        List<String> StudY = new ArrayList<String>();
+        for (Iterator<Teacher> iterator = sy.iterator(); iterator.hasNext();) {
+            StudY.add(iterator.next().getPId().getName());
+        }
+        s.close();
+        return StudY;
     }
 
     public void editTeacher() {

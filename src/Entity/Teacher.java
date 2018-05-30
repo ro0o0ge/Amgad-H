@@ -39,7 +39,12 @@ import org.hibernate.annotations.LazyCollectionOption;
 @NamedQueries({
     @NamedQuery(name = "Teacher.findAll", query = "SELECT t FROM Teacher t")
     , @NamedQuery(name = "Teacher.findByTId", query = "SELECT t FROM Teacher t WHERE t.tId = :tId")
+    , @NamedQuery(name = "Teacher.findByClassDesc",
+            query = "SELECT t FROM Teacher t LEFT JOIN "
+            + "t.teacherSubjectsList tsl JOIN tsl.suId.syId.classesList cl where cl.classDesc = :classDesc")
     , @NamedQuery(name = "Teacher.findByMonthlySalary", query = "SELECT t FROM Teacher t WHERE t.monthlySalary = :monthlySalary")
+    , @NamedQuery(name = "Teacher.findByName", query = "SELECT t FROM Teacher t LEFT JOIN "
+            + "t.teacherSubjectsList tsl JOIN tsl.suId.syId.classesList cl where cl.classDesc = :classDesc and t.pId.name = :name")
     , @NamedQuery(name = "Teacher.findByStatus", query = "SELECT t FROM Teacher t WHERE t.status = :status")})
 public class Teacher implements Serializable {
 
