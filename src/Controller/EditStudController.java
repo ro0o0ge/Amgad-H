@@ -27,7 +27,6 @@ import javafx.scene.control.TextField;
  */
 public class EditStudController implements Initializable {
 
-    
     @FXML
     private TextField SearchQuery;
     @FXML
@@ -44,6 +43,7 @@ public class EditStudController implements Initializable {
     private TableColumn<Student, String> AdmissionDateColumn;
     @FXML
     private TableColumn<Student, String> DOBColumn;
+
     /**
      * Initializes the controller class.
      *
@@ -59,7 +59,7 @@ public class EditStudController implements Initializable {
         if (!StudentsTable.getItems().isEmpty()) {
             StudentsTable.getItems().clear();
         }
-        
+
         StudentsTable.setItems(StudentAffair.getPersonsList());
 
         NameColumn.setCellValueFactory(cellData -> cellData.getValue().getPId().NameProperty());
@@ -77,8 +77,6 @@ public class EditStudController implements Initializable {
     }
 
     StudentAffair SA;
-
-    
 
     @FXML
     public void Search() {
@@ -153,8 +151,8 @@ public class EditStudController implements Initializable {
     public void handleView() {
         int selectedIndex = StudentsTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-//            edit = StudentsTable.getItems().get(selectedIndex);
-
+            StudentAffair.setEdit(StudentsTable.getItems().get(selectedIndex));
+            SA.ViewStudent();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");

@@ -71,6 +71,7 @@ public class Student implements Serializable {
     @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
     @OneToOne(fetch = FetchType.EAGER)
     private Persons pId;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "sId")
     private List<StudentAttendance> studentAttendanceList;
     @OneToMany(mappedBy = "sId")

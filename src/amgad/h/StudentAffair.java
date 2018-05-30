@@ -53,7 +53,7 @@ public class StudentAffair {
     SessionFactory sf = HibernateUtil.getSessionFactory();
     Session s;
 
-    static Student edit;//STUDENT TO BE EDITED
+    static Student edit;//STUDENT TO BE EDITED & TO BE VIEWED
 
     ObservableList<Contacts> ContactsList = FXCollections.observableArrayList();
 
@@ -513,4 +513,26 @@ public class StudentAffair {
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
+    
+    public void ViewStudent() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/ViewStud.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("عرض الطالب");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

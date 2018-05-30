@@ -6,7 +6,6 @@
 package Controller;
 
 import Entity.Student;
-import Entity.StudentAttendance;
 import amgad.h.StudentAffair;
 import java.net.URL;
 import java.sql.Date;
@@ -17,7 +16,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;

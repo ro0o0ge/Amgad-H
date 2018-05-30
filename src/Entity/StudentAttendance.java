@@ -7,6 +7,8 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -81,6 +83,10 @@ public class StudentAttendance implements Serializable {
     public Date getAbsentDay() {
         return absentDay;
     }
+    
+    public StringProperty DateProperty() {
+        return new SimpleStringProperty(absentDay.toString());
+    }
 
     public void setAbsentDay(Date absentDay) {
         this.absentDay = absentDay;
@@ -88,6 +94,10 @@ public class StudentAttendance implements Serializable {
 
     public String getAbDesc() {
         return abDesc;
+    }
+    
+    public StringProperty DescProperty() {
+        return new SimpleStringProperty(abDesc);
     }
 
     public void setAbDesc(String abDesc) {

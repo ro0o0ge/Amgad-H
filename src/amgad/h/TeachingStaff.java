@@ -122,7 +122,7 @@ public class TeachingStaff {
     }
 
     static ObservableList<Teacher> PersonsList = FXCollections.observableArrayList();
-    
+
     public static ObservableList<Teacher> getPersonsList() {
         return PersonsList;
     }
@@ -136,7 +136,7 @@ public class TeachingStaff {
         s.close();
         return sy;
     }
-    
+
     public List<StudyYears> getStudyYears() {
         s = sf.openSession();
         s.beginTransaction();
@@ -537,11 +537,14 @@ public class TeachingStaff {
 
     public void PersistNewSchedule(Schedule sc) {
         try {
-            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Deleted All Records of ";
             s = sf.openSession();
             Transaction t = s.beginTransaction();
+            Query query = s.getNamedQuery("Schedule.DeleteByClassId").setParameter("cId", sc.getCId());
+            log += " -- Schedule with Class ID " + sc.getCId();
+            query.executeUpdate();
             s.persist(sc);
-            log += " -- new Schedule with id " + sc.getScheduleId();
+            log += " -- Created -- new Schedule with id " + sc.getScheduleId();
 
             ul = new UserLog();
             ul.setUId(LoginSec.getLoggedUser());

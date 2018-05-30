@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Schedule.findAll", query = "SELECT s FROM Schedule s")
     , @NamedQuery(name = "Schedule.findByClassDesc", query = "SELECT c FROM Schedule c WHERE c.cId.classDesc = :classDesc order by c.lecId")
+    , @NamedQuery(name = "Schedule.DeleteByClassId", query = "DELETE FROM Schedule s WHERE s.cId = :cId")
     , @NamedQuery(name = "Schedule.findByScheduleId", query = "SELECT s FROM Schedule s WHERE s.scheduleId = :scheduleId")})
 public class Schedule implements Serializable {
 

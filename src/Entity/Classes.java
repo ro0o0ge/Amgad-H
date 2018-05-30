@@ -20,6 +20,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -42,6 +44,7 @@ public class Classes implements Serializable {
     @Basic(optional = false)
     @Column(name = "CLASS_DESC")
     private String classDesc;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "cId")
     private List<Schedule> scheduleList;
     @OneToMany(mappedBy = "cId")

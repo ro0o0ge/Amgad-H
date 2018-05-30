@@ -160,7 +160,7 @@
                                 <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="إغلاق" />
                             </children>
                         </HBox>
-                        <Label layoutX="77.0" layoutY="61.0" text="جهات الاتصال">
+                        <Label layoutX="112.0" layoutY="61.0" text="جهات الاتصال">
                             <font>
                                 <Font size="18.0" />
                             </font>
