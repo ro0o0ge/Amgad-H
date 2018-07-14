@@ -6,7 +6,6 @@
 package Entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -14,7 +13,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -63,6 +61,7 @@ public class Teacher implements Serializable {
     @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
     @ManyToOne
     private Persons pId;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tId")
     private List<Schedule> scheduleList;
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -70,6 +69,7 @@ public class Teacher implements Serializable {
     private List<TeacherSubjects> teacherSubjectsList;
     @OneToMany(mappedBy = "tId")
     private List<Payroll> payrollList;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "tId")
     private List<EmployeeAttendance> employeeAttendanceList;
 

@@ -15,8 +15,11 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label layoutX="356.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="اسم الموظف" />
-                  <Label layoutX="275.0" layoutY="26.0" text="Label" />
+                  <Label layoutX="558.0" layoutY="26.0" prefHeight="17.0" prefWidth="55.0" text="اسم الموظف" />
+                  <Label fx:id="name" layoutX="461.0" layoutY="26.0" text="Label" />
+                  <Label fx:id="salaryLabel" layoutX="305.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="المرتب" />
+                  <Label fx:id="salary" layoutX="209.0" layoutY="26.0" text="غير مسجل" />
+                  <Button fx:id="saveAbscence" layoutX="30.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleEdit" text="تعديل الغياب" visible="false" />
                </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -55,9 +58,9 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="6" />
-                                          <Label text="Label" GridPane.rowIndex="8" />
-                                          <Label text="Label" GridPane.rowIndex="7" />
+                                          <Label fx:id="nationalId" text="Label" GridPane.rowIndex="6" />
+                                          <Label fx:id="Status" text="Label" GridPane.rowIndex="8" />
+                                          <Label fx:id="SingInDate" text="Label" GridPane.rowIndex="7" />
                                           <Label text="الحالة الوظيفية" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -73,12 +76,12 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="5" />
-                                          <Label text="Label" GridPane.rowIndex="4" />
-                                          <Label text="Label" GridPane.rowIndex="3" />
-                                          <Label text="Label" GridPane.rowIndex="2" />
-                                          <Label text="Label" GridPane.rowIndex="1" />
-                                          <Label text="Label" />
+                                          <Label fx:id="address" text="Label" GridPane.rowIndex="5" />
+                                          <Label fx:id="dob" text="Label" GridPane.rowIndex="4" />
+                                          <Label fx:id="religion" text="Label" GridPane.rowIndex="3" />
+                                          <Label fx:id="nationality" text="Label" GridPane.rowIndex="2" />
+                                          <Label fx:id="type" text="Label" GridPane.rowIndex="1" />
+                                          <Label fx:id="socialStatus" text="Label" />
                                           <Label text="العنوان" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -104,10 +107,10 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="9" />
+                                          <Label fx:id="Qual" text="Label" GridPane.rowIndex="9" />
                                        </children>
                                     </GridPane>
-                                    <TableView fx:id="ContactsTable" editable="true" layoutX="237.0" layoutY="39.0" prefHeight="172.0" prefWidth="254.0">
+                                    <TableView fx:id="ContactsTable" layoutX="237.0" layoutY="39.0" prefHeight="172.0" prefWidth="254.0">
                                        <columns>
                                           <TableColumn fx:id="NumColumn" prefWidth="114.0" text="الرقم" />
                                           <TableColumn fx:id="NameColumn" prefWidth="135.0" text="الاسم" />
@@ -118,12 +121,12 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TableView layoutX="536.0" layoutY="39.0" prefHeight="200.0" prefWidth="146.0">
+                                    <TableView layoutX="536.0" layoutY="39.0" opacity="0.0" prefHeight="200.0" prefWidth="146.0">
                                       <columns>
                                         <TableColumn prefWidth="162.0" text="اسماء الفصول" />
                                       </columns>
                                     </TableView>
-                                    <Label layoutX="592.0" layoutY="12.0" text="الفصول">
+                                    <Label layoutX="592.0" layoutY="12.0" opacity="0.0" text="الفصول">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -132,23 +135,24 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab text="الغياب">
+                        <Tab fx:id="abscense" text="الغياب">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView layoutX="168.0" layoutY="36.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="295.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <TableView fx:id="AttTable" editable="true" layoutX="168.0" layoutY="36.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="295.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
-                                        <TableColumn prefWidth="112.0" text="تاريخ الغياب" />
-                                        <TableColumn prefWidth="143.0" text="نوع الغياب" />
-                                          <TableColumn prefWidth="166.0" text="مدة الغياب" />
-                                          <TableColumn prefWidth="284.0" text="ملاحظات الغياب" />
+                                        <TableColumn fx:id="DateColumn" editable="false" prefWidth="125.0" text="تاريخ الغياب" />
+                                        <TableColumn fx:id="TypeColumn" editable="false" prefWidth="93.0" text="نوع الغياب" />
+                                          <TableColumn fx:id="DurationColumn" editable="false" prefWidth="110.0" text="مدة الغياب" />
+                                          <TableColumn fx:id="AttNoteColumn" editable="false" minWidth="0.0" prefWidth="285.0" text="ملاحظات الغياب" />
+                                          <TableColumn fx:id="StatusColumn" editable="false" prefWidth="94.0" sortable="false" text="حالة الغياب" />
                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="المرتبات والخصومات">
+                        <Tab fx:id="payroll" disable="true" text="المرتبات والخصومات">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                            </content>

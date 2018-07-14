@@ -63,6 +63,7 @@ public class Staff implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "stId")
     private List<StaffClasses> staffClassesList;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "stId")
     private List<EmployeeAttendance> employeeAttendanceList;
 

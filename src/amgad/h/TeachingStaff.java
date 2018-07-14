@@ -56,6 +56,8 @@ public class TeachingStaff {
     private List<TeacherSubjects> tss = new ArrayList<>();
     static Teacher edit;//Teacher TO BE EDITED
 
+    static EmployeeAttendance editStatus;
+
     EmployeeAttendance EA;
 
     SessionFactory sf = HibernateUtil.getSessionFactory();
@@ -120,6 +122,14 @@ public class TeachingStaff {
 
     public static void setEdit(Teacher edit) {
         TeachingStaff.edit = edit;
+    }
+
+    public static EmployeeAttendance getEditStatus() {
+        return editStatus;
+    }
+
+    public static void setEditStatus(EmployeeAttendance editStatus) {
+        TeachingStaff.editStatus = editStatus;
     }
 
     static ObservableList<Teacher> PersonsList = FXCollections.observableArrayList();
@@ -374,8 +384,8 @@ public class TeachingStaff {
         s.close();
         return sy.get(0).getPId().getName();
     }
-    
-    public Teacher getTeacherByName(String Name,String Desc) {
+
+    public Teacher getTeacherByName(String Name, String Desc) {
         s = sf.openSession();
         s.beginTransaction();
         Query query = s.getNamedQuery("Teacher.findByName").setParameter("name", Name)
@@ -651,4 +661,62 @@ public class TeachingStaff {
         }
     }
 
+    public void ViewTeacher() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/ViewTeacher.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("عرض المدرس");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void UpdateAbscenceStatus(EmployeeAttendance ea) {
+        try {
+            
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(ea);
+            log += " -- Emp Attendece with id " + ea.getEaId();
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
+
+    public void ViewEditAbscentStatus() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/EditTeacAbscentStatus.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("تعديل حالة الغياب");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -41,9 +41,9 @@ public class EditEmpController implements Initializable {
     private TableColumn<Staff, String> SocialStatusColumn;
     @FXML
     private TableColumn<Staff, String> StatusColumn;
-    
+
     Management TS;
-    
+
     /**
      * Initializes the controller class.
      */
@@ -65,7 +65,7 @@ public class EditEmpController implements Initializable {
 
         TS = new Management();
     }
-    
+
     @FXML
     public void Search() {
         if (!SearchQuery.getText().equals("")) {
@@ -110,8 +110,8 @@ public class EditEmpController implements Initializable {
     public void handleEdit() {
         int selectedIndex = TeachersTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-                Management.setEdit(TeachersTable.getItems().get(selectedIndex));
-                TS.editTeacherDetail();
+            Management.setEdit(TeachersTable.getItems().get(selectedIndex));
+            TS.editTeacherDetail();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");
@@ -126,7 +126,8 @@ public class EditEmpController implements Initializable {
     public void handleView() {
         int selectedIndex = TeachersTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-//            edit = StudentsTable.getItems().get(selectedIndex);
+            Management.setEdit(TeachersTable.getItems().get(selectedIndex));
+            TS.ViewTeacher();
 
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -137,6 +138,5 @@ public class EditEmpController implements Initializable {
             alert.showAndWait();
         }
     }
-
 
 }

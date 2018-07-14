@@ -7,6 +7,10 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -101,12 +105,20 @@ public class EmployeeAttendance implements Serializable {
         return eaDate;
     }
 
+    public StringProperty dateProperty() {
+        return new SimpleStringProperty(eaDate.toString());
+    }
+
     public void setEaDate(Date eaDate) {
         this.eaDate = eaDate;
     }
 
     public boolean getStatus() {
         return status;
+    }
+
+    public BooleanProperty statusProperty() {
+        return new SimpleBooleanProperty(status);
     }
 
     public void setStatus(boolean status) {
@@ -123,6 +135,23 @@ public class EmployeeAttendance implements Serializable {
 
     public String getAbscenceType() {
         return abscenceType;
+    }
+
+    public StringProperty typeProperty() {
+        if (abscenceType.equals("1")) {
+            return new SimpleStringProperty("تأخير");
+        } else if (abscenceType.equals("2")) {
+            return new SimpleStringProperty("استئذان");
+        } else if (abscenceType.equals("3")) {
+            return new SimpleStringProperty("عارضة");
+        } else if (abscenceType.equals("4")) {
+            return new SimpleStringProperty("مرضي");
+        } else if (abscenceType.equals("5")) {
+            return new SimpleStringProperty("سنوية");
+        } else {
+            return new SimpleStringProperty("غياب");
+        }
+
     }
 
     public void setAbscenceType(String abscenceType) {
@@ -149,6 +178,17 @@ public class EmployeeAttendance implements Serializable {
         return timeAmount;
     }
 
+    public StringProperty durationProperty() {
+        String temp = "";
+        if (timeType.equals("1")) {
+            temp += " دقائق";
+        } else {
+            temp += " أيام";
+        }
+        temp += " " + timeAmount;
+        return new SimpleStringProperty(temp);
+    }
+
     public void setTimeAmount(int timeAmount) {
         this.timeAmount = timeAmount;
     }
@@ -160,9 +200,13 @@ public class EmployeeAttendance implements Serializable {
     public void setTimeType(String timeType) {
         this.timeType = timeType;
     }
-    
+
     public String getEaDesc() {
         return eaDesc;
+    }
+
+    public StringProperty descProperty() {
+        return new SimpleStringProperty(eaDesc);
     }
 
     public void setEaDesc(String eaDesc) {
@@ -209,5 +253,5 @@ public class EmployeeAttendance implements Serializable {
     public String toString() {
         return "Entity.EmployeeAttendance[ eaId=" + eaId + " ]";
     }
-    
+
 }

@@ -156,6 +156,14 @@ public class Persons implements Serializable {
     public void setGender(String gender) {
         this.gender = gender;
     }
+    
+    public StringProperty GenderProperty() {
+        if (maritalStatus.equals("1")) {
+            return new SimpleStringProperty("ذكر");
+        } else{
+            return new SimpleStringProperty("انثى");
+        }
+    }
 
     public String getNationality() {
         return nationality;

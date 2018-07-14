@@ -127,8 +127,8 @@ public class EditTeacherController implements Initializable {
     public void handleView() {
         int selectedIndex = TeachersTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-//            edit = StudentsTable.getItems().get(selectedIndex);
-
+            TeachingStaff.setEdit(TeachersTable.getItems().get(selectedIndex));
+            TS.ViewTeacher();
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");

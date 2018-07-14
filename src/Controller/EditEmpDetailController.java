@@ -198,7 +198,6 @@ public class EditEmpDetailController implements Initializable {
         if (LoginSec.getLoggedUser().getPermission().equals("2")) {
             salary.setVisible(true);
             tSalary.setText(String.valueOf(current.getMonthlySalary()));
-            System.out.println("Salary " + current.getMonthlySalary());
         }
     }
 

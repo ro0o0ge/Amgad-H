@@ -15,8 +15,11 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label layoutX="356.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="اسم المدرس" />
-                  <Label layoutX="275.0" layoutY="26.0" text="Label" />
+                  <Label layoutX="579.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="اسم المدرس" />
+                  <Label fx:id="name" layoutX="483.0" layoutY="26.0" text="Label" />
+                  <Label fx:id="salary" layoutX="209.0" layoutY="26.0" text="غير مسجل" />
+                  <Label fx:id="salaryLabel" layoutX="305.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="المرتب" />
+                  <Button fx:id="saveAbscence" layoutX="42.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleEdit" text="تعديل الغياب" visible="false" />
                </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -55,9 +58,9 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="6" />
-                                          <Label text="Label" GridPane.rowIndex="8" />
-                                          <Label text="Label" GridPane.rowIndex="7" />
+                                          <Label fx:id="nationalId" text="Label" GridPane.rowIndex="6" />
+                                          <Label fx:id="Status" text="Label" GridPane.rowIndex="8" />
+                                          <Label fx:id="SingInDate" text="غير موجود" GridPane.rowIndex="7" />
                                           <Label text="الحالة الوظيفية" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -73,12 +76,12 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="5" />
-                                          <Label text="Label" GridPane.rowIndex="4" />
-                                          <Label text="Label" GridPane.rowIndex="3" />
-                                          <Label text="Label" GridPane.rowIndex="2" />
-                                          <Label text="Label" GridPane.rowIndex="1" />
-                                          <Label text="Label" />
+                                          <Label fx:id="address" text="Label" GridPane.rowIndex="5" />
+                                          <Label fx:id="dob" text="Label" GridPane.rowIndex="4" />
+                                          <Label fx:id="religion" text="Label" GridPane.rowIndex="3" />
+                                          <Label fx:id="nationality" text="Label" GridPane.rowIndex="2" />
+                                          <Label fx:id="type" text="Label" GridPane.rowIndex="1" />
+                                          <Label fx:id="socialStatus" text="Label" />
                                           <Label text="العنوان" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -104,7 +107,7 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="9" />
+                                          <Label fx:id="Qual" text="غير موجود" GridPane.rowIndex="9" />
                                        </children>
                                     </GridPane>
                                     <TableView fx:id="ContactsTable" editable="true" layoutX="237.0" layoutY="39.0" prefHeight="172.0" prefWidth="254.0">
@@ -118,12 +121,12 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <TableView layoutX="536.0" layoutY="39.0" prefHeight="200.0" prefWidth="146.0">
+                                    <TableView layoutX="536.0" layoutY="39.0" opacity="0.0" prefHeight="200.0" prefWidth="146.0">
                                       <columns>
                                         <TableColumn prefWidth="162.0" text="اسماء المواد" />
                                       </columns>
                                     </TableView>
-                                    <Label layoutX="592.0" layoutY="12.0" text="المواد">
+                                    <Label layoutX="592.0" layoutY="12.0" opacity="0.0" text="المواد">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -140,228 +143,439 @@
                                        <children>
                                           <Label text="السابعة">
                                              <GridPane.margin>
-                                                <Insets left="35.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
                                           </Label>
                                           <Label text="السادسة" GridPane.columnIndex="1">
                                              <GridPane.margin>
-                                                <Insets left="35.0" />
+                                                <Insets left="20.0" />
                                              </GridPane.margin>
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
                                           </Label>
                                           <Label text="الخامسة" GridPane.columnIndex="2">
                                              <GridPane.margin>
-                                                <Insets left="35.0" />
+                                                <Insets left="20.0" />
                                              </GridPane.margin>
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
                                           </Label>
                                           <Label text="الرابعة" GridPane.columnIndex="3">
                                              <GridPane.margin>
-                                                <Insets left="35.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
                                           </Label>
                                           <Label text="الثالثة" GridPane.columnIndex="4">
                                              <GridPane.margin>
-                                                <Insets left="35.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
                                           </Label>
                                           <Label text="الثانية" GridPane.columnIndex="5">
                                              <GridPane.margin>
-                                                <Insets left="35.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
                                           </Label>
                                           <Label text="الأولى" GridPane.columnIndex="6">
                                              <GridPane.margin>
-                                                <Insets left="35.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
                                           </Label>
-                                          <Label text="الأحد" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                                          <Label text="الاثنين" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-                                          <Label text="الثلاثاء" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                                          <Label text="الأربعاء" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-                                          <Label text="الخميس" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                                          <Line endX="100.0" rotate="-14.0" GridPane.columnIndex="7" />
+                                          <Label text="الأحد" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font></Label>
+                                          <Label text="الاثنين" GridPane.columnIndex="7" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font></Label>
+                                          <Label text="الثلاثاء" GridPane.columnIndex="7" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font></Label>
+                                          <Label text="الأربعاء" GridPane.columnIndex="7" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font></Label>
+                                          <Label text="الخميس" GridPane.columnIndex="7" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font></Label>
+                                          <Line endX="100.0" rotate="-30.0" GridPane.columnIndex="7" />
                                           <Label text="اليوم" GridPane.columnIndex="7">
                                              <GridPane.margin>
-                                                <Insets bottom="-10.0" left="70.0" />
+                                                <Insets bottom="-10.0" left="50.0" />
                                              </GridPane.margin>
                                           </Label>
                                           <Label text="الحصة" GridPane.columnIndex="7">
                                              <GridPane.margin>
-                                                <Insets bottom="10.0" left="-70.0" />
+                                                <Insets bottom="10.0" left="-50.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                                          <Label fx:id="Sun1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                                          <Label fx:id="Thu1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                                          <Label fx:id="Thu2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                                          <Label fx:id="Thu3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                          <Label fx:id="Thu4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                          <Label fx:id="Thu5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                          <Label fx:id="Thu6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="5">
+                                          <Label fx:id="Thu7" text="غير مسجل" GridPane.rowIndex="5" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                                          <Label fx:id="Wed1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                                          <Label fx:id="Wed2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                          <Label fx:id="Wed3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                          <Label fx:id="Wed4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                          <Label fx:id="Wed5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                          <Label fx:id="Wed6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="4">
+                                          <Label fx:id="Wed7" text="غير مسجل" GridPane.rowIndex="4" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                                          <Label fx:id="Tue1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                                          <Label fx:id="Tue2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                          <Label fx:id="Tue3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                          <Label fx:id="Tue4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                          <Label fx:id="Tue5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <Label fx:id="Tue6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="3">
+                                          <Label fx:id="Tue7" text="غير مسجل" GridPane.rowIndex="3" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                                          <Label fx:id="Mon1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                                          <Label fx:id="Mon2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                          <Label fx:id="Mon3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                          <Label fx:id="Mon4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                          <Label fx:id="Mon5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <Label fx:id="Mon6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="2">
+                                          <Label fx:id="Mon7" text="غير مسجل" GridPane.rowIndex="2" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.rowIndex="1">
+                                          <Label fx:id="Sun7" text="غير مسجل" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                          <Label fx:id="Sun6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                          <Label fx:id="Sun5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                          <Label fx:id="Sun3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                          <Label fx:id="Sun4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="Label" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                          <Label fx:id="Sun2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
-                                                <Insets left="30.0" />
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SThu1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SThu2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SThu3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SThu4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SThu5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SThu6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SWed1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SWed2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SWed3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SWed4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SWed6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="STue1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="STue2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="STue3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="STue4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="STue5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="STue6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SWed5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SMon1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SMon2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SMon3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SMon4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SMon5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SMon6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SSun1" text="غير مسجل" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SSun2" text="غير مسجل" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SSun3" text="غير مسجل" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SSun4" text="غير مسجل" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SSun5" text="غير مسجل" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SSun6" text="غير مسجل" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SThu7" text="غير مسجل" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SWed7" text="غير مسجل" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="STue7" text="غير مسجل" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SMon" text="غير مسجل" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label fx:id="SSun7" text="غير مسجل" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                             <GridPane.margin>
+                                                <Insets left="25.0" />
                                              </GridPane.margin>
                                           </Label>
                                        </children>
@@ -391,23 +605,24 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab text="الغياب">
+                        <Tab fx:id="abscense" text="الغياب">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <TableView layoutX="168.0" layoutY="36.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="295.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <TableView fx:id="AttTable" editable="true" layoutX="168.0" layoutY="36.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="295.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
-                                        <TableColumn prefWidth="112.0" text="تاريخ الغياب" />
-                                        <TableColumn prefWidth="143.0" text="نوع الغياب" />
-                                          <TableColumn prefWidth="166.0" text="مدة الغياب" />
-                                          <TableColumn prefWidth="284.0" text="ملاحظات الغياب" />
+                                        <TableColumn fx:id="DateColumn" editable="false" prefWidth="117.0" text="تاريخ الغياب" />
+                                        <TableColumn fx:id="TypeColumn" editable="false" prefWidth="115.0" text="نوع الغياب" />
+                                          <TableColumn fx:id="DurationColumn" editable="false" prefWidth="108.0" text="مدة الغياب" />
+                                          <TableColumn fx:id="AttNoteColumn" editable="false" prefWidth="269.0" text="ملاحظات الغياب" />
+                                          <TableColumn fx:id="StatusColumn" editable="false" prefWidth="98.0" sortable="false" text="حالة الغياب" />
                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="المرتبات والخصومات">
+                        <Tab fx:id="payroll" disable="true" text="المرتبات والخصومات">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                            </content>
