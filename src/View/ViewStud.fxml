@@ -20,11 +20,12 @@
                         <Font size="18.0" />
                      </font></Label>
                   <Label fx:id="name" layoutX="445.0" layoutY="26.0" text="Label" />
-                  <Label fx:id="className" layoutX="77.0" layoutY="26.0" text="غير مسجل" />
-                  <Label layoutX="160.0" layoutY="21.0" text="الفصل">
+                  <Label fx:id="className" layoutX="204.0" layoutY="26.0" text="غير مسجل" />
+                  <Label layoutX="287.0" layoutY="21.0" text="الفصل">
                      <font>
                         <Font size="18.0" />
                      </font></Label>
+                  <Button fx:id="saveAbscence" layoutX="50.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleEdit" text="تعديل الغياب" visible="false" />
                </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -445,14 +446,15 @@
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab text="الغياب">
+                        <Tab fx:id="abscense" text="الغياب">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <TableView fx:id="AttTable" layoutX="168.0" layoutY="36.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="295.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                       <columns>
-                                        <TableColumn fx:id="AttDateColumn" prefWidth="164.0" text="تاريخ الغياب" />
-                                        <TableColumn fx:id="AttNoteColumn" prefWidth="539.0" text="ملاحظات الغياب" />
+                                        <TableColumn fx:id="AttDateColumn" prefWidth="160.0" text="تاريخ الغياب" />
+                                        <TableColumn fx:id="AttNoteColumn" prefWidth="441.0" text="ملاحظات الغياب" />
+                                          <TableColumn fx:id="StatusColumn" maxWidth="528.0" prefWidth="105.0" text="حالة الغياب" />
                                       </columns>
                                     </TableView>
                                  </children>

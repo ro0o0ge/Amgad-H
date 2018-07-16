@@ -7,6 +7,8 @@ package Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
@@ -38,6 +40,10 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "StudentAttendance.findByAbDesc", query = "SELECT s FROM StudentAttendance s WHERE s.abDesc = :abDesc")
     , @NamedQuery(name = "StudentAttendance.findByEntryDate", query = "SELECT s FROM StudentAttendance s WHERE s.entryDate = :entryDate")})
 public class StudentAttendance implements Serializable {
+
+    @Basic(optional = false)
+    @Column(name = "Status")
+    private boolean status;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -143,6 +149,18 @@ public class StudentAttendance implements Serializable {
     @Override
     public String toString() {
         return "Entity.StudentAttendance[ sAtId=" + sAtId + " ]";
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public BooleanProperty statusProperty() {
+        return new SimpleBooleanProperty(status);
+    }
+    
+    public void setStatus(boolean status) {
+        this.status = status;
     }
     
 }

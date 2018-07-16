@@ -5,20 +5,26 @@
  */
 package Controller;
 
-import static Controller.EditStudDetailController.tempCon;
 import Entity.Contacts;
+import Entity.EmployeeAttendance;
 import Entity.Student;
 import Entity.StudentAttendance;
 import amgad.h.StudentAffair;
+import amgad.h.TeachingStaff;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.NodeOrientation;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.CheckBoxTableCell;
 
 /**
  * FXML Controller class
@@ -126,6 +132,10 @@ public class ViewStudController implements Initializable {
     private Label Thu6;
     @FXML
     private Label Thu7;
+    @FXML
+    private Tab abscense;
+    @FXML
+    private Button saveAbscence;
 
     @FXML
     private TableView<StudentAttendance> AttTable;
@@ -133,8 +143,12 @@ public class ViewStudController implements Initializable {
     private TableColumn<StudentAttendance, String> AttNoteColumn;
     @FXML
     private TableColumn<StudentAttendance, String> AttDateColumn;
+    @FXML
+    private TableColumn<StudentAttendance, Boolean> StatusColumn;
 
     static private Student current;
+    
+    StudentAffair TS;
 
     /**
      * Initializes the controller class.
@@ -147,6 +161,7 @@ public class ViewStudController implements Initializable {
         // TODO
         try {
             current = StudentAffair.getEdit();
+            TS = new StudentAffair();
             name.setText(current.getPId().getName());
             if (current.getClassStudentsList() != null) {
                 className.setText(current.getClassStudentsList().getCId().getClassDesc());
@@ -212,15 +227,40 @@ public class ViewStudController implements Initializable {
             ContactsTable.setItems(tempCon);
             NameColumn.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
             NumColumn.setCellValueFactory(cellData -> cellData.getValue().ConDeatailsProperty());
+
+            abscense.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                saveAbscence.setVisible(newTab);
+            });
+
             if (current.getStudentAttendanceList() != null) {
                 ObservableList<StudentAttendance> tempAtt = FXCollections.observableArrayList(current.getStudentAttendanceList());
                 AttTable.setItems(tempAtt);
                 AttNoteColumn.setCellValueFactory(cellData -> cellData.getValue().DescProperty());
                 AttDateColumn.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                StatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                StatusColumn.setCellFactory(CheckBoxTableCell.forTableColumn(StatusColumn));
             }
         } catch (Exception e) {
             System.err.println("ERROR IN INIT" + e);
         }
     }
 
+    @FXML
+    public void handleEdit() {
+        int selectedIndex = AttTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            StudentAffair.setEditStatus(AttTable.getItems().get(selectedIndex));
+            TS.ViewEditAbscentStatus();
+            ObservableList<StudentAttendance> tempAtt = FXCollections.observableArrayList(current.getStudentAttendanceList());
+            AttTable.getItems().clear();
+            AttTable.setItems(tempAtt);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("يوجد خطأ");
+            alert.setHeaderText("لم يتم تحديد العنصر المراد تعديله");
+            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            alert.showAndWait();
+        }
+    }
 }
