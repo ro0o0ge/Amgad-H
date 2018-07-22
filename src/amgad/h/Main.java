@@ -17,9 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import amgad.h.root;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.stage.WindowEvent;
 
 /**

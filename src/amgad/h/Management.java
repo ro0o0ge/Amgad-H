@@ -515,15 +515,15 @@ public class Management {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/SchoolExpenses.fxml"));
             AnchorPane page = loader.load();
-            dialogStage = new Stage();
-            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
-            dialogStage.setTitle("مصاريف المدرسة");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(this.getDialogStage());
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("مصروفات المدرسة");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
             Scene scene = new Scene(page);
             scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
-            dialogStage.setScene(scene);
-            dialogStage.showAndWait();
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
             SchoolExpensesList.clear();
         } catch (IOException e) {
             e.printStackTrace();

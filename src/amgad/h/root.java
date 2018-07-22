@@ -51,7 +51,7 @@ public class root {
             ts.setMainApp(this);
 
             RootViewController Rcontroller = loader.getController();
-            Rcontroller.setMainApp(m, sa, ts);
+            Rcontroller.setMainApp(m, sa, ts,scene);
 
             this.primaryStage.show();
 

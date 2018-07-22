@@ -9,7 +9,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RootViewController">
     <children>
    
-        <BorderPane>
+        <BorderPane fx:id="border">
             <center>
                 <BorderPane prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
                     <top>
@@ -59,12 +59,13 @@
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="تقارير">
                                     <items>
-                                        <MenuItem mnemonicParsing="false" text="تسجيل موظف جديد" />
-                                        <MenuItem mnemonicParsing="false" text="تعديل بيانات الموظفين" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleReports" text="جدول الحصص" />
+                                        <MenuItem mnemonicParsing="false" text="درجات الطلاب" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem mnemonicParsing="false" text="تسجيل الحضور والإنصراف" />
+                                        <MenuItem mnemonicParsing="false" text="تقييم الطلاب" />
+                                        <MenuItem mnemonicParsing="false" text="تقييم المدرسين" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem mnemonicParsing="false" text="المصاريف والمرتبات" />
+                              <MenuItem mnemonicParsing="false" text="مصاريف الطلبة" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="عن النظام">
