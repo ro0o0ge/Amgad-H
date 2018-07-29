@@ -120,7 +120,6 @@
                                                 <Button mnemonicParsing="false" onAction="#handleDelete" text="حذف" />
                                             </children>
                                         </HBox>
-                              <Button layoutX="188.0" layoutY="168.0" mnemonicParsing="false" onAction="#handleSaveAll" prefHeight="25.0" prefWidth="77.0" text="حفظ الكل" />
                                     </children>
                                 </AnchorPane>
                             </items>
