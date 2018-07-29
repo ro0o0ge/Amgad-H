@@ -14,7 +14,7 @@
                     <children>
                         <TableView fx:id="DecisionsTable" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columns>
-                                <TableColumn fx:id="TitleColumn" editable="false" prefWidth="237.0" text="عنوان القرار" />
+                                <TableColumn fx:id="TitleColumn" editable="false" prefWidth="237.0" text="موضوع القرار" />
                                 <TableColumn fx:id="DateColumn" editable="false" prefWidth="99.0" text="تاريخ القرار" />
                             </columns>
                         </TableView>
@@ -50,7 +50,7 @@
                             </children>
                         </HBox>
                   <Label layoutX="279.0" layoutY="319.0" text="المحتوى" AnchorPane.rightAnchor="34.0" AnchorPane.topAnchor="319.0" />
-                  <Label layoutX="282.0" layoutY="189.0" text="العنوان" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="189.0" />
+                  <Label layoutX="282.0" layoutY="189.0" text="الموضوع" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="189.0" />
                   <TextArea fx:id="Notes" layoutX="8.0" layoutY="235.0" prefHeight="201.0" prefWidth="240.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="235.0" />
                   <TextField fx:id="Title" layoutX="8.0" layoutY="185.0" prefHeight="25.0" prefWidth="240.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="185.0" />
                     </children>

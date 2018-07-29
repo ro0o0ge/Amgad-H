@@ -6,15 +6,12 @@
 package Entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,15 +40,25 @@ import org.hibernate.annotations.LazyCollectionOption;
     , @NamedQuery(name = "Staff.findByStatus", query = "SELECT s FROM Staff s WHERE s.status = :status")})
 public class Staff implements Serializable {
 
+    @Column(name = "STAFF_CATEGORY")
+    private String staffCategory;
+
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "MONTHLY_SALARY")
+    private Double monthlySalary;
+    @Basic(optional = false)
+    @Column(name = "SERIAL_NO")
+    private String serialNo;
+    @Basic(optional = false)
+    @Column(name = "STAFF_TYPE")
+    private String staffType;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ST_ID")
     private Integer stId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "MONTHLY_SALARY")
-    private double monthlySalary;
     @Basic(optional = false)
     @Column(name = "STATUS")
     private String status;
@@ -60,9 +67,6 @@ public class Staff implements Serializable {
     private Persons pId;
     @OneToMany(mappedBy = "stId")
     private List<Payroll> payrollList;
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "stId")
-    private List<StaffClasses> staffClassesList;
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "stId")
     private List<EmployeeAttendance> employeeAttendanceList;
@@ -129,15 +133,6 @@ public class Staff implements Serializable {
     }
 
     @XmlTransient
-    public List<StaffClasses> getStaffClassesList() {
-        return staffClassesList;
-    }
-
-    public void setStaffClassesList(List<StaffClasses> staffClassesList) {
-        this.staffClassesList = staffClassesList;
-    }
-
-    @XmlTransient
     public List<EmployeeAttendance> getEmployeeAttendanceList() {
         return employeeAttendanceList;
     }
@@ -169,6 +164,34 @@ public class Staff implements Serializable {
     @Override
     public String toString() {
         return "Entity.Staff[ stId=" + stId + " ]";
+    }
+
+    public void setMonthlySalary(Double monthlySalary) {
+        this.monthlySalary = monthlySalary;
+    }
+
+    public String getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(String serialNo) {
+        this.serialNo = serialNo;
+    }
+
+    public String getStaffType() {
+        return staffType;
+    }
+
+    public void setStaffType(String staffType) {
+        this.staffType = staffType;
+    }
+
+    public String getStaffCategory() {
+        return staffCategory;
+    }
+
+    public void setStaffCategory(String staffCategory) {
+        this.staffCategory = staffCategory;
     }
     
 }

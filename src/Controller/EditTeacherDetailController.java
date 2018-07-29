@@ -98,7 +98,9 @@ public class EditTeacherDetailController implements Initializable {
     private TableView<Subjects> SubjectsTable;
     @FXML
     private TableColumn<Subjects, String> SubjectNameColumn;
-
+    @FXML
+    private TableColumn<Subjects, String> SyNameColumn;
+    
     TeachingStaff TA;
 
     static private Teacher current;
@@ -180,6 +182,8 @@ public class EditTeacherDetailController implements Initializable {
         SubjectsTable.setItems(tempSub);
         SubjectNameColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .SubDescProperty());
+        SyNameColumn.setCellValueFactory(cellData -> cellData.getValue()
+                .SyDescProperty());
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(current.getPId().getHiringDate());

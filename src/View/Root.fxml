@@ -29,7 +29,6 @@
                                         <MenuItem mnemonicParsing="false" onAction="#handleStudAbsent" text="تسجيل الغياب" />
                                         <MenuItem mnemonicParsing="false" text="تسجيل الدرجات" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem mnemonicParsing="false" text="متابعة المصاريف" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="هيئة التدريس">
@@ -57,7 +56,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#handleSchoolExpense" text="مصاريف المدرسة" />
                                     </items>
                                 </Menu>
-                                <Menu mnemonicParsing="false" text="تقارير">
+                                <Menu mnemonicParsing="false" text="تقارير" visible="false">
                                     <items>
                                         <MenuItem mnemonicParsing="false" onAction="#handleReports" text="جدول الحصص" />
                                         <MenuItem mnemonicParsing="false" text="درجات الطلاب" />

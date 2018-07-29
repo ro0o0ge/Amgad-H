@@ -39,6 +39,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "StudentNotes.findByNId", query = "SELECT s FROM StudentNotes s WHERE s.nId = :nId")})
 public class StudentNotes implements Serializable {
 
+    @Column(name = "N_TYPE")
+    private String nType;
+
+    @JoinColumn(name = "ST_ID", referencedColumnName = "ST_ID")
+    @ManyToOne
+    private Staff stId;
+    @JoinColumn(name = "T_ID", referencedColumnName = "T_ID")
+    @ManyToOne
+    private Teacher tId;
+
     private static final long serialVersionUID = 1L;
     @Column(name = "N_DESC")
     private String nDesc;
@@ -72,11 +82,8 @@ public class StudentNotes implements Serializable {
     }
 
     public StringProperty TitleProperty() {
-        if (nDesc.length() > 15) {
-            return new SimpleStringProperty(nDesc.substring(0, 15));
-        } else {
-            return new SimpleStringProperty(nDesc);
-        }
+
+        return new SimpleStringProperty(nDesc);
     }
 
     public void setNDesc(String nDesc) {
@@ -134,6 +141,35 @@ public class StudentNotes implements Serializable {
     @Override
     public String toString() {
         return "Entity.StudentNotes[ nId=" + nId + " ]";
+    }
+
+    public Staff getStId() {
+        return stId;
+    }
+
+    public void setStId(Staff stId) {
+        this.stId = stId;
+    }
+
+    public Teacher getTId() {
+        return tId;
+    }
+
+    public void setTId(Teacher tId) {
+        this.tId = tId;
+    }
+
+    public String getNType() {
+        return nType;
+    }
+    
+    public StringProperty TypeProperty() {
+
+        return new SimpleStringProperty(nType);
+    }
+
+    public void setNType(String nType) {
+        this.nType = nType;
     }
 
 }

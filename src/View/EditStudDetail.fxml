@@ -37,7 +37,7 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label contentDisplay="RIGHT" text="اسم الطالب*" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                <Label contentDisplay="RIGHT" text="اسم الطالب" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>
@@ -47,12 +47,12 @@
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <Label text="الجنسية*" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                <Label text="الجنسية" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                     <GridPane.margin>
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <Label text="تاريخ الميلاد*" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                <Label text="تاريخ الميلاد" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                     <GridPane.margin>
                                         <Insets left="10.0" />
                                     </GridPane.margin>
@@ -73,21 +73,20 @@
                                         <Insets left="100.0" />
                                     </GridPane.margin>
                                 </DatePicker>
-                                <Label text="العنوان*" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                <Label text="العنوان" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>
                                 </Label>
-                                <Label text="رقم تحقيق الشخصية*" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                <Label text="الرقم القومي" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>
                                 </Label>
                                 <TextField fx:id="sAddress" GridPane.rowIndex="8" />
-                                <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="7" />
                                 <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-                                <TextField fx:id="sNatNo" GridPane.rowIndex="10" />
-                                <Label fx:id="ageCalc" text="AgeCalc" GridPane.rowIndex="6">
+                                <TextField fx:id="sNatNo" GridPane.rowIndex="7" />
+                                <Label fx:id="ageCalc" GridPane.rowIndex="6">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>
@@ -118,7 +117,7 @@
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <Label contentDisplay="RIGHT" text="رقم مسلسل*" GridPane.columnIndex="1">
+                                <Label contentDisplay="RIGHT" text="كود الطالب" GridPane.columnIndex="1">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>
@@ -152,6 +151,12 @@
                                         <Insets left="50.0" />
                                     </GridPane.margin>
                                 </ComboBox>
+                        <Label text="مهنة ولي الأمر" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField GridPane.rowIndex="10" />
                             </children>
                         </GridPane>
                         <HBox layoutX="280.0" layoutY="552.0" prefHeight="25.0" prefWidth="152.0" spacing="10.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="280.0">
@@ -160,24 +165,24 @@
                                 <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="إغلاق" />
                             </children>
                         </HBox>
-                        <Label layoutX="112.0" layoutY="61.0" text="جهات الاتصال">
+                        <Label layoutX="112.0" layoutY="144.0" text="جهات الاتصال">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="481.0" layoutY="47.0" text="بيانات الطالب" underline="true" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="47.0">
+                        <Label layoutX="481.0" layoutY="47.0" text="بيانات الطالب" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="47.0">
                             <font>
-                                <Font size="18.0" />
+                                <Font size="16.0" />
                             </font>
                         </Label>
                         <Separator layoutX="289.0" layoutY="39.0" orientation="VERTICAL" prefHeight="472.0" prefWidth="6.0" AnchorPane.bottomAnchor="79.0" AnchorPane.rightAnchor="403.0" />
                         <Separator layoutX="5.0" layoutY="533.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="5.0" />
-                        <Label layoutX="78.0" layoutY="397.0" text="بيانات الامتحانات" AnchorPane.bottomAnchor="191.0" AnchorPane.leftAnchor="78.0">
+                        <Label layoutX="105.0" layoutY="395.0" text="بيانات الامتحانات" AnchorPane.bottomAnchor="193.0" AnchorPane.leftAnchor="105.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <GridPane layoutX="28.0" layoutY="443.0" AnchorPane.bottomAnchor="82.0" AnchorPane.leftAnchor="28.0">
+                        <GridPane layoutX="55.0" layoutY="442.0" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="55.0">
                             <columnConstraints>
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -198,18 +203,17 @@
                                         <Insets left="10.0" />
                                     </padding>
                                 </Label>
-                                <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                                 <TextField fx:id="sSecretNo" />
                                 <TextField fx:id="sSeatingNo" GridPane.rowIndex="2" />
                             </children>
                         </GridPane>
-                        <TableView fx:id="ContactsTable" editable="true" layoutX="28.0" layoutY="100.0" prefHeight="200.0" prefWidth="254.0">
+                        <TableView fx:id="ContactsTable" editable="true" layoutX="28.0" layoutY="177.0" prefHeight="131.0" prefWidth="254.0">
                             <columns>
                                 <TableColumn fx:id="NumColumn" prefWidth="114.0" text="الرقم" />
                                 <TableColumn fx:id="NameColumn" prefWidth="135.0" text="الاسم" />
                             </columns>
                         </TableView>
-                        <Label layoutX="250.0" layoutY="14.0" text="تعديل طالب" underline="true">
+                        <Label layoutX="250.0" layoutY="14.0" text="تعديل بيانات الطالب">
                             <font>
                                 <Font size="24.0" />
                             </font>
@@ -225,6 +229,15 @@
                                 <Font size="14.0" />
                             </font>
                         </Label>
+                  <Separator layoutX="8.0" layoutY="128.0" prefHeight="3.0" prefWidth="282.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="128.0" />
+                  <Button layoutX="230.0" layoutY="88.0" mnemonicParsing="false" onAction="#handlePhoto" text="بحث" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="88.0" />
+                  <Label fx:id="PhotoPath" layoutX="47.0" layoutY="92.0" prefHeight="17.0" prefWidth="179.0" text="مسار الصورة" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="92.0" />
+                  <Label layoutX="119.0" layoutY="52.0" text="صورة الطالب" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="52.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="5.0" layoutY="374.0" prefHeight="3.0" prefWidth="282.0" />
                     </children>
                 </AnchorPane>
             </items>

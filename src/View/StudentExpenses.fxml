@@ -6,30 +6,30 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditSchoolExpensesController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StudentExpensesController">
     <children>
         <SplitPane dividerPositions="0.5" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                     <children>
-                        <TableView fx:id="SchoolExpensesTable" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="StudentExpensesTable" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columns>
-                                <TableColumn fx:id="ToColumn" editable="false" prefWidth="140.0" text="جهة الصرف" />
-                                <TableColumn fx:id="ByColumn" editable="false" prefWidth="111.0" text="بأمر من" />
-                                <TableColumn fx:id="DateColumn" editable="false" prefWidth="94.0" text="تاريخ الصرف" />
+                                <TableColumn fx:id="DateColumn" editable="false" prefWidth="132.0" text="التاريخ" />
+                                <TableColumn fx:id="AmountColumn" editable="false" prefWidth="96.0" text="المبلغ" />
+                                <TableColumn fx:id="RecievedColumn" editable="false" prefWidth="117.0" text="المستلم" />
                             </columns>
                         </TableView>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <Label layoutX="122.0" layoutY="14.0" text="مصروفات المدرسة" underline="true" AnchorPane.rightAnchor="117.0" AnchorPane.topAnchor="14.0">
+                        <Label layoutX="95.0" layoutY="14.0" text="مصاريف المدرسة" underline="true" AnchorPane.rightAnchor="91.0" AnchorPane.topAnchor="14.0">
                             <font>
-                                <Font size="18.0" />
+                                <Font size="27.0" />
                             </font>
                         </Label>
                         <Separator layoutX="292.0" orientation="VERTICAL" prefHeight="369.0" prefWidth="0.0" AnchorPane.rightAnchor="400.0" />
-                        <HBox layoutX="109.0" layoutY="383.0" prefHeight="25.0" prefWidth="149.0" spacing="10.0">
+                        <HBox layoutX="109.0" layoutY="432.0" prefHeight="25.0" prefWidth="149.0" spacing="10.0">
                             <children>
                                 <Button defaultButton="true" mnemonicParsing="false" onAction="#handleNew" text="جديد" />
                                 <Button cancelButton="true" mnemonicParsing="false" onAction="#handleEdit" text="تعديل" />
@@ -43,17 +43,14 @@
                                         <Insets />
                                     </HBox.margin>
                                 </TextField>
-                        <ComboBox fx:id="ComboSearch" prefHeight="25.0" prefWidth="83.0">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
+                        <Label text="بحث بالتاريخ">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
-                        </ComboBox>
+                        </Label>
                             </children>
                         </HBox>
-                  <GridPane layoutX="47.0" layoutY="175.0" prefHeight="141.0" prefWidth="272.0">
+                  <GridPane layoutX="47.0" layoutY="175.0" prefHeight="202.0" prefWidth="272.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="142.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="130.0" />
@@ -63,6 +60,9 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
@@ -81,25 +81,30 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="بأمر من" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <GridPane.margin>
-                              <Insets left="10.0" />
-                           </GridPane.margin>
-                        </Label>
                         <TextField fx:id="Amount" prefHeight="25.0" prefWidth="17.0">
                            <GridPane.margin>
                               <Insets left="75.0" />
                            </GridPane.margin>
                         </TextField>
-                        <TextField fx:id="ExenseTo" GridPane.rowIndex="2" />
-                        <TextField fx:id="ExenseBy" GridPane.rowIndex="4" />
+                        <TextField fx:id="RecievedBy" GridPane.rowIndex="2" />
                         <DatePicker fx:id="EDate" GridPane.rowIndex="3" />
-                        <Label text="جهة الصرف" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label text="نوع المصروف" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
                         <ComboBox fx:id="ComboType" prefWidth="150.0" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="Recieved" mnemonicParsing="false" text="تم الاستحقاق" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="30.0" />
+                           </GridPane.margin>
+                        </CheckBox>
+                        <Label text="ملاحظات" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextArea fx:id="Notes" prefHeight="77.0" prefWidth="162.0" GridPane.rowIndex="5" GridPane.rowSpan="3" />
                      </children>
                   </GridPane>
                     </children>

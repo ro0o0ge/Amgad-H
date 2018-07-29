@@ -178,4 +178,20 @@ public class EditStudController implements Initializable {
             alert.showAndWait();
         }
     }
+
+    @FXML
+    public void handleExpenses() {
+        int selectedIndex = StudentsTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            StudentAffair.setEdit(StudentsTable.getItems().get(selectedIndex));
+            SA.editStudExpenses();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("يوجد خطأ");
+            alert.setHeaderText("لم يتم تحديد العنصر المراد تعديله");
+            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            alert.showAndWait();
+        }
+    }
 }

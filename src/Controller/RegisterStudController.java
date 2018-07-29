@@ -12,6 +12,7 @@ import Entity.Persons;
 import Entity.Student;
 import Entity.StudyYears;
 import amgad.h.StudentAffair;
+import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.sql.Date;
+import java.util.Arrays;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
@@ -32,6 +34,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -80,7 +83,12 @@ public class RegisterStudController implements Initializable {
     private RadioButton S2;
     @FXML
     private RadioButton S3;
-
+    
+    @FXML
+    TextField ParentJob;
+    @FXML
+    private Label PhotoPath;
+    
     @FXML
     private TableView<Contacts> ContactsTable;
     @FXML
@@ -92,6 +100,7 @@ public class RegisterStudController implements Initializable {
     private Persons pers;
     private ClassStudents classStud;
     private List<Classes> css;
+    final File defaultDirectory = new File("C:\\");
 
     StudentAffair SA;
 
@@ -176,7 +185,10 @@ public class RegisterStudController implements Initializable {
                 pers.setDob(Date.valueOf(sDOB.getValue()));
                 pers.setCreatedDate(Date.valueOf(LocalDate.now()));
 
+                pers.setSpouseParentOccupation(ParentJob.getText());
+                pers.setPersonalPhoto(PhotoPath.getText());
                 stud.setPId(pers);
+                stud.setAgeOnOct(ageCalc.getText());
 
                 if (sStatus.getSelectedToggle().getUserData().toString().equals("مرفوض")) {
                     stud.setStatus("1");
@@ -214,6 +226,18 @@ public class RegisterStudController implements Initializable {
             alert.setContentText("برجاء التأكد من صحة البيانات");
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    public void handlePhoto() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(defaultDirectory);
+        List<String> extensions = Arrays.asList("JPG","JPEG","PNG");
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Images", extensions));
+        File selectedFile = fileChooser.showOpenDialog(SA.getDialogStage());
+        if (selectedFile != null) {
+            PhotoPath.setText(selectedFile.getAbsolutePath());
         }
     }
 

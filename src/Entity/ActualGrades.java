@@ -37,16 +37,17 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "ActualGrades.findByGDesc", query = "SELECT a FROM ActualGrades a WHERE a.gDesc = :gDesc")})
 public class ActualGrades implements Serializable {
 
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @Column(name = "GRADE")
+    private double grade;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "AG_ID")
     private Long agId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
-    @Column(name = "GRADE")
-    private double grade;
     @Basic(optional = false)
     @Column(name = "G_DATE")
     @Temporal(TemporalType.TIMESTAMP)
@@ -81,13 +82,6 @@ public class ActualGrades implements Serializable {
         this.agId = agId;
     }
 
-    public double getGrade() {
-        return grade;
-    }
-
-    public void setGrade(double grade) {
-        this.grade = grade;
-    }
 
     public Date getGDate() {
         return gDate;
@@ -144,6 +138,14 @@ public class ActualGrades implements Serializable {
     @Override
     public String toString() {
         return "Entity.ActualGrades[ agId=" + agId + " ]";
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
     }
     
 }

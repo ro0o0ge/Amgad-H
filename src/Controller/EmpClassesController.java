@@ -52,7 +52,6 @@ public class EmpClassesController implements Initializable {
     private void handleConfirm() {
         if (!STYCombo.getValue().equals("")) {
             ts = new Management();
-            Management.getSC().setCId(ts.getClassesByDesc(STYCombo.getValue().toString()));
             Management.getDialogStage2().close();
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

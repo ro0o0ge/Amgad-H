@@ -53,6 +53,17 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Persons.findByGradYear", query = "SELECT p FROM Persons p WHERE p.gradYear = :gradYear")})
 public class Persons implements Serializable {
 
+    @Column(name = "PREV_EXP")
+    private String prevExp;
+    @Column(name = "NO_OF_CHILDREN")
+    private Integer noOfChildren;
+    @Column(name = "SPOUSE_NAME")
+    private String spouseName;
+    @Column(name = "SPOUSE_PARENT_OCCUPATION")
+    private String spouseParentOccupation;
+    @Column(name = "PERSONAL_PHOTO")
+    private String personalPhoto;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -346,4 +357,43 @@ public class Persons implements Serializable {
         return "Entity.Persons[ pId=" + pId + " ]";
     }
 
+    public String getPrevExp() {
+        return prevExp;
+    }
+
+    public void setPrevExp(String prevExp) {
+        this.prevExp = prevExp;
+    }
+
+    public Integer getNoOfChildren() {
+        return noOfChildren;
+    }
+
+    public void setNoOfChildren(Integer noOfChildren) {
+        this.noOfChildren = noOfChildren;
+    }
+
+    public String getSpouseName() {
+        return spouseName;
+    }
+
+    public void setSpouseName(String spouseName) {
+        this.spouseName = spouseName;
+    }
+
+    public String getSpouseParentOccupation() {
+        return spouseParentOccupation;
+    }
+
+    public void setSpouseParentOccupation(String spouseParentOccupation) {
+        this.spouseParentOccupation = spouseParentOccupation;
+    }
+
+    public String getPersonalPhoto() {
+        return personalPhoto;
+    }
+
+    public void setPersonalPhoto(String personalPhoto) {
+        this.personalPhoto = personalPhoto;
+    } 
 }

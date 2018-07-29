@@ -504,7 +504,7 @@ public class TeachingStaff {
                 EA.setAbscenceType("1");
             } else if (Type.equals("استئذان")) {
                 EA.setAbscenceType("2");
-            } else if (Type.equals("عارضة")) {
+            } else if (Type.equals("منحة")) {
                 EA.setAbscenceType("3");
             } else if (Type.equals("مرضي")) {
                 EA.setAbscenceType("4");
@@ -640,6 +640,26 @@ public class TeachingStaff {
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
+    
+    public void UpdateFinalGrade(FinalGrades sc) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(sc);
+            log += " --  Final Grade with id " + sc.getGId();
+            GradesController.setFG(sc);
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
 
     public void PersistNewGradeDetail(GradeDetail sc) {
         try {
@@ -660,7 +680,47 @@ public class TeachingStaff {
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
+    
+    public void UpdateGradeDetail(GradeDetail sc) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(sc);
+            log += " --  Grade Detail with id " + sc.getGdId();
 
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
+
+    public void RemoveGradeDetail(GradeDetail sc) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Deleted";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            Query query = s.getNamedQuery("GradeDetail.deleteById").setParameter("gdId", sc.getGdId());
+            log += " -- Grade Detail with id " + sc.getGdId();
+            query.executeUpdate();
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
+    
     public void ViewTeacher() {
         try {
             FXMLLoader loader = new FXMLLoader();

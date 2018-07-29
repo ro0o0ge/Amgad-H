@@ -6,8 +6,9 @@
 package Controller;
 
 import Entity.SchoolExpenses;
-import Entity.SchoolExpenses;
+import Entity.Student;
 import amgad.h.Management;
+import amgad.h.StudentAffair;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -23,7 +24,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
@@ -53,10 +53,13 @@ public class EditSchoolExpensesController implements Initializable {
     private TableColumn<SchoolExpenses, String> DateColumn;
     @FXML
     private ComboBox ComboSearch;
+    @FXML
+    private ComboBox ComboType;
 
     Management MA;
 
     SchoolExpenses st;
+    static private Student current;
 
     /**
      * Initializes the controller class.
@@ -69,6 +72,11 @@ public class EditSchoolExpensesController implements Initializable {
         // TODO
         ComboSearch.getItems().removeAll(ComboSearch.getItems());
         ComboSearch.getItems().addAll("جهة الصرف", "التاريخ");
+
+        ComboType.getItems().removeAll(ComboType.getItems());
+        ComboType.getItems().addAll("مرتبات", "تأمينات", "فواتير مياه", "فواتير كهرباء",
+                "فواتير تليفون", "سباكة", "نجارة", "كهرباء", "حدادة", "الوميتال", "ادوات نظافة",
+                "مصاريف متنوعة", "تفويل باصات", "صيانة باصات");
 
         MA = new Management();
         ComboSearch.getSelectionModel().select(0);
@@ -86,7 +94,7 @@ public class EditSchoolExpensesController implements Initializable {
         if (shera2 != null) {
             // Fill the labels with info from the person object.
 
-            Amount.setText(shera2.getAmount().toString());
+            Amount.setText(String.valueOf(shera2.getAmount()));
             ExenseTo.setText(shera2.getIssuedTo());
             Calendar cal = Calendar.getInstance();
             cal.setTime(shera2.getSceDate());
@@ -94,6 +102,7 @@ public class EditSchoolExpensesController implements Initializable {
                     cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
             EDate.setValue(date);
             ExenseBy.setText(shera2.getIssuedBy());
+            ComboType.getSelectionModel().select(shera2.getSceType());
         } else {
             Amount.setText("");
             ExenseTo.setText("");
@@ -145,6 +154,7 @@ public class EditSchoolExpensesController implements Initializable {
             st.setIssuedBy(ExenseBy.getText());
             st.setIssuedTo(ExenseTo.getText());
             st.setSceDate(Date.valueOf(EDate.getValue()));
+            st.setSceType(ComboType.getSelectionModel().getSelectedItem().toString());
             MA.PersistSchoolExpense(st);
             showDetails(null);
         } else {
@@ -166,6 +176,7 @@ public class EditSchoolExpensesController implements Initializable {
             st.setIssuedBy(ExenseBy.getText());
             st.setIssuedTo(ExenseTo.getText());
             st.setSceDate(Date.valueOf(EDate.getValue()));
+            st.setSceType(ComboType.getSelectionModel().getSelectedItem().toString());
             MA.UpdateSchoolExpense(st);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -177,8 +188,5 @@ public class EditSchoolExpensesController implements Initializable {
         }
     }
 
-    @FXML
-    public void handleClose() {
-        Management.getDialogStage().close();
-    }
+    
 }

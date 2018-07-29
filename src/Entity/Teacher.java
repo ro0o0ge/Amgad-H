@@ -45,7 +45,7 @@ import org.hibernate.annotations.LazyCollectionOption;
             + "t.teacherSubjectsList tsl JOIN tsl.suId.syId.classesList cl where cl.classDesc = :classDesc and t.pId.name = :name")
     , @NamedQuery(name = "Teacher.findByStatus", query = "SELECT t FROM Teacher t WHERE t.status = :status")})
 public class Teacher implements Serializable {
-
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

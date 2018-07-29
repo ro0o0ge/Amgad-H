@@ -10,20 +10,17 @@ import Entity.StudentNotes;
 import amgad.h.StudentAffair;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.sql.Date;
-import java.util.Iterator;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -39,9 +36,13 @@ public class StudNotesController implements Initializable {
     @FXML
     private TableColumn<StudentNotes, String> DateColumn;
     @FXML
+    private TableColumn<StudentNotes, String> ContentColumn;
+    @FXML
     private Label StudName;
     @FXML
     private TextArea NoteBody;
+    @FXML
+    ComboBox NoteType;
 
     StudentAffair SA;
 
@@ -60,8 +61,13 @@ public class StudNotesController implements Initializable {
         current = StudentAffair.getEdit();
         NotesTable.setItems(SA.getStudentNotesList());
         TitleColumn.setCellValueFactory(cellData -> cellData.getValue().TitleProperty());
+        ContentColumn.setCellValueFactory(cellData -> cellData.getValue().TypeProperty());
         DateColumn.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
         StudName.setText(current.getPId().getName());
+
+        NoteType.getItems().removeAll(NoteType.getItems());
+        NoteType.getItems().addAll("السلوك", "الهوايات", "الحالة الصحية", "المستوى التعليمي",
+                "الإلتزام (التأخير)", "الإلتزام (الغياب)", "ملاحظات");
 
         NotesTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showDetails(newValue));
@@ -82,6 +88,7 @@ public class StudNotesController implements Initializable {
             Temp.setNDesc(NoteBody.getText());
             Temp.setNDate(Date.valueOf(LocalDate.now()));
             Temp.setSId(current);
+            Temp.setNType(NoteType.getSelectionModel().getSelectedItem().toString());
             SA.PersistNewStudentNote(Temp);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);

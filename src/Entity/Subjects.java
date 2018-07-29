@@ -76,6 +76,7 @@ public class Subjects implements Serializable {
         this.suId = suId;
         this.suDesc = suDesc;
         this.mandatoryFlag = mandatoryFlag;
+        
     }
 
     public Integer getSuId() {
@@ -127,6 +128,10 @@ public class Subjects implements Serializable {
     public StudyYears getSyId() {
         return syId;
     }
+    
+    public StringProperty SyDescProperty() {
+        return new SimpleStringProperty(syId.getSyDesc());
+    }
 
     public void setSyId(StudyYears syId) {
         this.syId = syId;
@@ -175,4 +180,5 @@ public class Subjects implements Serializable {
         return "Entity.Subjects[ suId=" + suId + " ]";
     }
 
+   
 }

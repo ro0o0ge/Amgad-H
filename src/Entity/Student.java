@@ -57,8 +57,7 @@ public class Student implements Serializable {
     @Column(name = "STATUS")
     private String status;
     @Column(name = "AGE_ON_OCT")
-    @Temporal(TemporalType.DATE)
-    private Date ageOnOct;
+    private String ageOnOct;
     @Basic(optional = false)
     @Column(name = "SERIAL_NO")
     private String serialNo;
@@ -78,6 +77,7 @@ public class Student implements Serializable {
     private List<ActualGrades> actualGradesList;
     @OneToOne(mappedBy = "sId", fetch = FetchType.EAGER)
     private ClassStudents classStudentsList;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "sId")
     private List<StudentExpenses> studentExpensesList;
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -91,7 +91,7 @@ public class Student implements Serializable {
         this.sId = sId;
     }
 
-    public Student(Long sId, String status, Date ageOnOct, String serialNo) {
+    public Student(Long sId, String status, String ageOnOct, String serialNo) {
         this.sId = sId;
         this.status = status;
         this.ageOnOct = ageOnOct;
@@ -124,11 +124,11 @@ public class Student implements Serializable {
         this.status = status;
     }
 
-    public Date getAgeOnOct() {
+    public String getAgeOnOct() {
         return ageOnOct;
     }
 
-    public void setAgeOnOct(Date ageOnOct) {
+    public void setAgeOnOct(String ageOnOct) {
         this.ageOnOct = ageOnOct;
     }
 

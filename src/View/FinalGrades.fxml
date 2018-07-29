@@ -51,7 +51,8 @@
                         <HBox layoutX="28.0" layoutY="119.0" spacing="10.0" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="119.0">
                             <children>
                                 <Button defaultButton="true" mnemonicParsing="false" onAction="#handleNewFinalGrade" text="إعتماد الدرجة" />
-                                <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="إلغاء" />
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#handleEditFinalGrade" text="تعديل" />
+                        <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="إلغاء" />
                             </children>
                         </HBox>
                         <Label layoutX="219.0" layoutY="14.0" text="الدرجات النهائية" underline="true">

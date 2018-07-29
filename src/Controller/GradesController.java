@@ -76,25 +76,27 @@ public class GradesController implements Initializable {
         });
 
         ComboSubject.valueProperty().addListener((ov, oldValue, newValue) -> {
-            if (!newValue.equals("")) {
+            if (newValue != null || !newValue.equals("")) {
                 TS.LoadGradeDetails(newValue.toString(),
                         ComboYear.getSelectionModel().getSelectedItem().toString());
-//                GradeDetailTable.setItems(TS.getGradeDetailList());
-//                GradeColumn.setCellValueFactory(cellData -> cellData.getValue().GradeProperty());
-//                GradeDescColumn.setCellValueFactory(cellData -> cellData.getValue().GradeDescProperty());
-                FinalGrade.setText(TS.getFinalGrade(
-                        TS.getSubjectsByDescAndYDesc(newValue.toString(),
-                                ComboYear.getSelectionModel().getSelectedItem().toString())
-                ));
+                FinalGrade.setText(TS.getFinalGrade(TS.getSubjectsByDescAndYDesc(newValue.toString(),
+                        ComboYear.getSelectionModel().getSelectedItem().toString())));
+
+                GradeDetailTable.setItems(TS.getGradeDetailList());
+                GradeColumn.setCellValueFactory(cellData -> cellData.getValue().GradeProperty());
+                GradeDescColumn.setCellValueFactory(cellData -> cellData.getValue().GradeDescProperty());
+                GradeDetailTable.getSelectionModel().selectedItemProperty().addListener(
+                        (observabl, oldValu, newValu) -> showDetails(newValu));
+
             }
         });
         System.out.println("Call Init");
-        GradeDetailTable.setItems(TS.getGradeDetailList());
-        GradeColumn.setCellValueFactory(cellData -> cellData.getValue().GradeProperty());
-        GradeDescColumn.setCellValueFactory(cellData -> cellData.getValue().GradeDescProperty());
-        GradeDetailTable.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> showDetails(newValue));
 
+//        GradeDetailTable.setItems(TS.getGradeDetailList());
+//        GradeColumn.setCellValueFactory(cellData -> cellData.getValue().GradeProperty());
+//        GradeDescColumn.setCellValueFactory(cellData -> cellData.getValue().GradeDescProperty());
+//        GradeDetailTable.getSelectionModel().selectedItemProperty().addListener(
+//                (observable, oldValue, newValue) -> showDetails(newValue));
     }
 
     private void showDetails(GradeDetail shera2) {
@@ -125,12 +127,15 @@ public class GradesController implements Initializable {
 
     @FXML
     public void handleNew() {
-        if (!Grade.getText().equals("") && !GradeDesc.getText().equals("")) {
+        if (!Grade.getText().equals("") && !GradeDesc.getText().equals("")
+                && Grade.getText().matches("[0-9]+") && !ComboSubject.getSelectionModel().getSelectedItem().equals("")
+                && !FinalGrade.getText().equals("") && FinalGrade.getText().matches("[0-9]+")) {
             GradeDetail tempGD = new GradeDetail();
+            System.out.println("final grade of " + FG.getSuId().getSuDesc());
             tempGD.setGId(FG);
             tempGD.setGrade(Double.valueOf(Grade.getText()));
             tempGD.setGradeDetail(GradeDesc.getText());
-//            TS.PersistNewGradeDetail(tempGD);
+            TS.PersistNewGradeDetail(tempGD);
             TS.getGradeDetailList().add(tempGD);
             GradeDetailTable.setItems(TS.getGradeDetailList());
         } else {
@@ -146,12 +151,16 @@ public class GradesController implements Initializable {
     @FXML
     public void handleEdit() {
         GradeDetail gd = GradeDetailTable.getSelectionModel().getSelectedItem();
-        if (gd != null && !Grade.getText().equals("") && !GradeDesc.getText().equals("")) {
+        if (gd != null && !Grade.getText().equals("") && !GradeDesc.getText().equals("")
+                && Grade.getText().matches("[0-9]+")) {
+
             gd.setGrade(Double.valueOf(Grade.getText()));
             gd.setGradeDetail(GradeDesc.getText());
-            showDetails(gd);
+
+            TS.UpdateGradeDetail(gd);
             GradeDetailTable.setItems(TS.getGradeDetailList());
-            System.out.println("eh!!");
+//            showDetails(gd);
+//            System.out.println("eh!!");
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");
@@ -166,8 +175,9 @@ public class GradesController implements Initializable {
     public void handleDelete() {
         int selectedIndex = GradeDetailTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
+            GradeDetail del = GradeDetailTable.getItems().get(selectedIndex);
             GradeDetailTable.getItems().remove(selectedIndex);
-
+            TS.RemoveGradeDetail(del);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");
@@ -192,6 +202,26 @@ public class GradesController implements Initializable {
                     ComboYear.getSelectionModel().getSelectedItem().toString()));
             tempFG.setGrade(Integer.parseInt(FinalGrade.getText()));
             TS.PersistNewFinalGrade(tempFG);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("يوجد خطأ");
+            alert.setHeaderText("خطأ");
+            alert.setContentText("برجاء التأكد من اختيار المادة و كتابة الدرجة ");
+            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    public void handleEditFinalGrade() {
+        if (!ComboSubject.getSelectionModel().getSelectedItem().equals("")
+                && !FinalGrade.getText().equals("") && FinalGrade.getText().matches("[0-9]+")) {
+            System.out.println("Selected " + FG.getSuId().getSuDesc());
+//            FinalGrades tempFG = FG;
+            FG.setSuId(TS.getSubjectsByDescAndYDesc(ComboSubject.getSelectionModel().getSelectedItem().toString(),
+                    ComboYear.getSelectionModel().getSelectedItem().toString()));
+            FG.setGrade(Integer.parseInt(FinalGrade.getText()));
+            TS.UpdateFinalGrade(FG);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");

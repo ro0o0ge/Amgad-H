@@ -13,6 +13,7 @@ import Entity.StudyYears;
 import Entity.UserLog;
 import Entity.Student;
 import Entity.StudentAttendance;
+import Entity.StudentExpenses;
 import Entity.StudentNotes;
 import Util.HibernateUtil;
 import Util.LoginSec;
@@ -54,7 +55,7 @@ public class StudentAffair {
     Session s;
 
     static Student edit;//STUDENT TO BE EDITED & TO BE VIEWED
-    
+
     static StudentAttendance editStatus;
 
     ObservableList<Contacts> ContactsList = FXCollections.observableArrayList();
@@ -79,6 +80,12 @@ public class StudentAffair {
 
     public static ObservableList<StudentNotes> getStudentNotesList() {
         return StudentNotesList;
+    }
+
+    static ObservableList<StudentExpenses> StudentExpensesList = FXCollections.observableArrayList();
+
+    public static ObservableList<StudentExpenses> getStudentExpensesList() {
+        return StudentExpensesList;
     }
 
     public static void setC(Contacts con) {
@@ -304,6 +311,15 @@ public class StudentAffair {
         return sy;
     }
 
+    public List<StudentExpenses> getStudentExpenses(Student st) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("StudentExpenses.findBySId").setParameter("sId", st);
+        List<StudentExpenses> sy = query.list();
+        s.close();
+        return sy;
+    }
+
     public List<Student> getActiveStudents() {
         s = sf.openSession();
         s.beginTransaction();
@@ -328,6 +344,27 @@ public class StudentAffair {
             dialogStage2.setScene(scene);
             dialogStage2.showAndWait();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editStudExpenses() {
+        try {
+            StudentExpensesList.addAll(getEdit().getStudentExpensesList());
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/StudentExpenses.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("مصاريف المدرسة");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+            StudentExpensesList.clear();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -384,6 +421,7 @@ public class StudentAffair {
             suA.setAbDesc(Notes);
             suA.setAbsentDay(dt);
             suA.setSId(su);
+            suA.setStatus(true);
             suA.setEntryDate(java.sql.Date.valueOf(LocalDate.now()));
             s.persist(suA);
             log += " -- new Student Absence with id " + suA.getSAtId();
@@ -523,7 +561,49 @@ public class StudentAffair {
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
-    
+
+    public void PersistStudentExpense(StudentExpenses bd) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.persist(bd);
+            log += " -- new Student Expense with id " + bd.getSteId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            StudentExpensesList.clear();
+            StudentExpensesList.addAll(getStudentExpenses(bd.getSId()));
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+        }
+    }
+
+    public void UpdateStudentExpense(StudentExpenses bd) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(bd);
+            log += " -- Student Expenses with id " + bd.getSteId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            StudentExpensesList.clear();
+            StudentExpensesList.addAll(getStudentExpenses(bd.getSId()));
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+        }
+    }
+
     public void ViewStudent() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -546,7 +626,7 @@ public class StudentAffair {
 
     public void UpdateAbscenceStatus(StudentAttendance ea) {
         try {
-            
+
             String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
             s = sf.openSession();
             Transaction t = s.beginTransaction();

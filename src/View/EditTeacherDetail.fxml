@@ -78,17 +78,15 @@
                                         <Insets left="10.0" />
                                     </padding>
                                 </Label>
-                                <Label text="رقم تحقيق الشخصية" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                <Label text="رقم تحقيق الشخصية" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>
                                 </Label>
                                 <TextField fx:id="tAddress" GridPane.rowIndex="8" />
                                 <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-                                <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-                                <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-                                <TextField fx:id="tNatNo" GridPane.rowIndex="10" />
-                                <Label text="تاريخ الإلتحاق" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                <TextField fx:id="tNatNo" GridPane.rowIndex="7" />
+                                <Label text="تاريخ التعيين" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>
@@ -173,32 +171,54 @@
                               <Insets left="50.0" />
                            </GridPane.margin>
                         </ComboBox>
+                        <Label text="عدد الأبناء" GridPane.columnIndex="1" GridPane.rowIndex="16">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="اسم الزوج/ة" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="مهنة الزوج/ة" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField GridPane.rowIndex="9" />
+                        <TextField GridPane.rowIndex="10" />
+                        <TextField GridPane.rowIndex="16">
+                           <GridPane.margin>
+                              <Insets left="150.0" />
+                           </GridPane.margin>
+                        </TextField>
                             </children>
                         </GridPane>
-                        <HBox layoutX="280.0" layoutY="513.0" spacing="10.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="280.0">
+                        <HBox layoutX="279.0" layoutY="608.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="279.0">
                             <children>
                                 <Button defaultButton="true" mnemonicParsing="false" onAction="#handleSave" text="حفظ" />
                                 <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="إغلاق" />
                             </children>
                         </HBox>
-                        <Label layoutX="121.0" layoutY="41.0" text="جهات الاتصال" AnchorPane.bottomAnchor="579.0">
+                        <Label layoutX="103.0" layoutY="128.0" text="جهات الاتصال" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="128.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <Label layoutX="475.0" layoutY="41.0" text="بيانات المدرس" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="41.0">
+                        <Label layoutX="475.0" layoutY="55.0" text="بيانات المدرس" AnchorPane.rightAnchor="138.0" AnchorPane.topAnchor="55.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <Separator layoutX="293.0" layoutY="66.0" orientation="VERTICAL" prefHeight="502.0" prefWidth="5.0" AnchorPane.bottomAnchor="101.0" AnchorPane.leftAnchor="293.0" />
-                        <Separator layoutX="5.0" layoutY="494.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="101.0" AnchorPane.leftAnchor="5.0" />
-                        <Label layoutX="91.0" layoutY="235.0" text="بيانات المواد" AnchorPane.bottomAnchor="336.0" AnchorPane.leftAnchor="91.0">
+                        <Separator layoutX="293.0" layoutY="66.0" orientation="VERTICAL" prefHeight="555.0" prefWidth="4.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="293.0" />
+                        <Separator layoutX="5.0" layoutY="599.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" />
+                        <Label layoutX="100.0" layoutY="297.0" text="بيانات المواد" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="297.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
-                        <HBox fx:id="salary" layoutX="54.0" layoutY="510.0" prefHeight="27.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="54.0">
+                        <HBox fx:id="salary" layoutX="36.0" layoutY="470.0" prefHeight="27.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="36.0">
                             <children>
                                 <TextField fx:id="tSalary" />
                                 <Label contentDisplay="RIGHT" text="المرتب">
@@ -208,44 +228,56 @@
                                 </Label>
                             </children>
                         </HBox>
-                        <TableView fx:id="ContactsTable" editable="true" layoutX="26.0" layoutY="78.0" prefHeight="164.0" prefWidth="255.0" AnchorPane.bottomAnchor="405.0" AnchorPane.leftAnchor="26.0">
+                        <TableView fx:id="ContactsTable" editable="true" layoutX="27.0" layoutY="155.0" prefHeight="87.0" prefWidth="255.0" AnchorPane.leftAnchor="27.0" AnchorPane.topAnchor="155.0">
                             <columns>
                                 <TableColumn fx:id="NumColumn" prefWidth="115.0" text="الرقم" />
                                 <TableColumn fx:id="NameColumn" prefWidth="135.0" text="الاسم" />
                             </columns>
                         </TableView>
-                        <TableView fx:id="SubjectsTable" layoutX="26.0" layoutY="324.0" prefHeight="152.0" prefWidth="112.0" AnchorPane.bottomAnchor="171.0" AnchorPane.leftAnchor="26.0">
+                        <TableView fx:id="SubjectsTable" layoutX="26.0" layoutY="324.0" prefHeight="87.0" prefWidth="221.0" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="26.0">
                             <columns>
                                 <TableColumn fx:id="SubjectNameColumn" prefWidth="107.0" text="اسم المادة" />
+                        <TableColumn fx:id="SyNameColumn" prefWidth="107.0" text="السنة الدراسية" />
                             </columns>
                         </TableView>
                         <Label layoutX="254.0" layoutY="14.0" text="تعديل بيانات مدرس">
                             <font>
-                                <Font size="18.0" />
+                                <Font size="21.0" />
                             </font>
                         </Label>
-                  <HBox layoutX="57.0" layoutY="251.0" spacing="10.0">
+                  <HBox layoutX="57.0" layoutY="251.0" spacing="10.0" AnchorPane.leftAnchor="57.0">
                      <children>
                         <Button defaultButton="true" mnemonicParsing="false" onAction="#handleAddCont" text="جديد" />
                         <Button layoutX="192.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleDeleteCont" text="مسح" />
                      </children>
                   </HBox>
-                  <Label layoutX="166.0" layoutY="254.0" text="التحكم في جهات الاتصال">
+                  <Label layoutX="154.0" layoutY="254.0" text="التحكم في جهات الاتصال" AnchorPane.leftAnchor="154.0" AnchorPane.topAnchor="254.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <HBox layoutX="172.0" layoutY="400.0" spacing="10.0">
+                  <HBox layoutX="51.0" layoutY="417.0" spacing="10.0" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="51.0">
                      <children>
                         <Button defaultButton="true" mnemonicParsing="false" onAction="#handleAddSub" text="جديد" />
                         <Button layoutX="192.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleDeleteSub" text="مسح" />
                      </children>
                   </HBox>
-                  <Label layoutX="155.0" layoutY="372.0" text="التحكم في بيانات المواد">
+                  <Label layoutX="153.0" layoutY="420.0" text="التحكم في بيانات المواد" AnchorPane.bottomAnchor="207.0" AnchorPane.leftAnchor="153.0">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
+                  <Label layoutX="223.0" layoutY="545.0" text="الخبرات السابقة" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="223.0" />
+                  <TextArea layoutX="27.0" layoutY="524.0" prefHeight="58.0" prefWidth="170.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="27.0" />
+                  <Separator layoutX="5.0" layoutY="296.0" prefHeight="3.0" prefWidth="283.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="296.0" />
+                  <Button layoutX="212.0" layoutY="95.0" mnemonicParsing="false" text="بحث" />
+                  <Label layoutX="27.0" layoutY="99.0" prefHeight="17.0" prefWidth="183.0" text="مسار الصورة" />
+                  <Label layoutX="123.0" layoutY="60.0" text="صورة المدرس">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Separator layoutX="3.0" layoutY="126.0" prefHeight="3.0" prefWidth="289.0" />
                     </children>
                 </AnchorPane>
             </items>

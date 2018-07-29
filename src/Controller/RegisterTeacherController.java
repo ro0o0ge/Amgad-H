@@ -12,9 +12,12 @@ import Entity.Teacher;
 import Entity.TeacherSubjects;
 import Util.LoginSec;
 import amgad.h.TeachingStaff;
+import java.io.File;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,12 +25,16 @@ import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -42,6 +49,14 @@ public class RegisterTeacherController implements Initializable {
     TextField tSalary;
     @FXML
     TextField tQual;
+    @FXML
+    TextField spouseName;
+    @FXML
+    TextField spouseJob;
+    @FXML
+    TextField noOfChildren;
+    @FXML
+    TextArea prevEXP;
     @FXML
     ComboBox tNationality;
     @FXML
@@ -94,15 +109,20 @@ public class RegisterTeacherController implements Initializable {
     private TableView<Subjects> SubjectsTable;
     @FXML
     private TableColumn<Subjects, String> SubjectNameColumn;
+    @FXML
+    private TableColumn<Subjects, String> SyNameColumn;
+    @FXML
+    private Label PhotoPath;
 
     TeachingStaff TA;
     private Persons pers;
     private Teacher teac;
-    
-    
+    final File defaultDirectory = new File("C:\\");
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -132,13 +152,25 @@ public class RegisterTeacherController implements Initializable {
         SubjectsTable.setItems(TA.getSubjectsList());
         SubjectNameColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .SubDescProperty());
+        SyNameColumn.setCellValueFactory(cellData -> cellData.getValue()
+                .SyDescProperty());
 
-        System.out.println("Permission "+LoginSec.getLoggedUser().getPermission()+
-                " name "+ LoginSec.getLoggedUser().getUName());
         if (LoginSec.getLoggedUser().getPermission().equals("2")) {
             salary.setVisible(true);
         }
 
+    }
+
+    @FXML
+    public void handlePhoto() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(defaultDirectory);
+        List<String> extensions = Arrays.asList("JPG","JPEG","PNG");
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Images", extensions));
+        File selectedFile = fileChooser.showOpenDialog(TA.getDialogStage());
+        if (selectedFile != null) {
+            PhotoPath.setText(selectedFile.getAbsolutePath());
+        }
     }
 
     @FXML
@@ -148,7 +180,7 @@ public class RegisterTeacherController implements Initializable {
         if (!tName.getText().equals("") || tNationality.getSelectionModel().isEmpty()
                 || !tNatNo.getText().equals("") || !tNatNo.getText().matches("[0-9]+")
                 || !tAddress.getText().equals("") || tDOB.getValue() != null
-                || tSignDate.getValue() != null) {
+                || tSignDate.getValue() != null || !noOfChildren.getText().matches("[0-9]+")) {
             try {
                 pers.setName(tName.getText());
                 if (gType.getSelectedToggle().getUserData().toString().equals("ذكر")) {
@@ -182,7 +214,12 @@ public class RegisterTeacherController implements Initializable {
                     LocalDate localDate = tGradDate.getValue();
                     pers.setGradYear(String.valueOf(localDate.getYear()));
                 }
-
+                pers.setSpouseName(spouseName.getText());
+                pers.setSpouseParentOccupation(spouseJob.getText());
+                pers.setNoOfChildren(Integer.valueOf(noOfChildren.getText()));
+                pers.setPrevExp(prevEXP.getText());
+                pers.setPersonalPhoto(PhotoPath.getText());
+                
                 if (!tQual.getText().equals("")) {
                     pers.setQualification(tQual.getText());
                 }

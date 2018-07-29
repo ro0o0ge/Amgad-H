@@ -6,9 +6,7 @@
 package Controller;
 
 import Entity.Staff;
-import Entity.Student;
 import amgad.h.Management;
-import amgad.h.StudentAffair;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -62,7 +60,7 @@ public class Absent_EmpController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ComboAbsentType.getItems().removeAll(ComboAbsentType.getItems());
-        ComboAbsentType.getItems().addAll("تأخير", "استئذان", "عارضة", "مرضي", "سنوية", "غياب");
+        ComboAbsentType.getItems().addAll("تأخير", "استئذان", "منحة", "مرضي", "سنوية", "غياب");
 //        ComboAbsentType.getSelectionModel().select(1);
         //remove menubutton from fxml file
 

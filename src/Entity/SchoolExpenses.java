@@ -39,16 +39,16 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "SchoolExpenses.findByIssuedTo", query = "SELECT s FROM SchoolExpenses s WHERE s.issuedTo = :issuedTo")})
 public class SchoolExpenses implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "AMOUNT")
+    private double amount;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "SCE_ID")
     private Long sceId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
-    @Column(name = "AMOUNT")
-    private Double amount;
     @Column(name = "SCE_TYPE")
     private String sceType;
     @Basic(optional = false)
@@ -81,13 +81,6 @@ public class SchoolExpenses implements Serializable {
         this.sceId = sceId;
     }
 
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
 
     public String getSceType() {
         return sceType;
@@ -156,6 +149,14 @@ public class SchoolExpenses implements Serializable {
     @Override
     public String toString() {
         return "Entity.SchoolExpenses[ sceId=" + sceId + " ]";
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
     
 }

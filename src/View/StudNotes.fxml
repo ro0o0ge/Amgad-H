@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,16 +8,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controller.StudNotesController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.StudNotesController">
     <children>
-      <SplitPane dividerPositions="0.48327759197324416" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.49665551839464883" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <TableView fx:id="NotesTable" layoutX="-25.0" prefHeight="398.0" prefWidth="229.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <columns>
-                        <TableColumn fx:id="DateColumn" prefWidth="123.0" text="التاريخ" />
-                        <TableColumn fx:id="TitleColumn" prefWidth="153.0" text="عنوان الملحوظة" />
+                        <TableColumn fx:id="DateColumn" prefWidth="75.0" text="التاريخ" />
+                        <TableColumn fx:id="TitleColumn" prefWidth="93.0" text="النوع" />
+                        <TableColumn fx:id="ContentColumn" prefWidth="117.0" text="المحتوى" />
                      </columns>
                   </TableView>
                </children>
@@ -37,8 +39,14 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="الملحوظة" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label text="المحتوى" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <TextArea fx:id="NoteBody" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="4" />
+                        <ComboBox fx:id="NoteType" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <Label text="النوع" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Label>
                      </children>
                   </GridPane>
                   <HBox layoutX="92.0" layoutY="294.0" spacing="10.0" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="294.0">

@@ -33,11 +33,17 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "GradeDetail.findAll", query = "SELECT g FROM GradeDetail g")
+    ,@NamedQuery(name = "GradeDetail.deleteById", query = "DELETE  FROM GradeDetail g where g.gdId = :gdId")
     , @NamedQuery(name = "GradeDetail.findByGdId", query = "SELECT g FROM GradeDetail g WHERE g.gdId = :gdId")
     , @NamedQuery(name = "GradeDetail.findBySubjectId", query = "SELECT g FROM GradeDetail g WHERE g.gId.suId = :suId")
     , @NamedQuery(name = "GradeDetail.findByGrade", query = "SELECT g FROM GradeDetail g WHERE g.grade = :grade")
     , @NamedQuery(name = "GradeDetail.findByGradeDetail", query = "SELECT g FROM GradeDetail g WHERE g.gradeDetail = :gradeDetail")})
 public class GradeDetail implements Serializable {
+
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Basic(optional = false)
+    @Column(name = "GRADE")
+    private double grade;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,10 +51,6 @@ public class GradeDetail implements Serializable {
     @Basic(optional = false)
     @Column(name = "GD_ID")
     private Integer gdId;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Basic(optional = false)
-    @Column(name = "GRADE")
-    private double grade;
     @Basic(optional = false)
     @Column(name = "GRADE_DETAIL")
     private String gradeDetail;
@@ -79,22 +81,14 @@ public class GradeDetail implements Serializable {
         this.gdId = gdId;
     }
 
-    public double getGrade() {
-        return grade;
-    }
-    
     public StringProperty GradeProperty() {
         return new SimpleStringProperty(String.valueOf(grade));
-    }
-
-    public void setGrade(double grade) {
-        this.grade = grade;
     }
 
     public String getGradeDetail() {
         return gradeDetail;
     }
-    
+
     public StringProperty GradeDescProperty() {
         return new SimpleStringProperty(gradeDetail);
     }
@@ -143,6 +137,14 @@ public class GradeDetail implements Serializable {
     @Override
     public String toString() {
         return "Entity.GradeDetail[ gdId=" + gdId + " ]";
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
     }
 
 }

@@ -12,7 +12,6 @@ import Entity.EmployeeAttendance;
 import Entity.Persons;
 import Entity.SchoolExpenses;
 import Entity.Staff;
-import Entity.StaffClasses;
 import Entity.UserLog;
 import Util.HibernateUtil;
 import Util.LoginSec;
@@ -47,10 +46,6 @@ public class Management {
     private static Contacts C;
     UserLog ul;
 
-    private static StaffClasses SC;
-
-    private List<StaffClasses> tss = new ArrayList<>();
-
     static Staff edit;//staff TO BE EDITED
     
     static EmployeeAttendance editStatus;
@@ -66,12 +61,6 @@ public class Management {
         return ContactsList;
     }
 
-    ObservableList<Classes> SubjectsList = FXCollections.observableArrayList();
-
-    public ObservableList<Classes> getSubjectsList() {
-        return SubjectsList;
-    }
-
     static ObservableList<BoardDecisions> BoardDecisionList = FXCollections.observableArrayList();
 
     public static ObservableList<BoardDecisions> getBoardDecisionList() {
@@ -82,14 +71,6 @@ public class Management {
 
     public static ObservableList<SchoolExpenses> getSchoolExpensesList() {
         return SchoolExpensesList;
-    }
-
-    public static StaffClasses getSC() {
-        return SC;
-    }
-
-    public static void setSC(StaffClasses SC) {
-        Management.SC = SC;
     }
 
     public static void setC(Contacts con) {
@@ -114,10 +95,6 @@ public class Management {
 
     public static void setEdit(Staff dit) {
         edit = dit;
-    }
-
-    public List<StaffClasses> getTss() {
-        return tss;
     }
 
     static ObservableList<Staff> PersonsList = FXCollections.observableArrayList();
@@ -228,12 +205,6 @@ public class Management {
                 log += " -- new Contact with id " + c.getCId();
             }
 
-            for (StaffClasses su : tss) {
-                su.setStId(te);
-                s.persist(su);
-                log += " -- new Staff Class with id " + su.getStcID();
-            }
-
             ul = new UserLog();
             ul.setUId(LoginSec.getLoggedUser());
             ul.setLogDate(new Timestamp(new Date().getTime()));
@@ -289,7 +260,7 @@ public class Management {
         }
     }
 
-    public void UpdateTeacher(Staff st, List<Contacts> cons, List<Classes> subs) {
+    public void UpdateTeacher(Staff st, List<Contacts> cons) {
         try {
             String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
             s = sf.openSession();
@@ -302,17 +273,6 @@ public class Management {
                 c.setPId(st.getPId());
                 s.saveOrUpdate(c);
                 log += " -- Contact with id " + c.getCId();
-            }
-
-            Query query = s.getNamedQuery("StaffClasses.deleteByStID").setParameter("stId", st);
-            query.executeUpdate();
-            StaffClasses trss;
-            for (Classes c : subs) {
-                trss = new StaffClasses();
-                trss.setStId(st);
-                trss.setCId(c);
-                s.persist(trss);
-                log += " -- Staff Class with id " + c.getCId();
             }
 
             ul = new UserLog();
@@ -419,7 +379,7 @@ public class Management {
                 EA.setAbscenceType("1");
             } else if (Type.equals("استئذان")) {
                 EA.setAbscenceType("2");
-            } else if (Type.equals("عارضة")) {
+            } else if (Type.equals("منحة")) {
                 EA.setAbscenceType("3");
             } else if (Type.equals("مرضي")) {
                 EA.setAbscenceType("4");

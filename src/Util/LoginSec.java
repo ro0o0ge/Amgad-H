@@ -11,8 +11,6 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import javafx.geometry.NodeOrientation;
-import javafx.scene.control.Alert;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;

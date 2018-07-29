@@ -56,8 +56,6 @@ public class Classes implements Serializable {
     private List<Schedule> scheduleList;
     @OneToMany(mappedBy = "cId")
     private List<ClassStudents> classStudentsList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cId")
-    private List<StaffClasses> staffClassesList;
 
     public Classes() {
     }
@@ -108,15 +106,6 @@ public class Classes implements Serializable {
 
     public void setClassStudentsList(List<ClassStudents> classStudentsList) {
         this.classStudentsList = classStudentsList;
-    }
-
-    @XmlTransient
-    public List<StaffClasses> getStaffClassesList() {
-        return staffClassesList;
-    }
-
-    public void setStaffClassesList(List<StaffClasses> staffClassesList) {
-        this.staffClassesList = staffClassesList;
     }
 
     @Override

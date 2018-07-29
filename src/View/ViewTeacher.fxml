@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewTeacherController">
+<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewTeacherController">
     <children>
         <SplitPane dividerPositions="0.17839195979899497" orientation="VERTICAL" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
@@ -19,12 +20,16 @@
                   <Label fx:id="name" layoutX="483.0" layoutY="26.0" text="Label" />
                   <Label fx:id="salary" layoutX="209.0" layoutY="26.0" text="غير مسجل" />
                   <Label fx:id="salaryLabel" layoutX="305.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="المرتب" />
-                  <Button fx:id="saveAbscence" layoutX="42.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleEdit" text="تعديل الغياب" visible="false" />
+                  <Button fx:id="saveAbscence" layoutX="111.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="25.0" prefWidth="92.0" text="تعديل الغياب" visible="false" />
+                  <ImageView fitHeight="86.0" fitWidth="95.0" layoutX="5.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="4.0">
+                     <image>
+                        <Image url="@../resources/user.jpg" />
+                     </image></ImageView>
                </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TabPane layoutX="99.0" layoutY="28.0" prefHeight="324.0" prefWidth="598.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TabPane layoutX="99.0" layoutY="28.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="324.0" prefWidth="598.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <tabs>
                       <Tab text="بيانات المدرس">
                         <content>
@@ -39,6 +44,9 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -66,12 +74,12 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="تاريخ الالتحاق" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                          <Label text="تاريخ التعيين" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <Label text="رقم تحقيق الشخصية" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                          <Label text="الرقم القومي" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
@@ -108,9 +116,27 @@
                                              </GridPane.margin>
                                           </Label>
                                           <Label fx:id="Qual" text="غير موجود" GridPane.rowIndex="9" />
+                                          <Label text="اسم الزوج/ة" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="مهنة الزوج/ة" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="غير موجود" GridPane.rowIndex="10" />
+                                          <Label text="غير موجود" GridPane.rowIndex="11" />
+                                          <Label text="عدد الأبناء" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label text="غير موجود" GridPane.rowIndex="12" />
                                        </children>
                                     </GridPane>
-                                    <TableView fx:id="ContactsTable" editable="true" layoutX="237.0" layoutY="39.0" prefHeight="172.0" prefWidth="254.0">
+                                    <TableView fx:id="ContactsTable" editable="true" layoutX="268.0" layoutY="39.0" prefHeight="94.0" prefWidth="254.0">
                                        <columns>
                                           <TableColumn fx:id="NumColumn" prefWidth="114.0" text="الرقم" />
                                           <TableColumn fx:id="NameColumn" prefWidth="135.0" text="الاسم" />
@@ -131,6 +157,8 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
+                                    <Label layoutX="254.0" layoutY="193.0" text="الخبرات السابقة" AnchorPane.bottomAnchor="198.0" AnchorPane.rightAnchor="392.0" />
+                                    <Label layoutX="330.0" layoutY="159.0" prefHeight="86.0" prefWidth="156.0" text="لا يوجد" AnchorPane.bottomAnchor="163.0" AnchorPane.rightAnchor="222.0" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -139,7 +167,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <GridPane gridLinesVisible="true" prefHeight="295.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <GridPane gridLinesVisible="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="295.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <Label text="السابعة">
                                              <GridPane.margin>

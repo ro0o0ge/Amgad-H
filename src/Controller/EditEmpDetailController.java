@@ -8,13 +8,13 @@ package Controller;
 import Entity.Classes;
 import Entity.Contacts;
 import Entity.Staff;
-import Entity.StaffClasses;
 import Util.LoginSec;
 import amgad.h.Management;
+import java.io.File;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -26,12 +26,15 @@ import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -98,15 +101,39 @@ public class EditEmpDetailController implements Initializable {
     private TableView<Classes> ClassesTable;
     @FXML
     private TableColumn<Classes, String> ClassNameColumn;
+    @FXML
+    private TextField tSerial;
+    @FXML
+    private TextField spouseName;
+    @FXML
+    private TextField spouseJob;
+    @FXML
+    private TextField noOfChildren;
+    @FXML
+    private TextArea prevEXP;
+    @FXML
+    private ComboBox tCategory;
+    @FXML
+    private RadioButton type1;
+    @FXML
+    private RadioButton type2;
+    @FXML
+    private RadioButton type3;
+    @FXML
+    private ToggleGroup gCategory;
+    @FXML
+    private Label PhotoPath;
 
     Management MA;
+    final File defaultDirectory = new File("C:\\");
 
     static private Staff current;
     static ObservableList<Contacts> tempCon = FXCollections.observableArrayList();
-    static ObservableList<Classes> tempSub = FXCollections.observableArrayList();
 
+//    static ObservableList<Classes> tempSub = FXCollections.observableArrayList();
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -123,6 +150,9 @@ public class EditEmpDetailController implements Initializable {
         soc2.setUserData("أرمل");
         soc3.setUserData("أعزب");
         soc4.setUserData("متزوج");
+        type1.setUserData("إداري");
+        type2.setUserData("فني");
+        type3.setUserData("عمال و سائقين");
 
         MA = new Management();
         current = Management.getEdit();
@@ -160,25 +190,58 @@ public class EditEmpDetailController implements Initializable {
                 "UAE", "JOR", "PSE", "LBR");
         tNationality.getSelectionModel().select(current.getPId().getNationality());
 
+        if (current.getPId().getSpouseName() != null) {
+            spouseName.setText(current.getPId().getSpouseName());
+        }
+        if (current.getPId().getSpouseParentOccupation() != null) {
+            spouseJob.setText(current.getPId().getSpouseParentOccupation());
+        }
+
+        if (current.getStaffType().equals("1")) {
+            gCategory.selectToggle(type1);
+            tCategory.getItems().removeAll(tCategory.getItems());
+            tCategory.getItems().addAll(
+                    "رئيس قسم سكرتارية", "سكرتيرة", "ضابطة", "ضابطة أولى", "وكيلة شئون مالية",
+                    "وكيلة شئون ادارية", "وكيلة شئون ادارية ومالية", "مشرفة دور", "مشرفة باص",
+                    "مشرفة مقصف", "مشرفة باص و مقصف", "مسئولة سينما", "ألعاب",
+                    "مجالات", "مسئولة الكمبيوتر", "اخصائية اجتماعية");
+        } else if (current.getStaffType().equals("2")) {
+            gCategory.selectToggle(type2);
+            tCategory.getItems().removeAll(tCategory.getItems());
+            tCategory.getItems().addAll("ناظرة", "مساعد قائد", "وكيلة فنية", "مديرة متابعة فنية",
+                    "مشرفة اللغة العربية", "مشرفة اللغة الانجليزية", "مشرفة اللغة الفرنسية",
+                    "مشرفة الرياضيات", "مشرفة العلوم", "مشرفة الدراسات");
+        } else {
+            gCategory.selectToggle(type3);
+        }
+
+        if (current.getStaffCategory() != null) {
+            tCategory.getSelectionModel().select(current.getStaffCategory());
+        }
+
+        if (current.getPId().getPersonalPhoto() != null) {
+            PhotoPath.setText(current.getPId().getPersonalPhoto());
+        }
+
+        if (current.getPId().getPrevExp() != null) {
+            prevEXP.setText(current.getPId().getPrevExp());
+        }
+        if (current.getPId().getNoOfChildren() != null) {
+            noOfChildren.setText(current.getPId().getNoOfChildren().toString());
+        }
+        if (current.getSerialNo() != null) {
+            tSerial.setText(current.getSerialNo());
+        }
         if (tempCon.size() > 0) {
             tempCon.clear();
         }
         tempCon = FXCollections.observableArrayList(current.getPId().getContactsList());
-        List<Classes> TeSubList = new ArrayList<Classes>();
-        for (StaffClasses sub : current.getStaffClassesList()) {
-            TeSubList.add(sub.getCId());
-        }
-        tempSub = FXCollections.observableArrayList(TeSubList);
 
         ContactsTable.setItems(tempCon);
         NameColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .NameProperty());
         NumColumn.setCellValueFactory(cellData -> cellData.getValue()
                 .ConDeatailsProperty());
-
-        ClassesTable.setItems(tempSub);
-        ClassNameColumn.setCellValueFactory(cellData -> cellData.getValue()
-                .ClassDescProperty());
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(current.getPId().getHiringDate());
@@ -200,6 +263,35 @@ public class EditEmpDetailController implements Initializable {
         if (LoginSec.getLoggedUser().getPermission().equals("2")) {
             salary.setVisible(true);
             tSalary.setText(String.valueOf(current.getMonthlySalary()));
+        }
+        gCategory.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
+            if (newToggle.getUserData().equals("إداري")) {
+                tCategory.getItems().removeAll(tCategory.getItems());
+                tCategory.getItems().addAll(
+                        "رئيس قسم سكرتارية", "سكرتيرة", "ضابطة", "ضابطة أولى", "وكيلة شئون مالية",
+                        "وكيلة شئون ادارية", "وكيلة شئون ادارية ومالية", "مشرفة دور", "مشرفة باص",
+                        "مشرفة مقصف", "مشرفة باص و مقصف", "مسئولة سينما", "ألعاب",
+                        "مجالات", "مسئولة الكمبيوتر", "اخصائية اجتماعية");
+            } else if (newToggle.getUserData().equals("فني")) {
+                tCategory.getItems().removeAll(tCategory.getItems());
+                tCategory.getItems().addAll("ناظرة", "مساعد قائد", "وكيلة فنية", "مديرة متابعة فنية",
+                        "مشرفة اللغة العربية", "مشرفة اللغة الانجليزية", "مشرفة اللغة الفرنسية",
+                        "مشرفة الرياضيات", "مشرفة العلوم", "مشرفة الدراسات");
+            } else {
+                tCategory.getItems().removeAll(tCategory.getItems());
+            }
+        });
+    }
+
+    @FXML
+    public void handlePhoto() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(defaultDirectory);
+        List<String> extensions = Arrays.asList("JPG", "JPEG", "PNG");
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Images", extensions));
+        File selectedFile = fileChooser.showOpenDialog(MA.getDialogStage());
+        if (selectedFile != null) {
+            PhotoPath.setText(selectedFile.getAbsolutePath());
         }
     }
 
@@ -243,10 +335,38 @@ public class EditEmpDetailController implements Initializable {
                     current.getPId().setGradYear(String.valueOf(localDate.getYear()));
                 }
 
-                
-
-                if (tQual.getText()!=null) {
+                if (tQual.getText() != null) {
                     current.getPId().setQualification(tQual.getText());
+                }
+                
+                if (!spouseName.getText().equals("")) {
+                    current.getPId().setSpouseName(spouseName.getText());
+                }
+                if (!spouseJob.getText().equals("")) {
+                    current.getPId().setSpouseParentOccupation(spouseJob.getText());
+                }
+                if (!noOfChildren.getText().equals("")) {
+                    current.getPId().setNoOfChildren(Integer.valueOf(noOfChildren.getText()));
+                }
+                if (!prevEXP.getText().equals("")) {
+                    current.getPId().setPrevExp(prevEXP.getText());
+                }
+                if (!PhotoPath.getText().equals("")) {
+                    current.getPId().setPersonalPhoto(PhotoPath.getText());
+                }
+                
+                if (gCategory.getSelectedToggle().getUserData().toString().equals("إداري")) {
+                    current.setStaffType("1");
+                } else if (gSocial.getSelectedToggle().getUserData().toString().equals("فني")) {
+                    current.setStaffType("2");
+                } else {
+                    current.setStaffType("3");
+                }
+                
+                if (!"3".equals(current.getStaffType())) {
+                    current.setStaffCategory(tCategory.getSelectionModel().getSelectedItem().toString());
+                }else {
+                    current.setStaffCategory("");
                 }
 
                 if (gStatus.getSelectedToggle().getUserData().toString().equals("يعمل")) {
@@ -254,11 +374,13 @@ public class EditEmpDetailController implements Initializable {
                 } else {
                     current.setStatus("2");
                 }
+                
+                current.setSerialNo(tSerial.getText());
 
                 if (!tSalary.getText().isEmpty()) {
                     current.setMonthlySalary(Double.valueOf(tSalary.getText()));
                 }
-                MA.UpdateTeacher(current, tempCon, tempSub);
+                MA.UpdateTeacher(current, tempCon);
             } catch (Exception e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("يوجد خطأ");
@@ -307,23 +429,9 @@ public class EditEmpDetailController implements Initializable {
 
     @FXML
     public void handleAddSub() {
-        Management.setSC(new StaffClasses());
-        MA.newSub();
-        MA.getTss().add(Management.getSC());
-        tempSub.add(Management.getSC().getCId());
     }
 
     @FXML
     public void handleDeleteSub() {
-        if (ClassesTable.getSelectionModel().getSelectedIndex() >= 0) {
-            ClassesTable.getItems().remove(ClassesTable.getSelectionModel().getSelectedIndex());
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("يوجد خطأ");
-            alert.setHeaderText("لم يتم تحديد العنصر المراد حذفه");
-            alert.setContentText("من فضلك قم بتحديد العنصر من جدول الفصول");
-            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-            alert.showAndWait();
-        }
     }
 }
