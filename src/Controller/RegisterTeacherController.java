@@ -33,7 +33,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 /**
@@ -43,6 +42,8 @@ import javafx.stage.FileChooser;
  */
 public class RegisterTeacherController implements Initializable {
 
+    @FXML
+    TextField tSerial;
     @FXML
     DatePicker tSignDate;
     @FXML
@@ -113,6 +114,10 @@ public class RegisterTeacherController implements Initializable {
     private TableColumn<Subjects, String> SyNameColumn;
     @FXML
     private Label PhotoPath;
+    @FXML
+    TextField InsuranceNo;
+    @FXML
+    TextField InsuranceAmount;
 
     TeachingStaff TA;
     private Persons pers;
@@ -179,8 +184,7 @@ public class RegisterTeacherController implements Initializable {
         teac = new Teacher();
         if (!tName.getText().equals("") || tNationality.getSelectionModel().isEmpty()
                 || !tNatNo.getText().equals("") || !tNatNo.getText().matches("[0-9]+")
-                || !tAddress.getText().equals("") || tDOB.getValue() != null
-                || tSignDate.getValue() != null || !noOfChildren.getText().matches("[0-9]+")) {
+                || !tAddress.getText().equals("") || tDOB.getValue() != null) {
             try {
                 pers.setName(tName.getText());
                 if (gType.getSelectedToggle().getUserData().toString().equals("ذكر")) {
@@ -223,6 +227,12 @@ public class RegisterTeacherController implements Initializable {
                 if (!tQual.getText().equals("")) {
                     pers.setQualification(tQual.getText());
                 }
+                if (!InsuranceAmount.getText().equals("")) {
+                    pers.setInsuranceAmount(Double.parseDouble(InsuranceAmount.getText()));
+                }
+                if (!InsuranceNo.getText().equals("")) {
+                    pers.setInsuranceNo(InsuranceNo.getText());
+                }
 
                 teac.setPId(pers);
 
@@ -235,6 +245,8 @@ public class RegisterTeacherController implements Initializable {
                 if (!tSalary.getText().isEmpty()) {
                     teac.setMonthlySalary(Double.valueOf(tSalary.getText()));
                 }
+                
+                teac.setSerialNo(tSerial.getText());
 
                 TA.PersistNewTeac(pers, teac);
 

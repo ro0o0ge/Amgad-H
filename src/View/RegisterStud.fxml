@@ -96,11 +96,11 @@
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <RadioButton fx:id="S3" mnemonicParsing="false" text="مقبول" toggleGroup="$sType" GridPane.rowIndex="14" />
-                                <RadioButton fx:id="S2" mnemonicParsing="false" selected="true" text="منتظر" GridPane.rowIndex="14">
+                                <RadioButton fx:id="S3" mnemonicParsing="false" selected="true" text="مقبول" GridPane.rowIndex="14">
                            <toggleGroup>
                               <ToggleGroup fx:id="sStatus" />
-                           </toggleGroup>
+                           </toggleGroup></RadioButton>
+                                <RadioButton fx:id="S2" mnemonicParsing="false" text="منتظر" toggleGroup="$sStatus" GridPane.rowIndex="14">
                                     <GridPane.margin>
                                         <Insets left="75.0" />
                                     </GridPane.margin>
@@ -110,7 +110,7 @@
                                         <Insets left="150.0" />
                                     </GridPane.margin>
                                 </RadioButton>
-                                <Label text="الفصل الدراسي" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                <Label text="الصف الدراسي" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                     <GridPane.margin>
                                         <Insets left="10.0" />
                                     </GridPane.margin>

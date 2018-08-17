@@ -23,37 +23,39 @@
                                 <Menu mnemonicParsing="false" text="شئون الطلاب">
                                     <items>
                                         <MenuItem mnemonicParsing="false" onAction="#handleNewStud" text="تسجيل طالب جديد" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleEditStud" text="تعديل البيانات الطلاب" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleEditStud" text="بيانات الطلاب" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleClassStuds" text="تسجيل قوائم الفصول" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleStudAbsent" text="تسجيل الغياب" />
-                                        <MenuItem mnemonicParsing="false" text="تسجيل الدرجات" />
+                                        <MenuItem mnemonicParsing="false" text="تسجيل الدرجات" visible="false" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="هيئة التدريس">
                                     <items>
                                         <MenuItem mnemonicParsing="false" onAction="#handleNewTeacher" text="تسجيل مدرس جديد" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleEditTeacher" text="تعديل البيانات الشخصية للمدرسين" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleEditTeacher" text="بيانات المدرسين" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleScedule" text="جدول الحصص" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleTeacherAbsent" text="تسجيل الحضور والإنصراف" />
                               <SeparatorMenuItem mnemonicParsing="false" />
-                              <MenuItem mnemonicParsing="false" onAction="#handleFinalGrades" text="تسجيل الدرجات النهائية" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleFinalGrades" text="تسجيل الدرجات النهائية" visible="false" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="الإدارة">
                                     <items>
                                         <MenuItem mnemonicParsing="false" onAction="#handleNewEmp" text="تسجيل موظف جديد" />
-                                        <MenuItem mnemonicParsing="false" onAction="#handleEditEmp" text="تعديل بيانات الموظفين" />
+                                        <MenuItem mnemonicParsing="false" onAction="#handleEditEmp" text="بيانات الموظفين" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleEmpAbsent" text="تسجيل الحضور والإنصراف" />
-                                        <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem mnemonicParsing="false" text="المرتبات" />
                               <MenuItem mnemonicParsing="false" onAction="#handleBoardDecision" text="قرارات الادارة" />
+                                        <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleBonus" text="المكافأت" />
+                              <MenuItem mnemonicParsing="false" onAction="#handlePenalty" text="الجزاءات" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleInsurance" text="التأمينات" visible="false" />
                               <SeparatorMenuItem mnemonicParsing="false" />
-                              <MenuItem mnemonicParsing="false" onAction="#handleSchoolExpense" text="مصاريف المدرسة" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleSchoolExpense" text="نثريات المدرسة" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="تقارير" visible="false">

@@ -60,7 +60,7 @@ public class Absent_TeacherController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ComboAbsentType.getItems().removeAll(ComboAbsentType.getItems());
-        ComboAbsentType.getItems().addAll("تأخير", "استئذان", "منحة", "مرضي", "سنوية", "غياب");
+        ComboAbsentType.getItems().addAll("غياب", "تأخير", "استئذان", "منحة", "سنوية");
 //        ComboAbsentType.getSelectionModel().select(1);
         //remove menubutton from fxml file
 

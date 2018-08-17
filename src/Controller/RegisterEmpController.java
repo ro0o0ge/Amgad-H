@@ -117,6 +117,10 @@ public class RegisterEmpController implements Initializable {
     private TableColumn<Contacts, String> NumColumn;
     @FXML
     private Label PhotoPath;
+    @FXML
+    TextField InsuranceNo;
+    @FXML
+    TextField InsuranceAmount;
 
     Management MA;
     private Persons pers;
@@ -198,8 +202,7 @@ public class RegisterEmpController implements Initializable {
         teac = new Staff();
         if (!tName.getText().equals("") || tNationality.getSelectionModel().isEmpty()
                 || !tNatNo.getText().equals("") || !tNatNo.getText().matches("[0-9]+")
-                || !tAddress.getText().equals("") || tDOB.getValue() != null
-                || tSignDate.getValue() != null) {
+                || !tAddress.getText().equals("") || tDOB.getValue() != null) {
             try {
                 pers.setName(tName.getText());
                 if (gType.getSelectedToggle().getUserData().toString().equals("ذكر")) {
@@ -250,6 +253,12 @@ public class RegisterEmpController implements Initializable {
                 }
                 if (!PhotoPath.getText().equals("")) {
                     pers.setPersonalPhoto(PhotoPath.getText());
+                }
+                if (!InsuranceAmount.getText().equals("")) {
+                    pers.setInsuranceAmount(Double.parseDouble(InsuranceAmount.getText()));
+                }
+                if (!InsuranceNo.getText().equals("")) {
+                    pers.setInsuranceNo(InsuranceNo.getText());
                 }
 
                 teac.setPId(pers);

@@ -41,6 +41,7 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="amgad_sc"/>
+  <table-filter match-name="evaluation"/>
   <table-filter match-name="payroll"/>
   <table-filter match-name="staff_classes"/>
   <table-filter match-name="users"/>

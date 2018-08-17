@@ -219,9 +219,9 @@
                         </Label>
                         <Separator layoutX="294.0" layoutY="100.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="5.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="294.0" />
                         <Separator layoutX="5.0" layoutY="569.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="5.0" />
-                        <HBox fx:id="salary" layoutX="33.0" layoutY="454.0" prefHeight="27.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="33.0">
+                        <HBox fx:id="salary" layoutX="116.0" layoutY="462.0" prefHeight="27.0" prefWidth="132.0" visible="false" AnchorPane.bottomAnchor="131.0" AnchorPane.leftAnchor="116.0">
                             <children>
-                                <TextField fx:id="tSalary" />
+                                <TextField fx:id="tSalary" prefHeight="25.0" prefWidth="68.0" />
                                 <Label contentDisplay="RIGHT" text="المرتب">
                                     <HBox.margin>
                                         <Insets left="10.0" />
@@ -260,8 +260,8 @@
                   <Button layoutX="223.0" layoutY="81.0" mnemonicParsing="false" onAction="#handlePhoto" text="بحث" AnchorPane.leftAnchor="223.0" AnchorPane.topAnchor="81.0" />
                   <Separator layoutX="6.0" layoutY="291.0" prefHeight="3.0" prefWidth="274.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="291.0" />
                   <Label layoutX="192.0" layoutY="510.0" text="الخبرات السابقة" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="192.0" />
-                  <TextArea fx:id="prevEXP" layoutX="22.0" layoutY="498.0" prefHeight="64.0" prefWidth="160.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="22.0" />
-                  <Separator layoutX="7.0" layoutY="443.0" prefHeight="3.0" prefWidth="274.0" />
+                  <TextArea fx:id="prevEXP" layoutX="22.0" layoutY="498.0" prefHeight="55.0" prefWidth="160.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="22.0" />
+                  <Separator layoutX="6.0" layoutY="392.0" prefHeight="3.0" prefWidth="274.0" />
                   <Label layoutX="209.0" layoutY="364.0" text="تصنيف الموظف" AnchorPane.bottomAnchor="239.0" AnchorPane.leftAnchor="209.0" />
                   <ComboBox fx:id="tCategory" layoutX="27.0" layoutY="360.0" prefWidth="150.0" AnchorPane.bottomAnchor="235.0" AnchorPane.leftAnchor="27.0" />
                   <HBox layoutX="27.0" layoutY="312.0" prefHeight="17.0" prefWidth="255.0">
@@ -281,6 +281,26 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </RadioButton>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="salary1" layoutX="116.0" layoutY="429.0" prefHeight="27.0" prefWidth="132.0">
+                     <children>
+                        <TextField fx:id="InsuranceAmount" prefHeight="25.0" prefWidth="68.0" />
+                        <Label contentDisplay="RIGHT" text="المبلغ التأميني">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="salary11" layoutX="49.0" layoutY="395.0" prefHeight="27.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="InsuranceNo" prefHeight="25.0" prefWidth="135.0" />
+                        <Label contentDisplay="RIGHT" text="الرقم التأميني">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
                      </children>
                   </HBox>
                     </children>

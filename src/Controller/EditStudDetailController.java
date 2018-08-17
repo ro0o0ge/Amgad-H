@@ -10,10 +10,12 @@ import Entity.Classes;
 import Entity.Contacts;
 import Entity.Student;
 import amgad.h.StudentAffair;
+import java.io.File;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
@@ -32,6 +34,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -80,6 +83,8 @@ public class EditStudDetailController implements Initializable {
     private RadioButton S2;
     @FXML
     private RadioButton S3;
+    @FXML
+    TextField ParentJob;
 
     @FXML
     private TableView<Contacts> ContactsTable;
@@ -87,11 +92,14 @@ public class EditStudDetailController implements Initializable {
     private TableColumn<Contacts, String> NameColumn;
     @FXML
     private TableColumn<Contacts, String> NumColumn;
-
+    @FXML
+    private Label PhotoPath;
+    
     private ClassStudents classStud;
     private List<Classes> css;
 
     StudentAffair SA;
+    final File defaultDirectory = new File("C:\\");
 
     static private Student current;
     static ObservableList<Contacts> tempCon = FXCollections.observableArrayList();
@@ -121,7 +129,7 @@ public class EditStudDetailController implements Initializable {
         sNationality.getItems().addAll("EGY", "SAU", "OMN", "BHR", "KWT",
                 "UAE", "JOR", "PSE", "LBR");
         sNationality.getSelectionModel().select(current.getPId().getNationality());
-
+        ParentJob.setText(current.getPId().getSpouseParentOccupation());
         sClass.getItems().removeAll(sClass.getItems());
         sClass.getItems().addAll(getClasses());
         if (current.getClassStudentsList() != null) {
@@ -187,6 +195,18 @@ public class EditStudDetailController implements Initializable {
     }
 
     @FXML
+    public void handlePhoto() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(defaultDirectory);
+        List<String> extensions = Arrays.asList("JPG", "JPEG", "PNG");
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Images", extensions));
+        File selectedFile = fileChooser.showOpenDialog(SA.getDialogStage());
+        if (selectedFile != null) {
+            PhotoPath.setText(selectedFile.getAbsolutePath());
+        }
+    }
+    
+    @FXML
     public void handleSave() {
         if (!sName.getText().equals("") || sNationality.getSelectionModel().isEmpty()
                 || !sNatNo.getText().equals("") || !sNatNo.getText().matches("[0-9]+")
@@ -211,7 +231,7 @@ public class EditStudDetailController implements Initializable {
                 current.getPId().setAddress(sAddress.getText());
                 current.getPId().setDob(Date.valueOf(sDOB.getValue()));
                 current.getPId().setModifiedDate(Date.valueOf(LocalDate.now()));
-
+                current.getPId().setSpouseParentOccupation(ParentJob.getText());
                 if (sStatus.getSelectedToggle().getUserData().toString().equals("مرفوض")) {
                     current.setStatus("1");
                 } else if (sStatus.getSelectedToggle().getUserData().toString().equals("منتظر")) {

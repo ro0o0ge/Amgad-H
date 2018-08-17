@@ -55,6 +55,8 @@ public class StudentExpensesController implements Initializable {
     @FXML
     private TableColumn<StudentExpenses, String> DateColumn;
     @FXML
+    private TableColumn<StudentExpenses, String> TypeColumn;
+    @FXML
     private ComboBox ComboType;
 
     StudentAffair SA;
@@ -75,13 +77,17 @@ public class StudentExpensesController implements Initializable {
         current = StudentAffair.getEdit();
         ComboType.getItems().removeAll(ComboType.getItems());
         ComboType.getItems().addAll("رسوم تعليم", "رسوم تعليم قسط أول", "رسوم تعليم قسط ثاني",
-                "رسوم ضافية", "رسوم نشاط", "كتب وزارية", "كتب اجنبية", "زي", "زي اضافي", "اعفاء");
+                "رسوم ضافية","رسوم امتحان", "رسوم نشاط", "كتب وزارية", "كتب اجنبية",
+                "زي", "زي تيشيرت صيفي", "زي تيشيرت شتوي", "زي بنطلون او جيبة", "زي جاكيت",
+                "زي اضافي", "زي اضافي تيشيرت صيفي", "زي اضافي تيشيرت شتوي", "زي اضافي بنطلون او جيبة", "زي اضافي جاكيت",
+                "اعفاء","باص ترم اول","باص ترم اول ذهاب", "باص ترم اول عودة ","باص ترم ثاني","باص ترم ثاني ذهاب", "باص ترم ثاني عودة "
+                );
 
         StudentExpensesTable.setItems(StudentAffair.getStudentExpensesList());
         RecievedColumn.setCellValueFactory(cellData -> cellData.getValue().RecievedProperty());
         AmountColumn.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
         DateColumn.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-
+        TypeColumn.setCellValueFactory(cellData -> cellData.getValue().TypeProperty());
         StudentExpensesTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showDetails(newValue));
 
@@ -107,6 +113,7 @@ public class StudentExpensesController implements Initializable {
             Notes.setText("");
             EDate.setValue(null);
             ComboType.getSelectionModel().clearSelection();
+            Recieved.setSelected(false);
         }
     }
 
@@ -116,7 +123,6 @@ public class StudentExpensesController implements Initializable {
             ObservableList<StudentExpenses> TempList = FXCollections.observableArrayList(SA.getStudentExpensesList());
             StudentExpensesTable.getItems().clear();
 
-            //date
             for (int i = 0; i < TempList.size(); i++) {
                 if (!TempList.get(i).DateProperty().toString().contains(SearchQuery.getText())) {
                     TempList.remove(i);
@@ -148,7 +154,9 @@ public class StudentExpensesController implements Initializable {
             st.setSteStatus(Recieved.isSelected());
             st.setSId(current);
             SA.PersistStudentExpense(st);
-            StudentExpensesTable.setItems(StudentAffair.getStudentExpensesList());
+            showDetails(null);
+            StudentExpensesTable.getItems().clear();
+            StudentExpensesTable.setItems(SA.getStudentExpensesList());
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");

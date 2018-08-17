@@ -8,7 +8,6 @@ package Controller;
 import Entity.SchoolExpenses;
 import Entity.Student;
 import amgad.h.Management;
-import amgad.h.StudentAffair;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -24,6 +23,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
@@ -44,6 +44,8 @@ public class EditSchoolExpensesController implements Initializable {
     @FXML
     private TextField ExenseBy;
     @FXML
+    private TextArea Notes;
+    @FXML
     private TableView<SchoolExpenses> SchoolExpensesTable;
     @FXML
     private TableColumn<SchoolExpenses, String> ToColumn;
@@ -51,6 +53,10 @@ public class EditSchoolExpensesController implements Initializable {
     private TableColumn<SchoolExpenses, String> ByColumn;
     @FXML
     private TableColumn<SchoolExpenses, String> DateColumn;
+    @FXML
+    private TableColumn<SchoolExpenses, String> AmountColumn;
+    @FXML
+    private TableColumn<SchoolExpenses, String> NotesColumn;
     @FXML
     private ComboBox ComboSearch;
     @FXML
@@ -74,9 +80,17 @@ public class EditSchoolExpensesController implements Initializable {
         ComboSearch.getItems().addAll("جهة الصرف", "التاريخ");
 
         ComboType.getItems().removeAll(ComboType.getItems());
-        ComboType.getItems().addAll("مرتبات", "تأمينات", "فواتير مياه", "فواتير كهرباء",
+        ComboType.getItems().addAll("فواتير مياه", "فواتير كهرباء",
                 "فواتير تليفون", "سباكة", "نجارة", "كهرباء", "حدادة", "الوميتال", "ادوات نظافة",
-                "مصاريف متنوعة", "تفويل باصات", "صيانة باصات");
+                "مصاريف متنوعة",
+                "تفويل باص 7215",
+                "تفويل باص 7214",
+                "تفويل باص 7234",
+                "تفويل باص 9538",
+                "صيانة باص 7215",
+                "صيانة باص 7214",
+                "صيانة باص 7234",
+                "صيانة باص 9538");
 
         MA = new Management();
         ComboSearch.getSelectionModel().select(0);
@@ -85,6 +99,8 @@ public class EditSchoolExpensesController implements Initializable {
         ToColumn.setCellValueFactory(cellData -> cellData.getValue().IssuedToProperty());
         ByColumn.setCellValueFactory(cellData -> cellData.getValue().IssuedByProperty());
         DateColumn.setCellValueFactory(cellData -> cellData.getValue().DDateProperty());
+        AmountColumn.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+        NotesColumn.setCellValueFactory(cellData -> cellData.getValue().NotesProperty());
 
         SchoolExpensesTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showDetails(newValue));
@@ -102,11 +118,13 @@ public class EditSchoolExpensesController implements Initializable {
                     cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
             EDate.setValue(date);
             ExenseBy.setText(shera2.getIssuedBy());
+            Notes.setText(shera2.getNotes());
             ComboType.getSelectionModel().select(shera2.getSceType());
         } else {
             Amount.setText("");
             ExenseTo.setText("");
             ExenseBy.setText("");
+            Notes.setText("");
             EDate.setValue(null);
         }
     }
@@ -154,6 +172,7 @@ public class EditSchoolExpensesController implements Initializable {
             st.setIssuedBy(ExenseBy.getText());
             st.setIssuedTo(ExenseTo.getText());
             st.setSceDate(Date.valueOf(EDate.getValue()));
+            st.setNotes(Notes.getText());
             st.setSceType(ComboType.getSelectionModel().getSelectedItem().toString());
             MA.PersistSchoolExpense(st);
             showDetails(null);
@@ -175,9 +194,11 @@ public class EditSchoolExpensesController implements Initializable {
             st.setAmount(Double.valueOf(Amount.getText()));
             st.setIssuedBy(ExenseBy.getText());
             st.setIssuedTo(ExenseTo.getText());
+            st.setNotes(Notes.getText());
             st.setSceDate(Date.valueOf(EDate.getValue()));
             st.setSceType(ComboType.getSelectionModel().getSelectedItem().toString());
             MA.UpdateSchoolExpense(st);
+            showDetails(null);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");
@@ -188,5 +209,4 @@ public class EditSchoolExpensesController implements Initializable {
         }
     }
 
-    
 }

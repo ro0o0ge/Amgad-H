@@ -123,6 +123,10 @@ public class EditEmpDetailController implements Initializable {
     private ToggleGroup gCategory;
     @FXML
     private Label PhotoPath;
+    @FXML
+    TextField InsuranceNo;
+    @FXML
+    TextField InsuranceAmount;
 
     Management MA;
     final File defaultDirectory = new File("C:\\");
@@ -179,7 +183,7 @@ public class EditEmpDetailController implements Initializable {
             gSocial.selectToggle(soc4);
         }
 
-        if (current.getPId().getGender().equals("1")) {
+        if (current.getPId().getReligion().equals("1")) {
             gReligion.selectToggle(r1);
         } else {
             gReligion.selectToggle(r2);
@@ -195,6 +199,12 @@ public class EditEmpDetailController implements Initializable {
         }
         if (current.getPId().getSpouseParentOccupation() != null) {
             spouseJob.setText(current.getPId().getSpouseParentOccupation());
+        }
+        if (current.getPId().getInsuranceNo() != null) {
+            InsuranceNo.setText(current.getPId().getInsuranceNo());
+        }
+        if (current.getPId().getInsuranceAmount() != null) {
+            InsuranceAmount.setText(current.getPId().getInsuranceAmount().toString());
         }
 
         if (current.getStaffType().equals("1")) {
@@ -338,7 +348,7 @@ public class EditEmpDetailController implements Initializable {
                 if (tQual.getText() != null) {
                     current.getPId().setQualification(tQual.getText());
                 }
-                
+
                 if (!spouseName.getText().equals("")) {
                     current.getPId().setSpouseName(spouseName.getText());
                 }
@@ -354,7 +364,12 @@ public class EditEmpDetailController implements Initializable {
                 if (!PhotoPath.getText().equals("")) {
                     current.getPId().setPersonalPhoto(PhotoPath.getText());
                 }
-                
+                if (!InsuranceAmount.getText().equals("")) {
+                    current.getPId().setInsuranceAmount(Double.parseDouble(InsuranceAmount.getText()));
+                }
+                if (!InsuranceNo.getText().equals("")) {
+                    current.getPId().setInsuranceNo(InsuranceNo.getText());
+                }
                 if (gCategory.getSelectedToggle().getUserData().toString().equals("إداري")) {
                     current.setStaffType("1");
                 } else if (gSocial.getSelectedToggle().getUserData().toString().equals("فني")) {
@@ -362,10 +377,10 @@ public class EditEmpDetailController implements Initializable {
                 } else {
                     current.setStaffType("3");
                 }
-                
+
                 if (!"3".equals(current.getStaffType())) {
                     current.setStaffCategory(tCategory.getSelectionModel().getSelectedItem().toString());
-                }else {
+                } else {
                     current.setStaffCategory("");
                 }
 
@@ -374,7 +389,7 @@ public class EditEmpDetailController implements Initializable {
                 } else {
                     current.setStatus("2");
                 }
-                
+
                 current.setSerialNo(tSerial.getText());
 
                 if (!tSalary.getText().isEmpty()) {

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="527.0" prefWidth="761.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewPayrollController">
+    <children>
+      <SplitPane dividerPositions="0.1657142857142857" orientation="VERTICAL" prefHeight="527.0" prefWidth="761.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <HBox layoutX="14.0" layoutY="41.0" prefHeight="17.0" prefWidth="174.0">
+                     <children>
+                        <Label fx:id="amount" text="غير محدد" />
+                        <Label text="اجمالي صافي المحدد">
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="380.0" layoutY="14.0" prefHeight="25.0" prefWidth="214.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="14.0">
+                     <children>
+                        <DatePicker fx:id="fromDate" />
+                        <Label text="من">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="380.0" layoutY="49.0" prefHeight="25.0" prefWidth="214.0" AnchorPane.rightAnchor="165.0" AnchorPane.topAnchor="49.0">
+                     <children>
+                        <DatePicker fx:id="toDate" />
+                        <Label text="الى">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label layoutX="619.0" layoutY="32.0" text="البحث" AnchorPane.rightAnchor="116.0" AnchorPane.topAnchor="32.0" />
+                  <Button layoutX="304.0" layoutY="30.0" mnemonicParsing="false" onAction="#Search" text="بحث" AnchorPane.rightAnchor="420.0" AnchorPane.topAnchor="30.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView fx:id="PayrollTable" prefHeight="527.0" prefWidth="761.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <columns>
+                        <TableColumn fx:id="NetColumn" prefWidth="93.0" text="الصافي" />
+                        <TableColumn fx:id="RewardsColumn" prefWidth="99.0" text="المكافأت" />
+                        <TableColumn fx:id="DeductionColumn" prefWidth="117.0" text="خصومات" />
+                        <TableColumn fx:id="GrossColumn" prefWidth="120.0" text="الإجمالي" />
+                        <TableColumn fx:id="NameColumn" prefWidth="328.0" text="الاسم" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -6,8 +6,11 @@
 package Entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,11 +35,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Payroll.findAll", query = "SELECT p FROM Payroll p")
+//    , @NamedQuery(name = "Payroll.find",
+//            query = "SELECT p FROM Payroll p WHERE p.pId.teacherList.status='1'")
+//    , @NamedQuery(name = "Payroll.findforBonus",
+//            query = "SELECT p FROM Payroll p WHERE p.pId.staffList.status='1'")
     , @NamedQuery(name = "Payroll.findByPrId", query = "SELECT p FROM Payroll p WHERE p.prId = :prId")
     , @NamedQuery(name = "Payroll.findByAmount", query = "SELECT p FROM Payroll p WHERE p.amount = :amount")
     , @NamedQuery(name = "Payroll.findByPrType", query = "SELECT p FROM Payroll p WHERE p.prType = :prType")
     , @NamedQuery(name = "Payroll.findByPrDate", query = "SELECT p FROM Payroll p WHERE p.prDate = :prDate")})
 public class Payroll implements Serializable {
+
+    @Column(name = "PR_Notes")
+    private String pRNotes;
+    @Column(name = "PR_TYPE_BONUS")
+    private String prTypeBonus;
+    @Basic(optional = false)
+    @Column(name = "PR_STATUS")
+    private boolean prStatus;
+    @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
+    @ManyToOne(optional = false)
+    private Persons pId;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -47,19 +65,13 @@ public class Payroll implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @Column(name = "AMOUNT")
-    private BigDecimal amount;
+    private double amount;
     @Column(name = "PR_TYPE")
     private String prType;
     @Basic(optional = false)
-    @Column(name = "PR_DATE")
+    @Column(name = "PR_DATE", insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date prDate;
-    @JoinColumn(name = "T_ID", referencedColumnName = "T_ID")
-    @ManyToOne
-    private Teacher tId;
-    @JoinColumn(name = "ST_ID", referencedColumnName = "ST_ID")
-    @ManyToOne
-    private Staff stId;
 
     public Payroll() {
     }
@@ -68,7 +80,7 @@ public class Payroll implements Serializable {
         this.prId = prId;
     }
 
-    public Payroll(Long prId, BigDecimal amount, Date prDate) {
+    public Payroll(Long prId, double amount, Date prDate) {
         this.prId = prId;
         this.amount = amount;
         this.prDate = prDate;
@@ -82,11 +94,21 @@ public class Payroll implements Serializable {
         this.prId = prId;
     }
 
-    public BigDecimal getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(BigDecimal amount) {
+    public StringProperty AmountProperty() {
+
+        return new SimpleStringProperty(String.valueOf(amount));
+    }
+
+    public StringProperty PenaltyAmountProperty() {
+//        System.out.println(Integer.valueOf(String.valueOf(amount)));
+        return new SimpleStringProperty((int) amount + " أيام");
+    }
+
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -102,24 +124,12 @@ public class Payroll implements Serializable {
         return prDate;
     }
 
+    public StringProperty DateProperty() {
+        return new SimpleStringProperty(prDate.toString());
+    }
+
     public void setPrDate(Date prDate) {
         this.prDate = prDate;
-    }
-
-    public Teacher getTId() {
-        return tId;
-    }
-
-    public void setTId(Teacher tId) {
-        this.tId = tId;
-    }
-
-    public Staff getStId() {
-        return stId;
-    }
-
-    public void setStId(Staff stId) {
-        this.stId = stId;
     }
 
     @Override
@@ -146,5 +156,49 @@ public class Payroll implements Serializable {
     public String toString() {
         return "Entity.Payroll[ prId=" + prId + " ]";
     }
-    
+
+    public String getPRNotes() {
+        return pRNotes;
+    }
+
+    public StringProperty NoteProperty() {
+        return new SimpleStringProperty(pRNotes);
+    }
+
+    public void setPRNotes(String pRNotes) {
+        this.pRNotes = pRNotes;
+    }
+
+    public String getPrTypeBonus() {
+        return prTypeBonus;
+    }
+
+    public StringProperty TypeBonusProperty() {
+        return new SimpleStringProperty(prTypeBonus);
+    }
+
+    public void setPrTypeBonus(String prTypeBonus) {
+        this.prTypeBonus = prTypeBonus;
+    }
+
+    public boolean getPrStatus() {
+        return prStatus;
+    }
+
+    public BooleanProperty statusProperty() {
+        return new SimpleBooleanProperty(prStatus);
+    }
+
+    public void setPrStatus(boolean prStatus) {
+        this.prStatus = prStatus;
+    }
+
+    public Persons getPId() {
+        return pId;
+    }
+
+    public void setPId(Persons pId) {
+        this.pId = pId;
+    }
+
 }

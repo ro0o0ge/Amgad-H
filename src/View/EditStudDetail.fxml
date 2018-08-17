@@ -112,7 +112,7 @@
                                         <Insets left="150.0" />
                                     </GridPane.margin>
                                 </RadioButton>
-                                <Label text="الفصل الدراسي" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                <Label text="الصف الدراسي" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                     <GridPane.margin>
                                         <Insets left="10.0" />
                                     </GridPane.margin>
@@ -156,7 +156,7 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField GridPane.rowIndex="10" />
+                        <TextField fx:id="ParentJob" GridPane.rowIndex="10" />
                             </children>
                         </GridPane>
                         <HBox layoutX="280.0" layoutY="552.0" prefHeight="25.0" prefWidth="152.0" spacing="10.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="280.0">

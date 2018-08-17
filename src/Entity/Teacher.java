@@ -45,6 +45,10 @@ import org.hibernate.annotations.LazyCollectionOption;
             + "t.teacherSubjectsList tsl JOIN tsl.suId.syId.classesList cl where cl.classDesc = :classDesc and t.pId.name = :name")
     , @NamedQuery(name = "Teacher.findByStatus", query = "SELECT t FROM Teacher t WHERE t.status = :status")})
 public class Teacher implements Serializable {
+
+    @Basic(optional = false)
+    @Column(name = "SERIAL_NO")
+    private String serialNo;
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -67,8 +71,6 @@ public class Teacher implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tId")
     private List<TeacherSubjects> teacherSubjectsList;
-    @OneToMany(mappedBy = "tId")
-    private List<Payroll> payrollList;
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "tId")
     private List<EmployeeAttendance> employeeAttendanceList;
@@ -144,15 +146,6 @@ public class Teacher implements Serializable {
     }
 
     @XmlTransient
-    public List<Payroll> getPayrollList() {
-        return payrollList;
-    }
-
-    public void setPayrollList(List<Payroll> payrollList) {
-        this.payrollList = payrollList;
-    }
-
-    @XmlTransient
     public List<EmployeeAttendance> getEmployeeAttendanceList() {
         return employeeAttendanceList;
     }
@@ -184,6 +177,14 @@ public class Teacher implements Serializable {
     @Override
     public String toString() {
         return "Entity.Teacher[ tId=" + tId + " ]";
+    }
+
+    public String getSerialNo() {
+        return serialNo;
+    }
+
+    public void setSerialNo(String serialNo) {
+        this.serialNo = serialNo;
     }
 
 }

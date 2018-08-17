@@ -9,9 +9,11 @@ import Controller.GradesController;
 import Entity.Classes;
 import Entity.Contacts;
 import Entity.EmployeeAttendance;
+import Entity.Evaluation;
 import Entity.FinalGrades;
 import Entity.GradeDetail;
 import Entity.LectureDatetime;
+import Entity.Payroll;
 import Entity.Persons;
 import Entity.Schedule;
 import Entity.StudyYears;
@@ -21,6 +23,7 @@ import Entity.TeacherSubjects;
 import Entity.UserLog;
 import Util.HibernateUtil;
 import Util.LoginSec;
+import static amgad.h.Management.EmpList;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -57,8 +60,12 @@ public class TeachingStaff {
     static Teacher edit;//Teacher TO BE EDITED
 
     static EmployeeAttendance editStatus;
+    
+    static Payroll editPayrollStatus;
 
     EmployeeAttendance EA;
+
+    Payroll PR;
 
     SessionFactory sf = HibernateUtil.getSessionFactory();
     Session s;
@@ -124,6 +131,14 @@ public class TeachingStaff {
         TeachingStaff.edit = edit;
     }
 
+    public static Payroll getEditPayrollStatus() {
+        return editPayrollStatus;
+    }
+
+    public static void setEditPayrollStatus(Payroll editPayrollStatus) {
+        TeachingStaff.editPayrollStatus = editPayrollStatus;
+    }
+    
     public static EmployeeAttendance getEditStatus() {
         return editStatus;
     }
@@ -191,6 +206,26 @@ public class TeachingStaff {
         return GradeDetailList;
     }
 
+    static ObservableList<Evaluation> EvaluationList = FXCollections.observableArrayList();
+
+    public static ObservableList<Evaluation> getEvaluationList() {
+        return EvaluationList;
+    }
+
+    public void setEvaluationList(List<Evaluation> EvaluationList) {
+        this.EvaluationList = FXCollections.observableArrayList(EvaluationList);
+    }
+
+    public List<Evaluation> getEvaluations() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Evaluation.findByPId").setParameter("pId", edit.getPId());
+        List<Evaluation> sy = query.list();
+        s.close();
+        return sy;
+    }
+    
+    
     public void LoadGradeDetails(String a, String b) {
         GradeDetailList = FXCollections.observableArrayList(getGradeDetails(getSubjectsByDescAndYDesc(a, b)));
     }
@@ -506,8 +541,6 @@ public class TeachingStaff {
                 EA.setAbscenceType("2");
             } else if (Type.equals("منحة")) {
                 EA.setAbscenceType("3");
-            } else if (Type.equals("مرضي")) {
-                EA.setAbscenceType("4");
             } else if (Type.equals("سنوية")) {
                 EA.setAbscenceType("5");
             } else {
@@ -640,7 +673,7 @@ public class TeachingStaff {
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
-    
+
     public void UpdateFinalGrade(FinalGrades sc) {
         try {
             String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- updated";
@@ -680,7 +713,7 @@ public class TeachingStaff {
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
-    
+
     public void UpdateGradeDetail(GradeDetail sc) {
         try {
             String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
@@ -720,7 +753,7 @@ public class TeachingStaff {
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
-    
+
     public void ViewTeacher() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -743,7 +776,7 @@ public class TeachingStaff {
 
     public void UpdateAbscenceStatus(EmployeeAttendance ea) {
         try {
-            
+
             String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
             s = sf.openSession();
             Transaction t = s.beginTransaction();
@@ -777,6 +810,210 @@ public class TeachingStaff {
             dialogStage2.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public Payroll PersistNewNetSalary(String Notes, Persons su,
+            Double Amount, String IssuedBy) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            PR = new Payroll();
+            PR.setAmount(Amount);
+            PR.setPrStatus(true);
+            PR.setPRNotes(Notes);
+//            PR.setPrDate(dt);
+            PR.setPId(su);
+            PR.setPrType("9"); // 9 for net salary 
+
+            s.persist(PR);
+            log += " -- new net salary Payroll with id " + PR.getPrId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            s.refresh(PR);
+
+            return PR;
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+            return null;
+        }
+    }
+
+    public Payroll PersistNewDeductionsSalary(String Notes, Persons su,
+            Double Amount) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            PR = new Payroll();
+            PR.setAmount(Amount);
+            PR.setPrStatus(true);
+            PR.setPRNotes(Notes);
+//            PR.setPrDate(dt);
+            PR.setPId(su);
+            PR.setPrType("8"); // 9 for net salary 
+
+            s.persist(PR);
+
+            log += " -- new Deductions Salary Payroll with id " + PR.getPrId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            s.refresh(PR);
+
+            return PR;
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+            return null;
+        }
+    }
+
+    public Payroll PersistNewBonusSalary(String Notes, Persons su,
+            Double Amount) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            PR = new Payroll();
+            PR.setAmount(Amount);
+            PR.setPrStatus(true);
+            PR.setPRNotes(Notes);
+//            PR.setPrDate(dt);
+            PR.setPId(su);
+            PR.setPrType("7"); // 7  for bonus salary 
+
+            s.persist(PR);
+            log += " -- new Bonus Salary Payroll with id " + PR.getPrId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            s.refresh(PR);
+            return PR;
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+            return null;
+        }
+    }
+
+    public void UpdatePayroll(Payroll r) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(r);
+            log += " -- Payroll with id " + r.getPrId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+        }
+
+    }
+
+    public void PersistEval(Evaluation e) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Created";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+
+            s.persist(e);
+
+            log += " -- new Evaluation with id " + e.getEvaId();
+            log += " -- for Person with id  " + e.getPid();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            EvaluationList.clear();
+            setEvaluationList(getEvaluations());
+
+        } catch (Exception ex) {
+            System.err.println("El72 " + ex.getMessage());
+        }
+    }
+
+    public void EditEval(Evaluation e) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+
+            s.update(e);
+
+            log += " -- Evaluation with id " + e.getEvaId();
+            log += " -- for Person with id  " + e.getPid();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+            EvaluationList.clear();
+            setEvaluationList(getEvaluations());
+
+        } catch (Exception ex) {
+            System.err.println("El72 " + ex.getMessage());
+        }
+    }
+    
+    public void ViewEditPenaltyStatus() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/EditTeacPayrollStatus.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("تعديل حالة الجزاء");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void UpdatePenaltyStatus() {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(editPayrollStatus);
+            log += " -- Payroll with id " + editPayrollStatus.getPrId();
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
         }
     }
 }

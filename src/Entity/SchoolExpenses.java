@@ -39,6 +39,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "SchoolExpenses.findByIssuedTo", query = "SELECT s FROM SchoolExpenses s WHERE s.issuedTo = :issuedTo")})
 public class SchoolExpenses implements Serializable {
 
+    @Column(name = "Notes")
+    private String notes;
+
     @Basic(optional = false)
     @Column(name = "AMOUNT")
     private double amount;
@@ -81,7 +84,6 @@ public class SchoolExpenses implements Serializable {
         this.sceId = sceId;
     }
 
-
     public String getSceType() {
         return sceType;
     }
@@ -93,7 +95,7 @@ public class SchoolExpenses implements Serializable {
     public Date getSceDate() {
         return sceDate;
     }
-    
+
     public StringProperty DDateProperty() {
         return new SimpleStringProperty(sceDate.toString());
     }
@@ -105,7 +107,7 @@ public class SchoolExpenses implements Serializable {
     public String getIssuedBy() {
         return issuedBy;
     }
-    
+
     public StringProperty IssuedByProperty() {
         return new SimpleStringProperty(issuedBy);
     }
@@ -117,7 +119,7 @@ public class SchoolExpenses implements Serializable {
     public String getIssuedTo() {
         return issuedTo;
     }
-    
+
     public StringProperty IssuedToProperty() {
         return new SimpleStringProperty(issuedTo);
     }
@@ -155,8 +157,24 @@ public class SchoolExpenses implements Serializable {
         return amount;
     }
 
+    public StringProperty AmountProperty() {
+        return new SimpleStringProperty(Double.toString(amount));
+    }
+
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
+    public String getNotes() {
+        return notes;
+    }
     
+    public StringProperty NotesProperty() {
+        return new SimpleStringProperty(notes);
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
 }

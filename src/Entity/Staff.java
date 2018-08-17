@@ -65,8 +65,6 @@ public class Staff implements Serializable {
     @JoinColumn(name = "P_ID", referencedColumnName = "P_ID")
     @ManyToOne
     private Persons pId;
-    @OneToMany(mappedBy = "stId")
-    private List<Payroll> payrollList;
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "stId")
     private List<EmployeeAttendance> employeeAttendanceList;
@@ -91,7 +89,7 @@ public class Staff implements Serializable {
         this.stId = stId;
     }
 
-    public double getMonthlySalary() {
+    public Double getMonthlySalary() {
         return monthlySalary;
     }
 
@@ -121,15 +119,6 @@ public class Staff implements Serializable {
 
     public void setPId(Persons pId) {
         this.pId = pId;
-    }
-
-    @XmlTransient
-    public List<Payroll> getPayrollList() {
-        return payrollList;
-    }
-
-    public void setPayrollList(List<Payroll> payrollList) {
-        this.payrollList = payrollList;
     }
 
     @XmlTransient

@@ -127,6 +127,13 @@ public class Student implements Serializable {
     public String getAgeOnOct() {
         return ageOnOct;
     }
+    
+    public StringProperty AgeOnOctProperty() {
+//        ageOnOct=ageOnOct.replace("Y", "س");
+//        ageOnOct=ageOnOct.replace("M","ش");
+//        ageOnOct=ageOnOct.replace("D", "ي");
+        return new SimpleStringProperty(ageOnOct);
+    }
 
     public void setAgeOnOct(String ageOnOct) {
         this.ageOnOct = ageOnOct;

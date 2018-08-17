@@ -27,6 +27,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  *
@@ -37,6 +39,10 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Persons.findAll", query = "SELECT p FROM Persons p")
+    , @NamedQuery(name = "Persons.findforBonus",
+            query = "SELECT p FROM Persons p WHERE p.teacherList.status='1'")
+    , @NamedQuery(name = "Persons.findforBonus2",
+            query = "SELECT p FROM Persons p WHERE p.staffList.status='1'")
     , @NamedQuery(name = "Persons.findByPId", query = "SELECT p FROM Persons p WHERE p.pId = :pId")
     , @NamedQuery(name = "Persons.findByName", query = "SELECT p FROM Persons p WHERE p.name = :name")
     , @NamedQuery(name = "Persons.findByGender", query = "SELECT p FROM Persons p WHERE p.gender = :gender")
@@ -52,6 +58,19 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Persons.findByQualification", query = "SELECT p FROM Persons p WHERE p.qualification = :qualification")
     , @NamedQuery(name = "Persons.findByGradYear", query = "SELECT p FROM Persons p WHERE p.gradYear = :gradYear")})
 public class Persons implements Serializable {
+
+    @OneToMany(mappedBy = "pid")
+    private List<Evaluation> evaluationList;
+
+    @Column(name = "INSURANCE_NO")
+    private String insuranceNo;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "INSURANCE_AMOUNT")
+    private Double insuranceAmount;
+
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(mappedBy = "pId")
+    private List<Payroll> payrollList;
 
     @Column(name = "PREV_EXP")
     private String prevExp;
@@ -108,15 +127,15 @@ public class Persons implements Serializable {
     private String qualification;
     @Column(name = "GRAD_YEAR")
     private String gradYear;
-    @OneToOne(mappedBy = "pId",fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "pId", fetch = FetchType.EAGER)
     private Student studentList;
-    @OneToOne(mappedBy = "pId",fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "pId", fetch = FetchType.EAGER)
     private Teacher teacherList;
-    @OneToOne(mappedBy = "pId",fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "pId", fetch = FetchType.EAGER)
     private Staff staffList;
     @OneToOne(mappedBy = "pId")
     private Users usersList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pId",fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pId", fetch = FetchType.EAGER)
     private List<Contacts> contactsList;
 
     public Persons() {
@@ -167,11 +186,11 @@ public class Persons implements Serializable {
     public void setGender(String gender) {
         this.gender = gender;
     }
-    
+
     public StringProperty GenderProperty() {
         if (maritalStatus.equals("1")) {
             return new SimpleStringProperty("ذكر");
-        } else{
+        } else {
             return new SimpleStringProperty("انثى");
         }
     }
@@ -235,7 +254,7 @@ public class Persons implements Serializable {
     public String getMaritalStatus() {
         return maritalStatus;
     }
-    
+
     public StringProperty maritalStatusProperty() {
         if (maritalStatus.equals("1")) {
             return new SimpleStringProperty("مطلق");
@@ -243,7 +262,7 @@ public class Persons implements Serializable {
             return new SimpleStringProperty("أرمل");
         } else if (maritalStatus.equals("3")) {
             return new SimpleStringProperty("أعزب");
-        }else{
+        } else {
             return new SimpleStringProperty("متزوج");
         }
     }
@@ -263,6 +282,7 @@ public class Persons implements Serializable {
     public Date getHiringDate() {
         return hiringDate;
     }
+
     public StringProperty HiringDateProperty() {
         return new SimpleStringProperty(hiringDate.toString());
     }
@@ -395,5 +415,39 @@ public class Persons implements Serializable {
 
     public void setPersonalPhoto(String personalPhoto) {
         this.personalPhoto = personalPhoto;
-    } 
+    }
+
+    @XmlTransient
+    public List<Payroll> getPayrollList() {
+        return payrollList;
+    }
+
+    public void setPayrollList(List<Payroll> payrollList) {
+        this.payrollList = payrollList;
+    }
+
+    public String getInsuranceNo() {
+        return insuranceNo;
+    }
+
+    public void setInsuranceNo(String insuranceNo) {
+        this.insuranceNo = insuranceNo;
+    }
+
+    public Double getInsuranceAmount() {
+        return insuranceAmount;
+    }
+
+    public void setInsuranceAmount(Double insuranceAmount) {
+        this.insuranceAmount = insuranceAmount;
+    }
+
+    @XmlTransient
+    public List<Evaluation> getEvaluationList() {
+        return evaluationList;
+    }
+
+    public void setEvaluationList(List<Evaluation> evaluationList) {
+        this.evaluationList = evaluationList;
+    }
 }

@@ -89,6 +89,12 @@ public class EditTeacherDetailController implements Initializable {
     @FXML
     ToggleGroup gReligion;
     @FXML
+    TextField InsuranceNo;
+    @FXML
+    TextField InsuranceAmount;
+    @FXML
+    private TextField tSerial;
+    @FXML
     private TableView<Contacts> ContactsTable;
     @FXML
     private TableColumn<Contacts, String> NameColumn;
@@ -100,7 +106,7 @@ public class EditTeacherDetailController implements Initializable {
     private TableColumn<Subjects, String> SubjectNameColumn;
     @FXML
     private TableColumn<Subjects, String> SyNameColumn;
-    
+
     TeachingStaff TA;
 
     static private Teacher current;
@@ -200,6 +206,13 @@ public class EditTeacherDetailController implements Initializable {
         tNatNo.setText(current.getPId().getNationalId());
         tAddress.setText(current.getPId().getAddress());
 
+        if (current.getPId().getInsuranceNo() != null) {
+            InsuranceNo.setText(current.getPId().getInsuranceNo());
+        }
+        if (current.getPId().getInsuranceAmount() != null) {
+            InsuranceAmount.setText(current.getPId().getInsuranceAmount().toString());
+        }
+
         if (current.getPId().getQualification() != null) {
             tQual.setText(current.getPId().getQualification());
         }
@@ -249,6 +262,12 @@ public class EditTeacherDetailController implements Initializable {
                 current.getPId().setCreatedDate(Date.valueOf(LocalDate.now()));
                 current.getPId().setHiringDate(Date.valueOf(tSignDate.getValue()));
 
+                current.getPId().setInsuranceAmount(Double.parseDouble(InsuranceAmount.getText()));
+                current.getPId().setInsuranceNo(InsuranceNo.getText());
+
+                if (current.getSerialNo() != null) {
+                    tSerial.setText(current.getSerialNo());
+                }
                 if (tGradDate.getValue() != null) {
                     LocalDate localDate = tGradDate.getValue();
                     current.getPId().setGradYear(String.valueOf(localDate.getYear()));

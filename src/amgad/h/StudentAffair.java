@@ -153,10 +153,10 @@ public class StudentAffair {
         return sy;
     }
 
-    public ClassStudents getClassStudent(Student st) {
+    public List<ClassStudents> getClassStudent(Student st) {
         Query query = s.getNamedQuery("ClassStudents.findBysId").setParameter("sId", st);
         List<ClassStudents> sy = query.list();
-        return sy.get(0);
+        return sy;
     }
 
     public void LoadStudentsInClass(String a) {
@@ -212,9 +212,14 @@ public class StudentAffair {
             log += " --  Person with id " + st.getPId();
             log += " --  Student with id " + st.getSId();
             if (cs != null) {
-                ClassStudents tempCS = getClassStudent(st);
-                tempCS.setCId(cs.getCId());
-                s.saveOrUpdate(tempCS);
+                List<ClassStudents> tcs = getClassStudent(st);
+                if (tcs.size() > 0) {
+                    ClassStudents tempCS = tcs.get(0);
+                    tempCS.setCId(cs.getCId());
+                    s.saveOrUpdate(tempCS);
+                } else {
+                    s.persist(cs);
+                }
                 log += " -- Register -- Student in a Class with id " + cs.getCsId();
             }
 
@@ -223,6 +228,7 @@ public class StudentAffair {
                 s.saveOrUpdate(c);
                 log += " -- Contact with id " + c.getCId();
             }
+
             ul = new UserLog();
             ul.setUId(LoginSec.getLoggedUser());
             ul.setLogDate(new Timestamp(new Date().getTime()));
@@ -233,6 +239,7 @@ public class StudentAffair {
             StudentAffair.dialogStage2.close();
             PersonsList.clear();
             PersonsList.addAll(getStudents());
+            s.refresh(st);
             System.out.println("All Done");
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e.getLocalizedMessage());
@@ -577,7 +584,7 @@ public class StudentAffair {
             s.persist(ul);
             t.commit();
             StudentExpensesList.clear();
-            StudentExpensesList.addAll(getStudentExpenses(bd.getSId()));
+            StudentExpensesList = FXCollections.observableArrayList(getStudentExpenses(bd.getSId()));
         } catch (Exception e) {
             System.err.println("El72 " + e.getMessage());
         }

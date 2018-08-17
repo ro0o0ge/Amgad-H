@@ -65,7 +65,7 @@ public class EditStudController implements Initializable {
         NameColumn.setCellValueFactory(cellData -> cellData.getValue().getPId().NameProperty());
         DOBColumn.setCellValueFactory(cellData -> cellData.getValue().getPId().DOBProperty());
         AdmissionDateColumn.setCellValueFactory(cellData -> cellData.getValue().getPId().createdDateProperty());
-        StatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+        StatusColumn.setCellValueFactory(cellData -> cellData.getValue().AgeOnOctProperty());
         ClassColumn.setCellValueFactory((TableColumn.CellDataFeatures<Student, String> cellData) -> {
             if (cellData.getValue().getClassStudentsList() != null) {
                 return cellData.getValue().getClassStudentsList().getCId().ClassDescProperty();

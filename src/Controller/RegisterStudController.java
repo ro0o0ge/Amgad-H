@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.sql.Date;
+import java.time.Period;
 import java.util.Arrays;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -83,12 +84,12 @@ public class RegisterStudController implements Initializable {
     private RadioButton S2;
     @FXML
     private RadioButton S3;
-    
+
     @FXML
     TextField ParentJob;
     @FXML
     private Label PhotoPath;
-    
+
     @FXML
     private TableView<Contacts> ContactsTable;
     @FXML
@@ -129,7 +130,8 @@ public class RegisterStudController implements Initializable {
 
         sDOB.valueProperty().addListener((ov, oldValue, newValue) -> {
             LocalDate currentDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR), 10, 1);
-            ageCalc.setText(currentDate.until(newValue).toString().replace("P-", ""));
+//            ageCalc.setText(currentDate.until(newValue).toString().replace("P-", ""));
+            ageCalc.setText(Period.between(newValue, currentDate).toString().replace("P", ""));
         });
 
         ContactsTable.setItems(SA.getContactsList());
@@ -188,7 +190,12 @@ public class RegisterStudController implements Initializable {
                 pers.setSpouseParentOccupation(ParentJob.getText());
                 pers.setPersonalPhoto(PhotoPath.getText());
                 stud.setPId(pers);
-                stud.setAgeOnOct(ageCalc.getText());
+                String t = ageCalc.getText();
+                t = t.replace("Y", "س");
+                t = t.replace("M", "ش");
+                t = t.replace("D", "ي");
+
+                stud.setAgeOnOct(t);
 
                 if (sStatus.getSelectedToggle().getUserData().toString().equals("مرفوض")) {
                     stud.setStatus("1");
@@ -200,9 +207,11 @@ public class RegisterStudController implements Initializable {
                 stud.setSerialNo(serialNo.getText());
                 if (!sClass.getSelectionModel().isEmpty()) {
                     Classes c = new Classes();
+                    Classes temp = new Classes();
                     for (Iterator<Classes> iterator = css.iterator(); iterator.hasNext();) {
-                        if (iterator.next().getClassDesc().equals(sClass.getSelectionModel().getSelectedItem().toString())) {
-                            c = iterator.next();
+                        temp = iterator.next();
+                        if (temp.getClassDesc().equals(sClass.getSelectionModel().getSelectedItem().toString())) {
+                            c = temp;
                         }
                     }
                     classStud = new ClassStudents();
@@ -228,12 +237,12 @@ public class RegisterStudController implements Initializable {
             alert.showAndWait();
         }
     }
-    
+
     @FXML
     public void handlePhoto() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setInitialDirectory(defaultDirectory);
-        List<String> extensions = Arrays.asList("JPG","JPEG","PNG");
+        List<String> extensions = Arrays.asList("JPG", "JPEG", "PNG");
         fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Images", extensions));
         File selectedFile = fileChooser.showOpenDialog(SA.getDialogStage());
         if (selectedFile != null) {

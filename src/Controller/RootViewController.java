@@ -9,25 +9,16 @@ import Util.LoginSec;
 import amgad.h.Management;
 import amgad.h.StudentAffair;
 import amgad.h.TeachingStaff;
-import amgad.h.root;
-import java.awt.BorderLayout;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
-import javafx.print.PageLayout;
-import javafx.print.PageOrientation;
-import javafx.print.Paper;
 import javafx.print.Printer;
-import javafx.print.PrinterJob;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.transform.Affine;
-import javafx.scene.transform.Rotate;
-import javafx.scene.transform.Transform;
 
 /**
  * FXML Controller class
@@ -130,6 +121,26 @@ public class RootViewController implements Initializable {
     }
 
     @FXML
+    private void handleBonus() {
+        man.bonus();
+    }
+
+    @FXML
+    private void handlePenalty() {
+        man.penalty();
+    }
+
+    @FXML
+    private void handleInsurance() {
+        man.insurance();
+    }
+
+    @FXML
+    private void handleViewPayroll() {
+        man.ViewPayroll();
+    }
+
+    @FXML
     BorderPane border;
 
     @FXML
@@ -162,7 +173,6 @@ public class RootViewController implements Initializable {
 //        if (printed) {
 //            pj.endJob();
 //        }
-
 //        if () {
 //            val rotate = Transform.rotate(90.0, documentRoot.width / 2, documentRoot.height / 2)
 //            val affine = Transform.affine(0.0, 1.0, 1.0, 0.0, 0.0, 0.0)
@@ -172,7 +182,6 @@ public class RootViewController implements Initializable {
 //            pj.endJob()
 //            stage.hide()
 //        }
-
     }
 
     /**

@@ -144,8 +144,6 @@ public class EmployeeAttendance implements Serializable {
             return new SimpleStringProperty("استئذان");
         } else if (abscenceType.equals("3")) {
             return new SimpleStringProperty("منحة");
-        } else if (abscenceType.equals("4")) {
-            return new SimpleStringProperty("مرضي");
         } else if (abscenceType.equals("5")) {
             return new SimpleStringProperty("سنوية");
         } else {

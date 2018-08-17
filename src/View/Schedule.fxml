@@ -48,8 +48,6 @@
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             </columnConstraints>
                             <rowConstraints>
@@ -61,128 +59,98 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label text="السابعة">
+                                <Label text="الخامسة">
                                     <GridPane.margin>
-                                        <Insets left="35.0" />
+                                        <Insets left="50.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <Label text="السادسة" GridPane.columnIndex="1">
+                                <Label text="الرابعة" GridPane.columnIndex="1">
                                     <GridPane.margin>
-                                        <Insets left="35.0" />
+                                        <Insets left="50.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <Label text="الخامسة" GridPane.columnIndex="2">
+                                <Label text="الثالثة" GridPane.columnIndex="2">
                                     <GridPane.margin>
-                                        <Insets left="35.0" />
+                                        <Insets left="50.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <Label text="الرابعة" GridPane.columnIndex="3">
+                                <Label text="الثانية" GridPane.columnIndex="3">
                                     <GridPane.margin>
-                                        <Insets left="35.0" />
+                                        <Insets left="50.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <Label text="الثالثة" GridPane.columnIndex="4">
+                                <Label text="الأولى" GridPane.columnIndex="4">
                                     <GridPane.margin>
-                                        <Insets left="35.0" />
+                                        <Insets left="50.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <Label text="الثانية" GridPane.columnIndex="5">
-                                    <GridPane.margin>
-                                        <Insets left="35.0" />
-                                    </GridPane.margin>
-                                </Label>
-                                <Label text="الأولى" GridPane.columnIndex="6">
-                                    <GridPane.margin>
-                                        <Insets left="35.0" />
-                                    </GridPane.margin>
-                                </Label>
-                                <Label text="الأحد" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                                <Label text="الاثنين" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-                                <Label text="الثلاثاء" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-                                <Label text="الأربعاء" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-                                <Label text="الخميس" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-                                <Line endX="100.0" rotate="-26.0" GridPane.columnIndex="7" />
-                                <Label text="اليوم" GridPane.columnIndex="7">
+                                <Label text="الأحد" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <Label text="الاثنين" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                                <Label text="الثلاثاء" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                <Label text="الأربعاء" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                                <Label text="الخميس" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                                <Line endX="100.0" rotate="-26.0" GridPane.columnIndex="5" />
+                                <Label text="اليوم" GridPane.columnIndex="5">
                                     <GridPane.margin>
                                         <Insets bottom="-10.0" left="70.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <Label text="الحصة" GridPane.columnIndex="7">
+                                <Label text="الحصة" GridPane.columnIndex="5">
                                     <GridPane.margin>
                                         <Insets bottom="10.0" left="-70.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <TextField fx:id="Sun1" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                <TextField fx:id="Sun2" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                <TextField fx:id="Sun3" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                <TextField fx:id="Sun4" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                <TextField fx:id="Sun5" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                <TextField fx:id="Sun6" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                <TextField fx:id="Sun7" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                                <TextField fx:id="Mon1" GridPane.columnIndex="6" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                                <TextField fx:id="Mon2" GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                                <TextField fx:id="Mon3" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                                <TextField fx:id="Mon4" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                                <TextField fx:id="Mon5" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                                <TextField fx:id="Mon6" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                                <TextField fx:id="Mon7" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-                                <TextField fx:id="Tue7" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                                <TextField fx:id="Tue6" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                                <TextField fx:id="Tue5" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                                <TextField fx:id="Tue4" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                                <TextField fx:id="Tue3" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                                <TextField fx:id="Tue2" GridPane.columnIndex="5" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                                <TextField fx:id="Tue1" GridPane.columnIndex="6" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                                <TextField fx:id="Wed7" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                                <TextField fx:id="Wed6" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                                <TextField fx:id="Wed5" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                                <TextField fx:id="Wed4" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                                <TextField fx:id="Wed3" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                                <TextField fx:id="Wed2" GridPane.columnIndex="5" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                                <TextField fx:id="Wed1" GridPane.columnIndex="6" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-                                <TextField fx:id="Thu7" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                                <TextField fx:id="Thu6" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                                <TextField fx:id="Thu5" GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                                <TextField fx:id="Thu4" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                                <TextField fx:id="Thu3" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                                <TextField fx:id="Thu2" GridPane.columnIndex="5" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                                <TextField fx:id="Thu1" GridPane.columnIndex="6" GridPane.rowIndex="5" GridPane.valignment="TOP" />
-                        <TextField fx:id="Sun1" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-                        <ComboBox fx:id="TSun1" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TTue2" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TTue3" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TTue4" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TTue6" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TTue5" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TMon1" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TMon2" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TMon3" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TMon5" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TMon4" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TMon6" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TThu7" prefWidth="150.0" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TWed7" prefWidth="150.0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TTue7" prefWidth="150.0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TMon7" prefWidth="150.0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TSun7" prefWidth="150.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TSun6" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TSun5" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TSun4" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TSun3" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TSun2" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TWed1" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TWed2" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TWed3" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TWed4" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TWed5" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TWed6" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TTue1" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TThu1" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TThu2" prefWidth="150.0" GridPane.columnIndex="5" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TThu3" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TThu4" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TThu5" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
-                        <ComboBox fx:id="TThu6" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+                                <TextField fx:id="Sun1" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                <TextField fx:id="Sun2" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                <TextField fx:id="Sun3" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                <TextField fx:id="Sun4" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                <TextField fx:id="Sun5" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                                <TextField fx:id="Mon1" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                                <TextField fx:id="Mon2" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                                <TextField fx:id="Mon3" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                                <TextField fx:id="Mon4" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                                <TextField fx:id="Mon5" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+                                <TextField fx:id="Tue5" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                                <TextField fx:id="Tue4" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                                <TextField fx:id="Tue3" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                                <TextField fx:id="Tue2" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                                <TextField fx:id="Tue1" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+                                <TextField fx:id="Wed5" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                                <TextField fx:id="Wed4" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                                <TextField fx:id="Wed3" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                                <TextField fx:id="Wed2" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                                <TextField fx:id="Wed1" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.valignment="TOP" />
+                                <TextField fx:id="Thu5" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                                <TextField fx:id="Thu4" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                                <TextField fx:id="Thu3" GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                                <TextField fx:id="Thu2" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                                <TextField fx:id="Thu1" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+                        <TextField fx:id="Sun1" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                        <ComboBox fx:id="TSun1" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TTue2" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TTue3" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TTue4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TTue5" prefWidth="150.0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TMon1" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TMon2" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TMon3" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TMon5" prefWidth="150.0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TMon4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TSun5" prefWidth="150.0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TSun4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TSun3" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TSun2" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TWed1" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TWed2" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TWed3" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TWed4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TWed5" prefWidth="150.0" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TTue1" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TThu1" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TThu2" prefWidth="150.0" GridPane.columnIndex="3" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TThu3" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TThu4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+                        <ComboBox fx:id="TThu5" prefWidth="150.0" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
                             </children>
                             <padding>
                                 <Insets left="10.0" />

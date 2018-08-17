@@ -201,7 +201,7 @@
                         </TextField>
                             </children>
                         </GridPane>
-                        <HBox layoutX="279.0" layoutY="581.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="279.0">
+                        <HBox layoutX="279.0" layoutY="594.0" spacing="10.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="279.0">
                             <children>
                                 <Button defaultButton="true" mnemonicParsing="false" onAction="#handleSave" text="حفظ" />
                                 <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="إغلاق" />
@@ -218,10 +218,10 @@
                             </font>
                         </Label>
                         <Separator layoutX="294.0" layoutY="100.0" orientation="VERTICAL" prefHeight="518.0" prefWidth="5.0" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="294.0" />
-                        <Separator layoutX="5.0" layoutY="569.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="5.0" />
-                        <HBox fx:id="salary" layoutX="43.0" layoutY="446.0" prefHeight="27.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="43.0">
+                        <Separator layoutX="5.0" layoutY="584.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="5.0" />
+                        <HBox fx:id="salary" layoutX="121.0" layoutY="480.0" prefHeight="27.0" prefWidth="132.0" visible="false" AnchorPane.bottomAnchor="113.0" AnchorPane.leftAnchor="121.0">
                             <children>
-                                <TextField fx:id="tSalary" />
+                                <TextField fx:id="tSalary" prefHeight="25.0" prefWidth="62.0" />
                                 <Label contentDisplay="RIGHT" text="المرتب">
                                     <HBox.margin>
                                         <Insets left="10.0" />
@@ -251,9 +251,9 @@
                         <Button layoutX="192.0" layoutY="257.0" mnemonicParsing="false" onAction="#handleDeleteCont" text="مسح" />
                      </children>
                   </HBox>
-                  <TextArea fx:id="prevEXP" layoutX="32.0" layoutY="491.0" prefHeight="64.0" prefWidth="160.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="32.0" />
-                  <Label layoutX="206.0" layoutY="515.0" text="الخبرات السابقة" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="206.0" />
-                  <Separator layoutX="4.0" layoutY="420.0" prefHeight="3.0" prefWidth="284.0" />
+                  <TextArea fx:id="prevEXP" layoutX="34.0" layoutY="514.0" prefHeight="64.0" prefWidth="160.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="34.0" />
+                  <Label layoutX="208.0" layoutY="538.0" text="الخبرات السابقة" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="208.0" />
+                  <Separator layoutX="10.0" layoutY="404.0" prefHeight="3.0" prefWidth="284.0" />
                   <Separator layoutY="286.0" prefHeight="3.0" prefWidth="284.0" />
                   <Button layoutX="219.0" layoutY="70.0" mnemonicParsing="false" onAction="#handlePhoto" text="بحث" AnchorPane.leftAnchor="219.0" AnchorPane.topAnchor="70.0" />
                   <Label fx:id="PhotoPath" layoutX="32.0" layoutY="76.0" prefHeight="17.0" prefWidth="179.0" text="مسار الصورة" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="76.0" />
@@ -283,6 +283,26 @@
                   </HBox>
                   <ComboBox fx:id="tCategory" layoutX="37.0" layoutY="370.0" prefWidth="150.0" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="37.0" />
                   <Label layoutX="205.0" layoutY="374.0" text="تصنيف الموظف" AnchorPane.bottomAnchor="229.0" AnchorPane.leftAnchor="205.0" />
+                  <HBox fx:id="salary11" layoutX="52.0" layoutY="407.0" prefHeight="27.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="InsuranceNo" prefHeight="25.0" prefWidth="135.0" />
+                        <Label contentDisplay="RIGHT" text="الرقم التأميني">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="salary1" layoutX="119.0" layoutY="441.0" prefHeight="27.0" prefWidth="132.0">
+                     <children>
+                        <TextField fx:id="InsuranceAmount" prefHeight="25.0" prefWidth="68.0" />
+                        <Label contentDisplay="RIGHT" text="المبلغ التأميني">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
                     </children>
                 </AnchorPane>
             </items>

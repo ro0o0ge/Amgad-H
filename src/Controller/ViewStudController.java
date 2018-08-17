@@ -6,11 +6,9 @@
 package Controller;
 
 import Entity.Contacts;
-import Entity.EmployeeAttendance;
 import Entity.Student;
 import Entity.StudentAttendance;
 import amgad.h.StudentAffair;
-import amgad.h.TeachingStaff;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -136,6 +134,8 @@ public class ViewStudController implements Initializable {
     private Tab abscense;
     @FXML
     private Button saveAbscence;
+    @FXML
+    private Label ParentOccupation;
 
     @FXML
     private TableView<StudentAttendance> AttTable;
@@ -147,7 +147,7 @@ public class ViewStudController implements Initializable {
     private TableColumn<StudentAttendance, Boolean> StatusColumn;
 
     static private Student current;
-    
+
     StudentAffair TS;
 
     /**
@@ -220,8 +220,15 @@ public class ViewStudController implements Initializable {
             dob.setText(current.getPId().getDob().toString());
             address.setText(current.getPId().getAddress());
             nationalId.setText(current.getPId().getNationalId());
-            secretNo.setText(current.getSecretNo());
-            seatingNo.setText(current.getSeatingNo());
+            if (current.getPId().getSpouseParentOccupation() != null) {
+                ParentOccupation.setText(current.getPId().getSpouseParentOccupation());
+            }
+            if (current.getSecretNo()!= null) {
+                secretNo.setText(current.getSecretNo());
+            }
+            if (current.getSeatingNo()!= null) {
+                seatingNo.setText(current.getSeatingNo());
+            }
 
             ObservableList<Contacts> tempCon = FXCollections.observableArrayList(current.getPId().getContactsList());
             ContactsTable.setItems(tempCon);

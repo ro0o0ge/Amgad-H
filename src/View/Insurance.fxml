@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.InsuranceController">
+    <children>
+        <SplitPane dividerPositions="0.5372492836676218" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <TableView fx:id="PayrollTable" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columns>
+                                <TableColumn fx:id="NameColumn" editable="false" prefWidth="289.0" text="الاسم " />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <Label layoutX="111.0" layoutY="14.0" text="تسجيل التأمينات" underline="true" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="14.0">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                        <HBox layoutX="41.0" layoutY="72.0" prefHeight="27.0" prefWidth="220.0" AnchorPane.rightAnchor="59.0" AnchorPane.topAnchor="72.0">
+                            <children>
+                                <TextField fx:id="SearchQuery">
+                                    <HBox.margin>
+                                        <Insets />
+                                    </HBox.margin>
+                                </TextField>
+                                <Label text="بحث بالاسم">
+                                    <HBox.margin>
+                                        <Insets left="20.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox layoutX="111.0" layoutY="458.0" prefHeight="25.0" prefWidth="93.0" spacing="10.0">
+                            <children>
+                                <Button defaultButton="true" mnemonicParsing="false" onAction="#handleNewAbsent" text="جديد" />
+                                <Button cancelButton="true" mnemonicParsing="false" onAction="#handleClose" text="اغلاق" />
+                            </children>
+                        </HBox>
+                        <Separator layoutY="153.0" prefHeight="0.0" prefWidth="346.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="153.0" />
+                  <GridPane layoutX="29.0" layoutY="191.0" prefHeight="202.0" prefWidth="262.0">
+                     <children>
+                        <Label text="تاريخ التأمين" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="Amount" prefHeight="25.0" prefWidth="17.0" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="75.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <DatePicker fx:id="EDate" GridPane.rowIndex="3" />
+                        <Label text="ملاحظات" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextArea fx:id="Notes" prefHeight="77.0" prefWidth="162.0" GridPane.rowIndex="5" GridPane.rowSpan="3" />
+                        <Label text="المبلغ التأميني" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="174.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="88.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                          <Button layoutX="130.0" layoutY="114.0" mnemonicParsing="false" onAction="#Search" text="بحث" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

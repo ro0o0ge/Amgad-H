@@ -8,42 +8,43 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditSchoolExpensesController">
     <children>
-        <SplitPane dividerPositions="0.5" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <SplitPane dividerPositions="0.6117478510028653" prefHeight="600.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0">
                     <children>
                         <TableView fx:id="SchoolExpensesTable" prefHeight="223.0" prefWidth="698.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columns>
-                                <TableColumn fx:id="ToColumn" editable="false" prefWidth="140.0" text="جهة الصرف" />
-                                <TableColumn fx:id="ByColumn" editable="false" prefWidth="111.0" text="بأمر من" />
-                                <TableColumn fx:id="DateColumn" editable="false" prefWidth="94.0" text="تاريخ الصرف" />
+                        <TableColumn fx:id="AmountColumn" editable="false" prefWidth="46.0" text="المبلغ" />
+                                <TableColumn fx:id="ByColumn" editable="false" prefWidth="78.0" text="بأمر من" />
+                                <TableColumn fx:id="NotesColumn" editable="false" prefWidth="103.0" text="الصنف" />
+                        <TableColumn fx:id="DateColumn" editable="false" prefWidth="92.0" text="تاريخ الصرف" />
+                                <TableColumn fx:id="ToColumn" editable="false" prefWidth="113.0" text="اسم المستلم" />
                             </columns>
                         </TableView>
                     </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                     <children>
-                        <Label layoutX="122.0" layoutY="14.0" text="مصروفات المدرسة" underline="true" AnchorPane.rightAnchor="117.0" AnchorPane.topAnchor="14.0">
+                        <Label layoutX="68.0" layoutY="14.0" text="نثريات المدرسة" underline="true" AnchorPane.rightAnchor="67.0" AnchorPane.topAnchor="14.0">
                             <font>
-                                <Font size="18.0" />
+                                <Font size="26.0" />
                             </font>
                         </Label>
                         <Separator layoutX="292.0" orientation="VERTICAL" prefHeight="369.0" prefWidth="0.0" AnchorPane.rightAnchor="400.0" />
-                        <HBox layoutX="109.0" layoutY="383.0" prefHeight="25.0" prefWidth="149.0" spacing="10.0">
+                        <HBox layoutX="116.0" layoutY="395.0" prefHeight="25.0" prefWidth="84.0" spacing="10.0">
                             <children>
                                 <Button defaultButton="true" mnemonicParsing="false" onAction="#handleNew" text="جديد" />
                                 <Button cancelButton="true" mnemonicParsing="false" onAction="#handleEdit" text="تعديل" />
                             </children>
                         </HBox>
-                        <HBox layoutX="14.0" layoutY="75.0" prefHeight="27.0" prefWidth="322.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="75.0">
+                        <HBox layoutX="14.0" layoutY="75.0" prefHeight="27.0" prefWidth="251.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="75.0">
                             <children>
-                                <Button mnemonicParsing="false" onAction="#Search" text="بحث" />
-                                <TextField fx:id="SearchQuery">
+                                <TextField fx:id="SearchQuery" prefHeight="25.0" prefWidth="148.0">
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
                                 </TextField>
-                        <ComboBox fx:id="ComboSearch" prefHeight="25.0" prefWidth="83.0">
+                        <ComboBox fx:id="ComboSearch" prefHeight="25.0" prefWidth="109.0">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -53,16 +54,18 @@
                         </ComboBox>
                             </children>
                         </HBox>
-                  <GridPane layoutX="47.0" layoutY="175.0" prefHeight="141.0" prefWidth="272.0">
+                  <GridPane layoutX="32.0" layoutY="168.0" prefHeight="201.0" prefWidth="222.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="142.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="130.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="150.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="72.0" />
                     </columnConstraints>
                     <rowConstraints>
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
@@ -88,7 +91,7 @@
                         </Label>
                         <TextField fx:id="Amount" prefHeight="25.0" prefWidth="17.0">
                            <GridPane.margin>
-                              <Insets left="75.0" />
+                              <Insets left="50.0" />
                            </GridPane.margin>
                         </TextField>
                         <TextField fx:id="ExenseTo" GridPane.rowIndex="2" />
@@ -100,8 +103,15 @@
                            </GridPane.margin>
                         </Label>
                         <ComboBox fx:id="ComboType" prefWidth="150.0" GridPane.rowIndex="1" />
+                        <Label text="الصنف" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextArea fx:id="Notes" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5" GridPane.rowSpan="2" />
                      </children>
                   </GridPane>
+                          <Button layoutX="115.0" layoutY="123.0" mnemonicParsing="false" onAction="#Search" text="بحث" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="123.0" />
                     </children>
                 </AnchorPane>
             </items>
