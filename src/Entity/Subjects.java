@@ -55,8 +55,8 @@ public class Subjects implements Serializable {
     private String mandatoryFlag;
     @OneToMany(mappedBy = "suId")
     private List<SGLog> sGLogList;
-    @OneToOne(mappedBy = "suId")
-    private FinalGrades finalGradesList;
+    @OneToMany(mappedBy = "suId")
+    private List<FinalGrades> finalGradesList;
     @JoinColumn(name = "SY_ID", referencedColumnName = "SY_ID")
     @ManyToOne(fetch = FetchType.EAGER)
     private StudyYears syId;
@@ -117,11 +117,11 @@ public class Subjects implements Serializable {
     }
 
     @XmlTransient
-    public FinalGrades getFinalGradesList() {
+    public List<FinalGrades> getFinalGradesList() {
         return finalGradesList;
     }
 
-    public void setFinalGradesList(FinalGrades finalGradesList) {
+    public void setFinalGradesList(List<FinalGrades> finalGradesList) {
         this.finalGradesList = finalGradesList;
     }
 

@@ -9,7 +9,13 @@ import Util.LoginSec;
 import amgad.h.Management;
 import amgad.h.StudentAffair;
 import amgad.h.TeachingStaff;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
@@ -19,6 +25,14 @@ import javafx.print.Printer;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * FXML Controller class
@@ -26,6 +40,8 @@ import javafx.scene.layout.BorderPane;
  * @author Abdo
  */
 public class RootViewController implements Initializable {
+
+    private static final Logger logger = LogManager.getLogger(RootViewController.class);
 
     /**
      * Initializes the controller class.
@@ -48,6 +64,59 @@ public class RootViewController implements Initializable {
         this.sa = s;
         this.ts = t;
         this.r = r;
+    }
+
+    @FXML
+    private void handlePrint() throws Exception {
+
+        try {
+            // First, compile jrxml file.
+            JasperReport jasperReport = JasperCompileManager.compileReport("./Reports/classLists.jrxml");
+            // Fields for report
+            HashMap<String, Object> parameters = new HashMap<String, Object>();
+            parameters.put("class_ID",32); 
+            
+//        parameters.put("company", "MAROTHIA TECHS");
+//            ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+//            list.add(parameters);
+            
+
+//            String dbUrl = "jdbc:mysql://192.168.1.107:3306/amgad_sc";
+            String dbUrl = "jdbc:mysql://localhost:3306/amgad_sc";
+            // String dbDriver = props.getProperty("jdbc.driver");
+            String dbDriver = "com.mysql.jdbc.Driver";
+            // String dbUname = props.getProperty("db.username");
+//            String dbUname = "amgad_root";
+            String dbUname = "root";
+            // String dbPwd = props.getProperty("db.password");
+//            String dbPwd = "Amgad@123@Root";
+            String dbPwd = "123456";
+
+            // Load the JDBC driver
+            Class.forName(dbDriver);
+            // Get the connection
+            logger.debug("in printing");
+            Connection conn = DriverManager
+                    .getConnection(dbUrl, dbUname, dbPwd);
+//        String EXTENSION_RESOURCE_NAME = "jasper-extensions.properties";
+//        List<ClassLoaderResource> extensionResources = JRLoader.getClassLoaderResources(
+//                EXTENSION_RESOURCE_NAME);
+//        for (ClassLoaderResource extensionResource : extensionResources) {
+//            URL url = extensionResource.getUrl();
+//            JRPropertiesMap properties = JRPropertiesMap.loadProperties(url);
+//            
+//        }
+
+//        Font font = Font.createFont(Font.TRUETYPE_FONT,new File ("../lib/font/arial.ttf") );
+            
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
+            File pdf = File.createTempFile("output", ".pdf", new File("D://"));
+            JasperExportManager.exportReportToPdfStream(print, new FileOutputStream(pdf));
+            logger.debug("in printing");
+        } catch (Exception e) {
+            System.out.println("Controller.RootViewController.handlePrint()");
+            logger.error("Can't print pdf " + e.getLocalizedMessage());
+        }
     }
 
     @FXML

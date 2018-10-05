@@ -31,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ActualGrades.findAll", query = "SELECT a FROM ActualGrades a")
+    ,@NamedQuery(name = "ActualGrades.deleteById", query = "DELETE  FROM ActualGrades g where g.sId = :sId and g.gdId = :gdId")
     , @NamedQuery(name = "ActualGrades.findByAgId", query = "SELECT a FROM ActualGrades a WHERE a.agId = :agId")
     , @NamedQuery(name = "ActualGrades.findByGrade", query = "SELECT a FROM ActualGrades a WHERE a.grade = :grade")
     , @NamedQuery(name = "ActualGrades.findByGDate", query = "SELECT a FROM ActualGrades a WHERE a.gDate = :gDate")
@@ -48,7 +49,7 @@ public class ActualGrades implements Serializable {
     @Basic(optional = false)
     @Column(name = "AG_ID")
     private Long agId;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "G_DATE")
     @Temporal(TemporalType.TIMESTAMP)
     private Date gDate;
@@ -81,7 +82,6 @@ public class ActualGrades implements Serializable {
     public void setAgId(Long agId) {
         this.agId = agId;
     }
-
 
     public Date getGDate() {
         return gDate;
@@ -147,5 +147,5 @@ public class ActualGrades implements Serializable {
     public void setGrade(double grade) {
         this.grade = grade;
     }
-    
+
 }

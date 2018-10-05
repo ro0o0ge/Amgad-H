@@ -70,6 +70,8 @@ public class EditStudDetailController implements Initializable {
     @FXML
     private ComboBox sClass;
     @FXML
+    private ComboBox registryStatus;
+    @FXML
     private RadioButton male;
     @FXML
     private RadioButton female;
@@ -94,7 +96,7 @@ public class EditStudDetailController implements Initializable {
     private TableColumn<Contacts, String> NumColumn;
     @FXML
     private Label PhotoPath;
-    
+
     private ClassStudents classStud;
     private List<Classes> css;
 
@@ -106,6 +108,7 @@ public class EditStudDetailController implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -129,6 +132,13 @@ public class EditStudDetailController implements Initializable {
         sNationality.getItems().addAll("EGY", "SAU", "OMN", "BHR", "KWT",
                 "UAE", "JOR", "PSE", "LBR");
         sNationality.getSelectionModel().select(current.getPId().getNationality());
+
+//        if (registryStatus.getItems().size() > 0) {
+        registryStatus.getItems().removeAll(registryStatus.getItems());
+//        }
+        registryStatus.getItems().addAll("مقيد", "جديد");
+        registryStatus.getSelectionModel().select(current.getRegistryStatus());
+
         ParentJob.setText(current.getPId().getSpouseParentOccupation());
         sClass.getItems().removeAll(sClass.getItems());
         sClass.getItems().addAll(getClasses());
@@ -137,7 +147,12 @@ public class EditStudDetailController implements Initializable {
         }
 
         sDOB.valueProperty().addListener((ov, oldValue, newValue) -> {
-            LocalDate currentDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR), 10, 1);
+            LocalDate currentDate;
+            if (newValue.getDayOfMonth() == 31) {
+                currentDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR), 9, 30);
+            } else {
+                currentDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR), 10, 1);
+            }
             ageCalc.setText(currentDate.until(newValue).toString().replace("P-", ""));
         });
 
@@ -166,7 +181,7 @@ public class EditStudDetailController implements Initializable {
         } else {
             sType.selectToggle(female);
         }
-        
+
         if (current.getStatus().equals("2")) {
             sStatus.selectToggle(S2);
         } else if (current.getStatus().equals("1")) {
@@ -180,8 +195,9 @@ public class EditStudDetailController implements Initializable {
             sReligion.selectToggle(R2);
         }
 
-        sSecretNo.setText(current.getSecretNo());
+//        sSecretNo.setText(current.getSecretNo());
         sSeatingNo.setText(current.getSeatingNo());
+        PhotoPath.setText(current.getPId().getPersonalPhoto());
     }
 
     private List<String> getClasses() {
@@ -205,7 +221,7 @@ public class EditStudDetailController implements Initializable {
             PhotoPath.setText(selectedFile.getAbsolutePath());
         }
     }
-    
+
     @FXML
     public void handleSave() {
         if (!sName.getText().equals("") || sNationality.getSelectionModel().isEmpty()
@@ -222,6 +238,8 @@ public class EditStudDetailController implements Initializable {
                 }
                 current.getPId().setNationality(sNationality.getSelectionModel().getSelectedItem().toString());
 
+                current.setRegistryStatus(registryStatus.getSelectionModel().getSelectedItem().toString());
+
                 if (sReligion.getSelectedToggle().getUserData().toString().equals("مسلم")) {
                     current.getPId().setReligion("1");
                 } else {
@@ -232,6 +250,7 @@ public class EditStudDetailController implements Initializable {
                 current.getPId().setDob(Date.valueOf(sDOB.getValue()));
                 current.getPId().setModifiedDate(Date.valueOf(LocalDate.now()));
                 current.getPId().setSpouseParentOccupation(ParentJob.getText());
+                current.getPId().setPersonalPhoto(PhotoPath.getText());
                 if (sStatus.getSelectedToggle().getUserData().toString().equals("مرفوض")) {
                     current.setStatus("1");
                 } else if (sStatus.getSelectedToggle().getUserData().toString().equals("منتظر")) {
@@ -240,7 +259,13 @@ public class EditStudDetailController implements Initializable {
                     current.setStatus("3");
                 }
                 current.setSerialNo(serialNo.getText());
+                
+                String t = ageCalc.getText();
+                t = t.replace("Y", "س");
+                t = t.replace("M", "ش");
+                t = t.replace("D", "ي");
 
+                current.setAgeOnOct(t);
                 if (!sClass.getSelectionModel().isEmpty()) {
                     Classes c = new Classes();
                     for (Classes r : css) {
@@ -253,7 +278,7 @@ public class EditStudDetailController implements Initializable {
                     classStud.setSId(current);
                     current.setClassStudentsList(classStud);
                 }
-                SA.UpdateStud(current, classStud,tempCon);
+                SA.UpdateStud(current, classStud, tempCon);
             } catch (Exception e) {
                 System.err.println("Erorr in " + Class.class.getName() + " " + e.getLocalizedMessage());
                 Alert alert = new Alert(Alert.AlertType.ERROR);

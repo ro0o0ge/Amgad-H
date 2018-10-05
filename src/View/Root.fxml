@@ -17,6 +17,7 @@
                             <menus>
                                 <Menu mnemonicParsing="false" text="ملف">
                                     <items>
+                              <MenuItem mnemonicParsing="false" onAction="#handlePrint" text="طباعة" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleExit" text="اغلاق" />
                                     </items>
                                 </Menu>

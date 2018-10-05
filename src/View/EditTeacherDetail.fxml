@@ -278,7 +278,7 @@
                   <TextArea layoutX="373.0" layoutY="554.0" prefHeight="58.0" prefWidth="170.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="373.0" />
                   <Separator layoutX="5.0" layoutY="296.0" prefHeight="3.0" prefWidth="283.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="296.0" />
                   <Button layoutX="212.0" layoutY="95.0" mnemonicParsing="false" text="بحث" />
-                  <Label layoutX="27.0" layoutY="99.0" prefHeight="17.0" prefWidth="183.0" text="مسار الصورة" />
+                  <Label fx:id="PhotoPath" layoutX="27.0" layoutY="99.0" prefHeight="17.0" prefWidth="183.0" text="مسار الصورة" />
                   <Label layoutX="123.0" layoutY="60.0" text="صورة المدرس">
                      <font>
                         <Font size="16.0" />

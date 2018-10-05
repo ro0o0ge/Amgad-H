@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<fontFamilies>
+    <fontFamily name="Arial">
+        <normal>META-INF/fonts/arial.ttf</normal>
+        <bold>META-INF/fonts/arialbd.ttf</bold>
+        <italic>META-INF/fonts/ariali.ttf</italic>
+        <boldItalic>META-INF/fonts/arialbi.ttf</boldItalic>
+        <pdfEncoding>Identity-H</pdfEncoding>
+        <pdfEmbedded>true</pdfEmbedded>
+    </fontFamily>
+   
+</fontFamilies>
+
+

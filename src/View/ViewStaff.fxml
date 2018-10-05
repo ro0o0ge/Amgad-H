@@ -16,18 +16,18 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label layoutX="558.0" layoutY="26.0" prefHeight="17.0" prefWidth="55.0" text="اسم الموظف" />
+                  <Label layoutX="608.0" layoutY="26.0" prefHeight="17.0" prefWidth="55.0" text="اسم الموظف" />
                   <Label fx:id="name" layoutX="461.0" layoutY="26.0" text="Label" />
                   <Label fx:id="salaryLabel" layoutX="305.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="المرتب" />
                   <Label fx:id="salary" layoutX="209.0" layoutY="26.0" text="غير مسجل" />
                   <Button fx:id="saveAbscence" layoutX="101.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="25.0" prefWidth="79.0" text="تعديل الغياب" visible="false" AnchorPane.leftAnchor="101.0" AnchorPane.topAnchor="64.0" />
-                  <ImageView fitHeight="86.0" fitWidth="95.0" layoutX="9.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="PhotoPath" fitHeight="86.0" fitWidth="95.0" layoutX="9.0" layoutY="4.0" onMouseClicked="#handleImageClick" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/user.jpg" />
                      </image>
                   </ImageView>
                   <Label layoutX="444.0" layoutY="68.0" text="تصنيف الموظف" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="68.0" />
-                  <Label layoutX="338.0" layoutY="68.0" text="غير مسجل" AnchorPane.rightAnchor="326.0" AnchorPane.topAnchor="68.0" />
+                  <Label fx:id="category" layoutX="338.0" layoutY="68.0" text="غير مسجل" AnchorPane.rightAnchor="326.0" AnchorPane.topAnchor="68.0" />
                   <Button fx:id="calculateSalary" disable="true" layoutX="148.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleCalculateSalary" text="حساب مرتب الشهر" visible="false" />
                   <Button fx:id="savePenalty" layoutX="121.0" layoutY="64.0" mnemonicParsing="false" onAction="#handlePenaltyEdit" prefHeight="25.0" prefWidth="92.0" text="تعديل الجزاء" visible="false" />
                </children>

@@ -5,6 +5,7 @@
  */
 package amgad.h;
 
+import Entity.ActualGrades;
 import Entity.ClassStudents;
 import Entity.Classes;
 import Entity.Contacts;
@@ -203,6 +204,31 @@ public class StudentAffair {
         }
     }
 
+    public void UpdateStud(Student st) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            s.update(st);
+            log += " --  Person with id " + st.getPId();
+            log += " --  Student with id " + st.getSId();
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            s.update(st.getPId());
+//            s.refresh(st);
+            t.commit();
+
+            System.out.println("All Done");
+        } catch (Exception e) {
+            System.err.println("ERROR IN HIBERNATE : " + e.getLocalizedMessage());
+            System.err.println("ERROR IN HIBERNATE : " + e);
+            System.err.println("ERROR IN HIBERNATE : " + e.getCause());
+        }
+    }
+
     public void UpdateStud(Student st, ClassStudents cs, List<Contacts> cons) {
         try {
             String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Updated";
@@ -235,11 +261,12 @@ public class StudentAffair {
             ul.setLogDESC(log);
             s.persist(ul);
             s.update(st.getPId());
+            s.refresh(st);
             t.commit();
             StudentAffair.dialogStage2.close();
             PersonsList.clear();
-            PersonsList.addAll(getStudents());
-            s.refresh(st);
+            PersonsList.addAll(getStudents(1));
+
             System.out.println("All Done");
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e.getLocalizedMessage());
@@ -289,7 +316,7 @@ public class StudentAffair {
 
     public void editStud() {
         try {
-            PersonsList.addAll(getStudents());
+            PersonsList.addAll(getStudents(1));
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/EditStud.fxml"));
             AnchorPane page = loader.load();
@@ -309,10 +336,15 @@ public class StudentAffair {
         }
     }
 
-    public List<Student> getStudents() {
+    public List<Student> getStudents(int i) {
         s = sf.openSession();
         s.beginTransaction();
-        Query query = s.getNamedQuery("Student.findAll");
+        Query query = null;
+        if (i == 1) {
+            query = s.getNamedQuery("Student.findAll").setMaxResults(20);
+        } else {
+            query = s.getNamedQuery("Student.findAll");
+        }
         List<Student> sy = query.list();
         s.close();
         return sy;
@@ -449,7 +481,7 @@ public class StudentAffair {
 
     public void ClassStudents() {
         try {
-            PersonsList.addAll(getStudents());
+            PersonsList.addAll(getStudents(1));
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("/View/ClassStudents.fxml"));
             AnchorPane page = loader.load();
@@ -483,7 +515,7 @@ public class StudentAffair {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
-            PersonsList.addAll(getStudents());
+            PersonsList.addAll(getStudents(1));
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
@@ -511,7 +543,7 @@ public class StudentAffair {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
-            PersonsList.addAll(getStudents());
+            PersonsList.addAll(getStudents(1));
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
@@ -534,7 +566,7 @@ public class StudentAffair {
             t.commit();
             this.dialogStage2.close();
             PersonsList.clear();
-            PersonsList.addAll(getStudents());
+            PersonsList.addAll(getStudents(1));
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
@@ -562,7 +594,7 @@ public class StudentAffair {
             s.persist(ul);
             t.commit();
             PersonsList.clear();
-            PersonsList.addAll(getStudents());
+            PersonsList.addAll(getStudents(1));
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());
@@ -670,4 +702,67 @@ public class StudentAffair {
         }
     }
 
+    public void ViewControl4_6() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/StudentGrades4-5-6.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("كنترول الطالب");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ViewControl1_3() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/StudentGrades1-2-3.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("كنترول الطالب");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(this.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void PersistStudControl(ActualGrades ag) {
+        try {
+            String log = "User : " + LoginSec.getLoggedUser().getUName() + " -- Deleted";
+            s = sf.openSession();
+            Transaction t = s.beginTransaction();
+            Query query = s.getNamedQuery("ActualGrades.deleteById")
+                    .setParameter("gdId", ag.getGdId()).setParameter("sId", ag.getSId());
+            log += " -- Actual Detail with id " + ag.getAgId();
+            query.executeUpdate();
+
+            s.persist(ag);
+            s.refresh(edit);
+            log += "  -- Created -- Actual Grade with id " + ag.getAgId();
+
+            ul = new UserLog();
+            ul.setUId(LoginSec.getLoggedUser());
+            ul.setLogDate(new Timestamp(new Date().getTime()));
+            ul.setLogDESC(log);
+            s.persist(ul);
+            t.commit();
+//            StudentAffair.dialogStage2.close();
+        } catch (Exception e) {
+            System.err.println("El72 " + e.getMessage());
+        }
+    }
 }

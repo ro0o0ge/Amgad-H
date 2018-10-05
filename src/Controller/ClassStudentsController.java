@@ -108,7 +108,7 @@ public class ClassStudentsController implements Initializable {
     @FXML
     public void Search() {
         if (!SearchQuery.getText().equals("")) {
-            ObservableList<Student> TempList = FXCollections.observableArrayList(SA.getStudents());
+            ObservableList<Student> TempList = FXCollections.observableArrayList(SA.getStudents(2));
             StudentsTable.getItems().clear();
             for (int i = 0; i < TempList.size(); i++) {
                 if (!TempList.get(i).getPId().getName().contains(SearchQuery.getText())) {

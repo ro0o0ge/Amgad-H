@@ -6,7 +6,6 @@
 package Entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -23,8 +22,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.annotations.LazyCollection;
@@ -43,9 +40,19 @@ import org.hibernate.annotations.LazyCollectionOption;
     , @NamedQuery(name = "Student.findByStatus", query = "SELECT s FROM Student s WHERE s.status = :status")
     , @NamedQuery(name = "Student.findByAgeOnOct", query = "SELECT s FROM Student s WHERE s.ageOnOct = :ageOnOct")
     , @NamedQuery(name = "Student.findBySerialNo", query = "SELECT s FROM Student s WHERE s.serialNo = :serialNo")
-    , @NamedQuery(name = "Student.findBySecretNo", query = "SELECT s FROM Student s WHERE s.secretNo = :secretNo")
     , @NamedQuery(name = "Student.findBySeatingNo", query = "SELECT s FROM Student s WHERE s.seatingNo = :seatingNo")})
 public class Student implements Serializable {
+
+    @Column(name = "SSTUDENT_CODE")
+    private String sstudentCode;
+
+    @Column(name = "OBSERVE_1")
+    private String observe1;
+    @Column(name = "OBSERVE_2")
+    private String observe2;
+
+    @Column(name = "REGISTRY_STATUS")
+    private String registryStatus;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -61,8 +68,7 @@ public class Student implements Serializable {
     @Basic(optional = false)
     @Column(name = "SERIAL_NO")
     private String serialNo;
-    @Column(name = "SECRET_NO")
-    private String secretNo;
+ 
     @Column(name = "SEATING_NO")
     private String seatingNo;
     @OneToMany(mappedBy = "sId")
@@ -73,6 +79,7 @@ public class Student implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "sId")
     private List<StudentAttendance> studentAttendanceList;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "sId")
     private List<ActualGrades> actualGradesList;
     @OneToOne(mappedBy = "sId", fetch = FetchType.EAGER)
@@ -149,14 +156,6 @@ public class Student implements Serializable {
 
     public void setSerialNo(String serialNo) {
         this.serialNo = serialNo;
-    }
-
-    public String getSecretNo() {
-        return secretNo;
-    }
-
-    public void setSecretNo(String secretNo) {
-        this.secretNo = secretNo;
     }
 
     public String getSeatingNo() {
@@ -252,6 +251,38 @@ public class Student implements Serializable {
     @Override
     public String toString() {
         return "Entity.Student[ sId=" + sId + " ]";
+    }
+
+    public String getRegistryStatus() {
+        return registryStatus;
+    }
+
+    public void setRegistryStatus(String registryStatus) {
+        this.registryStatus = registryStatus;
+    }
+
+    public String getObserve1() {
+        return observe1;
+    }
+
+    public void setObserve1(String observe1) {
+        this.observe1 = observe1;
+    }
+
+    public String getObserve2() {
+        return observe2;
+    }
+
+    public void setObserve2(String observe2) {
+        this.observe2 = observe2;
+    }
+
+    public String getSstudentCode() {
+        return sstudentCode;
+    }
+
+    public void setSstudentCode(String sstudentCode) {
+        this.sstudentCode = sstudentCode;
     }
 
 }

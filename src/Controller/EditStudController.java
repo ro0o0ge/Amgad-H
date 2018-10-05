@@ -81,7 +81,7 @@ public class EditStudController implements Initializable {
     @FXML
     public void Search() {
         if (!SearchQuery.getText().equals("")) {
-            ObservableList<Student> TempList = FXCollections.observableArrayList(SA.getStudents());
+            ObservableList<Student> TempList = FXCollections.observableArrayList(SA.getStudents(2));
             StudentsTable.getItems().clear();
             if (ComboSearch.getSelectionModel().isSelected(0)) {//name
                 for (int i = 0; i < TempList.size(); i++) {
@@ -192,6 +192,40 @@ public class EditStudController implements Initializable {
             alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();
+        }
+    }
+
+    @FXML
+    public void handleControl() {
+        try {
+            int selectedIndex = StudentsTable.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+                StudentAffair.setEdit(StudentsTable.getItems().get(selectedIndex));
+                if (StudentsTable.getItems().get(selectedIndex).getClassStudentsList()
+                        .getCId().getSyId().getSyId().equals(1)
+                        || StudentsTable.getItems().get(selectedIndex).getClassStudentsList()
+                                .getCId().getSyId().getSyId().equals(2)
+                        || StudentsTable.getItems().get(selectedIndex).getClassStudentsList()
+                                .getCId().getSyId().getSyId().equals(3)) {
+                    SA.ViewControl1_3();
+                } else if (StudentsTable.getItems().get(selectedIndex).getClassStudentsList()
+                        .getCId().getSyId().getSyId().equals(4)
+                        || StudentsTable.getItems().get(selectedIndex).getClassStudentsList()
+                                .getCId().getSyId().getSyId().equals(5)
+                        || StudentsTable.getItems().get(selectedIndex).getClassStudentsList()
+                                .getCId().getSyId().getSyId().equals(6)) {
+                    SA.ViewControl4_6();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("يوجد خطأ");
+                alert.setHeaderText("لم يتم تحديد العنصر المراد عرضه");
+                alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+                alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

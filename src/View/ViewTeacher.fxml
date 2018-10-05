@@ -16,12 +16,12 @@
             <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Label layoutX="579.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="اسم المدرس" />
+                  <Label layoutX="638.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="اسم المدرس" />
                   <Label fx:id="name" layoutX="483.0" layoutY="26.0" text="غير مسجل" />
                   <Label fx:id="salary" layoutX="209.0" layoutY="26.0" text="غير مسجل" />
                   <Label fx:id="salaryLabel" layoutX="305.0" layoutY="26.0" prefHeight="17.0" prefWidth="49.0" text="المرتب" />
                   <Button fx:id="saveAbscence" layoutX="111.0" layoutY="66.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="25.0" prefWidth="92.0" text="تعديل الغياب" visible="false" />
-                  <ImageView fitHeight="86.0" fitWidth="95.0" layoutX="5.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="4.0">
+                  <ImageView fx:id="PhotoPath" fitHeight="86.0" fitWidth="95.0" layoutX="5.0" layoutY="4.0" onMouseClicked="#handleImageClick" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="4.0">
                      <image>
                         <Image url="@../resources/user.jpg" />
                      </image></ImageView>

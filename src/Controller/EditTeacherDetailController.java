@@ -11,10 +11,12 @@ import Entity.Teacher;
 import Entity.TeacherSubjects;
 import Util.LoginSec;
 import amgad.h.TeachingStaff;
+import java.io.File;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -26,12 +28,14 @@ import javafx.geometry.NodeOrientation;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
+import javafx.stage.FileChooser;
 
 /**
  * FXML Controller class
@@ -106,6 +110,11 @@ public class EditTeacherDetailController implements Initializable {
     private TableColumn<Subjects, String> SubjectNameColumn;
     @FXML
     private TableColumn<Subjects, String> SyNameColumn;
+    
+    @FXML
+    private Label PhotoPath;
+    
+    final File defaultDirectory = new File("C:\\");
 
     TeachingStaff TA;
 
@@ -164,6 +173,7 @@ public class EditTeacherDetailController implements Initializable {
             gReligion.selectToggle(r2);
         }
 
+        current.getPId().setPersonalPhoto(PhotoPath.getText());
         tNationality.getItems().removeAll(tNationality.getItems());
         tNationality.getItems().addAll("EGY", "SAU", "OMN", "BHR", "KWT",
                 "UAE", "JOR", "PSE", "LBR");
@@ -225,6 +235,18 @@ public class EditTeacherDetailController implements Initializable {
             System.out.println("Salary " + current.getMonthlySalary());
         }
 
+    }
+    
+    @FXML
+    public void handlePhoto() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(defaultDirectory);
+        List<String> extensions = Arrays.asList("JPG", "JPEG", "PNG");
+        fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("Images", extensions));
+        File selectedFile = fileChooser.showOpenDialog(TA.getDialogStage());
+        if (selectedFile != null) {
+            PhotoPath.setText(selectedFile.getAbsolutePath());
+        }
     }
 
     @FXML

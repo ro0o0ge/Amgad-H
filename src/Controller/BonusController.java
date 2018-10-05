@@ -80,7 +80,7 @@ public class BonusController implements Initializable {
 //        TypeBonusColumn.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
 
         ComboType.getItems().removeAll(ComboType.getItems());
-        ComboType.getItems().addAll("مكافأة استثنائية", "مكافأة امتحانات");
+        ComboType.getItems().addAll("مكافأة شهرية", "الكادر","مكافأة استثنائية", "مكافأة امتحانات");
 
     }
 

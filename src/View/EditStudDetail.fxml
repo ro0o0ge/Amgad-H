@@ -157,6 +157,19 @@
                            </GridPane.margin>
                         </Label>
                         <TextField fx:id="ParentJob" GridPane.rowIndex="10" />
+                        <ComboBox fx:id="registryStatus" prefHeight="25.0" prefWidth="138.0" GridPane.rowIndex="15">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="50.0" />
+                           </GridPane.margin>
+                        </ComboBox>
+                        <Label contentDisplay="RIGHT" text="حالة القيد" GridPane.columnIndex="1" GridPane.rowIndex="15">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
                             </children>
                         </GridPane>
                         <HBox layoutX="280.0" layoutY="552.0" prefHeight="25.0" prefWidth="152.0" spacing="10.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="280.0">
@@ -177,7 +190,7 @@
                         </Label>
                         <Separator layoutX="289.0" layoutY="39.0" orientation="VERTICAL" prefHeight="472.0" prefWidth="6.0" AnchorPane.bottomAnchor="79.0" AnchorPane.rightAnchor="403.0" />
                         <Separator layoutX="5.0" layoutY="533.0" prefHeight="3.0" prefWidth="689.0" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="5.0" />
-                        <Label layoutX="105.0" layoutY="395.0" text="بيانات الامتحانات" AnchorPane.bottomAnchor="193.0" AnchorPane.leftAnchor="105.0">
+                        <Label layoutX="105.0" layoutY="395.0" text="بيانات الامتحانات" visible="false" AnchorPane.bottomAnchor="193.0" AnchorPane.leftAnchor="105.0">
                             <font>
                                 <Font size="18.0" />
                             </font>
@@ -193,18 +206,18 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <Label contentDisplay="RIGHT" text="الرقم السري" GridPane.columnIndex="1">
+                                <Label contentDisplay="RIGHT" text="الرقم السري" visible="false" GridPane.columnIndex="1">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>
                                 </Label>
-                                <Label contentDisplay="RIGHT" text="رقم الجلوس" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                <Label contentDisplay="RIGHT" text="رقم الجلوس" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>
                                 </Label>
-                                <TextField fx:id="sSecretNo" />
-                                <TextField fx:id="sSeatingNo" GridPane.rowIndex="2" />
+                                <TextField fx:id="sSecretNo" visible="false" />
+                                <TextField fx:id="sSeatingNo" visible="false" GridPane.rowIndex="2" />
                             </children>
                         </GridPane>
                         <TableView fx:id="ContactsTable" editable="true" layoutX="28.0" layoutY="177.0" prefHeight="131.0" prefWidth="254.0">

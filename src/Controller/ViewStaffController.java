@@ -11,9 +11,14 @@ import Entity.Evaluation;
 import Entity.Payroll;
 import Entity.Staff;
 import Util.LoginSec;
+import amgad.h.Main;
 import amgad.h.Management;
+import amgad.h.root;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,8 +27,10 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -33,6 +40,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -66,6 +78,8 @@ public class ViewStaffController implements Initializable {
     @FXML
     private Label salary;
     @FXML
+    private Label category;
+    @FXML
     private Label salaryLabel;
     @FXML
     private Tab payroll;
@@ -81,6 +95,8 @@ public class ViewStaffController implements Initializable {
     private Tab abscense;
     @FXML
     private Button saveAbscence;
+    @FXML
+    ImageView PhotoPath;
 
     @FXML
     private TableView<EmployeeAttendance> AttTable;
@@ -749,6 +765,7 @@ public class ViewStaffController implements Initializable {
         SingInDate.setText(current.getPId().getHiringDate().toString());
         Status.setText(current.statusProperty().getValue());
         Qual.setText(current.getPId().getQualification());
+        category.setText(current.getStaffCategory());
 
         ObservableList<Contacts> tempCon = FXCollections.observableArrayList(current.getPId().getContactsList());
         ContactsTable.setItems(tempCon);
@@ -1546,7 +1563,7 @@ public class ViewStaffController implements Initializable {
                 ADateColumn.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
             }
         });
-
+        PhotoPath.setImage(new Image(new File(current.getPId().getPersonalPhoto()).toURI().toString()));
         EvaluationTable.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> showDetails(newValue));
 
@@ -1578,6 +1595,28 @@ public class ViewStaffController implements Initializable {
             A7.setText("");
             A8.setText("");
             ADate.setValue(null);
+        }
+    }
+
+    @FXML
+    public void handleImageClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/ViewImage.fxml"));
+            root.f = new File(current.getPId().getPersonalPhoto());
+            AnchorPane page = loader.load();
+            Stage dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("عرض الصورة");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(MA.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -1665,7 +1704,7 @@ public class ViewStaffController implements Initializable {
     public void handleCalculateSalary() {
 
         netsalDouble = current.getMonthlySalary();
-        day = netsalDouble / 30;
+//        day = netsalDouble / 30;
 
         if (current.getPId().getInsuranceAmount() != null) {
             netsalDouble -= current.getPId().getInsuranceAmount();
@@ -1707,6 +1746,7 @@ public class ViewStaffController implements Initializable {
         } else if (DEC19.isSelected()) {
             calculateNetSalary(12);
         }
+        calculateSalary.setDisable(true);
     }
 
     void calculateNetSalary(int m) {
@@ -1724,6 +1764,15 @@ public class ViewStaffController implements Initializable {
                                 MA.UpdatePayroll(tPR);
                             }
                             break;
+                    }
+                }
+            }
+            day = netsalDouble / 30;
+            for (Payroll tPR : current.getPId().getPayrollList()) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(tPR.getPrDate());
+                if (calendar.get(Calendar.MONTH) + 1 == m && calendar.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) {
+                    switch (tPR.getPrType()) {
                         case "2":
                             if (tPR.getPrStatus()) {
                                 netsalDouble -= (tPR.getAmount() * day);
@@ -1742,19 +1791,19 @@ public class ViewStaffController implements Initializable {
                 if (calendar.get(Calendar.MONTH) + 1 == m && calendar.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) {
                     if (tEA.getStatus()) {
                         switch (tEA.getAbscenceType()) {
-                            case "1": //
+                            case "1": // minutes
                                 if (tEA.getTimeAmount() > 15 && tEA.getTimeAmount() <= 60) {
                                     netsalDouble -= (day * .25);
                                     deduction += (day * .25);
                                 } else if (tEA.getTimeAmount() > 60 && tEA.getTimeAmount() <= 120) {
                                     netsalDouble -= (day * .5);
                                     deduction += (day * .5);
-                                } else {
+                                } else if (tEA.getTimeAmount() > 120) {
                                     netsalDouble -= day;
                                     deduction += (day);
                                 }
                                 break;
-                            case "6": //
+                            case "6": //days
                                 netsalDouble -= (3 * day * tEA.getTimeAmount());
                                 deduction += (3 * day * tEA.getTimeAmount());
                                 break;
@@ -1763,11 +1812,15 @@ public class ViewStaffController implements Initializable {
                 }
             }
         }
-
 //        Deduction.setText(String.valueOf(deduction));
 //        Bonus.setText(String.valueOf(bonus));
 //        NetSal += netsalDouble;
 //        Net.setText(NetSal);
+        DecimalFormat f = new DecimalFormat("##.00");
+        netsalDouble=Double.valueOf(f.format(netsalDouble));
+        deduction=Double.valueOf(f.format(deduction));
+        bonus=Double.valueOf(f.format(bonus));
+        
         updateSalaryTable(m);
         current.getPId().getPayrollList().add(MA.PersistNewNetSalary("تم استلام المرتب", current.getPId(), netsalDouble, "الادارة"));
         current.getPId().getPayrollList().add(MA.PersistNewDeductionsSalary("تم الخصم", current.getPId(), deduction));
@@ -1917,7 +1970,7 @@ public class ViewStaffController implements Initializable {
     public void handlePenaltyEdit() {
         int selectedIndex = PenaltyTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
-            
+
             Management.setEditPayrollStatus(PenaltyTable.getItems().get(selectedIndex));
             MA.ViewEditPenaltyStatus();
 

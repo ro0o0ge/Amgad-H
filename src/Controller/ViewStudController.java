@@ -8,14 +8,20 @@ package Controller;
 import Entity.Contacts;
 import Entity.Student;
 import Entity.StudentAttendance;
+import amgad.h.Main;
 import amgad.h.StudentAffair;
+import amgad.h.root;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,6 +29,12 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -136,7 +148,11 @@ public class ViewStudController implements Initializable {
     private Button saveAbscence;
     @FXML
     private Label ParentOccupation;
+    @FXML
+    private Label registryStatus;
 
+    @FXML
+    ImageView PhotoPath;
     @FXML
     private TableView<StudentAttendance> AttTable;
     @FXML
@@ -163,6 +179,7 @@ public class ViewStudController implements Initializable {
             current = StudentAffair.getEdit();
             TS = new StudentAffair();
             name.setText(current.getPId().getName());
+
             if (current.getClassStudentsList() != null) {
                 className.setText(current.getClassStudentsList().getCId().getClassDesc());
                 if (current.getClassStudentsList().getCId().getScheduleList() != null) {
@@ -223,13 +240,14 @@ public class ViewStudController implements Initializable {
             if (current.getPId().getSpouseParentOccupation() != null) {
                 ParentOccupation.setText(current.getPId().getSpouseParentOccupation());
             }
-            if (current.getSecretNo()!= null) {
-                secretNo.setText(current.getSecretNo());
-            }
-            if (current.getSeatingNo()!= null) {
+//            if (current.getSecretNo() != null) {
+//                secretNo.setText(current.getSecretNo());
+//            }
+            if (current.getSeatingNo() != null) {
                 seatingNo.setText(current.getSeatingNo());
             }
 
+            registryStatus.setText(current.getRegistryStatus());
             ObservableList<Contacts> tempCon = FXCollections.observableArrayList(current.getPId().getContactsList());
             ContactsTable.setItems(tempCon);
             NameColumn.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
@@ -247,8 +265,32 @@ public class ViewStudController implements Initializable {
                 StatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
                 StatusColumn.setCellFactory(CheckBoxTableCell.forTableColumn(StatusColumn));
             }
+
+            PhotoPath.setImage(new Image(new File(current.getPId().getPersonalPhoto()).toURI().toString()));
         } catch (Exception e) {
             System.err.println("ERROR IN INIT" + e);
+        }
+    }
+
+    @FXML
+    public void handleImageClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/ViewImage.fxml"));
+            root.f = new File(current.getPId().getPersonalPhoto());
+            AnchorPane page = loader.load();
+            Stage dialogStage2 = new Stage();
+            dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage2.setTitle("عرض الصورة");
+            dialogStage2.initModality(Modality.WINDOW_MODAL);
+            dialogStage2.initOwner(TS.getDialogStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage2.setScene(scene);
+            dialogStage2.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

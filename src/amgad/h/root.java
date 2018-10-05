@@ -7,6 +7,7 @@ package amgad.h;
 
 import Controller.RootViewController;
 import Util.LoginSec;
+import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.NodeOrientation;
@@ -25,6 +26,7 @@ public class root {
 
     private Stage primaryStage;
     private AnchorPane rootLayout;
+    public static File f;
 
     public Stage getPrimaryStage() {
         return primaryStage;

@@ -8,6 +8,7 @@ package Entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,11 +47,8 @@ public class FinalGrades implements Serializable {
     @Basic(optional = false)
     @Column(name = "GRADE")
     private int grade;
-    @JoinColumn(name = "C_ID", referencedColumnName = "C_ID")
-    @ManyToOne
-    private Classes cId;
     @JoinColumn(name = "SU_ID", referencedColumnName = "SU_ID")
-    @OneToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Subjects suId;
     @OneToMany(mappedBy = "gId")
     private List<GradeDetail> gradeDetailList;
@@ -82,15 +80,7 @@ public class FinalGrades implements Serializable {
     public void setGrade(int grade) {
         this.grade = grade;
     }
-
-    public Classes getCsId() {
-        return cId;
-    }
-
-    public void setCsId(Classes cId) {
-        this.cId = cId;
-    }
-
+    
     public Subjects getSuId() {
         return suId;
     }

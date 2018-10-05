@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <!--
 DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
 
@@ -47,6 +49,7 @@ Contributor(s):
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/amgad_sc?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">123456</property> 
+        <!--<property name="hibernate.connection.password"></property>--> 
         <!--<property name="hibernate.connection.url">jdbc:mysql://192.168.1.107:3306/amgad_sc?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8</property>-->
         <!--<property name="hibernate.connection.url">jdbc:mysql://192.168.1.107:3306/amgad_sc?zeroDateTimeBehavior=convertToNull</property>-->
         <!--<property name="hibernate.connection.username">amgad_root</property>-->

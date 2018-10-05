@@ -12,12 +12,13 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <HBox layoutX="12.0" layoutY="97.0" prefHeight="-111.0" prefWidth="247.0" spacing="10.0" AnchorPane.bottomAnchor="247.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="439.0" AnchorPane.topAnchor="97.0">
+                  <HBox layoutX="12.0" layoutY="97.0" prefHeight="-111.0" prefWidth="263.0" spacing="5.0" AnchorPane.bottomAnchor="247.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="423.0" AnchorPane.topAnchor="97.0">
                      <children>
                         <Button cancelButton="true" mnemonicParsing="false" onAction="#handleEdit" text="تعديل" />
                         <Button mnemonicParsing="false" onAction="#handleView" text="عرض" />
                         <Button mnemonicParsing="false" onAction="#handleNotes" text="ملاحظات" />
                         <Button mnemonicParsing="false" onAction="#handleExpenses" text="المصاريف" />
+                        <Button mnemonicParsing="false" onAction="#handleControl" text="الكنترول" />
                      </children>
                   </HBox>
                   <Label layoutX="474.0" layoutY="25.0" text="بيانات الطلاب" underline="true" AnchorPane.rightAnchor="137.0" AnchorPane.topAnchor="25.0">

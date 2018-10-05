@@ -19,15 +19,16 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.application.Platform;
 import javafx.stage.WindowEvent;
+//import org.apache.log4j.Logger;
 
 /**
  *
  * @author Abdo
  */
 public class Main extends Application {
-
+    
     public Main() {
-
+        
     }
 
     private Stage primaryStage;
@@ -40,6 +41,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
+//            PropertyConfigurator.configure("log4j.properties");
+    
             this.primaryStage = primaryStage;
             this.primaryStage.setTitle("مدرسة الأمجاد الخاصة");
             this.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));

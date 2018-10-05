@@ -71,6 +71,8 @@ public class RegisterStudController implements Initializable {
     @FXML
     private ComboBox sClass;
     @FXML
+    private ComboBox registryStatus;
+    @FXML
     private RadioButton male;
     @FXML
     private RadioButton female;
@@ -128,10 +130,18 @@ public class RegisterStudController implements Initializable {
         sClass.getItems().removeAll(sClass.getItems());
         sClass.getItems().addAll(getClasses());
 
+        registryStatus.getItems().removeAll(sClass.getItems());
+        registryStatus.getItems().addAll("مقيد", "جديد");
+
         sDOB.valueProperty().addListener((ov, oldValue, newValue) -> {
-            LocalDate currentDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR), 10, 1);
-//            ageCalc.setText(currentDate.until(newValue).toString().replace("P-", ""));
-            ageCalc.setText(Period.between(newValue, currentDate).toString().replace("P", ""));
+            LocalDate currentDate;
+//            if (newValue.getDayOfMonth() == 31) {
+//                currentDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR), 10, 1);
+//            } else {
+            currentDate = LocalDate.of(Calendar.getInstance().get(Calendar.YEAR), 10, 1);
+//            }
+            ageCalc.setText(currentDate.until(newValue).toString().replace("P-", ""));
+//            ageCalc.setText(Period.between(newValue, currentDate).toString().replace("P", ""));
         });
 
         ContactsTable.setItems(SA.getContactsList());
@@ -177,6 +187,7 @@ public class RegisterStudController implements Initializable {
                     pers.setGender("2");
                 }
                 pers.setNationality(sNationality.getSelectionModel().getSelectedItem().toString());
+
                 if (sReligion.getSelectedToggle().getUserData().toString().equals("مسلم")) {
                     pers.setReligion("1");
                 } else {
@@ -190,6 +201,7 @@ public class RegisterStudController implements Initializable {
                 pers.setSpouseParentOccupation(ParentJob.getText());
                 pers.setPersonalPhoto(PhotoPath.getText());
                 stud.setPId(pers);
+                stud.setRegistryStatus(registryStatus.getSelectionModel().getSelectedItem().toString());
                 String t = ageCalc.getText();
                 t = t.replace("Y", "س");
                 t = t.replace("M", "ش");
