@@ -29,10 +29,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "StudyYears.findAll", query = "SELECT s FROM StudyYears s")
     , @NamedQuery(name = "StudyYears.findBySyId", query = "SELECT s FROM StudyYears s WHERE s.syId = :syId")
+        , @NamedQuery(name = "StudyYears.findBySyDesc1", query = "SELECT s.syId FROM StudyYears s WHERE s.syDesc = :syDesc")
     , @NamedQuery(name = "StudyYears.findBySyDesc", query = "SELECT s FROM StudyYears s WHERE s.syDesc = :syDesc")})
 public class StudyYears implements Serializable {
 
-    @OneToMany(mappedBy = "syId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "syId", fetch = FetchType.LAZY)
     private List<Classes> classesList;
 
     private static final long serialVersionUID = 1L;

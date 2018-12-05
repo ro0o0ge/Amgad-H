@@ -42,6 +42,9 @@
                         </ComboBox>
                      </children>
                   </HBox>
+                  <Button layoutX="529.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleAbsentReport" text="تقرير الغياب" AnchorPane.rightAnchor="104.0" AnchorPane.topAnchor="140.0" />
+                  <Button layoutX="446.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleLateReport" text="تقرير التأخير" />
+                  <Button layoutX="363.0" layoutY="140.0" mnemonicParsing="false" onAction="#handleEvaluationReport" text="تقرير التقييم" AnchorPane.rightAnchor="268.0" AnchorPane.topAnchor="140.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">

@@ -203,9 +203,9 @@ public class RegisterStudController implements Initializable {
                 stud.setPId(pers);
                 stud.setRegistryStatus(registryStatus.getSelectionModel().getSelectedItem().toString());
                 String t = ageCalc.getText();
-                t = t.replace("Y", "س");
-                t = t.replace("M", "ش");
-                t = t.replace("D", "ي");
+//                t = t.replace("Y", "س");
+//                t = t.replace("M", "ش");
+//                t = t.replace("D", "ي");
 
                 stud.setAgeOnOct(t);
 

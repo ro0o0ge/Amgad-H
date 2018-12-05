@@ -28,11 +28,14 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
+import javafx.print.PrinterJob;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -43,9 +46,16 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Affine;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Transform;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * FXML Controller class
@@ -97,6 +107,12 @@ public class ViewTeacherController implements Initializable {
     @FXML
     ImageView PhotoPath;
 
+    @FXML
+    private Tab schedule;
+    @FXML
+    AnchorPane scheduleAP;
+    @FXML
+    private Button printScheduleBtn;
     @FXML
     private Label Sun1;
     @FXML
@@ -945,6 +961,10 @@ public class ViewTeacherController implements Initializable {
                 StatusColumn.setCellFactory(CheckBoxTableCell.forTableColumn(StatusColumn));
             }
 
+            schedule.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                printScheduleBtn.setVisible(newTab);
+            });
+
             if (current.getScheduleList() != null) {
                 for (Schedule scheduleList : current.getScheduleList()) {
                     int temp = scheduleList.getLecId().getLecId();
@@ -1317,12 +1337,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 9 && calendar.get(Calendar.YEAR) == 2018) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net189.setText(String.valueOf(bp.getAmount()));
+                                    Gross189.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction189.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus189.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1350,12 +1370,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 10 && calendar.get(Calendar.YEAR) == 2018) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net1810.setText(String.valueOf(bp.getAmount()));
+                                    Gross1810.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction1810.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus1810.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1383,12 +1403,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 11 && calendar.get(Calendar.YEAR) == 2018) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net1811.setText(String.valueOf(bp.getAmount()));
+                                    Gross1811.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction1811.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus1811.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1416,12 +1436,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.YEAR) == 2018) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net1812.setText(String.valueOf(bp.getAmount()));
+                                    Gross1812.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction1812.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus1812.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1449,12 +1469,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 1 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net191.setText(String.valueOf(bp.getAmount()));
+                                    Gross191.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction191.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus191.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1482,12 +1502,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 2 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net192.setText(String.valueOf(bp.getAmount()));
+                                    Gross192.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction192.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus192.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1515,12 +1535,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 3 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net193.setText(String.valueOf(bp.getAmount()));
+                                    Gross193.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction193.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus193.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1548,12 +1568,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 4 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net194.setText(String.valueOf(bp.getAmount()));
+                                    Gross194.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction194.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus194.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1581,12 +1601,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 5 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net195.setText(String.valueOf(bp.getAmount()));
+                                    Gross195.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction195.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus195.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1614,12 +1634,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 6 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net196.setText(String.valueOf(bp.getAmount()));
+                                    Gross196.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction196.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus196.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1647,12 +1667,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 7 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net197.setText(String.valueOf(bp.getAmount()));
+                                    Gross197.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction197.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus197.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1680,12 +1700,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 8 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net198.setText(String.valueOf(bp.getAmount()));
+                                    Gross198.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction198.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus198.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1713,12 +1733,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 9 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net199.setText(String.valueOf(bp.getAmount()));
+                                    Gross199.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction199.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus199.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1746,12 +1766,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 10 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net1910.setText(String.valueOf(bp.getAmount()));
+                                    Gross1910.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction1910.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus1910.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1779,12 +1799,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 11 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net1911.setText(String.valueOf(bp.getAmount()));
+                                    Gross1911.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction1911.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus1911.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1812,12 +1832,12 @@ public class ViewTeacherController implements Initializable {
                             if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net.setText(String.valueOf(bp.getAmount()));
-                                    Gross.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net1912.setText(String.valueOf(bp.getAmount()));
+                                    Gross1912.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction.setText(String.valueOf(bp.getAmount()));
+                                    Deduction1912.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus.setText(String.valueOf(bp.getAmount()));
+                                    Bonus1912.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
@@ -1914,6 +1934,32 @@ public class ViewTeacherController implements Initializable {
         }
     }
 
+    private static final Logger LOGGER = LogManager.getLogger(ViewTeacherController.class);
+    @FXML
+    public void handlePrintSchedule(){
+        try {
+            SnapshotParameters spp = new SnapshotParameters();
+            final Affine reflectTransform = new Affine();
+            reflectTransform.setMxx(-1);
+            reflectTransform.setTx(708);
+            
+            spp.setTransform(reflectTransform);
+            WritableImage image = scheduleAP.snapshot(spp, null);
+            File file = new File("D:\\جدول حصص - "
+                    + current.getPId().getName()
+                    + ".png");
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        } catch (Exception e) {
+            LOGGER.error(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("يوجد خطأ");
+            alert.setHeaderText("خطأ");
+            alert.setContentText("برجاء التأكد من صحة البيانات");
+            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            alert.showAndWait();
+        }
+    }
+    
     String NetSal = "";
     double netsalDouble = 0.0;
     double deduction = 0.0;
@@ -2062,7 +2108,6 @@ public class ViewTeacherController implements Initializable {
                 }
             }
             day = netsalDouble / 30;
-
             for (Payroll tPR : current.getPId().getPayrollList()) {
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(tPR.getPrDate());
@@ -2079,6 +2124,10 @@ public class ViewTeacherController implements Initializable {
                 }
             }
 
+        }
+
+        if (day == 0.0) {
+            day = netsalDouble / 30;
         }
 
         if (current.getEmployeeAttendanceList().size() > 0) {

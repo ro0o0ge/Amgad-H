@@ -261,9 +261,9 @@ public class EditStudDetailController implements Initializable {
                 current.setSerialNo(serialNo.getText());
                 
                 String t = ageCalc.getText();
-                t = t.replace("Y", "س");
-                t = t.replace("M", "ش");
-                t = t.replace("D", "ي");
+//                t = t.replace("Y", "س");
+//                t = t.replace("M", "ش");
+//                t = t.replace("D", "ي");
 
                 current.setAgeOnOct(t);
                 if (!sClass.getSelectionModel().isEmpty()) {

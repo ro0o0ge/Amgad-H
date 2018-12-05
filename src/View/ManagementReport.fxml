@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="381.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManagementReportsController">
+   <children>
+      <GridPane gridLinesVisible="true" layoutX="92.0" layoutY="8.0" prefHeight="296.0" prefWidth="381.0">
+         <children>
+            <Label prefHeight="27.0" prefWidth="49.0" text="المصروفات" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Label>
+            <Button mnemonicParsing="false" onAction="#generateSchoolExpenses" text="التقرير" />
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+               <children>
+                  <HBox fillHeight="false" prefHeight="25.0" prefWidth="166.0">
+                     <children>
+                        <DatePicker fx:id="toDate" prefHeight="25.0" prefWidth="85.0" />
+                        <Label text="الى" />
+                        <DatePicker fx:id="fromDate" prefHeight="25.0" prefWidth="101.0" />
+                        <Label text="من" />
+                     </children>
+                  </HBox>
+                  <ComboBox fx:id="ExpenseType" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets left="40.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+            </VBox>
+            <Label prefHeight="17.0" prefWidth="109.0" text="نتيجة الفصل الدراسي الأول" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateControl1st" text="التقرير" GridPane.rowIndex="2" />
+            <ComboBox fx:id="sClass" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateControl1stbySubjects" text="التقرير" GridPane.rowIndex="3" />
+            <VBox prefHeight="26.0" prefWidth="109.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" text="النتيجة بالمواد" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_LEFT" text="الفصل الدراسي الأول" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <ComboBox fx:id="sClass1" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="40.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="sSubjects" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets left="40.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+            </VBox>
+            <ComboBox fx:id="sClass2" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateControl2nd" text="التقرير" GridPane.rowIndex="4" />
+            <Label prefHeight="17.0" prefWidth="109.0" text="نتيجة الفصل الدراسي الثاني" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <VBox prefHeight="26.0" prefWidth="109.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <children>
+                  <Label alignment="BOTTOM_LEFT" text="النتيجة بالمواد" textAlignment="CENTER">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="BOTTOM_LEFT" text="الفصل الدراسي الثاني" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="70.0" prefWidth="211.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <children>
+                  <ComboBox fx:id="sClass3" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="40.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="sSubjects3" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets left="40.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+            </VBox>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateControl2ndbySubjects" text="التقرير" GridPane.rowIndex="5" />
+            <Label prefHeight="17.0" prefWidth="36.0" text="المرتبات" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateSalary" text="التقرير" GridPane.rowIndex="1" />
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <ComboBox fx:id="cyear" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="cmonth" prefWidth="150.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+            </HBox>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="61.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="242.0" minWidth="10.0" prefWidth="211.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="109.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="61.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="106.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="161.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>

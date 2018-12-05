@@ -110,10 +110,10 @@ public class EditTeacherDetailController implements Initializable {
     private TableColumn<Subjects, String> SubjectNameColumn;
     @FXML
     private TableColumn<Subjects, String> SyNameColumn;
-    
+
     @FXML
     private Label PhotoPath;
-    
+
     final File defaultDirectory = new File("C:\\");
 
     TeachingStaff TA;
@@ -168,6 +168,12 @@ public class EditTeacherDetailController implements Initializable {
         }
 
         if (current.getPId().getGender().equals("1")) {
+            gType.selectToggle(t1);
+        } else {
+            gType.selectToggle(t2);
+        }
+        
+        if (current.getPId().getReligion().equals("1")) {
             gReligion.selectToggle(r1);
         } else {
             gReligion.selectToggle(r2);
@@ -236,7 +242,7 @@ public class EditTeacherDetailController implements Initializable {
         }
 
     }
-    
+
     @FXML
     public void handlePhoto() {
         FileChooser fileChooser = new FileChooser();
@@ -284,9 +290,12 @@ public class EditTeacherDetailController implements Initializable {
                 current.getPId().setCreatedDate(Date.valueOf(LocalDate.now()));
                 current.getPId().setHiringDate(Date.valueOf(tSignDate.getValue()));
 
-                current.getPId().setInsuranceAmount(Double.parseDouble(InsuranceAmount.getText()));
-                current.getPId().setInsuranceNo(InsuranceNo.getText());
-
+                if (!InsuranceAmount.getText().equals("")) {
+                    current.getPId().setInsuranceAmount(Double.parseDouble(InsuranceAmount.getText()));
+                }
+                if (!InsuranceNo.getText().equals("")) {
+                    current.getPId().setInsuranceNo(InsuranceNo.getText());
+                }
                 if (current.getSerialNo() != null) {
                     tSerial.setText(current.getSerialNo());
                 }

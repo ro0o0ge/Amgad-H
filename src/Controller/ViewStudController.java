@@ -17,11 +17,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,10 +33,15 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.transform.Affine;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * FXML Controller class
@@ -72,6 +79,12 @@ public class ViewStudController implements Initializable {
     @FXML
     private TableColumn<Contacts, String> NumColumn;
 
+    @FXML
+    private Tab schedule;
+    @FXML
+    AnchorPane scheduleAP;
+    @FXML
+    private Button printScheduleBtn;
     @FXML
     private Label Sun1;
     @FXML
@@ -222,6 +235,11 @@ public class ViewStudController implements Initializable {
                     }
                 }
             }
+            
+            schedule.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                printScheduleBtn.setVisible(newTab);
+            });
+            
             serial.setText(current.getSerialNo());
             if (current.getPId().getGender().equals("1")) {
                 type.setText("ذكر");
@@ -294,6 +312,32 @@ public class ViewStudController implements Initializable {
         }
     }
 
+    private static final Logger LOGGER = LogManager.getLogger(ViewTeacherController.class);
+    @FXML
+    public void handlePrintSchedule(){
+        try {
+            SnapshotParameters spp = new SnapshotParameters();
+            final Affine reflectTransform = new Affine();
+            reflectTransform.setMxx(-1);
+            reflectTransform.setTx(708);
+            
+            spp.setTransform(reflectTransform);
+            WritableImage image = scheduleAP.snapshot(spp, null);
+            File file = new File("D:\\جدول حصص - "
+                    + current.getPId().getName()
+                    + ".png");
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        } catch (Exception e) {
+            LOGGER.error(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("يوجد خطأ");
+            alert.setHeaderText("خطأ");
+            alert.setContentText("برجاء التأكد من صحة البيانات");
+            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            alert.showAndWait();
+        }
+    }
+    
     @FXML
     public void handleEdit() {
         int selectedIndex = AttTable.getSelectionModel().getSelectedIndex();

@@ -42,7 +42,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
 //            PropertyConfigurator.configure("log4j.properties");
-    
+            
             this.primaryStage = primaryStage;
             this.primaryStage.setTitle("مدرسة الأمجاد الخاصة");
             this.primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));

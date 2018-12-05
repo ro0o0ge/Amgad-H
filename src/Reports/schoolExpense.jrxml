@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="schoolExpense" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="275" columnSpacing="5" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d55ee861-a853-404f-9840-b486e24ee179">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="schoolExpense" uuid="af49f3d2-9bbf-4ee2-8b47-256b3f65238d">
+		<parameter name="id" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[$P{id}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="date_from" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{date_from}]]></defaultValueExpression>
+		</parameter>
+		<parameter name="date_to" class="java.lang.String">
+			<defaultValueExpression><![CDATA[$P{date_to}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select se.AMOUNT,se.ISSUED_BY,se.ISSUED_TO,se.SCE_TYPE,SUBSTRING_INDEX(se.SCE_DATE, ' ', 1)as sce_date
+from school_expenses se
+inner join school_expense_lkp lkp on lkp.expense_desc=se.SCE_TYPE
+where lkp.id = $P{id}
+and se.SCE_DATE > STR_TO_DATE($P{date_from}, '%Y-%m-%d') and se.SCE_DATE < STR_TO_DATE($P{date_to}, '%Y-%m-%d')]]>
+		</queryString>
+		<field name="AMOUNT" class="java.lang.Double">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="ISSUED_BY" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="ISSUED_TO" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="SCE_TYPE" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="sce_date" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<variable name="TotalExpenses" class="java.math.BigDecimal" calculation="Sum">
+			<variableExpression><![CDATA[$F{AMOUNT}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="Eid" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="from" class="java.lang.String">
+		<defaultValueExpression><![CDATA[2018-05-01]]></defaultValueExpression>
+	</parameter>
+	<parameter name="to" class="java.lang.String">
+		<defaultValueExpression><![CDATA[2018-06-01]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT expense_desc from school_expense_lkp where id = $P{Eid};]]>
+	</queryString>
+	<field name="expense_desc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="db915390-091c-4dd3-bb05-51be9ce76ca8" mode="Transparent" x="375" y="0" width="180" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[مدرسة الأمجاد الخاصة الجديدة]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="05412d6c-9769-43bd-90ea-9d79c396d96c" x="0" y="79" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="2b8a5163-92ad-4a81-94ed-a86d7a3bb8a9" x="216" y="39" width="239" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="28" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{expense_desc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="62478eb6-15be-4741-b186-e684b4f49968" x="455" y="40" width="100" height="39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="28" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[مصاريف]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98939c06-064a-45e4-a8d9-50fafd302907" x="188" y="39" width="28" height="39"/>
+				<textElement>
+					<font fontName="Arial" size="28"/>
+				</textElement>
+				<text><![CDATA[من]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c68bffda-6926-46e8-96b4-6ec0e403ca7c" x="80" y="40" width="32" height="39"/>
+				<textElement>
+					<font fontName="Arial" size="28"/>
+				</textElement>
+				<text><![CDATA[الى]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="5e2a4208-385b-4567-8f46-663e3752fff3" x="112" y="40" width="76" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{from}.replaceAll("0", "\\\u0660").replaceAll("1", "\\\u0661").replaceAll("2", "\\\u0662")
+     .replaceAll("3", "\\\u0663").replaceAll("4", "\\\u0664").replaceAll("5", "\\\u0665")
+     .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668")
+     .replaceAll("9", "\\\u0669")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="98088414-7fe2-480c-b89b-e058d05e196a" x="0" y="40" width="80" height="38"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{to}.replaceAll("0", "\\\u0660").replaceAll("1", "\\\u0661").replaceAll("2", "\\\u0662")
+     .replaceAll("3", "\\\u0663").replaceAll("4", "\\\u0664").replaceAll("5", "\\\u0665")
+     .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668")
+     .replaceAll("9", "\\\u0669")]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="48">
+			<staticText>
+				<reportElement uuid="afcdef91-c327-4968-b47e-b2782e4f5227" mode="Transparent" x="475" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[يعتمد]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="233" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="54163cdd-13df-407a-afe5-b524535948e2" key="table 5" style="table 5" x="28" y="0" width="475" height="50"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="schoolExpense" uuid="957ade06-8141-4021-a19f-2c7b5a5589e3">
+						<datasetParameter name="id">
+							<datasetParameterExpression><![CDATA[$P{Eid}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="date_from">
+							<datasetParameterExpression><![CDATA[$P{from}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="date_to">
+							<datasetParameterExpression><![CDATA[$P{to}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="846f1f08-8727-4aa0-8189-a42076e5ca8c">
+						<jr:tableFooter height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="345fe75a-319d-4f38-8aec-717dbdd3949f" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{TotalExpenses}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="c4f8608b-b447-44f5-85d0-b3fece41f5a3" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<text><![CDATA[المبلغ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="af9a7d08-7b3e-42fd-b534-543241cc972c" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{AMOUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="d2217478-7633-4fcc-8414-810b11bdde52">
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="87e23100-086d-49bf-8d3c-4b6cc8894ed8" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<text><![CDATA[بأمر من]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="40aeb12f-7625-4b8a-9783-203726b40ae2" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ISSUED_BY}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="e7866a72-4964-45dc-a1b8-f88590c37eed">
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="06a88551-3f74-4e1f-984f-e2c978572fac" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<text><![CDATA[جهة الصرف]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="dfbdc5ac-4efa-4f42-9b8c-e9c667cb1fef" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ISSUED_TO}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="a83dcffe-c3ce-4ea4-ac43-e13740aaae3d">
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="b6814fd1-2ec7-4bba-ba73-720393e9b2ad" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<text><![CDATA[الصنف]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="624eab51-d21c-4a0e-a559-b71b7410d110" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{SCE_TYPE}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="799c5736-bd14-498a-8140-625edee30fc3">
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="6e683e67-6b46-4735-b837-18217540b1e4" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<text><![CDATA[تاريخ الصرف]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="71c3fcad-156c-475c-b3e9-23ac04635053" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{sce_date}.replaceAll("0", "\\\u0660").replaceAll("1", "\\\u0661").replaceAll("2", "\\\u0662")
+     .replaceAll("3", "\\\u0663").replaceAll("4", "\\\u0664").replaceAll("5", "\\\u0665")
+     .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668")
+     .replaceAll("9", "\\\u0669")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="3cda35d3-2335-4a5e-8b3c-103e4a4b0cb0">
+						<jr:tableFooter height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="f7595bb5-4f6c-4902-b9c5-f8d0f5922be7" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="12"/>
+								</textElement>
+								<text><![CDATA[الاجمالي]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:columnHeader style="table 5_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="6895f08c-389a-4b5e-9cd4-e41f47b38ff9" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial"/>
+								</textElement>
+								<text><![CDATA[م]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table 5_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="25d42b65-547a-4379-a558-25fc267c53dd" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

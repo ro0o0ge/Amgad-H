@@ -828,32 +828,32 @@ public class StudentGradesTwoController implements Initializable {
         //4th year
         if (current.getClassStudentsList().getCId().getSyId().getSyId() == 4) {
             //arabic subject
-            if (!Arabic_F_1.getText().isEmpty() && Arabic_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_F_1.getText()) <= 40) {
+            if (!Arabic_F_1.getText().isEmpty() && Arabic_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(56));
                 ag.setGrade(Double.valueOf(Arabic_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Arabic_F_2.getText().isEmpty() && Arabic_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_F_2.getText()) <= 60) {
+            if (!Arabic_F_2.getText().isEmpty() && Arabic_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(57));
                 ag.setGrade(Double.valueOf(Arabic_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Arabic_S_1.getText().isEmpty() && Arabic_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_S_1.getText()) <= 40) {
+            if (!Arabic_S_1.getText().isEmpty() && Arabic_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(58));
                 ag.setGrade(Double.valueOf(Arabic_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Arabic_S_2.getText().isEmpty() && Arabic_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_S_2.getText()) <= 60) {
+            if (!Arabic_S_2.getText().isEmpty() && Arabic_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(59));
                 ag.setGrade(Double.valueOf(Arabic_S_2.getText()));
@@ -861,32 +861,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //math subject
-            if (!Math_F_1.getText().isEmpty() && Math_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_F_1.getText()) <= 40) {
+            if (!Math_F_1.getText().isEmpty() && Math_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(38));
                 ag.setGrade(Double.valueOf(Math_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Math_F_2.getText().isEmpty() && Math_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_F_2.getText()) <= 60) {
+            if (!Math_F_2.getText().isEmpty() && Math_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(39));
                 ag.setGrade(Double.valueOf(Math_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Math_S_1.getText().isEmpty() && Math_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_S_1.getText()) <= 40) {
+            if (!Math_S_1.getText().isEmpty() && Math_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(40));
                 ag.setGrade(Double.valueOf(Math_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Math_S_2.getText().isEmpty() && Math_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_S_2.getText()) <= 60) {
+            if (!Math_S_2.getText().isEmpty() && Math_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(41));
                 ag.setGrade(Double.valueOf(Math_S_2.getText()));
@@ -894,32 +894,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //english subject
-            if (!English_F_1.getText().isEmpty() && English_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(English_F_1.getText()) <= 40) {
+            if (!English_F_1.getText().isEmpty() && English_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(52));
                 ag.setGrade(Double.valueOf(English_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!English_F_2.getText().isEmpty() && English_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(English_F_2.getText()) <= 60) {
+            if (!English_F_2.getText().isEmpty() && English_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(53));
                 ag.setGrade(Double.valueOf(English_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!English_S_1.getText().isEmpty() && English_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(English_S_1.getText()) <= 40) {
+            if (!English_S_1.getText().isEmpty() && English_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(54));
                 ag.setGrade(Double.valueOf(English_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!English_S_2.getText().isEmpty() && English_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(English_S_2.getText()) <= 60) {
+            if (!English_S_2.getText().isEmpty() && English_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(55));
                 ag.setGrade(Double.valueOf(English_S_2.getText()));
@@ -927,32 +927,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //social subject
-            if (!Social_F_1.getText().isEmpty() && Social_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_F_1.getText()) <= 40) {
+            if (!Social_F_1.getText().isEmpty() && Social_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(42));
                 ag.setGrade(Double.valueOf(Social_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Social_F_2.getText().isEmpty() && Social_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_F_2.getText()) <= 60) {
+            if (!Social_F_2.getText().isEmpty() && Social_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(43));
                 ag.setGrade(Double.valueOf(Social_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Social_S_1.getText().isEmpty() && Social_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_S_1.getText()) <= 40) {
+            if (!Social_S_1.getText().isEmpty() && Social_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(44));
                 ag.setGrade(Double.valueOf(Social_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Social_S_2.getText().isEmpty() && Social_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_S_2.getText()) <= 60) {
+            if (!Social_S_2.getText().isEmpty() && Social_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(45));
                 ag.setGrade(Double.valueOf(Social_S_2.getText()));
@@ -960,48 +960,48 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //science subject
-            if (!Science_F_1.getText().isEmpty() && Science_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_F_1.getText()) <= 40) {
+            if (!Science_F_1.getText().isEmpty() && Science_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(46));
                 ag.setGrade(Double.valueOf(Science_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_F_2.getText().isEmpty() && Science_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_F_2.getText()) <= 60) {
+            if (!Science_F_2.getText().isEmpty() && Science_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(48));
                 ag.setGrade(Double.valueOf(Science_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_F_4.getText().isEmpty() && Science_F_4.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_F_4.getText()) <= 60) {
+            if (!Science_F_4.getText().isEmpty() && Science_F_4.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_F_4.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(47));
                 ag.setGrade(Double.valueOf(Science_F_4.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_S_1.getText().isEmpty() && Science_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_S_1.getText()) <= 40) {
+            if (!Science_S_1.getText().isEmpty() && Science_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(49));
                 ag.setGrade(Double.valueOf(Science_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_S_2.getText().isEmpty() && Science_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_S_2.getText()) <= 60) {
+            if (!Science_S_2.getText().isEmpty() && Science_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(51));
                 ag.setGrade(Double.valueOf(Science_S_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_S_4.getText().isEmpty() && Science_S_4.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_S_4.getText()) <= 60) {
+            if (!Science_S_4.getText().isEmpty() && Science_S_4.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_S_4.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(50));
                 ag.setGrade(Double.valueOf(Science_S_4.getText()));
@@ -1009,32 +1009,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //religion subject
-            if (!Religion_F_1.getText().isEmpty() && Religion_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_F_1.getText()) <= 40) {
+            if (!Religion_F_1.getText().isEmpty() && Religion_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(60));
                 ag.setGrade(Double.valueOf(Religion_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Religion_F_2.getText().isEmpty() && Religion_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_F_2.getText()) <= 60) {
+            if (!Religion_F_2.getText().isEmpty() && Religion_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(61));
                 ag.setGrade(Double.valueOf(Religion_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Religion_S_1.getText().isEmpty() && Religion_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_S_1.getText()) <= 40) {
+            if (!Religion_S_1.getText().isEmpty() && Religion_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(62));
                 ag.setGrade(Double.valueOf(Religion_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Religion_S_2.getText().isEmpty() && Religion_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_S_2.getText()) <= 60) {
+            if (!Religion_S_2.getText().isEmpty() && Religion_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(63));
                 ag.setGrade(Double.valueOf(Religion_S_2.getText()));
@@ -1042,32 +1042,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //french subject
-            if (!French_F_1.getText().isEmpty() && French_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(French_F_1.getText()) <= 40) {
+            if (!French_F_1.getText().isEmpty() && French_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(64));
                 ag.setGrade(Double.valueOf(French_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!French_F_2.getText().isEmpty() && French_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(French_F_2.getText()) <= 60) {
+            if (!French_F_2.getText().isEmpty() && French_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(65));
                 ag.setGrade(Double.valueOf(French_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!French_S_1.getText().isEmpty() && French_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(French_S_1.getText()) <= 40) {
+            if (!French_S_1.getText().isEmpty() && French_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(66));
                 ag.setGrade(Double.valueOf(French_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!French_S_2.getText().isEmpty() && French_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(French_S_2.getText()) <= 60) {
+            if (!French_S_2.getText().isEmpty() && French_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(67));
                 ag.setGrade(Double.valueOf(French_S_2.getText()));
@@ -1075,7 +1075,7 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //required Activity
-            if (!Required_F_1.getText().isEmpty() && Required_F_1.getText().matches("[0-9]+")
+            if (!Required_F_1.getText().isEmpty() && Required_F_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_F_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(68));
@@ -1083,7 +1083,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_F_2.getText().isEmpty() && Required_F_2.getText().matches("[0-9]+")
+            if (!Required_F_2.getText().isEmpty() && Required_F_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_F_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(69));
@@ -1091,7 +1091,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_S_1.getText().isEmpty() && Required_S_1.getText().matches("[0-9]+")
+            if (!Required_S_1.getText().isEmpty() && Required_S_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_S_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(70));
@@ -1099,7 +1099,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_S_2.getText().isEmpty() && Required_S_2.getText().matches("[0-9]+")
+            if (!Required_S_2.getText().isEmpty() && Required_S_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_S_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(71));
@@ -1107,7 +1107,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_TH_1.getText().isEmpty() && Required_TH_1.getText().matches("[0-9]+")
+            if (!Required_TH_1.getText().isEmpty() && Required_TH_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_TH_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(72));
@@ -1115,7 +1115,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_TH_2.getText().isEmpty() && Required_TH_2.getText().matches("[0-9]+")
+            if (!Required_TH_2.getText().isEmpty() && Required_TH_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_TH_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(73));
@@ -1124,7 +1124,7 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //optional activity
-            if (!Optional_F_1.getText().isEmpty() && Optional_F_1.getText().matches("[0-9]+")
+            if (!Optional_F_1.getText().isEmpty() && Optional_F_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_F_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(74));
@@ -1132,7 +1132,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Optional_F_2.getText().isEmpty() && Optional_F_2.getText().matches("[0-9]+")
+            if (!Optional_F_2.getText().isEmpty() && Optional_F_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_F_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(75));
@@ -1140,7 +1140,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Optional_S_1.getText().isEmpty() && Optional_S_1.getText().matches("[0-9]+")
+            if (!Optional_S_1.getText().isEmpty() && Optional_S_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_S_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(76));
@@ -1148,7 +1148,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Optional_S_2.getText().isEmpty() && Optional_S_2.getText().matches("[0-9]+")
+            if (!Optional_S_2.getText().isEmpty() && Optional_S_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_S_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(77));
@@ -1160,32 +1160,32 @@ public class StudentGradesTwoController implements Initializable {
         //5th year
         if (current.getClassStudentsList().getCId().getSyId().getSyId() == 5) {
             //arabic subject
-            if (!Arabic_F_1.getText().isEmpty() && Arabic_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_F_1.getText()) <= 40) {
+            if (!Arabic_F_1.getText().isEmpty() && Arabic_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(82));
                 ag.setGrade(Double.valueOf(Arabic_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Arabic_F_2.getText().isEmpty() && Arabic_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_F_2.getText()) <= 60) {
+            if (!Arabic_F_2.getText().isEmpty() && Arabic_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(83));
                 ag.setGrade(Double.valueOf(Arabic_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Arabic_S_1.getText().isEmpty() && Arabic_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_S_1.getText()) <= 40) {
+            if (!Arabic_S_1.getText().isEmpty() && Arabic_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(84));
                 ag.setGrade(Double.valueOf(Arabic_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Arabic_S_2.getText().isEmpty() && Arabic_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_S_2.getText()) <= 60) {
+            if (!Arabic_S_2.getText().isEmpty() && Arabic_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(85));
                 ag.setGrade(Double.valueOf(Arabic_S_2.getText()));
@@ -1193,8 +1193,8 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //math subject
-            if (!Math_F_1.getText().isEmpty() && Math_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_F_1.getText()) <= 40) {
+            if (!Math_F_1.getText().isEmpty() && Math_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(92));
                 ag.setGrade(Double.valueOf(Math_F_1.getText()));
@@ -1208,24 +1208,24 @@ public class StudentGradesTwoController implements Initializable {
 //            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
 //            alert.showAndWait();
 //        }
-            if (!Math_F_2.getText().isEmpty() && Math_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_F_2.getText()) <= 60) {
+            if (!Math_F_2.getText().isEmpty() && Math_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(93));
                 ag.setGrade(Double.valueOf(Math_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Math_S_1.getText().isEmpty() && Math_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_S_1.getText()) <= 40) {
+            if (!Math_S_1.getText().isEmpty() && Math_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(94));
                 ag.setGrade(Double.valueOf(Math_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Math_S_2.getText().isEmpty() && Math_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_S_2.getText()) <= 60) {
+            if (!Math_S_2.getText().isEmpty() && Math_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(95));
                 ag.setGrade(Double.valueOf(Math_S_2.getText()));
@@ -1233,32 +1233,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //english subject
-            if (!English_F_1.getText().isEmpty() && English_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(English_F_1.getText()) <= 40) {
+            if (!English_F_1.getText().isEmpty() && English_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(78));
                 ag.setGrade(Double.valueOf(English_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!English_F_2.getText().isEmpty() && English_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(English_F_2.getText()) <= 60) {
+            if (!English_F_2.getText().isEmpty() && English_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(79));
                 ag.setGrade(Double.valueOf(English_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!English_S_1.getText().isEmpty() && English_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(English_S_1.getText()) <= 40) {
+            if (!English_S_1.getText().isEmpty() && English_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(80));
                 ag.setGrade(Double.valueOf(English_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!English_S_2.getText().isEmpty() && English_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(English_S_2.getText()) <= 60) {
+            if (!English_S_2.getText().isEmpty() && English_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(81));
                 ag.setGrade(Double.valueOf(English_S_2.getText()));
@@ -1266,32 +1266,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //social subject
-            if (!Social_F_1.getText().isEmpty() && Social_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_F_1.getText()) <= 40) {
+            if (!Social_F_1.getText().isEmpty() && Social_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(96));
                 ag.setGrade(Double.valueOf(Social_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Social_F_2.getText().isEmpty() && Social_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_F_2.getText()) <= 60) {
+            if (!Social_F_2.getText().isEmpty() && Social_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(97));
                 ag.setGrade(Double.valueOf(Social_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Social_S_1.getText().isEmpty() && Social_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_S_1.getText()) <= 40) {
+            if (!Social_S_1.getText().isEmpty() && Social_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(98));
                 ag.setGrade(Double.valueOf(Social_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Social_S_2.getText().isEmpty() && Social_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_S_2.getText()) <= 60) {
+            if (!Social_S_2.getText().isEmpty() && Social_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(99));
                 ag.setGrade(Double.valueOf(Social_S_2.getText()));
@@ -1299,48 +1299,48 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //science subject
-            if (!Science_F_1.getText().isEmpty() && Science_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_F_1.getText()) <= 40) {
+            if (!Science_F_1.getText().isEmpty() && Science_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(86));
                 ag.setGrade(Double.valueOf(Science_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_F_2.getText().isEmpty() && Science_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_F_2.getText()) <= 60) {
+            if (!Science_F_2.getText().isEmpty() && Science_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(88));
                 ag.setGrade(Double.valueOf(Science_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_F_4.getText().isEmpty() && Science_F_4.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_F_4.getText()) <= 60) {
+            if (!Science_F_4.getText().isEmpty() && Science_F_4.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_F_4.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(87));
                 ag.setGrade(Double.valueOf(Science_F_4.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_S_1.getText().isEmpty() && Science_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_S_1.getText()) <= 40) {
+            if (!Science_S_1.getText().isEmpty() && Science_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(89));
                 ag.setGrade(Double.valueOf(Science_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_S_2.getText().isEmpty() && Science_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_S_2.getText()) <= 60) {
+            if (!Science_S_2.getText().isEmpty() && Science_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(91));
                 ag.setGrade(Double.valueOf(Science_S_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_S_4.getText().isEmpty() && Science_S_4.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_S_4.getText()) <= 60) {
+            if (!Science_S_4.getText().isEmpty() && Science_S_4.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_S_4.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(90));
                 ag.setGrade(Double.valueOf(Science_S_4.getText()));
@@ -1348,32 +1348,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //religion subject
-            if (!Religion_F_1.getText().isEmpty() && Religion_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_F_1.getText()) <= 40) {
+            if (!Religion_F_1.getText().isEmpty() && Religion_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(100));
                 ag.setGrade(Double.valueOf(Religion_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Religion_F_2.getText().isEmpty() && Religion_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_F_2.getText()) <= 60) {
+            if (!Religion_F_2.getText().isEmpty() && Religion_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(101));
                 ag.setGrade(Double.valueOf(Religion_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Religion_S_1.getText().isEmpty() && Religion_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_S_1.getText()) <= 40) {
+            if (!Religion_S_1.getText().isEmpty() && Religion_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(102));
                 ag.setGrade(Double.valueOf(Religion_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Religion_S_2.getText().isEmpty() && Religion_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_S_2.getText()) <= 60) {
+            if (!Religion_S_2.getText().isEmpty() && Religion_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(103));
                 ag.setGrade(Double.valueOf(Religion_S_2.getText()));
@@ -1381,32 +1381,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //french subject
-            if (!French_F_1.getText().isEmpty() && French_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(French_F_1.getText()) <= 40) {
+            if (!French_F_1.getText().isEmpty() && French_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(104));
                 ag.setGrade(Double.valueOf(French_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!French_F_2.getText().isEmpty() && French_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(French_F_2.getText()) <= 60) {
+            if (!French_F_2.getText().isEmpty() && French_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(105));
                 ag.setGrade(Double.valueOf(French_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!French_S_1.getText().isEmpty() && French_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(French_S_1.getText()) <= 40) {
+            if (!French_S_1.getText().isEmpty() && French_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(106));
                 ag.setGrade(Double.valueOf(French_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!French_S_2.getText().isEmpty() && French_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(French_S_2.getText()) <= 60) {
+            if (!French_S_2.getText().isEmpty() && French_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(107));
                 ag.setGrade(Double.valueOf(French_S_2.getText()));
@@ -1414,7 +1414,7 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //required Activity
-            if (!Required_F_1.getText().isEmpty() && Required_F_1.getText().matches("[0-9]+")
+            if (!Required_F_1.getText().isEmpty() && Required_F_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_F_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(108));
@@ -1422,7 +1422,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_F_2.getText().isEmpty() && Required_F_2.getText().matches("[0-9]+")
+            if (!Required_F_2.getText().isEmpty() && Required_F_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_F_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(109));
@@ -1430,7 +1430,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_S_1.getText().isEmpty() && Required_S_1.getText().matches("[0-9]+")
+            if (!Required_S_1.getText().isEmpty() && Required_S_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_S_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(110));
@@ -1438,7 +1438,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_S_2.getText().isEmpty() && Required_S_2.getText().matches("[0-9]+")
+            if (!Required_S_2.getText().isEmpty() && Required_S_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_S_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(111));
@@ -1446,7 +1446,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_TH_1.getText().isEmpty() && Required_TH_1.getText().matches("[0-9]+")
+            if (!Required_TH_1.getText().isEmpty() && Required_TH_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_TH_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(112));
@@ -1454,7 +1454,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_TH_2.getText().isEmpty() && Required_TH_2.getText().matches("[0-9]+")
+            if (!Required_TH_2.getText().isEmpty() && Required_TH_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_TH_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(113));
@@ -1463,7 +1463,7 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //optional activity
-            if (!Optional_F_1.getText().isEmpty() && Optional_F_1.getText().matches("[0-9]+")
+            if (!Optional_F_1.getText().isEmpty() && Optional_F_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_F_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(114));
@@ -1471,7 +1471,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Optional_F_2.getText().isEmpty() && Optional_F_2.getText().matches("[0-9]+")
+            if (!Optional_F_2.getText().isEmpty() && Optional_F_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_F_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(115));
@@ -1479,7 +1479,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Optional_S_1.getText().isEmpty() && Optional_S_1.getText().matches("[0-9]+")
+            if (!Optional_S_1.getText().isEmpty() && Optional_S_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_S_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(116));
@@ -1487,7 +1487,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Optional_S_2.getText().isEmpty() && Optional_S_2.getText().matches("[0-9]+")
+            if (!Optional_S_2.getText().isEmpty() && Optional_S_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_S_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(117));
@@ -1499,32 +1499,32 @@ public class StudentGradesTwoController implements Initializable {
         //6th year
         if (current.getClassStudentsList().getCId().getSyId().getSyId() == 6) {
             //arabic subject
-            if (!Arabic_F_1.getText().isEmpty() && Arabic_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_F_1.getText()) <= 40) {
+            if (!Arabic_F_1.getText().isEmpty() && Arabic_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(122));
                 ag.setGrade(Double.valueOf(Arabic_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Arabic_F_2.getText().isEmpty() && Arabic_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_F_2.getText()) <= 60) {
+            if (!Arabic_F_2.getText().isEmpty() && Arabic_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(123));
                 ag.setGrade(Double.valueOf(Arabic_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Arabic_S_1.getText().isEmpty() && Arabic_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_S_1.getText()) <= 40) {
+            if (!Arabic_S_1.getText().isEmpty() && Arabic_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(124));
                 ag.setGrade(Double.valueOf(Arabic_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Arabic_S_2.getText().isEmpty() && Arabic_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Arabic_S_2.getText()) <= 60) {
+            if (!Arabic_S_2.getText().isEmpty() && Arabic_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Arabic_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(125));
                 ag.setGrade(Double.valueOf(Arabic_S_2.getText()));
@@ -1532,8 +1532,8 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //math subject
-            if (!Math_F_1.getText().isEmpty() && Math_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_F_1.getText()) <= 40) {
+            if (!Math_F_1.getText().isEmpty() && Math_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(132));
                 ag.setGrade(Double.valueOf(Math_F_1.getText()));
@@ -1547,24 +1547,24 @@ public class StudentGradesTwoController implements Initializable {
 //            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
 //            alert.showAndWait();
 //        }
-            if (!Math_F_2.getText().isEmpty() && Math_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_F_2.getText()) <= 60) {
+            if (!Math_F_2.getText().isEmpty() && Math_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(133));
                 ag.setGrade(Double.valueOf(Math_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Math_S_1.getText().isEmpty() && Math_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_S_1.getText()) <= 40) {
+            if (!Math_S_1.getText().isEmpty() && Math_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(134));
                 ag.setGrade(Double.valueOf(Math_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Math_S_2.getText().isEmpty() && Math_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Math_S_2.getText()) <= 60) {
+            if (!Math_S_2.getText().isEmpty() && Math_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Math_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(135));
                 ag.setGrade(Double.valueOf(Math_S_2.getText()));
@@ -1572,32 +1572,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //english subject
-            if (!English_F_1.getText().isEmpty() && English_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(English_F_1.getText()) <= 40) {
+            if (!English_F_1.getText().isEmpty() && English_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(118));
                 ag.setGrade(Double.valueOf(English_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!English_F_2.getText().isEmpty() && English_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(English_F_2.getText()) <= 60) {
+            if (!English_F_2.getText().isEmpty() && English_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(119));
                 ag.setGrade(Double.valueOf(English_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!English_S_1.getText().isEmpty() && English_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(English_S_1.getText()) <= 40) {
+            if (!English_S_1.getText().isEmpty() && English_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(120));
                 ag.setGrade(Double.valueOf(English_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!English_S_2.getText().isEmpty() && English_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(English_S_2.getText()) <= 60) {
+            if (!English_S_2.getText().isEmpty() && English_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(English_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(121));
                 ag.setGrade(Double.valueOf(English_S_2.getText()));
@@ -1605,32 +1605,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //social subject
-            if (!Social_F_1.getText().isEmpty() && Social_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_F_1.getText()) <= 40) {
+            if (!Social_F_1.getText().isEmpty() && Social_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(136));
                 ag.setGrade(Double.valueOf(Social_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Social_F_2.getText().isEmpty() && Social_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_F_2.getText()) <= 60) {
+            if (!Social_F_2.getText().isEmpty() && Social_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(137));
                 ag.setGrade(Double.valueOf(Social_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Social_S_1.getText().isEmpty() && Social_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_S_1.getText()) <= 40) {
+            if (!Social_S_1.getText().isEmpty() && Social_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(138));
                 ag.setGrade(Double.valueOf(Social_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Social_S_2.getText().isEmpty() && Social_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Social_S_2.getText()) <= 60) {
+            if (!Social_S_2.getText().isEmpty() && Social_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Social_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(139));
                 ag.setGrade(Double.valueOf(Social_S_2.getText()));
@@ -1638,48 +1638,48 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //science subject
-            if (!Science_F_1.getText().isEmpty() && Science_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_F_1.getText()) <= 40) {
+            if (!Science_F_1.getText().isEmpty() && Science_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(126));
                 ag.setGrade(Double.valueOf(Science_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_F_2.getText().isEmpty() && Science_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_F_2.getText()) <= 60) {
+            if (!Science_F_2.getText().isEmpty() && Science_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(128));
                 ag.setGrade(Double.valueOf(Science_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_F_4.getText().isEmpty() && Science_F_4.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_F_4.getText()) <= 60) {
+            if (!Science_F_4.getText().isEmpty() && Science_F_4.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_F_4.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(127));
                 ag.setGrade(Double.valueOf(Science_F_4.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_S_1.getText().isEmpty() && Science_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_S_1.getText()) <= 40) {
+            if (!Science_S_1.getText().isEmpty() && Science_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(129));
                 ag.setGrade(Double.valueOf(Science_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_S_2.getText().isEmpty() && Science_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_S_2.getText()) <= 60) {
+            if (!Science_S_2.getText().isEmpty() && Science_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(131));
                 ag.setGrade(Double.valueOf(Science_S_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Science_S_4.getText().isEmpty() && Science_S_4.getText().matches("[0-9]+")
-                    && Double.valueOf(Science_S_4.getText()) <= 60) {
+            if (!Science_S_4.getText().isEmpty() && Science_S_4.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Science_S_4.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(130));
                 ag.setGrade(Double.valueOf(Science_S_4.getText()));
@@ -1687,32 +1687,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //religion subject
-            if (!Religion_F_1.getText().isEmpty() && Religion_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_F_1.getText()) <= 40) {
+            if (!Religion_F_1.getText().isEmpty() && Religion_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(140));
                 ag.setGrade(Double.valueOf(Religion_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Religion_F_2.getText().isEmpty() && Religion_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_F_2.getText()) <= 60) {
+            if (!Religion_F_2.getText().isEmpty() && Religion_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(141));
                 ag.setGrade(Double.valueOf(Religion_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Religion_S_1.getText().isEmpty() && Religion_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_S_1.getText()) <= 40) {
+            if (!Religion_S_1.getText().isEmpty() && Religion_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(142));
                 ag.setGrade(Double.valueOf(Religion_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Religion_S_2.getText().isEmpty() && Religion_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(Religion_S_2.getText()) <= 60) {
+            if (!Religion_S_2.getText().isEmpty() && Religion_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(Religion_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(143));
                 ag.setGrade(Double.valueOf(Religion_S_2.getText()));
@@ -1720,32 +1720,32 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //french subject
-            if (!French_F_1.getText().isEmpty() && French_F_1.getText().matches("[0-9]+")
-                    && Double.valueOf(French_F_1.getText()) <= 40) {
+            if (!French_F_1.getText().isEmpty() && French_F_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_F_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(144));
                 ag.setGrade(Double.valueOf(French_F_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!French_F_2.getText().isEmpty() && French_F_2.getText().matches("[0-9]+")
-                    && Double.valueOf(French_F_2.getText()) <= 60) {
+            if (!French_F_2.getText().isEmpty() && French_F_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_F_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(145));
                 ag.setGrade(Double.valueOf(French_F_2.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!French_S_1.getText().isEmpty() && French_S_1.getText().matches("[0-9]+")
-                    && Double.valueOf(French_S_1.getText()) <= 40) {
+            if (!French_S_1.getText().isEmpty() && French_S_1.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_S_1.getText()) <= 70) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(146));
                 ag.setGrade(Double.valueOf(French_S_1.getText()));
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!French_S_2.getText().isEmpty() && French_S_2.getText().matches("[0-9]+")
-                    && Double.valueOf(French_S_2.getText()) <= 60) {
+            if (!French_S_2.getText().isEmpty() && French_S_2.getText().matches("[0-9]+(\\.[0-9])*")
+                    && Double.valueOf(French_S_2.getText()) <= 30) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(147));
                 ag.setGrade(Double.valueOf(French_S_2.getText()));
@@ -1753,7 +1753,7 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //required Activity
-            if (!Required_F_1.getText().isEmpty() && Required_F_1.getText().matches("[0-9]+")
+            if (!Required_F_1.getText().isEmpty() && Required_F_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_F_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(148));
@@ -1761,7 +1761,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_F_2.getText().isEmpty() && Required_F_2.getText().matches("[0-9]+")
+            if (!Required_F_2.getText().isEmpty() && Required_F_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_F_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(149));
@@ -1769,7 +1769,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_S_1.getText().isEmpty() && Required_S_1.getText().matches("[0-9]+")
+            if (!Required_S_1.getText().isEmpty() && Required_S_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_S_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(150));
@@ -1777,7 +1777,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_S_2.getText().isEmpty() && Required_S_2.getText().matches("[0-9]+")
+            if (!Required_S_2.getText().isEmpty() && Required_S_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_S_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(151));
@@ -1785,7 +1785,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_TH_1.getText().isEmpty() && Required_TH_1.getText().matches("[0-9]+")
+            if (!Required_TH_1.getText().isEmpty() && Required_TH_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_TH_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(152));
@@ -1793,7 +1793,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Required_TH_2.getText().isEmpty() && Required_TH_2.getText().matches("[0-9]+")
+            if (!Required_TH_2.getText().isEmpty() && Required_TH_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Required_TH_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(153));
@@ -1802,7 +1802,7 @@ public class StudentGradesTwoController implements Initializable {
                 SA.PersistStudControl(ag);
             }
             //optional activity
-            if (!Optional_F_1.getText().isEmpty() && Optional_F_1.getText().matches("[0-9]+")
+            if (!Optional_F_1.getText().isEmpty() && Optional_F_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_F_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(154));
@@ -1810,7 +1810,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Optional_F_2.getText().isEmpty() && Optional_F_2.getText().matches("[0-9]+")
+            if (!Optional_F_2.getText().isEmpty() && Optional_F_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_F_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(155));
@@ -1818,7 +1818,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Optional_S_1.getText().isEmpty() && Optional_S_1.getText().matches("[0-9]+")
+            if (!Optional_S_1.getText().isEmpty() && Optional_S_1.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_S_1.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(156));
@@ -1826,7 +1826,7 @@ public class StudentGradesTwoController implements Initializable {
                 ag.setSId(current);
                 SA.PersistStudControl(ag);
             }
-            if (!Optional_S_2.getText().isEmpty() && Optional_S_2.getText().matches("[0-9]+")
+            if (!Optional_S_2.getText().isEmpty() && Optional_S_2.getText().matches("[0-9]+(\\.[0-9])*")
                     && Double.valueOf(Optional_S_2.getText()) <= 10) {
                 ActualGrades ag = new ActualGrades();
                 ag.setGdId(new GradeDetail(157));

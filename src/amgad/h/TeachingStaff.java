@@ -628,7 +628,7 @@ public class TeachingStaff {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
-            TeachingStaff.dialogStage.close();
+//            TeachingStaff.dialogStage.close();
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());

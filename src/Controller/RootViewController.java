@@ -14,17 +14,23 @@ import java.io.FileOutputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
 import javafx.print.Printer;
+import javafx.print.PrinterJob;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.transform.Affine;
+import javafx.scene.transform.Rotate;
+import javafx.scene.transform.Transform;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -71,16 +77,10 @@ public class RootViewController implements Initializable {
 
         try {
             // First, compile jrxml file.
-            JasperReport jasperReport = JasperCompileManager.compileReport("./Reports/classLists.jrxml");
+            JasperReport jasperReport = JasperCompileManager.compileReport("./src/Reports/classLists.jrxml");
             // Fields for report
             HashMap<String, Object> parameters = new HashMap<String, Object>();
-            parameters.put("class_ID",32); 
-            
-//        parameters.put("company", "MAROTHIA TECHS");
-//            ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
-//            list.add(parameters);
-            
-
+            parameters.put("class_ID", 32);
 //            String dbUrl = "jdbc:mysql://192.168.1.107:3306/amgad_sc";
             String dbUrl = "jdbc:mysql://localhost:3306/amgad_sc";
             // String dbDriver = props.getProperty("jdbc.driver");
@@ -108,7 +108,6 @@ public class RootViewController implements Initializable {
 //        }
 
 //        Font font = Font.createFont(Font.TRUETYPE_FONT,new File ("../lib/font/arial.ttf") );
-            
             JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
             File pdf = File.createTempFile("output", ".pdf", new File("D://"));
             JasperExportManager.exportReportToPdfStream(print, new FileOutputStream(pdf));
@@ -140,6 +139,12 @@ public class RootViewController implements Initializable {
     }
 
     @FXML
+    private void handleStudReports() {
+        sa.ReportsStud();
+    }
+    
+    @FXML
+
     private void handleNewTeacher() {
         ts.newTeacher();
     }
@@ -208,6 +213,11 @@ public class RootViewController implements Initializable {
     private void handleViewPayroll() {
         man.ViewPayroll();
     }
+    
+    @FXML
+    private void handleManReports() {
+        man.ReportsMan();
+    }
 
     @FXML
     BorderPane border;
@@ -220,28 +230,29 @@ public class RootViewController implements Initializable {
             System.out.println(printer.getName());
         }
 
-//        PrinterJob job = PrinterJob.createPrinterJob();
-//        job.showPrintDialog(this.r.getPrimaryStage());
-//
-//        boolean printed = job.printPage(border);
-//        if (printed) {
-//            job.endJob();
-//        }
-//        PrinterJob pj = PrinterJob.createPrinterJob();
-//        PageLayout paisagem = pj.getPrinter().createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
-//
-//        Rotate rotate = Transform.rotate(180.0, this.r.getWidth()
-//                / 2, this.r.getHeight() / 2);
-//        Affine affine = Transform.affine(0.0, 1.0, 1.0, 0.0, 0.0, 0.0);
-//        
-//        this.r.getRoot().getTransforms().add(rotate);
-//        
-//        pj.getJobSettings().setPageLayout(paisagem);
-//        pj.showPrintDialog(this.r.getWindow());
-//        boolean printed = pj.printPage(border);
-//        if (printed) {
-//            pj.endJob();
-//        }
+        PrinterJob job = PrinterJob.createPrinterJob();
+//        job.showPrintDialog(this.r);
+
+        boolean printed = job.printPage(border);
+        if (printed) {
+            job.endJob();
+        }
+        PrinterJob pj = PrinterJob.createPrinterJob();
+        PageLayout paisagem = pj.getPrinter().createPageLayout(Paper.A4, PageOrientation.PORTRAIT, Printer.MarginType.HARDWARE_MINIMUM);
+
+        Rotate rotate = Transform.rotate(180.0, this.r.getWidth()
+                / 2, this.r.getHeight() / 2);
+        Affine affine = Transform.affine(0.0, 1.0, 1.0, 0.0, 0.0, 0.0);
+        
+        this.r.getRoot().getTransforms().add(rotate);
+        this.r.getRoot().getTransforms().add(affine);
+        
+        pj.getJobSettings().setPageLayout(paisagem);
+        pj.showPrintDialog(this.r.getWindow());
+        boolean printed1 = pj.printPage(border);
+        if (printed1) {
+            pj.endJob();
+        }
 //        if () {
 //            val rotate = Transform.rotate(90.0, documentRoot.width / 2, documentRoot.height / 2)
 //            val affine = Transform.affine(0.0, 1.0, 1.0, 0.0, 0.0, 0.0)

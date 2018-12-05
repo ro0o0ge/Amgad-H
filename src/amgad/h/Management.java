@@ -14,6 +14,8 @@ import Entity.Payroll;
 import Entity.Persons;
 import Entity.SchoolExpenses;
 import Entity.Staff;
+import Entity.StudyYears;
+import Entity.Subjects;
 import Entity.UserLog;
 import Util.HibernateUtil;
 import Util.LoginSec;
@@ -134,6 +136,24 @@ public class Management {
         return EvaluationList;
     }
 
+    public List<StudyYears> getSY() {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("StudyYears.findAll");
+        List<StudyYears> sy = query.list();
+        s.close();
+        return sy;
+    }
+    
+    public List<Subjects> getSYSubjects(String SYDesc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Subjects.findBySyDesc").setParameter("syDesc", SYDesc);
+        List<Subjects> sy = query.list();
+        s.close();
+        return sy;
+    }
+    
     public void setEvaluationList(List<Evaluation> EvaluationList) {
         this.EvaluationList = FXCollections.observableArrayList(EvaluationList);
     }
@@ -1038,4 +1058,50 @@ public class Management {
         }
     }
 
+    public void ReportsMan() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/ManagementReport.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("تقارير الادارة");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public Integer getExpensebyDesc(String syDesc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.createSQLQuery("select id from school_expense_lkp where expense_desc = '"+syDesc+"'");
+        List<Integer> x = query.list();
+        s.close();
+        return x.get(0);
+    }
+    
+    public Integer getStudyYearbyDesc(String syDesc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("StudyYears.findBySyDesc1").setParameter("syDesc", syDesc);
+        List<Integer> x = query.list();
+        s.close();
+        return x.get(0);
+    }
+    
+    public Subjects getSubjectsByDescAndYDesc(String desc, String YDesc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Subjects.findBySuDescAndSyId").
+                setParameter("suDesc", desc).setParameter("syDesc", YDesc);
+        List<Subjects> sy = query.list();
+        s.close();
+        return sy.get(0);
+    }
 }

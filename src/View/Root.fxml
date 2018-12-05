@@ -17,7 +17,7 @@
                             <menus>
                                 <Menu mnemonicParsing="false" text="ملف">
                                     <items>
-                              <MenuItem mnemonicParsing="false" onAction="#handlePrint" text="طباعة" />
+                              <MenuItem mnemonicParsing="false" onAction="#handlePrint" text="طباعة" visible="false" />
                                         <MenuItem mnemonicParsing="false" onAction="#handleExit" text="اغلاق" />
                                     </items>
                                 </Menu>
@@ -30,6 +30,7 @@
                                         <MenuItem mnemonicParsing="false" onAction="#handleStudAbsent" text="تسجيل الغياب" />
                                         <MenuItem mnemonicParsing="false" text="تسجيل الدرجات" visible="false" />
                                         <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleStudReports" text="التقارير" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="هيئة التدريس">
@@ -57,6 +58,8 @@
                               <MenuItem mnemonicParsing="false" onAction="#handleInsurance" text="التأمينات" visible="false" />
                               <SeparatorMenuItem mnemonicParsing="false" />
                               <MenuItem mnemonicParsing="false" onAction="#handleSchoolExpense" text="نثريات المدرسة" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" onAction="#handleManReports" text="التقارير" />
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="تقارير" visible="false">

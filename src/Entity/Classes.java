@@ -36,7 +36,8 @@ import org.hibernate.annotations.LazyCollectionOption;
 @NamedQueries({
     @NamedQuery(name = "Classes.findAll", query = "SELECT c FROM Classes c")
     , @NamedQuery(name = "Classes.findByCId", query = "SELECT c FROM Classes c WHERE c.cId = :cId")
-    , @NamedQuery(name = "Classes.findByClassDesc", query = "SELECT c FROM Classes c WHERE c.classDesc = :classDesc")})
+    , @NamedQuery(name = "Classes.findByClassDesc", query = "SELECT c FROM Classes c WHERE c.classDesc = :classDesc")
+})
 public class Classes implements Serializable {
 
     @JoinColumn(name = "SY_ID", referencedColumnName = "SY_ID")

@@ -372,7 +372,7 @@ public class EditEmpDetailController implements Initializable {
                 }
                 if (gCategory.getSelectedToggle().getUserData().toString().equals("إداري")) {
                     current.setStaffType("1");
-                } else if (gSocial.getSelectedToggle().getUserData().toString().equals("فني")) {
+                } else if (gCategory.getSelectedToggle().getUserData().toString().equals("فني")) {
                     current.setStaffType("2");
                 } else {
                     current.setStaffType("3");

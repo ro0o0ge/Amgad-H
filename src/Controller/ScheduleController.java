@@ -382,19 +382,19 @@ public class ScheduleController implements Initializable {
 //            createNew(Sun7.getText(), lecList.get(6),
 //                    MA.getTeacherByName(TSun7.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Mon1.getText(), lecList.get(7),
+                createNew(Mon1.getText(), lecList.get(5),
                         MA.getTeacherByName(TMon1.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Mon2.getText(), lecList.get(8),
+                createNew(Mon2.getText(), lecList.get(6),
                         MA.getTeacherByName(TMon2.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Mon3.getText(), lecList.get(9),
+                createNew(Mon3.getText(), lecList.get(7),
                         MA.getTeacherByName(TMon3.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Mon4.getText(), lecList.get(10),
+                createNew(Mon4.getText(), lecList.get(8),
                         MA.getTeacherByName(TMon4.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Mon5.getText(), lecList.get(11),
+                createNew(Mon5.getText(), lecList.get(9),
                         MA.getTeacherByName(TMon5.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
 //            sc = new Schedule();
 //            createNew(Mon6.getText(), lecList.get(12),
@@ -403,19 +403,19 @@ public class ScheduleController implements Initializable {
 //            createNew(Mon7.getText(), lecList.get(13),
 //                    MA.getTeacherByName(TMon7.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Tue1.getText(), lecList.get(14),
+                createNew(Tue1.getText(), lecList.get(10),
                         MA.getTeacherByName(TTue1.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Tue2.getText(), lecList.get(15),
+                createNew(Tue2.getText(), lecList.get(11),
                         MA.getTeacherByName(TTue2.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Tue3.getText(), lecList.get(16),
+                createNew(Tue3.getText(), lecList.get(12),
                         MA.getTeacherByName(TTue3.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Tue4.getText(), lecList.get(17),
+                createNew(Tue4.getText(), lecList.get(13),
                         MA.getTeacherByName(TTue4.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Tue5.getText(), lecList.get(18),
+                createNew(Tue5.getText(), lecList.get(14),
                         MA.getTeacherByName(TTue5.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
 //            sc = new Schedule();
 //            createNew(Tue6.getText(), lecList.get(19),
@@ -424,19 +424,19 @@ public class ScheduleController implements Initializable {
 //            createNew(Tue7.getText(), lecList.get(20),
 //                    MA.getTeacherByName(TTue7.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Wed1.getText(), lecList.get(21),
+                createNew(Wed1.getText(), lecList.get(15),
                         MA.getTeacherByName(TWed1.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Wed2.getText(), lecList.get(22),
+                createNew(Wed2.getText(), lecList.get(16),
                         MA.getTeacherByName(TWed2.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Wed3.getText(), lecList.get(23),
+                createNew(Wed3.getText(), lecList.get(17),
                         MA.getTeacherByName(TWed3.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Wed4.getText(), lecList.get(24),
+                createNew(Wed4.getText(), lecList.get(18),
                         MA.getTeacherByName(TWed4.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Wed5.getText(), lecList.get(25),
+                createNew(Wed5.getText(), lecList.get(19),
                         MA.getTeacherByName(TWed5.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
 //            sc = new Schedule();
 //            createNew(Wed6.getText(), lecList.get(26),
@@ -445,19 +445,19 @@ public class ScheduleController implements Initializable {
 //            createNew(Wed7.getText(), lecList.get(27),
 //                    MA.getTeacherByName(TWed7.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Thu1.getText(), lecList.get(28),
+                createNew(Thu1.getText(), lecList.get(20),
                         MA.getTeacherByName(TThu1.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Thu2.getText(), lecList.get(29),
+                createNew(Thu2.getText(), lecList.get(21),
                         MA.getTeacherByName(TThu2.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Thu3.getText(), lecList.get(30),
+                createNew(Thu3.getText(), lecList.get(22),
                         MA.getTeacherByName(TThu3.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Thu4.getText(), lecList.get(31),
+                createNew(Thu4.getText(), lecList.get(23),
                         MA.getTeacherByName(TThu4.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
                 sc = new Schedule();
-                createNew(Thu5.getText(), lecList.get(32),
+                createNew(Thu5.getText(), lecList.get(24),
                         MA.getTeacherByName(TThu5.getSelectionModel().getSelectedItem().toString(), c.getClassDesc()));
 //            sc = new Schedule();
 //            createNew(Thu6.getText(), lecList.get(33),

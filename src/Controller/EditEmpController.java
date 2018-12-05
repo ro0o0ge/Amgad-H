@@ -7,8 +7,16 @@ package Controller;
 
 import Entity.Staff;
 import amgad.h.Management;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.HashMap;
+import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,6 +27,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * FXML Controller class
@@ -43,9 +58,13 @@ public class EditEmpController implements Initializable {
     private TableColumn<Staff, String> StatusColumn;
 
     Management TS;
+    
+    private static final Logger LOGGER = LogManager.getLogger(EditStudController.class);
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -136,6 +155,138 @@ public class EditEmpController implements Initializable {
             alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
             alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
             alert.showAndWait();
+        }
+    }
+
+    @FXML
+    public void handleAbsentReport() {
+        try {
+            Properties prop = new Properties();
+            String FileName = "config.properties";
+            InputStream input = EditEmpController.class.getClassLoader().getResourceAsStream(FileName);
+            prop.load(input);
+            LOGGER.info("read successfully from prop file");
+            int selectedIndex = TeachersTable.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+                JasperReport jasperReport = JasperCompileManager.compileReport(EditEmpController.class.getClassLoader().getResourceAsStream("Reports/AbsentEmp.jrxml"));
+                HashMap<String, Object> parameters = new HashMap<String, Object>();
+                parameters.put("Eid", TeachersTable.getItems().get(selectedIndex).getPId().getPId().intValue());
+                String dbUrl = prop.getProperty("dbUrl");
+                String dbDriver = prop.getProperty("dbDriver");
+                String dbUname = prop.getProperty("dbUname");
+                String dbPwd = prop.getProperty("dbPwd");
+                Class.forName(dbDriver);
+                LOGGER.debug("inside printing Employee Absent");
+                Connection conn = DriverManager
+                        .getConnection(dbUrl, dbUname, dbPwd);
+                JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
+                File pdf = new File("D://تقرير غياب - "
+                        + TeachersTable.getItems().get(selectedIndex).getPId().getName()
+                        + ".pdf");
+                FileOutputStream pdfx = new FileOutputStream(pdf, false);
+                JasperExportManager.exportReportToPdfStream(print, pdfx);
+                TimeUnit.SECONDS.sleep(5);
+                pdfx.close();
+                LOGGER.debug("done printing Employee Absent");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("يوجد خطأ");
+                alert.setHeaderText("لم يتم تحديد العنصر المراد تعديله");
+                alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+                alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("can't read from prop file " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void handleLateReport() {
+        try {
+            Properties prop = new Properties();
+            String FileName = "config.properties";
+            InputStream input = EditEmpController.class.getClassLoader().getResourceAsStream(FileName);
+            prop.load(input);
+            LOGGER.info("read successfully from prop file");
+            int selectedIndex = TeachersTable.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+                JasperReport jasperReport = JasperCompileManager.compileReport(EditEmpController.class.getClassLoader().getResourceAsStream("Reports/LateEmp.jrxml"));
+                HashMap<String, Object> parameters = new HashMap<String, Object>();
+                parameters.put("Eid", TeachersTable.getItems().get(selectedIndex).getPId().getPId().intValue());
+                String dbUrl = prop.getProperty("dbUrl");
+                String dbDriver = prop.getProperty("dbDriver");
+                String dbUname = prop.getProperty("dbUname");
+                String dbPwd = prop.getProperty("dbPwd");
+                Class.forName(dbDriver);
+                LOGGER.debug("inside printing Employee Late");
+                Connection conn = DriverManager
+                        .getConnection(dbUrl, dbUname, dbPwd);
+                JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
+                File pdf = new File("D://تقرير تأخير - "
+                        + TeachersTable.getItems().get(selectedIndex).getPId().getName()
+                        + ".pdf");
+                FileOutputStream pdfx = new FileOutputStream(pdf, false);
+                JasperExportManager.exportReportToPdfStream(print, pdfx);
+                TimeUnit.SECONDS.sleep(5);
+                pdfx.close();
+                LOGGER.debug("done printing Employee Late");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("يوجد خطأ");
+                alert.setHeaderText("لم يتم تحديد العنصر المراد تعديله");
+                alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+                alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("can't read from prop file " + e.getMessage());
+        }
+    }
+
+    @FXML
+    public void handleEvaluationReport() {
+        try {
+            Properties prop = new Properties();
+            String FileName = "config.properties";
+            InputStream input = EditEmpController.class.getClassLoader().getResourceAsStream(FileName);
+            prop.load(input);
+            LOGGER.info("read successfully from prop file");
+            int selectedIndex = TeachersTable.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+                JasperReport jasperReport = JasperCompileManager.compileReport(EditEmpController.class.getClassLoader().getResourceAsStream("Reports/empEval.jrxml"));
+                HashMap<String, Object> parameters = new HashMap<String, Object>();
+                parameters.put("Eid", TeachersTable.getItems().get(selectedIndex).getPId().getPId().intValue());
+                String dbUrl = prop.getProperty("dbUrl");
+                String dbDriver = prop.getProperty("dbDriver");
+                String dbUname = prop.getProperty("dbUname");
+                String dbPwd = prop.getProperty("dbPwd");
+                Class.forName(dbDriver);
+                LOGGER.debug("inside printing Emp Evaluation");
+                Connection conn = DriverManager
+                        .getConnection(dbUrl, dbUname, dbPwd);
+                JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
+                File pdf = new File("D://تقرير تقييم - "
+                        + TeachersTable.getItems().get(selectedIndex).getPId().getName()
+                        + ".pdf");
+                FileOutputStream pdfx = new FileOutputStream(pdf, false);
+                JasperExportManager.exportReportToPdfStream(print, pdfx);
+                TimeUnit.SECONDS.sleep(5);
+                pdfx.close();
+                LOGGER.debug("done printing Emp Evaluation");
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("يوجد خطأ");
+                alert.setHeaderText("لم يتم تحديد العنصر المراد تعديله");
+                alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+                alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+                alert.showAndWait();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            LOGGER.error("can't read from prop file " + e.getMessage());
         }
     }
 

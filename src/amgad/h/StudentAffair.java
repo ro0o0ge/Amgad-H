@@ -765,4 +765,54 @@ public class StudentAffair {
             System.err.println("El72 " + e.getMessage());
         }
     }
+
+    public void ReportsStud() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/View/StudReports.fxml"));
+            AnchorPane page = loader.load();
+            dialogStage = new Stage();
+            dialogStage.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
+            dialogStage.setTitle("تقارير الطلبة");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(this.MainApp.getPrimaryStage());
+            Scene scene = new Scene(page);
+            scene.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public Integer getStudyYearbyDesc(String syDesc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("StudyYears.findBySyDesc1").setParameter("syDesc", syDesc);
+        List<Integer> x = query.list();
+        s.close();
+        return x.get(0);
+    }
+    
+    public Integer getExpensebyDesc(String syDesc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.createSQLQuery("select id from student_expenses_lkp where expense_desc = '"+syDesc+"'");
+//        query.
+        List<Integer> x = query.list();
+        s.close();
+        return x.get(0);
+    }
+    
+    public Integer getClassesDesc(String syDesc) {
+        s = sf.openSession();
+        s.beginTransaction();
+        Query query = s.getNamedQuery("Classes.findByClassDesc").setParameter("classDesc", syDesc);
+        List<Classes> x = query.list();
+        s.close();
+        return x.get(0).getCId();
+    }
+    
+
+
 }
