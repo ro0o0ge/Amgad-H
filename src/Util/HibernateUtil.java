@@ -41,7 +41,6 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(Entity.Schedule.class);
             configuration.addAnnotatedClass(Entity.SchoolExpenses.class);
             configuration.addAnnotatedClass(Entity.Staff.class);
-            configuration.addAnnotatedClass(Entity.StaffClasses.class);
             configuration.addAnnotatedClass(Entity.Student.class);
             configuration.addAnnotatedClass(Entity.StudentAttendance.class);
             configuration.addAnnotatedClass(Entity.StudentExpenses.class);
@@ -52,13 +51,13 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(Entity.TeacherSubjects.class);
             configuration.addAnnotatedClass(Entity.UserLog.class);
             configuration.addAnnotatedClass(Entity.Users.class);
+            configuration.addAnnotatedClass(Entity.Evaluation.class);
             System.out.println("Hibernate Configuration loaded");
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
             System.out.println("Hibernate serviceRegistry created");
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Throwable ex) {
             System.err.println("Initial SessionFactory creation failed." + ex);
-//            sessionFactory = null;
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("يوجد خطأ");
             alert.setHeaderText("برجاء التأكد من صحة الاتصال بالداتابيز");
@@ -69,7 +68,7 @@ public class HibernateUtil {
         }
     }
 
-    public static SessionFactory getSessionFactory() {
+    public synchronized static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 }

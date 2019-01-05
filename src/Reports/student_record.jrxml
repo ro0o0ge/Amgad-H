@@ -159,7 +159,7 @@ order by p.GENDER desc,2 asc]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="100" splitType="Stretch">
+		<band height="83" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="db915390-091c-4dd3-bb05-51be9ce76ca8" mode="Transparent" x="375" y="2" width="180" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
@@ -211,7 +211,7 @@ order by p.GENDER desc,2 asc]]>
 	<detail>
 		<band height="233" splitType="Stretch">
 			<componentElement>
-				<reportElement uuid="f20d5ff6-e75f-4dc1-81be-66062251ebf7" key="table 2" style="table 2" isPrintRepeatedValues="false" x="0" y="0" width="555" height="233" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+				<reportElement uuid="f20d5ff6-e75f-4dc1-81be-66062251ebf7" key="table 2" style="table 2" isPrintRepeatedValues="false" x="0" y="0" width="555" height="57" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="studentRecord" uuid="71c3ae24-671b-448a-a2bb-f08f9a95890f">
 						<datasetParameter name="syid">
@@ -229,9 +229,9 @@ order by p.GENDER desc,2 asc]]>
 								<text><![CDATA[العنوان]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
 							<textField>
-								<reportElement uuid="f9b997b8-5ca9-4cf4-8365-abbbdf57b044" isPrintRepeatedValues="false" x="0" y="0" width="117" height="20"/>
+								<reportElement uuid="f9b997b8-5ca9-4cf4-8365-abbbdf57b044" isPrintRepeatedValues="false" x="0" y="0" width="117" height="29"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -249,9 +249,9 @@ order by p.GENDER desc,2 asc]]>
 								<text><![CDATA[وظيفة الوالد]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
 							<textField>
-								<reportElement uuid="0fe70dd1-3807-4678-a4f9-ccacd8a37e8a" x="0" y="0" width="51" height="20"/>
+								<reportElement uuid="0fe70dd1-3807-4678-a4f9-ccacd8a37e8a" x="0" y="0" width="51" height="29"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -269,9 +269,9 @@ order by p.GENDER desc,2 asc]]>
 								<text><![CDATA[اسم الوالد]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
 							<textField>
-								<reportElement uuid="d79c7dc4-8c92-4cca-8c85-5ff63a4a8bb9" x="0" y="0" width="90" height="20"/>
+								<reportElement uuid="d79c7dc4-8c92-4cca-8c85-5ff63a4a8bb9" x="0" y="0" width="90" height="29"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -289,9 +289,9 @@ order by p.GENDER desc,2 asc]]>
 								<text><![CDATA[الديانة]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
 							<textField>
-								<reportElement uuid="cc9757f0-fc6b-43de-a2e7-503c74a59327" x="0" y="0" width="38" height="20"/>
+								<reportElement uuid="cc9757f0-fc6b-43de-a2e7-503c74a59327" x="0" y="0" width="38" height="29"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial"/>
 								</textElement>
@@ -309,9 +309,9 @@ order by p.GENDER desc,2 asc]]>
 								<text><![CDATA[الجنسية]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
 							<textField>
-								<reportElement uuid="fd3c7d6e-9a59-4cf4-910d-b127033beb81" x="0" y="0" width="48" height="20"/>
+								<reportElement uuid="fd3c7d6e-9a59-4cf4-910d-b127033beb81" x="0" y="0" width="48" height="29"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="14"/>
 								</textElement>
@@ -336,9 +336,9 @@ order by p.GENDER desc,2 asc]]>
 								<text><![CDATA[سنة/شهر/يوم]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
 							<textField>
-								<reportElement uuid="6a7ec180-ec91-4025-ba61-d3b72aea5883" x="0" y="0" width="51" height="20"/>
+								<reportElement uuid="6a7ec180-ec91-4025-ba61-d3b72aea5883" x="0" y="0" width="51" height="29"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial"/>
 								</textElement>
@@ -361,9 +361,9 @@ order by p.GENDER desc,2 asc]]>
 								<text><![CDATA[تاريخ الميلاد]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
 							<textField>
-								<reportElement uuid="ed710459-1c68-42ea-8e10-8f3a4b88792a" x="0" y="0" width="59" height="20"/>
+								<reportElement uuid="ed710459-1c68-42ea-8e10-8f3a4b88792a" x="0" y="0" width="59" height="29"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 									<font fontName="Arial" isPdfEmbedded="true"/>
 								</textElement>
@@ -384,11 +384,11 @@ order by p.GENDER desc,2 asc]]>
 								<text><![CDATA[الاسم]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
 							<textField>
-								<reportElement uuid="a57de676-f46b-4c8f-bccb-dd945c56efa5" x="0" y="0" width="90" height="20"/>
+								<reportElement uuid="a57de676-f46b-4c8f-bccb-dd945c56efa5" x="0" y="0" width="90" height="29"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="10"/>
+									<font fontName="Arial" size="8"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
 							</textField>
@@ -404,9 +404,9 @@ order by p.GENDER desc,2 asc]]>
 								<text><![CDATA[م]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+						<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
 							<textField>
-								<reportElement uuid="1ffa5a4c-58ed-4c79-8f95-1109f1d6d9a9" x="0" y="0" width="24" height="20"/>
+								<reportElement uuid="1ffa5a4c-58ed-4c79-8f95-1109f1d6d9a9" x="0" y="0" width="24" height="29"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial"/>
 								</textElement>

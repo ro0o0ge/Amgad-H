@@ -128,7 +128,7 @@ FROM
      inner join classes c on cs.C_ID = c.C_ID
 WHERE
      sel.id = $P{id}
-     and c.SY_ID = $P{syId}
+     and c.C_ID = $P{syId}
      and se.STE_STATUS = true
 group by 2;]]>
 		</queryString>

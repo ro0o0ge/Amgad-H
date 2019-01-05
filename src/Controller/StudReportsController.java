@@ -101,7 +101,7 @@ public class StudReportsController implements Initializable {
                 "اعفاء", "باص ترم اول", "باص ترم اول ذهاب", "باص ترم اول عودة ", "باص ترم ثاني", "باص ترم ثاني ذهاب", "باص ترم ثاني عودة "
         );
         sClass1.getItems().removeAll(sClass1.getItems());
-        sClass1.getItems().addAll(getStudyYears());
+        sClass1.getItems().addAll(getClasses());
 
         sClass2.getItems().removeAll(sClass2.getItems());
         sClass2.getItems().addAll(getClasses());
@@ -185,7 +185,7 @@ public class StudReportsController implements Initializable {
                 JasperReport jasperReport = JasperCompileManager.compileReport(StudReportsController.class.getClassLoader().getResourceAsStream("Reports/studentExpense.jrxml"));
                 HashMap<String, Object> parameters = new HashMap<String, Object>();
                 parameters.put("syId",
-                        SA.getStudyYearbyDesc(sClass1.getSelectionModel().getSelectedItem().toString()));
+                        SA.getClassesDesc(sClass1.getSelectionModel().getSelectedItem().toString()));
                 parameters.put("Eid",
                         SA.getExpensebyDesc(ExpenseType.getSelectionModel().getSelectedItem().toString()));
                 String dbUrl = prop.getProperty("dbUrl");
@@ -198,7 +198,7 @@ public class StudReportsController implements Initializable {
                         .getConnection(dbUrl, dbUname, dbPwd);
                 JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
                 File pdf = new File("D:// " + ExpenseType.getSelectionModel().getSelectedItem().toString()
-                        + " - ل " + sClass1.getSelectionModel().getSelectedItem().toString()
+                        + " - ل " + sClass1.getSelectionModel().getSelectedItem().toString().replaceAll("/", "-")
                         + ".pdf");
                 FileOutputStream pdfx = new FileOutputStream(pdf, false);
                 JasperExportManager.exportReportToPdfStream(print, pdfx);

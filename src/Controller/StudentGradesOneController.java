@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
  */
 public class StudentGradesOneController implements Initializable {
 
-     @FXML
+    @FXML
     private Label name;
     @FXML
     private Label className;
@@ -95,7 +95,7 @@ public class StudentGradesOneController implements Initializable {
     private TextField English_T_2;
     @FXML
     private TextField English_T_3;
-    
+
     @FXML
     private TextField Religion_F_1;
     @FXML
@@ -133,7 +133,7 @@ public class StudentGradesOneController implements Initializable {
     private TextField French_T_2;
     @FXML
     private TextField French_T_3;
-    
+
     @FXML
     private TextField Required_F_1;
     @FXML
@@ -150,7 +150,7 @@ public class StudentGradesOneController implements Initializable {
     private TextField Required_T_1;
     @FXML
     private TextField Required_T_2;
-    
+
     @FXML
     private TextField Optional_F_1;
     @FXML
@@ -167,13 +167,14 @@ public class StudentGradesOneController implements Initializable {
     private TextField Optional_T_1;
     @FXML
     private TextField Optional_T_2;
-    
+
     static private Student current;
 
     StudentAffair SA;
-    
+
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
@@ -328,7 +329,7 @@ public class StudentGradesOneController implements Initializable {
                         case 81:
                             English_S_2.setText(String.valueOf(a.getGrade()));
                             break;
-                            
+
                         case 100:
                             Religion_F_1.setText(String.valueOf(a.getGrade()));
                             break;
@@ -493,7 +494,7 @@ public class StudentGradesOneController implements Initializable {
                 x /= 2;
                 Arabic_T_2.setText(String.valueOf(x));
                 x /= 1;
-                Arabic_T_3.setText(gpa(x));
+                Arabic_T_3.setText(gpa(x, 1));
             }
 
             if (!Math_F_1.getText().isEmpty() && !Math_F_2.getText().isEmpty()) {
@@ -507,10 +508,11 @@ public class StudentGradesOneController implements Initializable {
             if (!Math_F_3.getText().isEmpty() && !Math_S_3.getText().isEmpty()) {
                 double x = Double.valueOf(Math_F_3.getText()) + Double.valueOf(Math_S_3.getText());
                 Math_T_1.setText(String.valueOf(x));
-                x /= 2.5;
+                x /= 2;
+                x *= .8;
                 Math_T_2.setText(String.valueOf(x));
-                x /= .8;
-                Math_T_3.setText(gpa(x));
+//                x /= .8;
+                Math_T_3.setText(gpa(x, 2));
             }
 
             if (!English_F_1.getText().isEmpty() && !English_F_2.getText().isEmpty()) {
@@ -524,10 +526,11 @@ public class StudentGradesOneController implements Initializable {
             if (!English_F_3.getText().isEmpty() && !English_S_3.getText().isEmpty()) {
                 double x = Double.valueOf(English_F_3.getText()) + Double.valueOf(English_S_3.getText());
                 English_T_1.setText(String.valueOf(x));
-                x /= 5;
+                x /= 2;
+                x *= .3;
                 English_T_2.setText(String.valueOf(x));
-                x /= .4;
-                English_T_3.setText(gpa(x));
+//                x /= .4;
+                English_T_3.setText(gpa(x, 3));
             }
 
             if (!Required_F_1.getText().isEmpty() && !Required_F_2.getText().isEmpty()) {
@@ -538,13 +541,13 @@ public class StudentGradesOneController implements Initializable {
                 double x = Double.valueOf(Required_S_1.getText()) + Double.valueOf(Required_S_2.getText());
                 Required_S_3.setText(String.valueOf(x));
             }
-            
+
             if (!Required_F_3.getText().isEmpty() && !Required_S_3.getText().isEmpty()) {
                 double x = Double.valueOf(Required_F_3.getText()) + Double.valueOf(Required_S_3.getText());
-                x *= 6;
+//                x *= 6;
                 Required_T_1.setText(String.valueOf(x));
-                x /= 3.6;
-                Required_T_2.setText(gpa(x));
+//                x /= 3.6;
+                Required_T_2.setText(gpa(x, 4));
             }
 
             if (!Optional_F_1.getText().isEmpty() && !Optional_F_2.getText().isEmpty()) {
@@ -559,8 +562,8 @@ public class StudentGradesOneController implements Initializable {
                 double x = Double.valueOf(Optional_F_3.getText()) + Double.valueOf(Optional_S_3.getText());
 //                x = 5;
                 Optional_T_1.setText(String.valueOf(x));
-                x /= .4;
-                Optional_T_2.setText(gpa(x));
+//                x /= .4;
+                Optional_T_2.setText(gpa(x, 4));
             }
 
             if (!Religion_F_1.getText().isEmpty() && !Religion_F_2.getText().isEmpty()) {
@@ -574,10 +577,11 @@ public class StudentGradesOneController implements Initializable {
             if (!Religion_F_3.getText().isEmpty() && !Religion_S_3.getText().isEmpty()) {
                 double x = Double.valueOf(Religion_F_3.getText()) + Double.valueOf(Religion_S_3.getText());
                 Religion_T_1.setText(String.valueOf(x));
-                x /= 5;
+                x /= 2;
+                x *= .3;
                 Religion_T_2.setText(String.valueOf(x));
-                x /= .4;
-                Religion_T_3.setText(gpa(x));
+//                x /= .4;
+                Religion_T_3.setText(gpa(x, 3));
             }
 
             if (!French_F_1.getText().isEmpty() && !French_F_2.getText().isEmpty()) {
@@ -591,31 +595,91 @@ public class StudentGradesOneController implements Initializable {
             if (!French_F_3.getText().isEmpty() && !French_S_3.getText().isEmpty()) {
                 double x = Double.valueOf(French_F_3.getText()) + Double.valueOf(French_S_3.getText());
                 French_T_1.setText(String.valueOf(x));
-                x /= 5;
+                x /= 2;
+                x *= .3;
                 French_T_2.setText(String.valueOf(x));
-                x /= .4;
-                French_T_3.setText(gpa(x));
+//                x /= .4;
+                French_T_3.setText(gpa(x, 3));
             }
-            
-            
 
+            if (!French_T_2.getText().isEmpty() && !Religion_T_2.getText().isEmpty() && !English_T_2.getText().isEmpty()
+                    && !Math_T_2.getText().isEmpty() && !Arabic_T_2.getText().isEmpty() && !Optional_T_1.getText().isEmpty()
+                    && !Required_T_1.getText().isEmpty()) {
+                double x = Double.valueOf(French_T_2.getText()) + Double.valueOf(Religion_T_2.getText())
+                        + Double.valueOf(English_T_2.getText()) + Double.valueOf(Math_T_2.getText())
+                        + Double.valueOf(Arabic_T_2.getText()) + Double.valueOf(Optional_T_1.getText())
+                        + Double.valueOf(Required_T_1.getText());
+                overall.setText(gpa(x, 5));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }    
-    
-    String gpa(double y) {
-        if (y >= 85) {
-            return "م";
-        } else if (y < 85 && y >= 75) {
-            return "ج ج";
-        } else if (y < 75 && y >= 65) {
-            return "ج";
-        } else if (y < 65 && y >= 50) {
-            return "مق";
-        } else {
-            return "ض";
+    }
+
+    String gpa(double y, int x) {
+        switch (x) {
+            case 1:
+                if (y >= 85) {
+                    return "م";
+                } else if (y < 85 && y >= 75) {
+                    return "ج ج";
+                } else if (y < 75 && y >= 65) {
+                    return "ج";
+                } else if (y < 65 && y >= 50) {
+                    return "مق";
+                } else {
+                    return "ض";
+                }
+            case 2:
+                if (y >= 68) {
+                    return "م";
+                } else if (y < 68 && y >= 60) {
+                    return "ج ج";
+                } else if (y < 60 && y >= 52) {
+                    return "ج";
+                } else if (y < 52 && y >= 40) {
+                    return "مق";
+                } else {
+                    return "ض";
+                }
+            case 3:
+                if (y >= 25.5) {
+                    return "م";
+                } else if (y < 25.5 && y >= 22.5) {
+                    return "ج ج";
+                } else if (y < 22.5 && y >= 19.5) {
+                    return "ج";
+                } else if (y < 19.5 && y >= 15) {
+                    return "مق";
+                } else {
+                    return "ض";
+                }
+            case 4:
+                if (y >= 17) {
+                    return "م";
+                } else if (y < 17 && y >= 15) {
+                    return "ج ج";
+                } else if (y < 15 && y >= 13) {
+                    return "ج";
+                } else if (y < 13 && y >= 10) {
+                    return "مق";
+                } else {
+                    return "ض";
+                }
+            case 5:
+                if (y >= 297.5) {
+                    return "م";
+                } else if (y < 297.5 && y >= 262.5) {
+                    return "ج ج";
+                } else if (y < 262.5 && y >= 227.5) {
+                    return "ج";
+                } else if (y < 227.5 && y >= 175) {
+                    return "مق";
+                } else {
+                    return "ض";
+                }
         }
+        return "لم";
     }
 
     @FXML
@@ -1345,5 +1409,4 @@ public class StudentGradesOneController implements Initializable {
         StudentAffair.getDialogStage2().close();
     }
 
-    
 }
