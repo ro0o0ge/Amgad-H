@@ -34,7 +34,7 @@
                </children>
             </VBox>
             <Label prefHeight="17.0" prefWidth="109.0" text="نتيجة الفصل الدراسي الأول" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateControl1st" text="التقرير" GridPane.rowIndex="2" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateControl1st_new" text="التقرير" GridPane.rowIndex="2" />
             <ComboBox fx:id="sClass" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="40.0" />

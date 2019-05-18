@@ -1,212 +1,149 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/*     */ package Controller;
+/*     */ 
+/*     */ import Entity.Persons;
+/*     */ import amgad.h.Management;
+/*     */ import java.net.URL;
+/*     */ import java.sql.Date;
+/*     */ import java.time.LocalDate;
+/*     */ import java.util.ResourceBundle;
+/*     */ import javafx.beans.value.ObservableValue;
+/*     */ import javafx.collections.FXCollections;
+/*     */ import javafx.collections.ObservableList;
+/*     */ import javafx.fxml.FXML;
+/*     */ import javafx.fxml.Initializable;
+/*     */ import javafx.geometry.NodeOrientation;
+/*     */ import javafx.scene.control.Alert;
+/*     */ import javafx.scene.control.DatePicker;
+/*     */ import javafx.scene.control.TableColumn;
+/*     */ import javafx.scene.control.TableView;
+/*     */ import javafx.scene.control.TextArea;
+/*     */ import javafx.scene.control.TextField;
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */ public class InsuranceController
+/*     */   implements Initializable
+/*     */ {
+/*     */   @FXML
+/*     */   private TextField SearchQuery;
+/*     */   @FXML
+/*     */   private TextField Amount;
+/*     */   @FXML
+/*     */   private TextArea Notes;
+/*     */   @FXML
+/*     */   private DatePicker EDate;
+/*     */   @FXML
+/*     */   private TableView<Persons> PayrollTable;
+/*     */   @FXML
+/*     */   private TableColumn<Persons, String> NameColumn;
+/*     */   Management MA;
+/*     */   Persons st;
+/*     */   
+/*     */   public void initialize(URL url, ResourceBundle rb) {
+/*  60 */     this.MA = new Management();
+/*     */     
+/*  62 */     if (!this.PayrollTable.getItems().isEmpty()) {
+/*  63 */       this.PayrollTable.getItems().clear();
+/*     */     }
+/*     */     
+/*  66 */     this.PayrollTable.setItems(Management.getEmpList());
+/*  67 */     this.NameColumn.setCellValueFactory(cellData -> ((Persons)cellData.getValue()).NameProperty());
+/*     */   }
+/*     */   
+/*     */   @FXML
+/*     */   public void Search() {
+/*  72 */     if (!this.SearchQuery.getText().equals("")) {
+/*  73 */       ObservableList<Persons> TempList = FXCollections.observableArrayList(this.MA.getActiveEmp());
+/*  74 */       this.PayrollTable.getItems().clear();
+/*  75 */       for (int i = 0; i < TempList.size(); i++) {
+/*  76 */         if (!((Persons)TempList.get(i)).getName().contains(this.SearchQuery.getText())) {
+/*  77 */           TempList.remove(i);
+/*  78 */           i--;
+/*     */         } 
+/*     */       } 
+/*  81 */       this.PayrollTable.setItems(TempList);
+/*     */     } else {
+/*  83 */       Alert alert = new Alert(Alert.AlertType.WARNING);
+/*  84 */       alert.setTitle("يوجد خطأ");
+/*  85 */       alert.setHeaderText("لاتترك صندوق البحث فارغ");
+/*  86 */       alert.setContentText("برجاء التأكد من الكتابة قبل الضغط على ابحث");
+/*  87 */       alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+/*  88 */       alert.showAndWait();
+/*     */     } 
+/*     */   }
+/*     */   
+/*     */   public void afterNew() {
+/*  93 */     this.PayrollTable.setItems(Management.getEmpList());
+/*  94 */     this.Amount.setText("");
+/*  95 */     this.EDate.setValue(null);
+/*  96 */     this.Notes.setText("");
+/*     */   }
+/*     */   
+/*     */   @FXML
+/*     */   public void handleNewAbsent() {
+/* 101 */     this.st = (Persons)this.PayrollTable.getSelectionModel().getSelectedItem();
+/* 102 */     if (this.st != null && this.EDate.getValue() != null && this.Amount
+/* 103 */       .getText() != null) {
+/* 104 */       if (this.MA.PersistNewInsurance(this.Notes.getText(), this.st, 
+/* 105 */           Date.valueOf((LocalDate)this.EDate.getValue()), this.Amount
+/* 106 */           .getText())) {
+/* 107 */         afterNew();
+/* 108 */         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+/* 109 */         alert.setTitle("تم");
+/* 110 */         alert.setHeaderText("تم الحفظ بنجاح");
+/* 111 */         alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+/* 112 */         alert.showAndWait();
+/*     */       } else {
+/* 114 */         Alert alert = new Alert(Alert.AlertType.ERROR);
+/* 115 */         alert.setTitle("يوجد خطأ");
+/* 116 */         alert.setHeaderText("لم يتم الحفظ");
+/* 117 */         alert.setContentText("برجاء الرجوع الى مالك البرنامج");
+/* 118 */         alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+/* 119 */         alert.showAndWait();
+/*     */       }
+/*     */     
+/* 122 */     } else if (this.st == null) {
+/* 123 */       Alert alert = new Alert(Alert.AlertType.ERROR);
+/* 124 */       alert.setTitle("يوجد خطأ");
+/* 125 */       alert.setHeaderText("لم يتم تحديد العنصر المراد حفظه");
+/* 126 */       alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+/* 127 */       alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+/* 128 */       alert.showAndWait();
+/*     */     } else {
+/* 130 */       Alert alert = new Alert(Alert.AlertType.ERROR);
+/* 131 */       alert.setTitle("يوجد خطأ");
+/* 132 */       alert.setHeaderText("برجاء التأكد من ادخال البيانات المطلوبة");
+/* 133 */       alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+/* 134 */       alert.showAndWait();
+/*     */     } 
+/*     */   }
+/*     */ 
+/*     */ 
+/*     */ 
+/*     */   
+/*     */   @FXML
+/* 142 */   public void handleClose() { Management.getDialogStage().close(); }
+/*     */ }
+
+
+/* Location:              C:\Users\Abdo\Documents\Amgad-H.jar!\Controller\InsuranceController.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       1.0.0
  */
-package Controller;
-
-import Entity.Persons;
-import amgad.h.Management;
-import java.net.URL;
-import java.sql.Date;
-import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.NodeOrientation;
-import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-
-/**
- * FXML Controller class
- *
- * @author Abdo
- */
-public class InsuranceController implements Initializable {
-
-    @FXML
-    private TextField SearchQuery;
-    @FXML
-    private TextField Amount;
-    @FXML
-    private TextArea Notes;
-    @FXML
-    private DatePicker EDate;
-    @FXML
-    private TableView<Persons> PayrollTable;
-    @FXML
-    private TableColumn<Persons, String> NameColumn;
-
-    Management MA;
-
-    Persons st;
-
-    /**
-     * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        MA = new Management();
-
-        if (!PayrollTable.getItems().isEmpty()) {
-            PayrollTable.getItems().clear();
-        }
-
-        PayrollTable.setItems(Management.getEmpList());
-        NameColumn.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
-    }
-
-    @FXML
-    public void Search() {
-        if (!SearchQuery.getText().equals("")) {
-            ObservableList<Persons> TempList = FXCollections.observableArrayList(MA.getActiveEmp());
-            PayrollTable.getItems().clear();
-            for (int i = 0; i < TempList.size(); i++) {
-                if (!TempList.get(i).getName().contains(SearchQuery.getText())) {
-                    TempList.remove(i);
-                    i--;
-                }
-            }
-            PayrollTable.setItems(TempList);
-        } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("يوجد خطأ");
-            alert.setHeaderText("لاتترك صندوق البحث فارغ");
-            alert.setContentText("برجاء التأكد من الكتابة قبل الضغط على ابحث");
-            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-            alert.showAndWait();
-        }
-    }
-
-    public void afterNew() {
-        PayrollTable.setItems(Management.getEmpList());
-        Amount.setText("");
-        EDate.setValue(null);
-        Notes.setText("");
-    }
-
-    @FXML
-    public void handleNewAbsent() {
-        st = PayrollTable.getSelectionModel().getSelectedItem();
-        if (st != null && EDate.getValue() != null
-                && Amount.getText() != null ) {
-            if (MA.PersistNewInsurance(Notes.getText(), st,
-                    Date.valueOf(EDate.getValue()),
-                    Amount.getText())) {
-                afterNew();
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("تم");
-                alert.setHeaderText("تم الحفظ بنجاح");
-                alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-                alert.showAndWait();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("يوجد خطأ");
-                alert.setHeaderText("لم يتم الحفظ");
-                alert.setContentText("برجاء الرجوع الى مالك البرنامج");
-                alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-                alert.showAndWait();
-            }
-        } else {
-            if (st == null) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("يوجد خطأ");
-                alert.setHeaderText("لم يتم تحديد العنصر المراد حفظه");
-                alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
-                alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-                alert.showAndWait();
-            } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("يوجد خطأ");
-                alert.setHeaderText("برجاء التأكد من ادخال البيانات المطلوبة");
-                alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-                alert.showAndWait();
-            }
-        }
-
-    }
-
-    @FXML
-    public void handleClose() {
-        Management.getDialogStage().close();
-    }
-
-//     private void showDetails(Payroll shera2) {
-//        if (shera2 != null) {
-//            Recieved.setSelected(shera2.getPrStatus());
-//            Notes.setText(shera2.getPRNotes());
-//            Amount.setText(String.valueOf(shera2.getAmount()));
-//            Calendar cal = Calendar.getInstance();
-//            cal.setTime(shera2.getPrDate());
-//            LocalDate date = LocalDate.of(cal.get(Calendar.YEAR),
-//                    cal.get(Calendar.MONTH) + 1, cal.get(Calendar.DAY_OF_MONTH));
-//            EDate.setValue(date);
-//            ComboType.getSelectionModel().select(shera2.getPrTypeBonus());
-//        } else {
-//            Amount.setText("");
-//            EDate.setValue(null);
-//            Notes.setText("");
-//            Recieved.setSelected(false);
-//            ComboType.getSelectionModel().select(0);
-//        }
-//    }
-//    
-//
-//    @FXML
-//    public void handleNew() {
-//        if (!Amount.getText().equals("") && ComboType.getSelectionModel().getSelectedIndex() != -1
-//                && EDate.getValue() != null) {
-//            st = new Payroll();
-//            st.setAmount(Double.valueOf(Amount.getText()));
-//            st.setPRNotes(Notes.getText());
-//            st.setPrStatus(Recieved.isSelected());
-//            st.setPrDate(Date.valueOf(EDate.getValue()));
-//            st.setPrTypeBonus(ComboType.getSelectionModel().getSelectedItem().toString());
-//            st.setPrType("1");
-////            st.setPId(current);
-////            SA.PersistStudentExpense(st);
-////            PayrollTable.setItems(StudentAffair.getPayrollList());
-//        } else {
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("يوجد خطأ");
-//            alert.setHeaderText("خطأ");
-//            alert.setContentText("برجاء التأكد من صحة البيانات");
-//            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-//            alert.showAndWait();
-//        }
-//    }
-//
-//    @FXML
-//    public void handleEdit() {
-//        if (!Amount.getText().equals("") && ComboType.getSelectionModel().getSelectedIndex() != -1
-//                && EDate.getValue() != null) {
-//            st = PayrollTable.getSelectionModel().getSelectedItem();
-//            st.setAmount(Double.valueOf(Amount.getText()));
-//            st.setPRNotes(Notes.getText());
-//            st.setPrStatus(Recieved.isSelected());
-//            st.setPrDate(Date.valueOf(EDate.getValue()));
-//            st.setPrTypeBonus(ComboType.getSelectionModel().getSelectedItem().toString());
-//            st.setPrType("1");
-////            SA.UpdateStudentExpense(st);
-//            PayrollTable.setItems(Management.getEmpList());
-//        } else {
-//            Alert alert = new Alert(Alert.AlertType.ERROR);
-//            alert.setTitle("يوجد خطأ");
-//            alert.setHeaderText("خطأ");
-//            alert.setContentText("برجاء التأكد من صحة البيانات");
-//            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-//            alert.showAndWait();
-//        }
-//    }
-}

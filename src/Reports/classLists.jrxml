@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="classLists" columnDirection="RTL" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d55ee861-a853-404f-9840-b486e24ee179">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="266"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<style name="table">
 		<box>
@@ -68,6 +68,26 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
 	<subDataset name="classStudent" uuid="0ef89ea0-a937-4fd0-b75a-3833d1284017">
 		<parameter name="c_ID" class="java.lang.Integer">
 			<defaultValueExpression><![CDATA[$P{c_ID}]]></defaultValueExpression>
@@ -88,6 +108,22 @@ where c.C_ID = $P{c_ID} order by p.GENDER asc,1 asc]]>
 		<group name="CLASS_NAME">
 			<groupExpression><![CDATA[]]></groupExpression>
 		</group>
+	</subDataset>
+	<subDataset name="countRelig" uuid="bc98c371-172c-4739-8d66-4ef10c368cb1">
+		<parameter name="c_ID" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select sum(case when p.RELIGION = "1" then 1 else 0 end ) as muslim
+        ,sum(case when p.RELIGION = "2" then 1 else 0 end ) as mas7y
+ from persons p
+inner join student s on p.P_ID = s.P_ID
+inner join class_students cs on s.S_ID = cs.S_ID
+inner join classes c on cs.C_ID = c.C_ID
+where c.C_ID = $P{c_ID}  order by p.GENDER asc,1 asc]]>
+		</queryString>
+		<field name="muslim" class="java.math.BigDecimal"/>
+		<field name="mas7y" class="java.math.BigDecimal"/>
 	</subDataset>
 	<parameter name="class_ID" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[31]]></defaultValueExpression>
@@ -169,9 +205,9 @@ where c.C_ID = $P{c_ID} order by p.GENDER asc,1 asc]]>
 		</band>
 	</title>
 	<detail>
-		<band height="604">
+		<band height="577">
 			<componentElement>
-				<reportElement uuid="31c93faa-fc1a-4527-bfda-59df55c715e4" key="table 2" isPrintRepeatedValues="false" x="121" y="0" width="268" height="29"/>
+				<reportElement uuid="31c93faa-fc1a-4527-bfda-59df55c715e4" key="table 2" isPrintRepeatedValues="false" x="0" y="0" width="268" height="29"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
 					<datasetRun subDataset="classStudent" uuid="ddf9aaca-9abf-4c2b-8deb-877620b68f87">
 						<datasetParameter name="c_ID">
@@ -237,10 +273,90 @@ where c.C_ID = $P{c_ID} order by p.GENDER asc,1 asc]]>
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<componentElement>
+				<reportElement uuid="519b76f0-cf8c-44fa-b262-332c87a8afaf" key="table 3" style="table 3" x="387" y="550" width="168" height="27"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="countRelig" uuid="26a3705e-98e5-4ef8-b8e8-166fe8e1b80b">
+						<datasetParameter name="c_ID">
+							<datasetParameterExpression><![CDATA[$P{class_ID}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="39" uuid="7c054430-3e3d-4c67-9ae2-6a39c25a78fd">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="46942d2e-cf64-4391-8e67-95a41799d077" style="table_CH" x="0" y="0" width="39" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="15"/>
+								</textElement>
+								<text><![CDATA[اجمالي]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="5cdbf916-ce0a-4019-9adb-c9c4409bcfa8" x="0" y="0" width="39" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="15"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{muslim}.add( $F{mas7y}).toString().replaceAll("0", "\\\u0660").replaceAll("1", "\\\u0661").replaceAll("2", "\\\u0662")
+     .replaceAll("3", "\\\u0663").replaceAll("4", "\\\u0664").replaceAll("5", "\\\u0665")
+     .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668")
+     .replaceAll("9", "\\\u0669")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="61" uuid="3eaaaa8d-d0fc-4c22-952d-db6f3688968b">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="ab7e6909-1009-42b9-8f2e-3d4b700f52d9" x="0" y="0" width="61" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="15"/>
+								</textElement>
+								<text><![CDATA[مسيحي]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="83ebe464-4e34-49c1-b466-052917ae8114" x="0" y="0" width="61" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="15"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{mas7y}.toString().replaceAll("0", "\\\u0660").replaceAll("1", "\\\u0661").replaceAll("2", "\\\u0662")
+     .replaceAll("3", "\\\u0663").replaceAll("4", "\\\u0664").replaceAll("5", "\\\u0665")
+     .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668")
+     .replaceAll("9", "\\\u0669")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="64" uuid="fceb1ae0-4eba-460d-96bb-e7c1c0513eed">
+						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="6acc3bae-9f5f-41c4-84f5-926f43c6a375" x="0" y="0" width="64" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="15"/>
+								</textElement>
+								<text><![CDATA[مسلم]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement uuid="7a43f68c-9878-4b61-87e8-1cbdb826b430" x="0" y="0" width="64" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Arial" size="15"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{muslim}.toString().replaceAll("0", "\\\u0660").replaceAll("1", "\\\u0661").replaceAll("2", "\\\u0662")
+     .replaceAll("3", "\\\u0663").replaceAll("4", "\\\u0664").replaceAll("5", "\\\u0665")
+     .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668")
+     .replaceAll("9", "\\\u0669")]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="28">
+		<band height="59">
 			<staticText>
 				<reportElement uuid="69ecfb94-a1a4-427d-9fc7-5ae226f02c06" mode="Transparent" x="0" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
@@ -250,7 +366,7 @@ where c.C_ID = $P{c_ID} order by p.GENDER asc,1 asc]]>
 				<text><![CDATA[ناظر المدرسة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="2b214a26-a86a-45f9-bbc8-5b7ffde2373e" mode="Transparent" x="210" y="0" width="111" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="2b214a26-a86a-45f9-bbc8-5b7ffde2373e" mode="Transparent" x="214" y="0" width="111" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -258,7 +374,7 @@ where c.C_ID = $P{c_ID} order by p.GENDER asc,1 asc]]>
 				<text><![CDATA[وكيل شئون الطلبة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="afcdef91-c327-4968-b47e-b2782e4f5227" mode="Transparent" x="470" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="afcdef91-c327-4968-b47e-b2782e4f5227" mode="Transparent" x="475" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>

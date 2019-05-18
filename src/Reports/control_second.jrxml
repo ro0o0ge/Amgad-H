@@ -128,12 +128,14 @@ inner join student s2 on ag.S_ID = s2.S_ID
 inner join persons p on s2.P_ID = p.P_ID
 inner join grade_detail g on ag.GD_ID = g.GD_ID
 inner join final_grades f on g.G_ID = f.G_ID
+inner join class_students cs on s2.S_ID = cs.S_ID
+inner join classes c on cs.C_ID = c.C_ID
 inner join subjects s on f.SU_ID = s.SU_ID
 inner join subjects_name_lkp snl on snl.sub_name=s.SU_DESC
-inner join study_years sy on s.SY_ID = sy.SY_ID
-where sy.SY_ID = $P{sy_id}
+inner join study_years sy on c.SY_ID = sy.SY_ID
+where sy.SY_ID = $P{sy_id} and f.STUDY_SEMESTER =2
 group by p.NAME
-order by s2.SEATING_NO DESC]]>
+order by abs(s2.SEATING_NO) asc]]>
 		</queryString>
 		<field name="computer" class="java.math.BigDecimal"/>
 		<field name="sport_activity" class="java.math.BigDecimal"/>
