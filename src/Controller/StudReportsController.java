@@ -101,7 +101,7 @@
 /*     */ 
 /*     */     
 /* 103 */     this.sClass1.getItems().removeAll(this.sClass1.getItems());
-/* 104 */     this.sClass1.getItems().addAll(getClasses());
+/* 104 */     this.sClass1.getItems().addAll(getStudyYears());
 /*     */     
 /* 106 */     this.sClass2.getItems().removeAll(this.sClass2.getItems());
 /* 107 */     this.sClass2.getItems().addAll(getClasses());
@@ -185,7 +185,7 @@
 /* 185 */         JasperReport jasperReport = JasperCompileManager.compileReport(StudReportsController.class.getClassLoader().getResourceAsStream("Reports/studentExpense.jrxml"));
 /* 186 */         HashMap<String, Object> parameters = new HashMap<String, Object>();
 /* 187 */         parameters.put("syId", this.SA
-/* 188 */             .getClassesDesc(this.sClass1.getSelectionModel().getSelectedItem().toString()));
+/* 188 */             .getStudyYearbyDesc(this.sClass1.getSelectionModel().getSelectedItem().toString()));
 /* 189 */         parameters.put("Eid", this.SA
 /* 190 */             .getExpensebyDesc(this.ExpenseType.getSelectionModel().getSelectedItem().toString()));
 /* 191 */         String dbUrl = this.prop.getProperty("dbUrl");

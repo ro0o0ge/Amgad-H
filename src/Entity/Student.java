@@ -39,6 +39,7 @@ import org.hibernate.annotations.LazyCollectionOption;
     , @NamedQuery(name = "Student.findBySId", query = "SELECT s FROM Student s WHERE s.sId = :sId")
     , @NamedQuery(name = "Student.findByStatus", query = "SELECT s FROM Student s WHERE s.status = :status")
     , @NamedQuery(name = "Student.findByAgeOnOct", query = "SELECT s FROM Student s WHERE s.ageOnOct = :ageOnOct")
+    , @NamedQuery(name = "Student.findByName", query = "SELECT s FROM Student s WHERE s.pId.name like :name")
     , @NamedQuery(name = "Student.findBySerialNo", query = "SELECT s FROM Student s WHERE s.serialNo = :serialNo")
     , @NamedQuery(name = "Student.findBySeatingNo", query = "SELECT s FROM Student s WHERE s.seatingNo = :seatingNo")})
 public class Student implements Serializable {

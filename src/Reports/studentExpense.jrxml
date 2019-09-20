@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="studentExpenses_1"  pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d55ee861-a853-404f-9840-b486e24ee179">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="studentExpenses_1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d55ee861-a853-404f-9840-b486e24ee179">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -126,11 +126,13 @@ FROM
      inner join student_expenses_lkp sel on se.STE_TYPE = sel.expense_desc
      inner join class_students cs on s.S_ID = cs.S_ID
      inner join classes c on cs.C_ID = c.C_ID
+     inner join study_years year2 on c.SY_ID = year2.SY_ID
 WHERE
      sel.id = $P{id}
-     and c.C_ID = $P{syId}
+     and year2.SY_ID = $P{syId}
      and se.STE_STATUS = true
-group by 2;]]>
+group by 2
+order by 2;]]>
 		</queryString>
 		<field name="sum(se.AMOUNT)" class="java.math.BigDecimal"/>
 		<field name="NAME" class="java.lang.String">

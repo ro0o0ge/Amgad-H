@@ -1330,7 +1330,7 @@ public class ViewTeacherController implements Initializable {
                 });
                 SEP18.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
-                        calculateSalary.setDisable(false);
+                        calculateSalary.setDisable(false);                        
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());

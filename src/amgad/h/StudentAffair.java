@@ -261,8 +261,9 @@
 /* 261 */       this.ul.setLogDESC(log);
 /* 262 */       this.s.persist(this.ul);
 /* 263 */       this.s.update(st.getPId());
-/* 264 */       this.s.refresh(st);
+
 /* 265 */       t.commit();
+/* 264 */       this.s.refresh(st);
 /* 266 */       dialogStage2.close();
 /* 267 */       PersonsList.clear();
 /* 268 */       PersonsList.addAll(getStudents(1));
@@ -349,6 +350,16 @@
 /* 349 */     this.s.close();
 /* 350 */     return sy;
 /*     */   }
+
+            public List<Student> searchStudentbyName(String st) {
+/* 354 */     this.s = this.sf.openSession();
+/* 355 */     this.s.beginTransaction();
+/* 356 */     Query query = this.s.getNamedQuery("Student.findByName").setParameter("name", '%'+st+'%');
+/* 357 */     List<Student> sy = query.list();
+/* 358 */     this.s.close();
+/* 359 */     return sy;
+/*     */   }
+          
 /*     */   
 /*     */   public List<StudentExpenses> getStudentExpenses(Student st) {
 /* 354 */     this.s = this.sf.openSession();

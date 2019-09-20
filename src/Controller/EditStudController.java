@@ -98,17 +98,19 @@
 /*     */   @FXML
 /*     */   public void Search() {
 /* 100 */     if (!this.SearchQuery.getText().equals("")) {
-/* 101 */       ObservableList<Student> TempList = FXCollections.observableArrayList(this.SA.getStudents(2));
+/* 101 */       ObservableList<Student> TempList = FXCollections.observableArrayList(this.SA.getStudents(1));
 /* 102 */       this.StudentsTable.getItems().clear();
 /* 103 */       if (this.ComboSearch.getSelectionModel().isSelected(0)) {
-/* 104 */         for (int i = 0; i < TempList.size(); i++) {
-/* 105 */           if (!((Student)TempList.get(i)).getPId().getName().contains(this.SearchQuery.getText())) {
-/* 106 */             TempList.remove(i);
-/* 107 */             i--;
-/*     */           } 
-/*     */         } 
+                  TempList = FXCollections.observableArrayList(this.SA.searchStudentbyName(this.SearchQuery.getText()));
+///* 104 */         for (int i = 0; i < TempList.size(); i++) {
+///* 105 */           if (!((Student)TempList.get(i)).getPId().getName().contains(this.SearchQuery.getText())) {
+///* 106 */             TempList.remove(i);
+///* 107 */             i--;
+///*     */           } 
+///*     */         } 
 /* 110 */         this.StudentsTable.setItems(TempList);
 /* 111 */       } else if (this.ComboSearch.getSelectionModel().isSelected(1)) {
+                   
 /* 112 */         System.out.println("size " + TempList.size());
 /* 113 */         for (int i = 0; i < TempList.size(); i++) {
 /* 114 */           if (!((Student)TempList.get(i)).statusProperty().toString().contains(this.SearchQuery.getText())) {

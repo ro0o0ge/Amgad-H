@@ -36,6 +36,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -133,6 +134,8 @@ public class ViewStaffController implements Initializable {
     @FXML
     private Tab Y20;
 
+    @FXML
+    private TabPane Year2019;
     @FXML
     private Tab JUL18;
     @FXML
@@ -986,6 +989,7 @@ public class ViewStaffController implements Initializable {
 
             AUG18.selectedProperty().addListener((ov, oldTab, newTab) -> {
                 if (newTab) {
+                    
                     calculateSalary.setDisable(false);
                     for (Payroll bp : current.getPId().getPayrollList()) {
                         Calendar calendar = Calendar.getInstance();
@@ -1382,6 +1386,7 @@ public class ViewStaffController implements Initializable {
             });
             AUG19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                 if (newTab) {
+//                    Year2019.getSelectionModel().select(AUG19);
                     calculateSalary.setDisable(false);
                     for (Payroll bp : current.getPId().getPayrollList()) {
                         Calendar calendar = Calendar.getInstance();
@@ -1709,19 +1714,20 @@ public class ViewStaffController implements Initializable {
         if (current.getPId().getInsuranceAmount() != null) {
             netsalDouble -= current.getPId().getInsuranceAmount();
         }
-        if (JUL18.isSelected()) {
-            calculateNetSalary(7);
-        } else if (AUG18.isSelected()) {
-            calculateNetSalary(8);
-        } else if (SEP18.isSelected()) {
-            calculateNetSalary(9);
-        } else if (OCT18.isSelected()) {
-            calculateNetSalary(10);
-        } else if (NOV18.isSelected()) {
-            calculateNetSalary(11);
-        } else if (DEC18.isSelected()) {
-            calculateNetSalary(12);
-        } else if (JAN19.isSelected()) {
+//        if (JUL18.isSelected()) {
+//            calculateNetSalary(7);
+//        } else if (AUG18.isSelected()) {
+//            calculateNetSalary(8);
+//        } else if (SEP18.isSelected()) {
+//            calculateNetSalary(9);
+//        } else if (OCT18.isSelected()) {
+//            calculateNetSalary(10);
+//        } else if (NOV18.isSelected()) {
+//            calculateNetSalary(11);
+//        } else if (DEC18.isSelected()) {
+//            calculateNetSalary(12);
+//        } else 
+        if (JAN19.isSelected()) {
             calculateNetSalary(1);
         } else if (FEB19.isSelected()) {
             calculateNetSalary(2);

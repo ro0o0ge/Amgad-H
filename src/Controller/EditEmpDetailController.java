@@ -9,6 +9,7 @@
 /*     */ import java.net.URL;
 /*     */ import java.sql.Date;
 /*     */ import java.time.LocalDate;
+import java.time.Month;
 /*     */ import java.util.Arrays;
 /*     */ import java.util.Calendar;
 /*     */ import java.util.List;
@@ -206,6 +207,12 @@
 /* 206 */     if (current.getPId().getInsuranceAmount() != null) {
 /* 207 */       this.InsuranceAmount.setText(current.getPId().getInsuranceAmount().toString());
 /*     */     }
+
+                if (current.getPId().getGradYear() != null){
+//                    Calendar c = Calendar.getInstance();
+//                    c.set(Integer.parseInt(current.getPId().getGradYear()), 7, 1);
+                    this.tGradDate.setValue(LocalDate.of(Integer.parseInt(current.getPId().getGradYear()), Month.JUNE, 1));
+                }
 /*     */     
 /* 210 */     if (current.getStaffType().equals("1")) {
 /* 211 */       this.gCategory.selectToggle(this.type1);
