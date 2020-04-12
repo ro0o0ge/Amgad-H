@@ -94,7 +94,7 @@
 /*  94 */     this.sClass.getItems().addAll(getStudyYears());
 /*     */     
 /*  96 */     this.ExpenseType.getItems().removeAll(this.ExpenseType.getItems());
-/*  97 */     this.ExpenseType.getItems().addAll(new Object[] { "رسوم تعليم", "رسوم تعليم قسط أول", "رسوم تعليم قسط ثاني", "رسوم ضافية", "رسوم امتحان", "رسوم نشاط", "كتب وزارية", "كتب اجنبية", "زي", "زي تيشيرت صيفي", "زي تيشيرت شتوي", "زي بنطلون او جيبة", "زي جاكيت", "زي اضافي", "زي اضافي تيشيرت صيفي", "زي اضافي تيشيرت شتوي", "زي اضافي بنطلون او جيبة", "زي اضافي جاكيت", "اعفاء", "باص ترم اول", "باص ترم اول ذهاب", "باص ترم اول عودة ", "باص ترم ثاني", "باص ترم ثاني ذهاب", "باص ترم ثاني عودة " });
+/*  97 */     this.ExpenseType.getItems().addAll(new Object[] { "رسوم تعليم", "رسوم تعليم قسط أول", "رسوم تعليم قسط ثاني", "رسوم إضافية", "رسوم امتحان", "رسوم نشاط", "كتب وزارية", "كتب اجنبية", "زي", "زي تيشيرت صيفي", "زي تيشيرت شتوي", "زي بنطلون او جيبة", "زي جاكيت", "زي اضافي", "زي اضافي تيشيرت صيفي", "زي اضافي تيشيرت شتوي", "زي اضافي بنطلون او جيبة", "زي اضافي جاكيت", "اعفاء", "باص ترم اول", "باص ترم اول ذهاب", "باص ترم اول عودة ", "باص ترم ثاني", "باص ترم ثاني ذهاب", "باص ترم ثاني عودة " });
 /*     */ 
 /*     */ 
 /*     */ 
@@ -138,6 +138,7 @@
 /* 138 */         JasperReport jasperReport = JasperCompileManager.compileReport(StudReportsController.class.getClassLoader().getResourceAsStream("Reports/student_record.jrxml"));
 /*     */         
 /* 140 */         HashMap<String, Object> parameters = new HashMap<String, Object>();
+                    System.out.println("Print Class_id "+this.SA.getStudyYearbyDesc(this.sClass.getSelectionModel().getSelectedItem().toString()));
 /* 141 */         parameters.put("class_ID", this.SA.getStudyYearbyDesc(this.sClass.getSelectionModel().getSelectedItem().toString()));
 /* 142 */         String dbUrl = this.prop.getProperty("dbUrl");
 /* 143 */         String dbDriver = this.prop.getProperty("dbDriver");

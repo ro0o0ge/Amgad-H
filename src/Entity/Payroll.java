@@ -6,6 +6,7 @@
 package Entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -68,9 +69,8 @@ public class Payroll implements Serializable {
     private double amount;
     @Column(name = "PR_TYPE")
     private String prType;
-    @Basic(optional = false)
-    @Column(name = "PR_DATE", insertable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "PR_DATE")
+    @Temporal(TemporalType.DATE)
     private Date prDate;
 
     public Payroll() {

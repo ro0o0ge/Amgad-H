@@ -841,7 +841,8 @@
 /*  841 */       return this.PR;
 /*  842 */     } catch (Exception e) {
 /*  843 */       System.err.println("El72 " + e.getMessage());
-/*  844 */       return null;
+                 throw e;
+///*  844 */       return null;
 /*      */     } 
 /*      */   }
 /*      */ 
@@ -874,7 +875,7 @@
 /*  874 */       return this.PR;
 /*  875 */     } catch (Exception e) {
 /*  876 */       System.err.println("El72 " + e.getMessage());
-/*  877 */       return null;
+/*  877 */       throw e;
 /*      */     } 
 /*      */   }
 /*      */ 
@@ -905,7 +906,7 @@
 /*  905 */       return this.PR;
 /*  906 */     } catch (Exception e) {
 /*  907 */       System.err.println("El72 " + e.getMessage());
-/*  908 */       return null;
+/*  908 */       throw e;
 /*      */     } 
 /*      */   }
 /*      */   

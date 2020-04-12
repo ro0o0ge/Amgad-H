@@ -180,6 +180,28 @@
 /*      */   private static Student current;
 /*      */   StudentAffair SA;
 /*      */   
+
+            void fillConstant(){
+                    Arabic_F_1.setText("75");
+                    Arabic_S_1.setText("75");
+                    Math_F_1.setText("75");
+                    Math_S_1.setText("75");
+                    English_F_1.setText("75");
+                    English_S_1.setText("75");
+                    Religion_F_1.setText("75");
+                    Religion_S_1.setText("75");
+                    French_F_1.setText("50");
+                    French_S_1.setText("50");
+                    Required_F_1.setText("10");
+                    Required_F_2.setText("10");
+                    Required_S_1.setText("10");
+                    Required_S_2.setText("10");
+                    Optional_F_1.setText("10");
+                    Optional_F_2.setText("10");
+                    Optional_S_1.setText("10");
+                    Optional_S_2.setText("10");
+            }
+
 /*      */   public void initialize(URL url, ResourceBundle rb) {
 /*  184 */     current = StudentAffair.getEdit();
 /*  185 */     this.SA = new StudentAffair();
@@ -192,7 +214,7 @@
 /*  192 */     this.seatingNo.setText(current.getSeatingNo());
 /*  193 */     this.obsrNo1.setText(current.getObserve1());
 /*  194 */     this.obsrNo2.setText(current.getObserve2());
-/*      */     
+/*      */     fillConstant();
 /*  196 */     if (current.getActualGradesList() != null) {
 /*  197 */       for (ActualGrades a : current.getActualGradesList()) {
 /*  198 */         System.out.println("grade detail id " + a.getGdId().getGdId());
@@ -826,7 +848,7 @@
 /*      */       } 
 /*      */       
 /*  828 */       if (!this.French_F_1.getText().isEmpty() && this.French_F_1.getText().matches("[0-9]+(\\.[0-9])*") && 
-/*  829 */         Double.valueOf(this.French_F_1.getText()).doubleValue() <= 75.0D) {
+/*  829 */         Double.valueOf(this.French_F_1.getText()).doubleValue() <= 50.0D) {
 /*  830 */         ActualGrades ag = new ActualGrades();
 /*  831 */         ag.setGdId(new GradeDetail(Integer.valueOf(64)));
 /*  832 */         ag.setGrade(Double.valueOf(this.French_F_1.getText()).doubleValue());
@@ -834,7 +856,7 @@
 /*  834 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /*  836 */       if (!this.French_F_2.getText().isEmpty() && this.French_F_2.getText().matches("[0-9]+(\\.[0-9])*") && 
-/*  837 */         Double.valueOf(this.French_F_2.getText()).doubleValue() <= 25.0D) {
+/*  837 */         Double.valueOf(this.French_F_2.getText()).doubleValue() <= 50.0D) {
 /*  838 */         ActualGrades ag = new ActualGrades();
 /*  839 */         ag.setGdId(new GradeDetail(Integer.valueOf(65)));
 /*  840 */         ag.setGrade(Double.valueOf(this.French_F_2.getText()).doubleValue());

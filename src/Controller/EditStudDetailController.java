@@ -148,13 +148,9 @@
 /*     */     }
 /*     */     
 /* 150 */     this.sDOB.valueProperty().addListener((ov, oldValue, newValue) -> {
-/*     */           LocalDate currentDate;
-/* 152 */           if (newValue.getDayOfMonth() == 31) {
-/* 153 */             currentDate = LocalDate.of(Calendar.getInstance().get(1), 9, 30);
-/*     */           } else {
-/* 155 */             currentDate = LocalDate.of(Calendar.getInstance().get(1), 10, 1);
-/*     */           } 
-/* 157 */           this.ageCalc.setText(currentDate.until(newValue).toString().replace("P-", ""));
+///*     */           LocalDate currentDate = LocalDate.of(Calendar.getInstance().get(1), 10, 1);
+                    LocalDate currentDate = newValue;
+/* 157 */           this.ageCalc.setText(currentDate.until(LocalDate.of(Calendar.getInstance().get(1), 10, 1)).toString().replace("P", ""));
 /*     */         });
 /*     */     
 /* 160 */     Calendar cal = Calendar.getInstance();
@@ -262,12 +258,18 @@
 /* 262 */         current.setSerialNo(this.serialNo.getText());
 /*     */         
 /* 264 */         String t = this.ageCalc.getText();
+                    t.replaceAll("-", "");
+                   t = ((t.indexOf("D") == -1 && t.indexOf("M") == -1) ? t.replaceAll("Y", "-0-0")
+                        : (t.indexOf("D") > -1 && t.indexOf("M") == -1) ? t.replaceAll("Y", "-0-").replace('D', ' ')
+                        : (t.indexOf("D") == -1 && t.indexOf("M") > -1) ? t.replace('Y', '-').replace('M', '-').concat("0")
+                        : t.replace('Y', '-').replace('M', '-').replace('D', ' ')).trim();
+                    t = t.replaceAll("-", " ");
 /*     */         
-/* 266 */         t = t.replace("Y", "");
-/* 267 */         t = t.replace("M", "");
-/* 268 */         t = t.replace("D", "");
+///* 266 */         t = t.replace("Y", "");
+///* 267 */         t = t.replace("M", "");
+///* 268 */         t = t.replace("D", "");
 /* 269 */         System.out.println(t);
-/* 270 */         String[] ar = t.split("-");
+/* 270 */         String[] ar = t.split(" ");
 /* 271 */         List a = Arrays.asList(ar);
 /* 272 */         Collections.reverse(a);
 /* 273 */         t = "";

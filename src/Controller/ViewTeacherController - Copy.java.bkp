@@ -286,32 +286,31 @@ public class ViewTeacherController implements Initializable {
 
     @FXML
     private TabPane pane2020;
+
     @FXML
-    private Tab choose;
+    private Tab JAN19;
     @FXML
-    private Tab JAN20;
+    private Tab FEB19;
     @FXML
-    private Tab FEB20;
+    private Tab MAR19;
     @FXML
-    private Tab MAR20;
+    private Tab APR19;
     @FXML
-    private Tab APR20;
+    private Tab MAY19;
     @FXML
-    private Tab MAY20;
+    private Tab JUN19;
     @FXML
-    private Tab JUN20;
+    private Tab JUL19;
     @FXML
-    private Tab JUL20;
+    private Tab AUG19;
     @FXML
-    private Tab AUG20;
+    private Tab SEP19;
     @FXML
-    private Tab SEP20;
+    private Tab OCT19;
     @FXML
-    private Tab OCT20;
+    private Tab NOV19;
     @FXML
-    private Tab NOV20;
-    @FXML
-    private Tab DEC20;
+    private Tab DEC19;
 
     @FXML
     private Label Gross;
@@ -323,352 +322,352 @@ public class ViewTeacherController implements Initializable {
     private Label Net;
 
     @FXML
-    private TableView<Payroll> BonusTableJan20;
+    private TableView<Payroll> BonusTableJan19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnJan20;
+    private TableColumn<Payroll, String> BonusTypeColumnJan19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnJan20;
+    private TableColumn<Payroll, String> BonusAmountColumnJan19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnJan20;
+    private TableColumn<Payroll, String> BonusNotesColumnJan19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnJan20;
+    private TableColumn<Payroll, String> BonusDateColumnJan19;
     @FXML
-    private TableView<Payroll> DeductionTableJan20;
+    private TableView<Payroll> DeductionTableJan19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnJan20;
+    private TableColumn<Payroll, String> DeductionAmountColumnJan19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnJan20;
+    private TableColumn<Payroll, String> DeductionDateColumnJan19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnJan20;
+    private TableColumn<Payroll, String> DeductionNotesColumnJan19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnJan20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnJan19;
     @FXML
-    private Label Gross201;
+    private Label Gross191;
     @FXML
-    private Label Bonus201;
+    private Label Bonus191;
     @FXML
-    private Label Deduction201;
+    private Label Deduction191;
     @FXML
-    private Label Net201;
+    private Label Net191;
 
     @FXML
-    private TableView<Payroll> BonusTableFeb20;
+    private TableView<Payroll> BonusTableFeb19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnFeb20;
+    private TableColumn<Payroll, String> BonusTypeColumnFeb19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnFeb20;
+    private TableColumn<Payroll, String> BonusAmountColumnFeb19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnFeb20;
+    private TableColumn<Payroll, String> BonusNotesColumnFeb19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnFeb20;
+    private TableColumn<Payroll, String> BonusDateColumnFeb19;
     @FXML
-    private TableView<Payroll> DeductionTableFeb20;
+    private TableView<Payroll> DeductionTableFeb19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnFeb20;
+    private TableColumn<Payroll, String> DeductionAmountColumnFeb19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnFeb20;
+    private TableColumn<Payroll, String> DeductionDateColumnFeb19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnFeb20;
+    private TableColumn<Payroll, String> DeductionNotesColumnFeb19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnFeb20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnFeb19;
     @FXML
-    private Label Gross202;
+    private Label Gross192;
     @FXML
-    private Label Bonus202;
+    private Label Bonus192;
     @FXML
-    private Label Deduction202;
+    private Label Deduction192;
     @FXML
-    private Label Net202;
+    private Label Net192;
 
     @FXML
-    private TableView<Payroll> BonusTableMar20;
+    private TableView<Payroll> BonusTableMar19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnMar20;
+    private TableColumn<Payroll, String> BonusTypeColumnMar19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnMar20;
+    private TableColumn<Payroll, String> BonusAmountColumnMar19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnMar20;
+    private TableColumn<Payroll, String> BonusNotesColumnMar19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnMar20;
+    private TableColumn<Payroll, String> BonusDateColumnMar19;
     @FXML
-    private TableView<Payroll> DeductionTableMar20;
+    private TableView<Payroll> DeductionTableMar19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnMar20;
+    private TableColumn<Payroll, String> DeductionAmountColumnMar19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnMar20;
+    private TableColumn<Payroll, String> DeductionDateColumnMar19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnMar20;
+    private TableColumn<Payroll, String> DeductionNotesColumnMar19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnMar20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnMar19;
     @FXML
-    private Label Gross203;
+    private Label Gross193;
     @FXML
-    private Label Bonus203;
+    private Label Bonus193;
     @FXML
-    private Label Deduction203;
+    private Label Deduction193;
     @FXML
-    private Label Net203;
+    private Label Net193;
 
     @FXML
-    private TableView<Payroll> BonusTableApr20;
+    private TableView<Payroll> BonusTableApr19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnApr20;
+    private TableColumn<Payroll, String> BonusTypeColumnApr19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnApr20;
+    private TableColumn<Payroll, String> BonusAmountColumnApr19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnApr20;
+    private TableColumn<Payroll, String> BonusNotesColumnApr19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnApr20;
+    private TableColumn<Payroll, String> BonusDateColumnApr19;
     @FXML
-    private TableView<Payroll> DeductionTableApr20;
+    private TableView<Payroll> DeductionTableApr19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnApr20;
+    private TableColumn<Payroll, String> DeductionAmountColumnApr19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnApr20;
+    private TableColumn<Payroll, String> DeductionDateColumnApr19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnApr20;
+    private TableColumn<Payroll, String> DeductionNotesColumnApr19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnApr20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnApr19;
     @FXML
-    private Label Gross204;
+    private Label Gross194;
     @FXML
-    private Label Bonus204;
+    private Label Bonus194;
     @FXML
-    private Label Deduction204;
+    private Label Deduction194;
     @FXML
-    private Label Net204;
+    private Label Net194;
 
     @FXML
-    private TableView<Payroll> BonusTableMay20;
+    private TableView<Payroll> BonusTableMay19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnMay20;
+    private TableColumn<Payroll, String> BonusTypeColumnMay19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnMay20;
+    private TableColumn<Payroll, String> BonusAmountColumnMay19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnMay20;
+    private TableColumn<Payroll, String> BonusNotesColumnMay19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnMay20;
+    private TableColumn<Payroll, String> BonusDateColumnMay19;
     @FXML
-    private TableView<Payroll> DeductionTableMay20;
+    private TableView<Payroll> DeductionTableMay19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnMay20;
+    private TableColumn<Payroll, String> DeductionAmountColumnMay19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnMay20;
+    private TableColumn<Payroll, String> DeductionDateColumnMay19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnMay20;
+    private TableColumn<Payroll, String> DeductionNotesColumnMay19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnMay20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnMay19;
     @FXML
-    private Label Gross205;
+    private Label Gross195;
     @FXML
-    private Label Bonus205;
+    private Label Bonus195;
     @FXML
-    private Label Deduction205;
+    private Label Deduction195;
     @FXML
-    private Label Net205;
+    private Label Net195;
 
     @FXML
-    private TableView<Payroll> BonusTableJun20;
+    private TableView<Payroll> BonusTableJun19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnJun20;
+    private TableColumn<Payroll, String> BonusTypeColumnJun19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnJun20;
+    private TableColumn<Payroll, String> BonusAmountColumnJun19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnJun20;
+    private TableColumn<Payroll, String> BonusNotesColumnJun19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnJun20;
+    private TableColumn<Payroll, String> BonusDateColumnJun19;
     @FXML
-    private TableView<Payroll> DeductionTableJun20;
+    private TableView<Payroll> DeductionTableJun19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnJun20;
+    private TableColumn<Payroll, String> DeductionAmountColumnJun19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnJun20;
+    private TableColumn<Payroll, String> DeductionDateColumnJun19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnJun20;
+    private TableColumn<Payroll, String> DeductionNotesColumnJun19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnJun20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnJun19;
     @FXML
-    private Label Gross206;
+    private Label Gross196;
     @FXML
-    private Label Bonus206;
+    private Label Bonus196;
     @FXML
-    private Label Deduction206;
+    private Label Deduction196;
     @FXML
-    private Label Net206;
+    private Label Net196;
 
     @FXML
-    private TableView<Payroll> BonusTableJul20;
+    private TableView<Payroll> BonusTableJul19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnJul20;
+    private TableColumn<Payroll, String> BonusTypeColumnJul19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnJul20;
+    private TableColumn<Payroll, String> BonusAmountColumnJul19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnJul20;
+    private TableColumn<Payroll, String> BonusNotesColumnJul19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnJul20;
+    private TableColumn<Payroll, String> BonusDateColumnJul19;
     @FXML
-    private TableView<Payroll> DeductionTableJul20;
+    private TableView<Payroll> DeductionTableJul19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnJul20;
+    private TableColumn<Payroll, String> DeductionAmountColumnJul19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnJul20;
+    private TableColumn<Payroll, String> DeductionDateColumnJul19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnJul20;
+    private TableColumn<Payroll, String> DeductionNotesColumnJul19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnJul20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnJul19;
     @FXML
-    private Label Gross207;
+    private Label Gross197;
     @FXML
-    private Label Bonus207;
+    private Label Bonus197;
     @FXML
-    private Label Deduction207;
+    private Label Deduction197;
     @FXML
-    private Label Net207;
+    private Label Net197;
 
     @FXML
-    private TableView<Payroll> BonusTableAug20;
+    private TableView<Payroll> BonusTableAug19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnAug20;
+    private TableColumn<Payroll, String> BonusTypeColumnAug19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnAug20;
+    private TableColumn<Payroll, String> BonusAmountColumnAug19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnAug20;
+    private TableColumn<Payroll, String> BonusNotesColumnAug19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnAug20;
+    private TableColumn<Payroll, String> BonusDateColumnAug19;
     @FXML
-    private TableView<Payroll> DeductionTableAug20;
+    private TableView<Payroll> DeductionTableAug19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnAug20;
+    private TableColumn<Payroll, String> DeductionAmountColumnAug19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnAug20;
+    private TableColumn<Payroll, String> DeductionDateColumnAug19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnAug20;
+    private TableColumn<Payroll, String> DeductionNotesColumnAug19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnAug20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnAug19;
     @FXML
-    private Label Gross208;
+    private Label Gross198;
     @FXML
-    private Label Bonus208;
+    private Label Bonus198;
     @FXML
-    private Label Deduction208;
+    private Label Deduction198;
     @FXML
-    private Label Net208;
+    private Label Net198;
 
     @FXML
-    private TableView<Payroll> BonusTableSep20;
+    private TableView<Payroll> BonusTableSep19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnSep20;
+    private TableColumn<Payroll, String> BonusTypeColumnSep19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnSep20;
+    private TableColumn<Payroll, String> BonusAmountColumnSep19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnSep20;
+    private TableColumn<Payroll, String> BonusNotesColumnSep19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnSep20;
+    private TableColumn<Payroll, String> BonusDateColumnSep19;
     @FXML
-    private TableView<Payroll> DeductionTableSep20;
+    private TableView<Payroll> DeductionTableSep19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnSep20;
+    private TableColumn<Payroll, String> DeductionAmountColumnSep19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnSep20;
+    private TableColumn<Payroll, String> DeductionDateColumnSep19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnSep20;
+    private TableColumn<Payroll, String> DeductionNotesColumnSep19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnSep20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnSep19;
     @FXML
-    private Label Gross209;
+    private Label Gross199;
     @FXML
-    private Label Bonus209;
+    private Label Bonus199;
     @FXML
-    private Label Deduction209;
+    private Label Deduction199;
     @FXML
-    private Label Net209;
+    private Label Net199;
 
     @FXML
-    private TableView<Payroll> BonusTableOct20;
+    private TableView<Payroll> BonusTableOct19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnOct20;
+    private TableColumn<Payroll, String> BonusTypeColumnOct19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnOct20;
+    private TableColumn<Payroll, String> BonusAmountColumnOct19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnOct20;
+    private TableColumn<Payroll, String> BonusNotesColumnOct19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnOct20;
+    private TableColumn<Payroll, String> BonusDateColumnOct19;
     @FXML
-    private TableView<Payroll> DeductionTableOct20;
+    private TableView<Payroll> DeductionTableOct19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnOct20;
+    private TableColumn<Payroll, String> DeductionAmountColumnOct19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnOct20;
+    private TableColumn<Payroll, String> DeductionDateColumnOct19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnOct20;
+    private TableColumn<Payroll, String> DeductionNotesColumnOct19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnOct20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnOct19;
     @FXML
-    private Label Gross2010;
+    private Label Gross1910;
     @FXML
-    private Label Bonus2010;
+    private Label Bonus1910;
     @FXML
-    private Label Deduction2010;
+    private Label Deduction1910;
     @FXML
-    private Label Net2010;
+    private Label Net1910;
 
     @FXML
-    private TableView<Payroll> BonusTableNov20;
+    private TableView<Payroll> BonusTableNov19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnNov20;
+    private TableColumn<Payroll, String> BonusTypeColumnNov19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnNov20;
+    private TableColumn<Payroll, String> BonusAmountColumnNov19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnNov20;
+    private TableColumn<Payroll, String> BonusNotesColumnNov19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnNov20;
+    private TableColumn<Payroll, String> BonusDateColumnNov19;
     @FXML
-    private TableView<Payroll> DeductionTableNov20;
+    private TableView<Payroll> DeductionTableNov19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnNov20;
+    private TableColumn<Payroll, String> DeductionAmountColumnNov19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnNov20;
+    private TableColumn<Payroll, String> DeductionDateColumnNov19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnNov20;
+    private TableColumn<Payroll, String> DeductionNotesColumnNov19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnNov20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnNov19;
     @FXML
-    private Label Gross2011;
+    private Label Gross1911;
     @FXML
-    private Label Bonus2011;
+    private Label Bonus1911;
     @FXML
-    private Label Deduction2011;
+    private Label Deduction1911;
     @FXML
-    private Label Net2011;
+    private Label Net1911;
 
     @FXML
-    private TableView<Payroll> BonusTableDec20;
+    private TableView<Payroll> BonusTableDec19;
     @FXML
-    private TableColumn<Payroll, String> BonusTypeColumnDec20;
+    private TableColumn<Payroll, String> BonusTypeColumnDec19;
     @FXML
-    private TableColumn<Payroll, String> BonusAmountColumnDec20;
+    private TableColumn<Payroll, String> BonusAmountColumnDec19;
     @FXML
-    private TableColumn<Payroll, String> BonusNotesColumnDec20;
+    private TableColumn<Payroll, String> BonusNotesColumnDec19;
     @FXML
-    private TableColumn<Payroll, String> BonusDateColumnDec20;
+    private TableColumn<Payroll, String> BonusDateColumnDec19;
     @FXML
-    private TableView<Payroll> DeductionTableDec20;
+    private TableView<Payroll> DeductionTableDec19;
     @FXML
-    private TableColumn<Payroll, String> DeductionAmountColumnDec20;
+    private TableColumn<Payroll, String> DeductionAmountColumnDec19;
     @FXML
-    private TableColumn<Payroll, String> DeductionDateColumnDec20;
+    private TableColumn<Payroll, String> DeductionDateColumnDec19;
     @FXML
-    private TableColumn<Payroll, String> DeductionNotesColumnDec20;
+    private TableColumn<Payroll, String> DeductionNotesColumnDec19;
     @FXML
-    private TableColumn<Payroll, Boolean> DeductionStatusColumnDec20;
+    private TableColumn<Payroll, Boolean> DeductionStatusColumnDec19;
     @FXML
-    private Label Gross2012;
+    private Label Gross1912;
     @FXML
-    private Label Bonus2012;
+    private Label Bonus1912;
     @FXML
-    private Label Deduction2012;
+    private Label Deduction1912;
     @FXML
-    private Label Net2012;
+    private Label Net1912;
 
     @FXML
     private Tab ev;
@@ -951,60 +950,60 @@ public class ViewTeacherController implements Initializable {
                 PenaltyStatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
                 PenaltyStatusColumn.setCellFactory(CheckBoxTableCell.forTableColumn(PenaltyStatusColumn));
 
-                //2020
-                List<Payroll> tempBonus201 = new ArrayList();
-                List<Payroll> tempDeduction201 = new ArrayList();
-                List<Payroll> tempBonus202 = new ArrayList();
-                List<Payroll> tempDeduction202 = new ArrayList();
-                List<Payroll> tempBonus203 = new ArrayList();
-                List<Payroll> tempDeduction203 = new ArrayList();
-                List<Payroll> tempBonus204 = new ArrayList();
-                List<Payroll> tempDeduction204 = new ArrayList();
-                List<Payroll> tempBonus205 = new ArrayList();
-                List<Payroll> tempDeduction205 = new ArrayList();
-                List<Payroll> tempBonus206 = new ArrayList();
-                List<Payroll> tempDeduction206 = new ArrayList();
-                List<Payroll> tempBonus207 = new ArrayList();
-                List<Payroll> tempDeduction207 = new ArrayList();
-                List<Payroll> tempBonus208 = new ArrayList();
-                List<Payroll> tempDeduction208 = new ArrayList();
-                List<Payroll> tempBonus209 = new ArrayList();
-                List<Payroll> tempDeduction209 = new ArrayList();
-                List<Payroll> tempBonus2010 = new ArrayList();
-                List<Payroll> tempDeduction2010 = new ArrayList();
-                List<Payroll> tempBonus2011 = new ArrayList();
-                List<Payroll> tempDeduction2011 = new ArrayList();
-                List<Payroll> tempBonus2012 = new ArrayList();
-                List<Payroll> tempDeduction2012 = new ArrayList();
+                //2019
+                List<Payroll> tempBonus191 = new ArrayList();
+                List<Payroll> tempDeduction191 = new ArrayList();
+                List<Payroll> tempBonus192 = new ArrayList();
+                List<Payroll> tempDeduction192 = new ArrayList();
+                List<Payroll> tempBonus193 = new ArrayList();
+                List<Payroll> tempDeduction193 = new ArrayList();
+                List<Payroll> tempBonus194 = new ArrayList();
+                List<Payroll> tempDeduction194 = new ArrayList();
+                List<Payroll> tempBonus195 = new ArrayList();
+                List<Payroll> tempDeduction195 = new ArrayList();
+                List<Payroll> tempBonus196 = new ArrayList();
+                List<Payroll> tempDeduction196 = new ArrayList();
+                List<Payroll> tempBonus197 = new ArrayList();
+                List<Payroll> tempDeduction197 = new ArrayList();
+                List<Payroll> tempBonus198 = new ArrayList();
+                List<Payroll> tempDeduction198 = new ArrayList();
+                List<Payroll> tempBonus199 = new ArrayList();
+                List<Payroll> tempDeduction199 = new ArrayList();
+                List<Payroll> tempBonus1910 = new ArrayList();
+                List<Payroll> tempDeduction1910 = new ArrayList();
+                List<Payroll> tempBonus1911 = new ArrayList();
+                List<Payroll> tempDeduction1911 = new ArrayList();
+                List<Payroll> tempBonus1912 = new ArrayList();
+                List<Payroll> tempDeduction1912 = new ArrayList();
 
                 if (tempBonus.size() > 0) {
                     for (Payroll tBP : tempBonus) {
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTime(tBP.getPrDate());
-                        if (calendar.get(Calendar.MONTH) + 1 == 1 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus201.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 2 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus202.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 3 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus203.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 4 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus204.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 5 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus205.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 6 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus206.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 7 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus207.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 8 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus208.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 9 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus209.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 10 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus2010.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 11 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus2011.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempBonus2012.add(tBP);
+                        if (calendar.get(Calendar.MONTH) + 1 == 1 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus191.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 2 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus192.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 3 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus193.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 4 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus194.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 5 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus195.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 6 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus196.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 7 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus197.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 8 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus198.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 9 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus199.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 10 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus1910.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 11 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus1911.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempBonus1912.add(tBP);
                         }
                     }
                 }
@@ -1012,436 +1011,431 @@ public class ViewTeacherController implements Initializable {
                     for (Payroll tBP : tempDeduction) {
                         Calendar calendar = Calendar.getInstance();
                         calendar.setTime(tBP.getPrDate());
-                        if (calendar.get(Calendar.MONTH) + 1 == 1 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction201.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 2 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction202.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 3 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction203.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 4 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction204.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 5 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction205.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 6 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction206.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 7 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction207.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 8 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction208.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 9 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction209.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 10 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction2010.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 11 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction2011.add(tBP);
-                        } else if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.YEAR) == 2020) {
-                            tempDeduction2012.add(tBP);
+                        if (calendar.get(Calendar.MONTH) + 1 == 1 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction191.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 2 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction192.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 3 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction193.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 4 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction194.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 5 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction195.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 6 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction196.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 7 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction197.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 8 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction198.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 9 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction199.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 10 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction1910.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 11 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction1911.add(tBP);
+                        } else if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.YEAR) == 2019) {
+                            tempDeduction1912.add(tBP);
                         }
                     }
                 }
-                choose.selectedProperty().addListener((ov, oldTab, newTab) -> {
-                    if (newTab) {
-                        calculateSalary.setDisable(true);
-                    }
-                });
-                JAN20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                JAN19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 1 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 1 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net201.setText(String.valueOf(bp.getAmount()));
-                                    Gross201.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net191.setText(String.valueOf(bp.getAmount()));
+                                    Gross191.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction201.setText(String.valueOf(bp.getAmount()));
+                                    Deduction191.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus201.setText(String.valueOf(bp.getAmount()));
+                                    Bonus191.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus201);
-                        BonusTableJan20.setItems(bonusObserv);
-                        BonusAmountColumnJan20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnJan20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnJan20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnJan20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction201);
-                        DeductionTableJan20.setItems(DeductObserv);
-                        DeductionAmountColumnJan20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnJan20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnJan20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnJan20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnJan20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnJan20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus191);
+                        BonusTableJan19.setItems(bonusObserv);
+                        BonusAmountColumnJan19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnJan19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnJan19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnJan19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction191);
+                        DeductionTableJan19.setItems(DeductObserv);
+                        DeductionAmountColumnJan19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnJan19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnJan19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnJan19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnJan19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnJan19));
                     }
                 });
-                FEB20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                FEB19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 2 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 2 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net202.setText(String.valueOf(bp.getAmount()));
-                                    Gross202.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net192.setText(String.valueOf(bp.getAmount()));
+                                    Gross192.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction202.setText(String.valueOf(bp.getAmount()));
+                                    Deduction192.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus202.setText(String.valueOf(bp.getAmount()));
+                                    Bonus192.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus202);
-                        BonusTableFeb20.setItems(bonusObserv);
-                        BonusAmountColumnFeb20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnFeb20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnFeb20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnFeb20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction202);
-                        DeductionTableFeb20.setItems(DeductObserv);
-                        DeductionAmountColumnFeb20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnFeb20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnFeb20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnFeb20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnFeb20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnFeb20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus192);
+                        BonusTableFeb19.setItems(bonusObserv);
+                        BonusAmountColumnFeb19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnFeb19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnFeb19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnFeb19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction192);
+                        DeductionTableFeb19.setItems(DeductObserv);
+                        DeductionAmountColumnFeb19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnFeb19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnFeb19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnFeb19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnFeb19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnFeb19));
                     }
                 });
-                MAR20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                MAR19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 3 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 3 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net203.setText(String.valueOf(bp.getAmount()));
-                                    Gross203.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net193.setText(String.valueOf(bp.getAmount()));
+                                    Gross193.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction203.setText(String.valueOf(bp.getAmount()));
+                                    Deduction193.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus203.setText(String.valueOf(bp.getAmount()));
+                                    Bonus193.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus203);
-                        BonusTableMar20.setItems(bonusObserv);
-                        BonusAmountColumnMar20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnMar20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnMar20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnMar20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction203);
-                        DeductionTableMar20.setItems(DeductObserv);
-                        DeductionAmountColumnMar20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnMar20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnMar20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnMar20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnMar20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnMar20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus193);
+                        BonusTableMar19.setItems(bonusObserv);
+                        BonusAmountColumnMar19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnMar19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnMar19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnMar19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction193);
+                        DeductionTableMar19.setItems(DeductObserv);
+                        DeductionAmountColumnMar19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnMar19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnMar19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnMar19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnMar19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnMar19));
                     }
                 });
-                APR20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                APR19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 4 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 4 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net204.setText(String.valueOf(bp.getAmount()));
-                                    Gross204.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net194.setText(String.valueOf(bp.getAmount()));
+                                    Gross194.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction204.setText(String.valueOf(bp.getAmount()));
+                                    Deduction194.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus204.setText(String.valueOf(bp.getAmount()));
+                                    Bonus194.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus204);
-                        BonusTableApr20.setItems(bonusObserv);
-                        BonusAmountColumnApr20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnApr20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnApr20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnApr20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction204);
-                        DeductionTableApr20.setItems(DeductObserv);
-                        DeductionAmountColumnApr20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnApr20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnApr20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnApr20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnApr20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnApr20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus194);
+                        BonusTableApr19.setItems(bonusObserv);
+                        BonusAmountColumnApr19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnApr19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnApr19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnApr19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction194);
+                        DeductionTableApr19.setItems(DeductObserv);
+                        DeductionAmountColumnApr19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnApr19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnApr19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnApr19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnApr19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnApr19));
                     }
                 });
-                MAY20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                MAY19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 5 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 5 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net205.setText(String.valueOf(bp.getAmount()));
-                                    Gross205.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net195.setText(String.valueOf(bp.getAmount()));
+                                    Gross195.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction205.setText(String.valueOf(bp.getAmount()));
+                                    Deduction195.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus205.setText(String.valueOf(bp.getAmount()));
+                                    Bonus195.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus205);
-                        BonusTableMay20.setItems(bonusObserv);
-                        BonusAmountColumnMay20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnMay20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnMay20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnMay20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction205);
-                        DeductionTableMay20.setItems(DeductObserv);
-                        DeductionAmountColumnMay20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnMay20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnMay20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnMay20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnMay20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnMay20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus195);
+                        BonusTableMay19.setItems(bonusObserv);
+                        BonusAmountColumnMay19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnMay19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnMay19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnMay19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction195);
+                        DeductionTableMay19.setItems(DeductObserv);
+                        DeductionAmountColumnMay19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnMay19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnMay19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnMay19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnMay19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnMay19));
                     }
                 });
-                JUN20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                JUN19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 6 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 6 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net206.setText(String.valueOf(bp.getAmount()));
-                                    Gross206.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net196.setText(String.valueOf(bp.getAmount()));
+                                    Gross196.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction206.setText(String.valueOf(bp.getAmount()));
+                                    Deduction196.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus206.setText(String.valueOf(bp.getAmount()));
+                                    Bonus196.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus206);
-                        BonusTableJun20.setItems(bonusObserv);
-                        BonusAmountColumnJun20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnJun20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnJun20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnJun20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction206);
-                        DeductionTableJun20.setItems(DeductObserv);
-                        DeductionAmountColumnJun20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnJun20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnJun20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnJun20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnJun20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnJun20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus196);
+                        BonusTableJun19.setItems(bonusObserv);
+                        BonusAmountColumnJun19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnJun19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnJun19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnJun19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction196);
+                        DeductionTableJun19.setItems(DeductObserv);
+                        DeductionAmountColumnJun19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnJun19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnJun19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnJun19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnJun19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnJun19));
                     }
                 });
-                JUL20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                JUL19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 7 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 7 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net207.setText(String.valueOf(bp.getAmount()));
-                                    Gross207.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net197.setText(String.valueOf(bp.getAmount()));
+                                    Gross197.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction207.setText(String.valueOf(bp.getAmount()));
+                                    Deduction197.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus207.setText(String.valueOf(bp.getAmount()));
+                                    Bonus197.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus207);
-                        BonusTableJul20.setItems(bonusObserv);
-                        BonusAmountColumnJul20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnJul20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnJul20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnJul20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction207);
-                        DeductionTableJul20.setItems(DeductObserv);
-                        DeductionAmountColumnJul20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnJul20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnJul20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnJul20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnJul20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnJul20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus197);
+                        BonusTableJul19.setItems(bonusObserv);
+                        BonusAmountColumnJul19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnJul19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnJul19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnJul19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction197);
+                        DeductionTableJul19.setItems(DeductObserv);
+                        DeductionAmountColumnJul19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnJul19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnJul19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnJul19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnJul19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnJul19));
                     }
                 });
-                AUG20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                AUG19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 8 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 8 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net208.setText(String.valueOf(bp.getAmount()));
-                                    Gross208.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net198.setText(String.valueOf(bp.getAmount()));
+                                    Gross198.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction208.setText(String.valueOf(bp.getAmount()));
+                                    Deduction198.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus208.setText(String.valueOf(bp.getAmount()));
+                                    Bonus198.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus208);
-                        BonusTableAug20.setItems(bonusObserv);
-                        BonusAmountColumnAug20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnAug20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnAug20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnAug20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction208);
-                        DeductionTableAug20.setItems(DeductObserv);
-                        DeductionAmountColumnAug20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnAug20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnAug20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnAug20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnAug20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnAug20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus198);
+                        BonusTableAug19.setItems(bonusObserv);
+                        BonusAmountColumnAug19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnAug19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnAug19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnAug19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction198);
+                        DeductionTableAug19.setItems(DeductObserv);
+                        DeductionAmountColumnAug19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnAug19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnAug19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnAug19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnAug19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnAug19));
                     }
                 });
-                SEP20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                SEP19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 9 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 9 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net209.setText(String.valueOf(bp.getAmount()));
-                                    Gross209.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net199.setText(String.valueOf(bp.getAmount()));
+                                    Gross199.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction209.setText(String.valueOf(bp.getAmount()));
+                                    Deduction199.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus209.setText(String.valueOf(bp.getAmount()));
+                                    Bonus199.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus209);
-                        BonusTableSep20.setItems(bonusObserv);
-                        BonusAmountColumnSep20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnSep20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnSep20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnSep20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction209);
-                        DeductionTableSep20.setItems(DeductObserv);
-                        DeductionAmountColumnSep20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnSep20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnSep20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnSep20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnSep20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnSep20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus199);
+                        BonusTableSep19.setItems(bonusObserv);
+                        BonusAmountColumnSep19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnSep19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnSep19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnSep19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction199);
+                        DeductionTableSep19.setItems(DeductObserv);
+                        DeductionAmountColumnSep19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnSep19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnSep19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnSep19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnSep19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnSep19));
                     }
                 });
-                OCT20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                OCT19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 10 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 10 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net2010.setText(String.valueOf(bp.getAmount()));
-                                    Gross2010.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net1910.setText(String.valueOf(bp.getAmount()));
+                                    Gross1910.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction2010.setText(String.valueOf(bp.getAmount()));
+                                    Deduction1910.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus2010.setText(String.valueOf(bp.getAmount()));
+                                    Bonus1910.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus2010);
-                        BonusTableOct20.setItems(bonusObserv);
-                        BonusAmountColumnOct20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnOct20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnOct20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnOct20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction2010);
-                        DeductionTableOct20.setItems(DeductObserv);
-                        DeductionAmountColumnOct20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnOct20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnOct20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnOct20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnOct20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnOct20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus1910);
+                        BonusTableOct19.setItems(bonusObserv);
+                        BonusAmountColumnOct19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnOct19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnOct19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnOct19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction1910);
+                        DeductionTableOct19.setItems(DeductObserv);
+                        DeductionAmountColumnOct19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnOct19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnOct19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnOct19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnOct19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnOct19));
                     }
                 });
-                NOV20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                NOV19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 11 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 11 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net2011.setText(String.valueOf(bp.getAmount()));
-                                    Gross2011.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net1911.setText(String.valueOf(bp.getAmount()));
+                                    Gross1911.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction2011.setText(String.valueOf(bp.getAmount()));
+                                    Deduction1911.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus2011.setText(String.valueOf(bp.getAmount()));
+                                    Bonus1911.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus2011);
-                        BonusTableNov20.setItems(bonusObserv);
-                        BonusAmountColumnNov20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnNov20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnNov20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnNov20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction2011);
-                        DeductionTableNov20.setItems(DeductObserv);
-                        DeductionAmountColumnNov20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnNov20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnNov20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnNov20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnNov20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnNov20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus1911);
+                        BonusTableNov19.setItems(bonusObserv);
+                        BonusAmountColumnNov19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnNov19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnNov19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnNov19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction1911);
+                        DeductionTableNov19.setItems(DeductObserv);
+                        DeductionAmountColumnNov19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnNov19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnNov19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnNov19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnNov19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnNov19));
                     }
                 });
-                DEC20.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                DEC19.selectedProperty().addListener((ov, oldTab, newTab) -> {
                     if (newTab) {
                         calculateSalary.setDisable(false);
                         for (Payroll bp : current.getPId().getPayrollList()) {
                             Calendar calendar = Calendar.getInstance();
                             calendar.setTime(bp.getPrDate());
-                            if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.YEAR) == 2020) {
+                            if (calendar.get(Calendar.MONTH) + 1 == 12 && calendar.get(Calendar.YEAR) == 2019) {
                                 if (bp.getPrType().equals("9")) {
                                     calculateSalary.setDisable(true);
-                                    Net2012.setText(String.valueOf(bp.getAmount()));
-                                    Gross2012.setText(String.valueOf(current.getMonthlySalary()));
+                                    Net1912.setText(String.valueOf(bp.getAmount()));
+                                    Gross1912.setText(String.valueOf(current.getMonthlySalary()));
                                 } else if (bp.getPrType().equals("8")) {
-                                    Deduction2012.setText(String.valueOf(bp.getAmount()));
+                                    Deduction1912.setText(String.valueOf(bp.getAmount()));
                                 } else if (bp.getPrType().equals("7")) {
-                                    Bonus2012.setText(String.valueOf(bp.getAmount()));
+                                    Bonus1912.setText(String.valueOf(bp.getAmount()));
                                 }
                             }
                         }
-                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus2012);
-                        BonusTableDec20.setItems(bonusObserv);
-                        BonusAmountColumnDec20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        BonusDateColumnDec20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        BonusNotesColumnDec20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        BonusTypeColumnDec20.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
-                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction2012);
-                        DeductionTableDec20.setItems(DeductObserv);
-                        DeductionAmountColumnDec20.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
-                        DeductionDateColumnDec20.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
-                        DeductionNotesColumnDec20.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
-                        DeductionStatusColumnDec20.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
-                        DeductionStatusColumnDec20.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnDec20));
+                        ObservableList<Payroll> bonusObserv = FXCollections.observableArrayList(tempBonus1912);
+                        BonusTableDec19.setItems(bonusObserv);
+                        BonusAmountColumnDec19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        BonusDateColumnDec19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        BonusNotesColumnDec19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        BonusTypeColumnDec19.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                        ObservableList<Payroll> DeductObserv = FXCollections.observableArrayList(tempDeduction1912);
+                        DeductionTableDec19.setItems(DeductObserv);
+                        DeductionAmountColumnDec19.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                        DeductionDateColumnDec19.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                        DeductionNotesColumnDec19.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                        DeductionStatusColumnDec19.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                        DeductionStatusColumnDec19.setCellFactory(CheckBoxTableCell.forTableColumn(DeductionStatusColumnDec19));
                     }
                 });
             }
-//            calculateSalary.setDisable(false);
+            calculateSalary.setDisable(false);
             ev.selectedProperty().addListener((ov, oldTab, newTab) -> {
                 if (newTab) {
                     TeachingStaff.setEdit(current);
@@ -1625,6 +1619,7 @@ public class ViewTeacherController implements Initializable {
 
     @FXML
     public void handleCalculateSalary() {
+
         netsalDouble = current.getMonthlySalary();
 //        day = netsalDouble / 30;
 
@@ -1762,23 +1757,11 @@ public class ViewTeacherController implements Initializable {
         deduction = Double.valueOf(f.format(deduction));
         bonus = Double.valueOf(f.format(bonus));
         System.out.println("Deduction " + deduction);
-        try{
-        current.getPId().getPayrollList().add(TS.PersistNewNetSalary("تم استلام المرتب", current.getPId(), netsalDouble, "الادارة"));
-        LOGGER.info("تم استلام المرتب "+current.getPId().getName());
-        current.getPId().getPayrollList().add(TS.PersistNewDeductionsSalary("تم الخصم", current.getPId(), deduction));
-        LOGGER.info("تم الخصم "+current.getPId().getName());
-        current.getPId().getPayrollList().add(TS.PersistNewBonusSalary("تم اضافة المكافأت", current.getPId(), bonus));
-        LOGGER.info("تم اضافة المكافأت "+current.getPId().getName());
+
         updateSalaryTable(m);
-        }catch (Exception e){
-            LOGGER.error(e);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("يوجد خطأ");
-            alert.setHeaderText("خطأ");
-            alert.setContentText("برجاء التأكد من صحة البيانات");
-            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
-            alert.showAndWait();
-        }
+        current.getPId().getPayrollList().add(TS.PersistNewNetSalary("تم استلام المرتب", current.getPId(), netsalDouble, "الادارة"));
+        current.getPId().getPayrollList().add(TS.PersistNewDeductionsSalary("تم الخصم", current.getPId(), deduction));
+        current.getPId().getPayrollList().add(TS.PersistNewBonusSalary("تم اضافة المكافأت", current.getPId(), bonus));
     }
 
     void updateSalaryTable(int mm) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student_record" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d55ee861-a853-404f-9840-b486e24ee179">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student_record" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d55ee861-a853-404f-9840-b486e24ee179">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -105,46 +105,6 @@ order by p.GENDER asc,1 asc]]>
 			<fieldDescription><![CDATA[]]></fieldDescription>
 		</field>
 	</subDataset>
-	<subDataset name="studentRecord_1" uuid="c788bcf4-d5f9-4a3d-9da3-4e5d0a906d3e">
-		<parameter name="syid" class="java.lang.Integer">
-			<defaultValueExpression><![CDATA[$P{syid}]]></defaultValueExpression>
-		</parameter>
-		<queryString>
-			<![CDATA[select p.GENDER, p.NAME,SUBSTRING_INDEX(p.DOB, " ", -2)as DOB,s.AGE_ON_OCT,p.NATIONALITY,p.religion,
-     SUBSTRING_INDEX(p.NAME, " ",-3)as parentName,p.SPOUSE_PARENT_OCCUPATION,p.ADDRESS
-from persons p inner join student s on p.P_ID = s.P_ID
-inner join class_students cs on s.S_ID = cs.S_ID
-inner join classes c on cs.C_ID = c.C_ID
-where c.SY_ID = $P{syid}
-     and s.STATUS = 3
-order by p.GENDER desc,2 asc]]>
-		</queryString>
-		<field name="GENDER" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="NAME" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="DOB" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="AGE_ON_OCT" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="NATIONALITY" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="religion" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="parentName" class="java.lang.String"/>
-		<field name="SPOUSE_PARENT_OCCUPATION" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="ADDRESS" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-	</subDataset>
 	<parameter name="class_ID" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[3]]></defaultValueExpression>
 	</parameter>
@@ -159,9 +119,9 @@ order by p.GENDER desc,2 asc]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="83" splitType="Stretch">
+		<band height="72" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="db915390-091c-4dd3-bb05-51be9ce76ca8" mode="Transparent" x="375" y="2" width="180" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="db915390-091c-4dd3-bb05-51be9ce76ca8" mode="Transparent" x="622" y="2" width="180" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -169,26 +129,26 @@ order by p.GENDER desc,2 asc]]>
 				<text><![CDATA[مدرسة الأمجاد الخاصة الجديدة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb31baca-0180-401d-84dd-50506af35ded" x="197" y="0" width="148" height="36"/>
+				<reportElement uuid="fb31baca-0180-401d-84dd-50506af35ded" x="313" y="2" width="148" height="36"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="30" isBold="true" isUnderline="true" pdfFontName="Helvetica" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[سجل التلاميذ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb31baca-0180-401d-84dd-50506af35ded" x="300" y="36" width="54" height="27"/>
+				<reportElement uuid="fb31baca-0180-401d-84dd-50506af35ded" x="416" y="38" width="54" height="27"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="18"/>
 				</textElement>
 				<text><![CDATA[الصف :]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="1418076e-2779-465f-9d91-b81eea367def" style="Detail" x="197" y="36" width="103" height="19"/>
+				<reportElement uuid="1418076e-2779-465f-9d91-b81eea367def" style="Detail" x="313" y="38" width="103" height="19"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{SY_DESC}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement uuid="05412d6c-9769-43bd-90ea-9d79c396d96c" x="0" y="79" width="555" height="1"/>
+				<reportElement uuid="05412d6c-9769-43bd-90ea-9d79c396d96c" x="0" y="64" width="802" height="1"/>
 			</line>
 			<staticText>
 				<reportElement uuid="862bf8c1-a512-40db-9165-c14aa5dfae62" mode="Transparent" x="0" y="1" width="120" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
@@ -209,70 +169,70 @@ order by p.GENDER desc,2 asc]]>
 		</band>
 	</title>
 	<detail>
-		<band height="233" splitType="Stretch">
+		<band height="247" splitType="Stretch">
 			<elementGroup>
 				<componentElement>
-					<reportElement uuid="f20d5ff6-e75f-4dc1-81be-66062251ebf7" key="table 2" style="table 2" isPrintRepeatedValues="false" x="0" y="0" width="555" height="57" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true"/>
+					<reportElement uuid="f20d5ff6-e75f-4dc1-81be-66062251ebf7" key="table 2" style="table 2" isPrintRepeatedValues="false" x="0" y="0" width="802" height="57" isPrintInFirstWholeBand="true"/>
 					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-						<datasetRun subDataset="studentRecord" uuid="71c3ae24-671b-448a-a2bb-f08f9a95890f">
+						<datasetRun subDataset="studentRecord" uuid="e8fed8fc-c5db-4661-af8f-aa20a041a395">
 							<datasetParameter name="syid">
 								<datasetParameterExpression><![CDATA[$P{class_ID}]]></datasetParameterExpression>
 							</datasetParameter>
 							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 						</datasetRun>
-						<jr:column width="110" uuid="6bf48aba-d99f-40e7-a7d6-de415b2cf650">
-							<jr:columnHeader style="table 2_CH" height="60" rowSpan="2">
+						<jr:column width="160" uuid="6bf48aba-d99f-40e7-a7d6-de415b2cf650">
+							<jr:columnHeader style="table 2_CH" height="36" rowSpan="2">
 								<staticText>
-									<reportElement uuid="8b2a9c21-08b4-40d3-924c-c991b414c614" x="0" y="17" width="110" height="30"/>
+									<reportElement uuid="8b2a9c21-08b4-40d3-924c-c991b414c614" x="0" y="0" width="160" height="30"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial" size="14"/>
 									</textElement>
 									<text><![CDATA[العنوان]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
-								<textField>
-									<reportElement uuid="f9b997b8-5ca9-4cf4-8365-abbbdf57b044" isPrintRepeatedValues="false" x="0" y="0" width="110" height="29"/>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="false">
+									<reportElement uuid="f9b997b8-5ca9-4cf4-8365-abbbdf57b044" isPrintRepeatedValues="false" x="0" y="0" width="160" height="18"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial" size="8"/>
+										<font fontName="Arial" size="10"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{ADDRESS}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="51" uuid="d254132e-d1fe-4aef-b717-a95cac2f4bbf">
-							<jr:columnHeader style="table 2_CH" height="60" rowSpan="2">
+						<jr:column width="75" uuid="d254132e-d1fe-4aef-b717-a95cac2f4bbf">
+							<jr:columnHeader style="table 2_CH" height="36" rowSpan="2">
 								<staticText>
-									<reportElement uuid="96819035-dd13-40e8-bb71-c58ac3958cbb" x="0" y="17" width="51" height="30"/>
+									<reportElement uuid="96819035-dd13-40e8-bb71-c58ac3958cbb" x="0" y="0" width="75" height="30"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial" size="12" isStrikeThrough="false"/>
 									</textElement>
 									<text><![CDATA[وظيفة الوالد]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
-								<textField>
-									<reportElement uuid="0fe70dd1-3807-4678-a4f9-ccacd8a37e8a" x="0" y="0" width="51" height="29"/>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement uuid="0fe70dd1-3807-4678-a4f9-ccacd8a37e8a" x="0" y="0" width="75" height="18"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial" size="8"/>
+										<font fontName="Arial" size="10"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{SPOUSE_PARENT_OCCUPATION}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="90" uuid="757789f2-49c2-4e70-9d91-68f58aec44bb">
-							<jr:columnHeader style="table 2_CH" height="60" rowSpan="2">
+						<jr:column width="137" uuid="757789f2-49c2-4e70-9d91-68f58aec44bb">
+							<jr:columnHeader style="table 2_CH" height="36" rowSpan="2">
 								<staticText>
-									<reportElement uuid="e17061ba-3ed7-473d-bc91-d07ab02224ed" x="0" y="17" width="90" height="30"/>
+									<reportElement uuid="e17061ba-3ed7-473d-bc91-d07ab02224ed" x="0" y="0" width="137" height="30"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial" size="14"/>
 									</textElement>
 									<text><![CDATA[اسم الوالد]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
-								<textField>
-									<reportElement uuid="d79c7dc4-8c92-4cca-8c85-5ff63a4a8bb9" x="0" y="0" width="90" height="29"/>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="false">
+									<reportElement uuid="d79c7dc4-8c92-4cca-8c85-5ff63a4a8bb9" x="0" y="0" width="137" height="18"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial" size="10"/>
 									</textElement>
@@ -281,18 +241,18 @@ order by p.GENDER desc,2 asc]]>
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="38" uuid="2a2a7bd3-3e61-42c5-952f-cff5d61d2693">
-							<jr:columnHeader style="table 2_CH" height="60" rowSpan="2">
+							<jr:columnHeader style="table 2_CH" height="36" rowSpan="2">
 								<staticText>
-									<reportElement uuid="cd17134a-8daa-456a-bce2-67678a52f504" x="0" y="17" width="38" height="30"/>
+									<reportElement uuid="cd17134a-8daa-456a-bce2-67678a52f504" x="0" y="0" width="38" height="30"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial" size="14"/>
 									</textElement>
 									<text><![CDATA[الديانة]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
-								<textField>
-									<reportElement uuid="cc9757f0-fc6b-43de-a2e7-503c74a59327" x="0" y="0" width="38" height="29"/>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="false">
+									<reportElement uuid="cc9757f0-fc6b-43de-a2e7-503c74a59327" x="0" y="0" width="38" height="18"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial"/>
 									</textElement>
@@ -301,18 +261,18 @@ order by p.GENDER desc,2 asc]]>
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="48" uuid="14c29cd2-13bf-4c24-ae34-b40aa5bcd380">
-							<jr:columnHeader style="table 2_CH" height="60" rowSpan="2">
+							<jr:columnHeader style="table 2_CH" height="36" rowSpan="2">
 								<staticText>
-									<reportElement uuid="2295b483-70df-4117-89ed-a7bd32d2dc70" x="0" y="17" width="48" height="30"/>
+									<reportElement uuid="2295b483-70df-4117-89ed-a7bd32d2dc70" x="0" y="0" width="48" height="30"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial" size="14"/>
 									</textElement>
 									<text><![CDATA[الجنسية]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
-								<textField>
-									<reportElement uuid="fd3c7d6e-9a59-4cf4-910d-b127033beb81" x="0" y="0" width="48" height="29"/>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="false">
+									<reportElement uuid="fd3c7d6e-9a59-4cf4-910d-b127033beb81" x="0" y="0" width="48" height="18"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial" size="14"/>
 									</textElement>
@@ -321,9 +281,9 @@ order by p.GENDER desc,2 asc]]>
 							</jr:detailCell>
 						</jr:column>
 						<jr:columnGroup width="58" uuid="47d57a72-ea34-4f6d-9d53-07ca09f7c899">
-							<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<jr:columnHeader style="table_CH" height="18" rowSpan="1">
 								<staticText>
-									<reportElement uuid="ec4c4f8a-8c06-4000-9b24-6befba19c8c9" x="0" y="0" width="58" height="30"/>
+									<reportElement uuid="ec4c4f8a-8c06-4000-9b24-6befba19c8c9" x="0" y="0" width="58" height="18"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial"/>
 									</textElement>
@@ -331,18 +291,18 @@ order by p.GENDER desc,2 asc]]>
 								</staticText>
 							</jr:columnHeader>
 							<jr:column width="19" uuid="456f15ff-f8c6-4aca-a11c-6a6facb406cc">
-								<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<jr:columnHeader style="table_CH" height="18" rowSpan="1">
 									<staticText>
-										<reportElement uuid="5cfd5cda-04e7-4b15-ac8a-6a9f369fbf9d" x="0" y="0" width="18" height="30"/>
+										<reportElement uuid="5cfd5cda-04e7-4b15-ac8a-6a9f369fbf9d" x="0" y="0" width="18" height="18"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<font fontName="Arial"/>
 										</textElement>
 										<text><![CDATA[سنة]]></text>
 									</staticText>
 								</jr:columnHeader>
-								<jr:detailCell style="table_TD" height="29" rowSpan="1">
+								<jr:detailCell style="table_TD" height="19" rowSpan="1">
 									<textField isBlankWhenNull="false">
-										<reportElement uuid="6a7ec180-ec91-4025-ba61-d3b72aea5883" x="0" y="0" width="18" height="29" isRemoveLineWhenBlank="true"/>
+										<reportElement uuid="6a7ec180-ec91-4025-ba61-d3b72aea5883" x="0" y="0" width="18" height="18" isRemoveLineWhenBlank="true"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<font fontName="Arial"/>
 										</textElement>
@@ -355,18 +315,18 @@ order by p.GENDER desc,2 asc]]>
 								</jr:detailCell>
 							</jr:column>
 							<jr:column width="20" uuid="abb29637-43e5-4368-bd22-d3b3ea0f6469">
-								<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<jr:columnHeader style="table_CH" height="18" rowSpan="1">
 									<staticText>
-										<reportElement uuid="9d60175e-7cf2-49cb-acc0-daf8e5a3b2d5" x="0" y="0" width="20" height="30"/>
+										<reportElement uuid="9d60175e-7cf2-49cb-acc0-daf8e5a3b2d5" x="0" y="0" width="20" height="18"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<font fontName="Arial"/>
 										</textElement>
 										<text><![CDATA[شهر]]></text>
 									</staticText>
 								</jr:columnHeader>
-								<jr:detailCell style="table_TD" height="29" rowSpan="1">
-									<textField>
-										<reportElement uuid="bed2ba2f-49ed-404d-a77f-1ce5d8b400ea" x="0" y="0" width="20" height="29"/>
+								<jr:detailCell style="table_TD" height="19" rowSpan="1">
+									<textField isBlankWhenNull="false">
+										<reportElement uuid="bed2ba2f-49ed-404d-a77f-1ce5d8b400ea" x="0" y="0" width="20" height="18"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<font fontName="Arial"/>
 										</textElement>
@@ -379,18 +339,18 @@ order by p.GENDER desc,2 asc]]>
 								</jr:detailCell>
 							</jr:column>
 							<jr:column width="19" uuid="16084cf8-a66e-479b-8043-6a8b3ad14881">
-								<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+								<jr:columnHeader style="table_CH" height="18" rowSpan="1">
 									<staticText>
-										<reportElement uuid="3f20f555-603a-4e16-8b04-962ec4fd1eed" x="0" y="0" width="19" height="30"/>
+										<reportElement uuid="3f20f555-603a-4e16-8b04-962ec4fd1eed" x="0" y="0" width="19" height="18"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<font fontName="Arial"/>
 										</textElement>
 										<text><![CDATA[يوم]]></text>
 									</staticText>
 								</jr:columnHeader>
-								<jr:detailCell style="table_TD" height="29" rowSpan="1">
+								<jr:detailCell style="table_TD" height="19" rowSpan="1">
 									<textField isBlankWhenNull="false">
-										<reportElement uuid="f2ef077b-7e5e-483c-a2b2-d360bda91890" x="0" y="0" width="19" height="29"/>
+										<reportElement uuid="f2ef077b-7e5e-483c-a2b2-d360bda91890" x="0" y="0" width="19" height="18"/>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
 											<font fontName="Arial"/>
 										</textElement>
@@ -403,62 +363,59 @@ order by p.GENDER desc,2 asc]]>
 								</jr:detailCell>
 							</jr:column>
 						</jr:columnGroup>
-						<jr:column width="59" uuid="3b766c8a-8fa8-4a8c-9554-92670367a8d0">
-							<jr:columnHeader style="table 2_CH" height="60" rowSpan="2">
+						<jr:column width="75" uuid="3b766c8a-8fa8-4a8c-9554-92670367a8d0">
+							<jr:columnHeader style="table 2_CH" height="36" rowSpan="2">
 								<staticText>
-									<reportElement uuid="b5dcc4f3-296a-41e8-9316-ee082d731614" x="0" y="17" width="59" height="30"/>
+									<reportElement uuid="b5dcc4f3-296a-41e8-9316-ee082d731614" x="0" y="0" width="75" height="30"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial" size="14"/>
 									</textElement>
 									<text><![CDATA[تاريخ الميلاد]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
-								<textField>
-									<reportElement uuid="ed710459-1c68-42ea-8e10-8f3a4b88792a" x="0" y="0" width="59" height="29"/>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="false">
+									<reportElement uuid="ed710459-1c68-42ea-8e10-8f3a4b88792a" x="0" y="0" width="75" height="18"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
 										<font fontName="Arial" isPdfEmbedded="true"/>
 									</textElement>
-									<textFieldExpression><![CDATA[($F{DOB}.split("-")[2]+"-"+$F{DOB}.split("-")[1]+"-"+$F{DOB}.split("-")[0]).replaceAll("0", "\\\u0660").replaceAll("1", "\\\u0661").replaceAll("2", "\\\u0662")
-     .replaceAll("3", "\\\u0663").replaceAll("4", "\\\u0664").replaceAll("5", "\\\u0665")
-     .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668")
-     .replaceAll("9", "\\\u0669")]]></textFieldExpression>
+									<textFieldExpression><![CDATA[($F{DOB}.split("-")[2]+"-"+$F{DOB}.split("-")[1]+"-"+$F{DOB}.split("-")[0]).replaceAll("0", "\\\u0660").replaceAll("1", "\\\u0661").replaceAll("2", "\\\u0662")      .replaceAll("3", "\\\u0663").replaceAll("4", "\\\u0664").replaceAll("5", "\\\u0665")      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668")      .replaceAll("9", "\\\u0669")]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
-						<jr:column width="90" uuid="d7a62c5a-ba7e-43d6-abb1-25eaa4718bd3">
-							<jr:columnHeader style="table 2_CH" height="60" rowSpan="2">
+						<jr:column width="186" uuid="d7a62c5a-ba7e-43d6-abb1-25eaa4718bd3">
+							<jr:columnHeader style="table 2_CH" height="36" rowSpan="2">
 								<staticText>
-									<reportElement uuid="4719dc4a-b1b7-45eb-ad3f-9241d30ba4b2" x="0" y="17" width="90" height="30"/>
+									<reportElement uuid="4719dc4a-b1b7-45eb-ad3f-9241d30ba4b2" x="0" y="0" width="186" height="30"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial" size="14"/>
 									</textElement>
 									<text><![CDATA[الاسم]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
-								<textField>
-									<reportElement uuid="a57de676-f46b-4c8f-bccb-dd945c56efa5" x="0" y="0" width="90" height="29"/>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="false">
+									<reportElement uuid="a57de676-f46b-4c8f-bccb-dd945c56efa5" x="0" y="0" width="186" height="18"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial" size="8"/>
+										<font fontName="Arial" size="10"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
 								</textField>
 							</jr:detailCell>
 						</jr:column>
 						<jr:column width="24" uuid="1a34acca-776c-4c41-b45e-e423edef85b5">
-							<jr:columnHeader style="table 2_CH" height="60" rowSpan="2">
+							<jr:columnHeader style="table 2_CH" height="36" rowSpan="2">
 								<staticText>
-									<reportElement uuid="8e8e1d93-5ac8-408f-b9cb-dc62b3a77ab9" x="0" y="17" width="24" height="30"/>
+									<reportElement uuid="8e8e1d93-5ac8-408f-b9cb-dc62b3a77ab9" x="0" y="0" width="24" height="30"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial"/>
 									</textElement>
 									<text><![CDATA[م]]></text>
 								</staticText>
 							</jr:columnHeader>
-							<jr:detailCell style="table 2_TD" height="29" rowSpan="1">
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
 								<textField>
-									<reportElement uuid="1ffa5a4c-58ed-4c79-8f95-1109f1d6d9a9" x="0" y="0" width="24" height="29"/>
+									<reportElement uuid="1ffa5a4c-58ed-4c79-8f95-1109f1d6d9a9" x="0" y="0" width="24" height="18"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
 										<font fontName="Arial"/>
 									</textElement>
@@ -472,7 +429,7 @@ order by p.GENDER desc,2 asc]]>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="48">
+		<band height="33">
 			<staticText>
 				<reportElement uuid="69ecfb94-a1a4-427d-9fc7-5ae226f02c06" mode="Transparent" x="0" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
@@ -482,7 +439,7 @@ order by p.GENDER desc,2 asc]]>
 				<text><![CDATA[مدير المدارس]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="afcdef91-c327-4968-b47e-b2782e4f5227" mode="Transparent" x="475" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement uuid="afcdef91-c327-4968-b47e-b2782e4f5227" mode="Transparent" x="722" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>

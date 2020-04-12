@@ -228,6 +228,40 @@
 /*      */   private static Student current;
 /*      */   StudentAffair SA;
 /*      */   
+
+            void fillConstant(){
+                    Arabic_F_1.setText("70");
+                    Arabic_S_1.setText("70");
+                    Math_F_1.setText("70");
+                    Math_S_1.setText("70");
+                    English_F_1.setText("70");
+                    English_S_1.setText("70");
+                    Religion_F_1.setText("70");
+                    Religion_S_1.setText("70");
+                    
+                    French_F_1.setText("60");
+                    French_S_1.setText("60");
+                    
+                    Social_F_1.setText("70");
+                    Social_S_1.setText("70");  
+                    
+                    Science_F_1.setText("70");
+                    Science_S_1.setText("70");
+                    Science_F_4.setText("6");
+                    Science_S_4.setText("6");
+                    
+                    Required_F_1.setText("10");
+                    Required_F_2.setText("10");
+                    Required_S_1.setText("10");
+                    Required_TH_1.setText("10");
+                    Required_S_2.setText("10");
+                    Optional_F_1.setText("10");
+                    Optional_F_2.setText("10");
+                    Optional_S_1.setText("10");
+                    Optional_S_2.setText("10");
+            }
+
+
 /*      */   public void initialize(URL url, ResourceBundle rb) {
 /*  232 */     current = StudentAffair.getEdit();
 /*  233 */     this.SA = new StudentAffair();
@@ -240,7 +274,7 @@
 /*  240 */     this.seatingNo.setText(current.getSeatingNo());
 /*  241 */     this.obsrNo1.setText(current.getObserve1());
 /*  242 */     this.obsrNo2.setText(current.getObserve2());
-/*      */     
+/*      */     fillConstant();
 /*  244 */     if (current.getActualGradesList() != null) {
 /*  245 */       for (ActualGrades a : current.getActualGradesList()) {
 /*  246 */         System.out.println("grade detail id " + a.getGdId().getGdId());
@@ -1112,7 +1146,7 @@
 /*      */       } 
 /*      */       
 /* 1114 */       if (!this.French_F_1.getText().isEmpty() && this.French_F_1.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1115 */         Double.valueOf(this.French_F_1.getText()).doubleValue() <= 70.0D) {
+/* 1115 */         Double.valueOf(this.French_F_1.getText()).doubleValue() <= 60.0D) {
 /* 1116 */         ActualGrades ag = new ActualGrades();
 /* 1117 */         ag.setGdId(new GradeDetail(Integer.valueOf(64)));
 /* 1118 */         ag.setGrade(Double.valueOf(this.French_F_1.getText()).doubleValue());
@@ -1120,7 +1154,7 @@
 /* 1120 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /* 1122 */       if (!this.French_F_2.getText().isEmpty() && this.French_F_2.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1123 */         Double.valueOf(this.French_F_2.getText()).doubleValue() <= 30.0D) {
+/* 1123 */         Double.valueOf(this.French_F_2.getText()).doubleValue() <= 40.0D) {
 /* 1124 */         ActualGrades ag = new ActualGrades();
 /* 1125 */         ag.setGdId(new GradeDetail(Integer.valueOf(65)));
 /* 1126 */         ag.setGrade(Double.valueOf(this.French_F_2.getText()).doubleValue());
@@ -1128,7 +1162,7 @@
 /* 1128 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /* 1130 */       if (!this.French_S_1.getText().isEmpty() && this.French_S_1.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1131 */         Double.valueOf(this.French_S_1.getText()).doubleValue() <= 70.0D) {
+/* 1131 */         Double.valueOf(this.French_S_1.getText()).doubleValue() <= 60.0D) {
 /* 1132 */         ActualGrades ag = new ActualGrades();
 /* 1133 */         ag.setGdId(new GradeDetail(Integer.valueOf(66)));
 /* 1134 */         ag.setGrade(Double.valueOf(this.French_S_1.getText()).doubleValue());
@@ -1136,7 +1170,7 @@
 /* 1136 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /* 1138 */       if (!this.French_S_2.getText().isEmpty() && this.French_S_2.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1139 */         Double.valueOf(this.French_S_2.getText()).doubleValue() <= 30.0D) {
+/* 1139 */         Double.valueOf(this.French_S_2.getText()).doubleValue() <= 40.0D) {
 /* 1140 */         ActualGrades ag = new ActualGrades();
 /* 1141 */         ag.setGdId(new GradeDetail(Integer.valueOf(67)));
 /* 1142 */         ag.setGrade(Double.valueOf(this.French_S_2.getText()).doubleValue());
@@ -1451,7 +1485,7 @@
 /*      */       } 
 /*      */       
 /* 1453 */       if (!this.French_F_1.getText().isEmpty() && this.French_F_1.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1454 */         Double.valueOf(this.French_F_1.getText()).doubleValue() <= 70.0D) {
+/* 1454 */         Double.valueOf(this.French_F_1.getText()).doubleValue() <= 60.0D) {
 /* 1455 */         ActualGrades ag = new ActualGrades();
 /* 1456 */         ag.setGdId(new GradeDetail(Integer.valueOf(104)));
 /* 1457 */         ag.setGrade(Double.valueOf(this.French_F_1.getText()).doubleValue());
@@ -1459,7 +1493,7 @@
 /* 1459 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /* 1461 */       if (!this.French_F_2.getText().isEmpty() && this.French_F_2.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1462 */         Double.valueOf(this.French_F_2.getText()).doubleValue() <= 30.0D) {
+/* 1462 */         Double.valueOf(this.French_F_2.getText()).doubleValue() <= 40.0D) {
 /* 1463 */         ActualGrades ag = new ActualGrades();
 /* 1464 */         ag.setGdId(new GradeDetail(Integer.valueOf(105)));
 /* 1465 */         ag.setGrade(Double.valueOf(this.French_F_2.getText()).doubleValue());
@@ -1467,7 +1501,7 @@
 /* 1467 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /* 1469 */       if (!this.French_S_1.getText().isEmpty() && this.French_S_1.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1470 */         Double.valueOf(this.French_S_1.getText()).doubleValue() <= 70.0D) {
+/* 1470 */         Double.valueOf(this.French_S_1.getText()).doubleValue() <= 60.0D) {
 /* 1471 */         ActualGrades ag = new ActualGrades();
 /* 1472 */         ag.setGdId(new GradeDetail(Integer.valueOf(106)));
 /* 1473 */         ag.setGrade(Double.valueOf(this.French_S_1.getText()).doubleValue());
@@ -1475,7 +1509,7 @@
 /* 1475 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /* 1477 */       if (!this.French_S_2.getText().isEmpty() && this.French_S_2.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1478 */         Double.valueOf(this.French_S_2.getText()).doubleValue() <= 30.0D) {
+/* 1478 */         Double.valueOf(this.French_S_2.getText()).doubleValue() <= 40.0D) {
 /* 1479 */         ActualGrades ag = new ActualGrades();
 /* 1480 */         ag.setGdId(new GradeDetail(Integer.valueOf(107)));
 /* 1481 */         ag.setGrade(Double.valueOf(this.French_S_2.getText()).doubleValue());
@@ -1790,7 +1824,7 @@
 /*      */       } 
 /*      */       
 /* 1792 */       if (!this.French_F_1.getText().isEmpty() && this.French_F_1.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1793 */         Double.valueOf(this.French_F_1.getText()).doubleValue() <= 70.0D) {
+/* 1793 */         Double.valueOf(this.French_F_1.getText()).doubleValue() <= 60.0D) {
 /* 1794 */         ActualGrades ag = new ActualGrades();
 /* 1795 */         ag.setGdId(new GradeDetail(Integer.valueOf(144)));
 /* 1796 */         ag.setGrade(Double.valueOf(this.French_F_1.getText()).doubleValue());
@@ -1798,7 +1832,7 @@
 /* 1798 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /* 1800 */       if (!this.French_F_2.getText().isEmpty() && this.French_F_2.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1801 */         Double.valueOf(this.French_F_2.getText()).doubleValue() <= 30.0D) {
+/* 1801 */         Double.valueOf(this.French_F_2.getText()).doubleValue() <= 40.0D) {
 /* 1802 */         ActualGrades ag = new ActualGrades();
 /* 1803 */         ag.setGdId(new GradeDetail(Integer.valueOf(145)));
 /* 1804 */         ag.setGrade(Double.valueOf(this.French_F_2.getText()).doubleValue());
@@ -1806,7 +1840,7 @@
 /* 1806 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /* 1808 */       if (!this.French_S_1.getText().isEmpty() && this.French_S_1.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1809 */         Double.valueOf(this.French_S_1.getText()).doubleValue() <= 70.0D) {
+/* 1809 */         Double.valueOf(this.French_S_1.getText()).doubleValue() <= 60.0D) {
 /* 1810 */         ActualGrades ag = new ActualGrades();
 /* 1811 */         ag.setGdId(new GradeDetail(Integer.valueOf(146)));
 /* 1812 */         ag.setGrade(Double.valueOf(this.French_S_1.getText()).doubleValue());
@@ -1814,7 +1848,7 @@
 /* 1814 */         this.SA.PersistStudControl(ag);
 /*      */       } 
 /* 1816 */       if (!this.French_S_2.getText().isEmpty() && this.French_S_2.getText().matches("[0-9]+(\\.[0-9])*") && 
-/* 1817 */         Double.valueOf(this.French_S_2.getText()).doubleValue() <= 30.0D) {
+/* 1817 */         Double.valueOf(this.French_S_2.getText()).doubleValue() <= 40.0D) {
 /* 1818 */         ActualGrades ag = new ActualGrades();
 /* 1819 */         ag.setGdId(new GradeDetail(Integer.valueOf(147)));
 /* 1820 */         ag.setGrade(Double.valueOf(this.French_S_2.getText()).doubleValue());

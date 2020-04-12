@@ -180,7 +180,9 @@ where c.C_ID = $P{c_ID}  order by p.GENDER asc,1 asc]]>
 			</staticText>
 			<textField>
 				<reportElement uuid="1418076e-2779-465f-9d91-b81eea367def" style="Detail" x="214" y="52" width="103" height="27"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font pdfEncoding="Cp1256"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{CLASS_DESC}]]></textFieldExpression>
 			</textField>
 			<line>
@@ -205,9 +207,9 @@ where c.C_ID = $P{c_ID}  order by p.GENDER asc,1 asc]]>
 		</band>
 	</title>
 	<detail>
-		<band height="577">
+		<band height="636">
 			<componentElement>
-				<reportElement uuid="31c93faa-fc1a-4527-bfda-59df55c715e4" key="table 2" isPrintRepeatedValues="false" x="0" y="0" width="268" height="29"/>
+				<reportElement uuid="31c93faa-fc1a-4527-bfda-59df55c715e4" key="table 2" isPrintRepeatedValues="false" x="134" y="0" width="268" height="29"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
 					<datasetRun subDataset="classStudent" uuid="ddf9aaca-9abf-4c2b-8deb-877620b68f87">
 						<datasetParameter name="c_ID">
@@ -274,7 +276,7 @@ where c.C_ID = $P{c_ID}  order by p.GENDER asc,1 asc]]>
 				</jr:table>
 			</componentElement>
 			<componentElement>
-				<reportElement uuid="519b76f0-cf8c-44fa-b262-332c87a8afaf" key="table 3" style="table 3" x="387" y="550" width="168" height="27"/>
+				<reportElement uuid="519b76f0-cf8c-44fa-b262-332c87a8afaf" key="table 3" style="table 3" x="389" y="609" width="168" height="27"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="countRelig" uuid="26a3705e-98e5-4ef8-b8e8-166fe8e1b80b">
 						<datasetParameter name="c_ID">

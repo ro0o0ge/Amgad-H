@@ -758,7 +758,8 @@ public class Management {
             PR.setAmount(Double.parseDouble(Amount));
             PR.setPrStatus(true);
             PR.setPRNotes(IssuedBy + " - " + Notes);
-            PR.setPrDate(dt);
+            
+            PR.setPrDate(new Timestamp(dt.getTime()));
             PR.setPId(su);
             PR.setPrType("2"); // 2 for Penalty 
 
@@ -882,7 +883,7 @@ public class Management {
             return PR;
         } catch (Exception e) {
             System.err.println("El72 " + e.getMessage());
-            return null;
+            throw e;
         }
     }
 
@@ -915,7 +916,7 @@ public class Management {
             return PR;
         } catch (Exception e) {
             System.err.println("El72 " + e.getMessage());
-            return null;
+            throw e;
         }
     }
 
@@ -946,7 +947,7 @@ public class Management {
             return PR;
         } catch (Exception e) {
             System.err.println("El72 " + e.getMessage());
-            return null;
+            throw e;
         }
     }
 

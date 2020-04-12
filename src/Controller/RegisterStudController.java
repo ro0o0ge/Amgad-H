@@ -135,13 +135,9 @@
 /* 135 */     this.registryStatus.getItems().addAll(new Object[] { "مقيد", "جديد" });
 /*     */     
 /* 137 */     this.sDOB.valueProperty().addListener((ov, oldValue, newValue) -> {
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */           
-/* 142 */           LocalDate currentDate = LocalDate.of(Calendar.getInstance().get(1), 10, 1);
-/*     */           
-/* 144 */           this.ageCalc.setText(currentDate.until(newValue).toString().replace("P-", ""));
+///*     */           LocalDate currentDate = LocalDate.of(Calendar.getInstance().get(1), 10, 1);
+                    LocalDate currentDate = newValue;
+/* 157 */           this.ageCalc.setText(currentDate.until(LocalDate.of(Calendar.getInstance().get(1), 10, 1)).toString().replace("P", ""));
 /*     */         });
 /*     */ 
 /*     */     
@@ -205,9 +201,15 @@
 /* 205 */         this.stud.setRegistryStatus(this.registryStatus.getSelectionModel().getSelectedItem().toString());
 /* 206 */         String t = this.ageCalc.getText();
 /*     */         
-/* 208 */         t = t.replace("Y", "");
-/* 209 */         t = t.replace("M", "");
-/* 210 */         t = t.replace("D", "");
+                    t.replaceAll("-", "");
+                   t = ((t.indexOf("D") == -1 && t.indexOf("M") == -1) ? t.replaceAll("Y", "-0-0")
+                        : (t.indexOf("D") > -1 && t.indexOf("M") == -1) ? t.replaceAll("Y", "-0-").replace('D', ' ')
+                        : (t.indexOf("D") == -1 && t.indexOf("M") > -1) ? t.replace('Y', '-').replace('M', '-').concat("0")
+                        : t.replace('Y', '-').replace('M', '-').replace('D', ' ')).trim();
+                    t = t.replaceAll("-", " ");
+///* 208 */         t = t.replace("Y", "");
+///* 209 */         t = t.replace("M", "");
+///* 210 */         t = t.replace("D", "");
 /* 211 */         System.out.println(t);
 /* 212 */         String[] ar = t.split("-");
 /* 213 */         List a = Arrays.asList(ar);
