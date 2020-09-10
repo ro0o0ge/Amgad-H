@@ -7,11 +7,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="381.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManagementReportsController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="487.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManagementReportsController">
    <children>
-      <GridPane gridLinesVisible="true" layoutX="92.0" layoutY="8.0" prefHeight="296.0" prefWidth="381.0">
+      <GridPane gridLinesVisible="true" layoutX="16.0" layoutY="8.0" prefHeight="442.0" prefWidth="457.0">
          <children>
-            <Label prefHeight="27.0" prefWidth="49.0" text="المصروفات" GridPane.columnIndex="2">
+            <Label prefHeight="27.0" prefWidth="65.0" text="المصروفات" GridPane.columnIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin></Label>
@@ -89,7 +89,7 @@
                         <Insets bottom="10.0" left="20.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="BOTTOM_LEFT" text="الفصل الدراسي الثاني" textAlignment="CENTER">
+                  <Label alignment="BOTTOM_LEFT" prefHeight="17.0" prefWidth="113.0" text="الفصل الدراسي الثاني" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin>
@@ -111,7 +111,7 @@
                </children>
             </VBox>
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generateControl2ndbySubjects" text="التقرير" GridPane.rowIndex="5" />
-            <Label prefHeight="17.0" prefWidth="36.0" text="المرتبات" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label prefHeight="17.0" prefWidth="71.0" text="المرتبات" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
@@ -131,6 +131,75 @@
                   </ComboBox>
                </children>
             </HBox>
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="45.0" text="البيانات" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <ComboBox fx:id="sData" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Button mnemonicParsing="false" onAction="#generateEmpData" text="التقرير" GridPane.rowIndex="6" />
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="91.0" text="جرد الزي المدرسي" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <children>
+                  <HBox fillHeight="false" prefHeight="25.0" prefWidth="166.0">
+                     <children>
+                        <DatePicker fx:id="toDate2" prefHeight="25.0" prefWidth="98.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </DatePicker>
+                        <Label text="الى" />
+                        <DatePicker fx:id="fromDate2" prefHeight="25.0" prefWidth="101.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                        <Label text="من" />
+                     </children>
+                  </HBox>
+                  <ComboBox fx:id="sClass4" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets left="40.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#generateInvCostumes" text="التقرير" GridPane.rowIndex="7" />
+            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="91.0" text="جرد الثوابت" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <children>
+                  <HBox fillHeight="false" prefHeight="25.0" prefWidth="166.0">
+                     <children>
+                        <DatePicker fx:id="toDate3" prefHeight="25.0" prefWidth="98.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </DatePicker>
+                        <Label text="الى" />
+                        <DatePicker fx:id="fromDate3" prefHeight="25.0" prefWidth="101.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </DatePicker>
+                        <Label text="من" />
+                     </children>
+                  </HBox>
+                  <ComboBox fx:id="sClass5" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets left="40.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#generateInvConstants" text="التقرير" GridPane.rowIndex="8" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="61.0" />
@@ -143,6 +212,9 @@
             <RowConstraints maxHeight="161.0" minHeight="0.0" prefHeight="32.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="161.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>

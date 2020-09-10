@@ -30,6 +30,7 @@
                   <Label fx:id="category" layoutX="338.0" layoutY="68.0" text="غير مسجل" AnchorPane.rightAnchor="326.0" AnchorPane.topAnchor="68.0" />
                   <Button fx:id="calculateSalary" disable="true" layoutX="148.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleCalculateSalary" text="حساب مرتب الشهر" visible="false" />
                   <Button fx:id="savePenalty" layoutX="121.0" layoutY="64.0" mnemonicParsing="false" onAction="#handlePenaltyEdit" prefHeight="25.0" prefWidth="92.0" text="تعديل الجزاء" visible="false" />
+                  <Button fx:id="saveBonus" layoutX="121.0" layoutY="64.0" mnemonicParsing="false" onAction="#handleBonusEdit" prefHeight="25.0" prefWidth="92.0" text="تعديل المكافأة" visible="false" />
                </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -185,6 +186,22 @@
                                           <TableColumn fx:id="PenaltyDateColumn" prefWidth="145.0" text="التاريخ" />
                                           <TableColumn fx:id="PenaltyNotesColumn" prefWidth="412.0" text="ملاحظات" />
                                           <TableColumn fx:id="PenaltyStatusColumn" minWidth="0.0" prefWidth="62.0" text="الحالة" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="bonusTab" text="المكافأت">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="BonusTable" prefHeight="408.0" prefWidth="708.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columns>
+                                          <TableColumn fx:id="BonusAmountColumn" prefWidth="86.0" text="المدة" />
+                                          <TableColumn fx:id="BonusDateColumn" prefWidth="145.0" text="التاريخ" />
+                                          <TableColumn fx:id="BonusNotesColumn" prefWidth="412.0" text="ملاحظات" />
+                                          <TableColumn fx:id="BonusStatusColumn" minWidth="0.0" prefWidth="62.0" text="الحالة" />
                                        </columns>
                                     </TableView>
                                  </children>

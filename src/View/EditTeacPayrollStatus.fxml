@@ -32,7 +32,7 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label text="حالة الغياب" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Label text="الحالة" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="20.0" />
                      </GridPane.margin>

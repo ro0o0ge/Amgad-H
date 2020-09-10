@@ -702,7 +702,7 @@ public class Management {
             Transaction t = s.beginTransaction();
             PR = new Payroll();
             PR.setAmount(Double.parseDouble(Amount));
-            PR.setPrStatus(false);
+            PR.setPrStatus(true);
             PR.setPRNotes(Notes);
             PR.setPrDate(dt);
             PR.setPId(su);
@@ -1028,7 +1028,7 @@ public class Management {
             AnchorPane page = loader.load();
             dialogStage2 = new Stage();
             dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
-            dialogStage2.setTitle("تعديل حالة الجزاء");
+            dialogStage2.setTitle("تعديل الحالة");
             dialogStage2.initModality(Modality.WINDOW_MODAL);
             dialogStage2.initOwner(this.getDialogStage());
             Scene scene = new Scene(page);

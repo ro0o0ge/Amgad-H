@@ -242,7 +242,7 @@ order by abs(s2.SEATING_NO) asc]]>
 				<text><![CDATA[للصف]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="52" y="51" width="131" height="27" uuid="9b7dcf19-4d17-4a36-99ef-0c246e6b42a8"/>
+				<reportElement x="41" y="51" width="131" height="27" uuid="9b7dcf19-4d17-4a36-99ef-0c246e6b42a8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="14"/>
 				</textElement>
@@ -260,7 +260,7 @@ order by abs(s2.SEATING_NO) asc]]>
 	<detail>
 		<band height="50" splitType="Immediate">
 			<componentElement>
-				<reportElement key="table 3" style="table 3" x="80" y="0" width="360" height="50" uuid="27326a20-5651-430b-8d50-09d731f528ca"/>
+				<reportElement key="table 3" style="table 3" x="0" y="0" width="802" height="50" uuid="27326a20-5651-430b-8d50-09d731f528ca"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="control_first" uuid="860a70f0-8a58-4851-9118-c598d361c8cf">
 						<datasetParameter name="sy_id">
@@ -268,19 +268,19 @@ order by abs(s2.SEATING_NO) asc]]>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="47" uuid="fa5d5844-2d62-42a0-87e4-a6d759b26f1c">
+					<jr:column width="56" uuid="fa5d5844-2d62-42a0-87e4-a6d759b26f1c">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="47" height="30" uuid="7971cb21-a27f-4487-b9c0-71e0d5dda27e"/>
+								<reportElement x="0" y="15" width="56" height="30" uuid="7971cb21-a27f-4487-b9c0-71e0d5dda27e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[نشاط رياضي]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="22" y="0" width="25" height="20" uuid="4b7170c9-3a55-4bd9-83e3-25b300b947aa"/>
+								<reportElement x="31" y="0" width="25" height="20" uuid="4b7170c9-3a55-4bd9-83e3-25b300b947aa"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -289,9 +289,9 @@ order by abs(s2.SEATING_NO) asc]]>
      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668").replaceAll("9", "\\\u0669")]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="0" width="22" height="20" uuid="0f6feb6d-5b3d-4ef6-a131-ff9822227b39"/>
+								<reportElement x="0" y="0" width="31" height="20" uuid="0f6feb6d-5b3d-4ef6-a131-ff9822227b39"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[($F{sport_activity}.doubleValue() >= 8.500 )? "ممتاز":
            ($F{sport_activity}.doubleValue() < 8.500 && $F{sport_activity}.doubleValue() >= 7.500)? "جيدجدا" :
@@ -300,19 +300,19 @@ order by abs(s2.SEATING_NO) asc]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="44" uuid="ac6cd078-32c3-444e-abd8-20cb05b56dae">
+					<jr:column width="54" uuid="ac6cd078-32c3-444e-abd8-20cb05b56dae">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="44" height="30" uuid="b15c221f-847f-4dd2-b328-cb4cba889ba4"/>
+								<reportElement x="0" y="15" width="54" height="30" uuid="b15c221f-847f-4dd2-b328-cb4cba889ba4"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[نشاط فني]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="19" y="0" width="25" height="20" uuid="b2e8b970-95cf-4c0f-bcc9-f934add4a511"/>
+								<reportElement x="29" y="0" width="25" height="20" uuid="b2e8b970-95cf-4c0f-bcc9-f934add4a511"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -321,9 +321,9 @@ order by abs(s2.SEATING_NO) asc]]>
      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668").replaceAll("9", "\\\u0669")]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="0" width="19" height="20" uuid="baa62dbe-2331-4905-b324-9de65fe8b8c7"/>
+								<reportElement x="0" y="0" width="29" height="20" uuid="baa62dbe-2331-4905-b324-9de65fe8b8c7"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[($F{social_activity}.doubleValue() >= 8.500 )? "ممتاز":
            ($F{social_activity}.doubleValue() < 8.500 && $F{social_activity}.doubleValue() >= 7.500)? "جيدجدا" :
@@ -332,19 +332,19 @@ order by abs(s2.SEATING_NO) asc]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="45" uuid="49d0d2c4-9d0a-4a47-9a8f-9b4e163c9eb8">
+					<jr:column width="58" uuid="49d0d2c4-9d0a-4a47-9a8f-9b4e163c9eb8">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="45" height="30" uuid="aac01343-f8d1-49a2-824a-224795968630"/>
+								<reportElement x="0" y="15" width="58" height="30" uuid="aac01343-f8d1-49a2-824a-224795968630"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[مستوى رفيع]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="20" y="0" width="25" height="20" uuid="b9dd6df9-b3d9-40c4-83b4-654972247bc2"/>
+								<reportElement x="33" y="0" width="25" height="20" uuid="b9dd6df9-b3d9-40c4-83b4-654972247bc2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -353,9 +353,9 @@ order by abs(s2.SEATING_NO) asc]]>
      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668").replaceAll("9", "\\\u0669")]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="0" width="20" height="20" uuid="073d0cec-b64c-4b4b-9dd4-1eaaea53d8c0"/>
+								<reportElement x="0" y="0" width="33" height="20" uuid="073d0cec-b64c-4b4b-9dd4-1eaaea53d8c0"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[($F{high_lvl}.doubleValue() >= 85 )? "ممتاز":
            ($F{high_lvl}.doubleValue() < 85 && $F{high_lvl}.doubleValue() >= 75)? "جيدجدا" :
@@ -364,19 +364,19 @@ order by abs(s2.SEATING_NO) asc]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="46" uuid="1a388876-0ece-4cd4-8647-b590eaf431f4">
+					<jr:column width="58" uuid="1a388876-0ece-4cd4-8647-b590eaf431f4">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="46" height="30" uuid="aa1e8827-17c5-4822-a926-0ab50be2dce6"/>
+								<reportElement x="0" y="15" width="58" height="30" uuid="aa1e8827-17c5-4822-a926-0ab50be2dce6"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[تربية دينية]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="21" y="0" width="25" height="20" uuid="4c623ca7-adf3-464d-bcec-e3233206f402"/>
+								<reportElement x="33" y="0" width="25" height="20" uuid="4c623ca7-adf3-464d-bcec-e3233206f402"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -385,9 +385,9 @@ order by abs(s2.SEATING_NO) asc]]>
      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668").replaceAll("9", "\\\u0669")]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="0" width="21" height="20" uuid="69f0a18a-b3d7-4641-822c-480242b8ef23"/>
+								<reportElement x="0" y="0" width="33" height="20" uuid="69f0a18a-b3d7-4641-822c-480242b8ef23"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[($F{religion}.doubleValue() >= 85 )? "ممتاز":
            ($F{religion}.doubleValue() < 85 && $F{religion}.doubleValue() >= 75)? "جيدجدا" :
@@ -396,19 +396,19 @@ order by abs(s2.SEATING_NO) asc]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="39" uuid="f4705e6b-1b8f-46bc-8077-0fab3739442e">
+					<jr:column width="51" uuid="f4705e6b-1b8f-46bc-8077-0fab3739442e">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="39" height="30" uuid="cd1cd2e2-db49-46d8-b662-cb8b031fbe6b"/>
+								<reportElement x="0" y="15" width="51" height="30" uuid="cd1cd2e2-db49-46d8-b662-cb8b031fbe6b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[الأنشطة-2]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="14" y="0" width="25" height="20" uuid="9fd34ad7-cbdf-4784-83c2-6d1d76887f50"/>
+								<reportElement x="26" y="0" width="25" height="20" uuid="9fd34ad7-cbdf-4784-83c2-6d1d76887f50"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -417,9 +417,9 @@ order by abs(s2.SEATING_NO) asc]]>
      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668").replaceAll("9", "\\\u0669")]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="0" width="14" height="20" uuid="dfe1e5d3-1f97-4d0d-8370-1d2d3841d15a"/>
+								<reportElement x="0" y="0" width="26" height="20" uuid="dfe1e5d3-1f97-4d0d-8370-1d2d3841d15a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[($F{activities_2}.doubleValue() >= 8.500 )? "ممتاز":
            ($F{activities_2}.doubleValue() < 8.500 && $F{activities_2}.doubleValue() >= 7.500)? "جيدجدا" :
@@ -428,19 +428,19 @@ order by abs(s2.SEATING_NO) asc]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="39" uuid="c5f1b151-1306-486e-ad6c-e2be1072b88f">
+					<jr:column width="48" uuid="c5f1b151-1306-486e-ad6c-e2be1072b88f">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="39" height="30" uuid="8836fd96-6fa8-459c-84c7-6a8050d11383"/>
+								<reportElement x="0" y="15" width="48" height="30" uuid="8836fd96-6fa8-459c-84c7-6a8050d11383"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[الأنشطة-1]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="14" y="0" width="25" height="20" uuid="853d7062-a04c-4be1-a75d-f066573534e5"/>
+								<reportElement x="23" y="0" width="25" height="20" uuid="853d7062-a04c-4be1-a75d-f066573534e5"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -449,9 +449,9 @@ order by abs(s2.SEATING_NO) asc]]>
      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668").replaceAll("9", "\\\u0669")]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="0" width="14" height="20" uuid="34c9b533-83e8-45e6-82b6-431db945b4bf"/>
+								<reportElement x="0" y="0" width="23" height="20" uuid="34c9b533-83e8-45e6-82b6-431db945b4bf"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[($F{activities_1}.doubleValue() >= 8.500 )? "ممتاز":
            ($F{activities_1}.doubleValue() < 8.500 && $F{activities_1}.doubleValue() >= 7.500)? "جيدجدا" :
@@ -460,19 +460,19 @@ order by abs(s2.SEATING_NO) asc]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="51" uuid="083f252a-08db-46da-8c1b-5548c57560d8">
+					<jr:column width="65" uuid="083f252a-08db-46da-8c1b-5548c57560d8">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="51" height="30" uuid="418c6d14-cf2e-4c7e-b115-b0409d1b4fb3"/>
+								<reportElement x="0" y="15" width="65" height="30" uuid="418c6d14-cf2e-4c7e-b115-b0409d1b4fb3"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[اللغة الانجليزية]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="26" y="0" width="25" height="20" uuid="09de8f91-476e-4c9f-ba5c-3f348f8a0924"/>
+								<reportElement x="40" y="0" width="25" height="20" uuid="09de8f91-476e-4c9f-ba5c-3f348f8a0924"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -481,9 +481,9 @@ order by abs(s2.SEATING_NO) asc]]>
      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668").replaceAll("9", "\\\u0669")]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="0" width="26" height="20" uuid="7417d630-87c9-498d-a90b-8541387041f7"/>
+								<reportElement x="0" y="0" width="40" height="20" uuid="7417d630-87c9-498d-a90b-8541387041f7"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[($F{english}.doubleValue() >= 85 )? "ممتاز":
            ($F{english}.doubleValue() < 85 && $F{english}.doubleValue() >= 75)? "جيدجدا" :
@@ -492,19 +492,19 @@ order by abs(s2.SEATING_NO) asc]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="39" uuid="5a46f7f7-e4e5-4255-a65e-8871f70ef412">
+					<jr:column width="51" uuid="5a46f7f7-e4e5-4255-a65e-8871f70ef412">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="39" height="30" uuid="fbdea137-5b89-4663-98e7-3b8652af6765"/>
+								<reportElement x="0" y="15" width="51" height="30" uuid="fbdea137-5b89-4663-98e7-3b8652af6765"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[رياضيات]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="14" y="0" width="25" height="20" uuid="e775e72b-38fe-400a-8aee-3e21a9d04872"/>
+								<reportElement x="26" y="0" width="25" height="20" uuid="e775e72b-38fe-400a-8aee-3e21a9d04872"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -513,9 +513,9 @@ order by abs(s2.SEATING_NO) asc]]>
      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668").replaceAll("9", "\\\u0669")]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="0" width="14" height="20" uuid="1ef24bae-0479-4b3d-bb5d-a884778feee8"/>
+								<reportElement x="0" y="0" width="26" height="20" uuid="1ef24bae-0479-4b3d-bb5d-a884778feee8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[($F{math}.doubleValue() >= 85 )? "ممتاز":
            ($F{math}.doubleValue() < 85 && $F{math}.doubleValue() >= 75)? "جيدجدا" :
@@ -524,19 +524,19 @@ order by abs(s2.SEATING_NO) asc]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="51" uuid="d3e494dd-4d1e-4702-879b-90fca9a7cd31">
+					<jr:column width="61" uuid="d3e494dd-4d1e-4702-879b-90fca9a7cd31">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="51" height="30" uuid="9c59a2bf-eb89-4586-be8c-beb99bdd78ae"/>
+								<reportElement x="0" y="15" width="61" height="30" uuid="9c59a2bf-eb89-4586-be8c-beb99bdd78ae"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[اللغة العربية]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="26" y="0" width="25" height="20" uuid="75c35e0d-924c-4012-82d0-3d34b7707f3b"/>
+								<reportElement x="36" y="0" width="25" height="20" uuid="75c35e0d-924c-4012-82d0-3d34b7707f3b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8"/>
 								</textElement>
@@ -545,9 +545,9 @@ order by abs(s2.SEATING_NO) asc]]>
      .replaceAll("6", "\\\u0666").replaceAll("7", "\\\u0667").replaceAll("8", "\\\u0668").replaceAll("9", "\\\u0669")]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="0" y="0" width="26" height="20" uuid="c575d5e2-ba34-491c-9666-ef92960591a8"/>
+								<reportElement x="0" y="0" width="36" height="20" uuid="c575d5e2-ba34-491c-9666-ef92960591a8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[($F{arabic}.doubleValue() >= 85 )? "ممتاز":
            ($F{arabic}.doubleValue() < 85 && $F{arabic}.doubleValue() >= 75)? "جيدجدا" :
@@ -562,7 +562,7 @@ order by abs(s2.SEATING_NO) asc]]>
 								<staticText>
 									<reportElement style="table_CH" stretchType="RelativeToTallestObject" x="0" y="0" width="40" height="30" uuid="d9c25315-39f2-441e-9395-3825cd2f43e6"/>
 									<textElement textAlignment="Center" verticalAlignment="Middle">
-										<font fontName="Arial"/>
+										<font fontName="Arial" isBold="true"/>
 									</textElement>
 									<text><![CDATA[السن في 1/10]]></text>
 								</staticText>
@@ -640,7 +640,7 @@ order by abs(s2.SEATING_NO) asc]]>
 							<staticText>
 								<reportElement x="0" y="15" width="55" height="30" uuid="7c4e5ca9-c47b-440f-b007-ea223e20688a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[تاريخ الميلاد]]></text>
 							</staticText>
@@ -663,7 +663,7 @@ order by abs(s2.SEATING_NO) asc]]>
 							<staticText>
 								<reportElement x="0" y="15" width="40" height="30" uuid="f4d22958-c9e2-43cd-86f1-a4fc7cdd547e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[الديانة]]></text>
 							</staticText>
@@ -678,21 +678,21 @@ order by abs(s2.SEATING_NO) asc]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="b5d84604-6cdd-44d1-9139-b8e1319d2347">
+					<jr:column width="109" uuid="b5d84604-6cdd-44d1-9139-b8e1319d2347">
 						<jr:columnHeader style="table 3_CH" height="60" rowSpan="2">
 							<staticText>
-								<reportElement x="0" y="15" width="90" height="30" uuid="337c4478-676a-45c8-858b-56b204551321"/>
+								<reportElement x="0" y="15" width="109" height="30" uuid="337c4478-676a-45c8-858b-56b204551321"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" size="11" isBold="true"/>
 								</textElement>
 								<text><![CDATA[اسم التلميذ]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="6d0da038-c99c-4573-aac1-40145188e555"/>
+								<reportElement x="0" y="0" width="109" height="20" uuid="6d0da038-c99c-4573-aac1-40145188e555"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8"/>
+									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
 							</textField>
@@ -703,7 +703,7 @@ order by abs(s2.SEATING_NO) asc]]>
 							<staticText>
 								<reportElement x="1" y="15" width="32" height="30" uuid="72340331-fe2b-42b4-96b7-ca103fef494e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[رقم الجلوس]]></text>
 							</staticText>
@@ -726,7 +726,7 @@ order by abs(s2.SEATING_NO) asc]]>
 							<staticText>
 								<reportElement x="0" y="15" width="22" height="30" uuid="1896045f-0f4c-4d10-85e2-990617500308"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[م]]></text>
 							</staticText>
