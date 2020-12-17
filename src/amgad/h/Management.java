@@ -702,7 +702,7 @@ public class Management {
             Transaction t = s.beginTransaction();
             PR = new Payroll();
             PR.setAmount(Double.parseDouble(Amount));
-            PR.setPrStatus(false);
+            PR.setPrStatus(true);
             PR.setPRNotes(Notes);
             PR.setPrDate(dt);
             PR.setPId(su);
@@ -718,6 +718,7 @@ public class Management {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
+            s.refresh(PR);
             EmpList.clear();
             EmpList.addAll(getActiveEmp());
             return true;
@@ -772,6 +773,7 @@ public class Management {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
+            s.refresh(PR);
             EmpList.clear();
             EmpList.addAll(getActiveEmp());
             return true;
@@ -1028,7 +1030,7 @@ public class Management {
             AnchorPane page = loader.load();
             dialogStage2 = new Stage();
             dialogStage2.getIcons().add(new Image(Main.class.getResourceAsStream("/resources/6.jpg")));
-            dialogStage2.setTitle("تعديل حالة الجزاء");
+            dialogStage2.setTitle("تعديل الحالة");
             dialogStage2.initModality(Modality.WINDOW_MODAL);
             dialogStage2.initOwner(this.getDialogStage());
             Scene scene = new Scene(page);
@@ -1053,6 +1055,7 @@ public class Management {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
+            s.refresh(editPayrollStatus);
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());

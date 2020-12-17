@@ -181,7 +181,7 @@ order by abs(s2.SEATING_NO) asc]]>
 	<title>
 		<band height="100" splitType="Stretch">
 			<staticText>
-				<reportElement uuid="db915390-091c-4dd3-bb05-51be9ce76ca8" mode="Transparent" x="636" y="1" width="166" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="636" y="1" width="166" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="db915390-091c-4dd3-bb05-51be9ce76ca8"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -189,7 +189,7 @@ order by abs(s2.SEATING_NO) asc]]>
 				<text><![CDATA[محافظة الجيزة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="db915390-091c-4dd3-bb05-51be9ce76ca8" mode="Transparent" x="636" y="28" width="166" height="24" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="636" y="28" width="166" height="24" forecolor="#000000" backcolor="#FFFFFF" uuid="db915390-091c-4dd3-bb05-51be9ce76ca8"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -197,7 +197,7 @@ order by abs(s2.SEATING_NO) asc]]>
 				<text><![CDATA[ادارة شمال الجيزة التعليمية]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="db915390-091c-4dd3-bb05-51be9ce76ca8" mode="Transparent" x="622" y="52" width="180" height="26" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="622" y="52" width="180" height="26" forecolor="#000000" backcolor="#FFFFFF" uuid="db915390-091c-4dd3-bb05-51be9ce76ca8"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -205,24 +205,24 @@ order by abs(s2.SEATING_NO) asc]]>
 				<text><![CDATA[مدرسة الأمجاد الخاصة الجديدة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb31baca-0180-401d-84dd-50506af35ded" x="263" y="1" width="267" height="36"/>
+				<reportElement x="263" y="1" width="267" height="36" uuid="fb31baca-0180-401d-84dd-50506af35ded"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="30" pdfFontName="Helvetica" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[بسم الله الرحمن الرحيم]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fb31baca-0180-401d-84dd-50506af35ded" x="345" y="51" width="216" height="27"/>
+				<reportElement x="345" y="51" width="216" height="27" uuid="fb31baca-0180-401d-84dd-50506af35ded"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="18"/>
 				</textElement>
 				<text><![CDATA[نتيجة نهاية العام 2018/2019 ]]></text>
 			</staticText>
 			<line>
-				<reportElement uuid="05412d6c-9769-43bd-90ea-9d79c396d96c" x="0" y="79" width="802" height="1"/>
+				<reportElement x="0" y="79" width="802" height="1" uuid="05412d6c-9769-43bd-90ea-9d79c396d96c"/>
 			</line>
 			<staticText>
-				<reportElement uuid="862bf8c1-a512-40db-9165-c14aa5dfae62" mode="Transparent" x="32" y="1" width="120" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="32" y="1" width="120" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="862bf8c1-a512-40db-9165-c14aa5dfae62"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -230,7 +230,7 @@ order by abs(s2.SEATING_NO) asc]]>
 				<text><![CDATA[كشف رصد درجات]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="75e83c41-8bdf-40f9-8339-3c177471ce58" mode="Transparent" x="0" y="28" width="152" height="23" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="0" y="28" width="152" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="75e83c41-8bdf-40f9-8339-3c177471ce58"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -238,7 +238,7 @@ order by abs(s2.SEATING_NO) asc]]>
 				<text><![CDATA[الفصل الدراسي الثاني]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="7a127aa4-ca86-4547-8def-84e5613856f7" mode="Transparent" x="308" y="51" width="37" height="29" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="308" y="51" width="37" height="29" forecolor="#000000" backcolor="#FFFFFF" uuid="7a127aa4-ca86-4547-8def-84e5613856f7"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -246,7 +246,7 @@ order by abs(s2.SEATING_NO) asc]]>
 				<text><![CDATA[للصف]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="9b7dcf19-4d17-4a36-99ef-0c246e6b42a8" x="184" y="51" width="100" height="27"/>
+				<reportElement x="184" y="51" width="100" height="27" uuid="9b7dcf19-4d17-4a36-99ef-0c246e6b42a8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="14"/>
 				</textElement>
@@ -257,7 +257,7 @@ order by abs(s2.SEATING_NO) asc]]>
 	<detail>
 		<band height="50" splitType="Immediate">
 			<componentElement>
-				<reportElement uuid="27326a20-5651-430b-8d50-09d731f528ca" key="table 3" style="table 3" x="0" y="0" width="360" height="50"/>
+				<reportElement key="table 3" style="table 3" x="0" y="0" width="360" height="50" uuid="27326a20-5651-430b-8d50-09d731f528ca"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="control_second" uuid="860a70f0-8a58-4851-9118-c598d361c8cf">
 						<datasetParameter name="sy_id">
@@ -268,23 +268,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="46" uuid="e9c652c4-5214-408e-8874-898318e83408">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="173075ef-2c08-4544-980b-47da81ece530" x="0" y="0" width="46" height="30"/>
+								<reportElement x="0" y="0" width="46" height="30" uuid="173075ef-2c08-4544-980b-47da81ece530"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[حاسب آلي]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="1434f639-dddb-4262-a5d5-ca87b37886a6" x="21" y="0" width="25" height="20"/>
+								<reportElement x="21" y="0" width="25" height="20" uuid="1434f639-dddb-4262-a5d5-ca87b37886a6"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{computer}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="95c5279c-b0e8-42b8-ad88-1361bba848d6" x="0" y="0" width="21" height="20"/>
+								<reportElement x="0" y="0" width="21" height="20" uuid="95c5279c-b0e8-42b8-ad88-1361bba848d6"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -296,23 +296,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="47" uuid="fa5d5844-2d62-42a0-87e4-a6d759b26f1c">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="7971cb21-a27f-4487-b9c0-71e0d5dda27e" x="0" y="0" width="47" height="30"/>
+								<reportElement x="0" y="0" width="47" height="30" uuid="7971cb21-a27f-4487-b9c0-71e0d5dda27e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[نشاط رياضي]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="4b7170c9-3a55-4bd9-83e3-25b300b947aa" x="22" y="0" width="25" height="20"/>
+								<reportElement x="22" y="0" width="25" height="20" uuid="4b7170c9-3a55-4bd9-83e3-25b300b947aa"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{sport_activity}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="0f6feb6d-5b3d-4ef6-a131-ff9822227b39" x="0" y="0" width="22" height="20"/>
+								<reportElement x="0" y="0" width="22" height="20" uuid="0f6feb6d-5b3d-4ef6-a131-ff9822227b39"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -324,23 +324,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="44" uuid="ac6cd078-32c3-444e-abd8-20cb05b56dae">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="b15c221f-847f-4dd2-b328-cb4cba889ba4" x="0" y="0" width="44" height="30"/>
+								<reportElement x="0" y="0" width="44" height="30" uuid="b15c221f-847f-4dd2-b328-cb4cba889ba4"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[نشاط فني]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="b2e8b970-95cf-4c0f-bcc9-f934add4a511" x="19" y="0" width="25" height="20"/>
+								<reportElement x="19" y="0" width="25" height="20" uuid="b2e8b970-95cf-4c0f-bcc9-f934add4a511"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{social_activity}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="baa62dbe-2331-4905-b324-9de65fe8b8c7" x="0" y="0" width="19" height="20"/>
+								<reportElement x="0" y="0" width="19" height="20" uuid="baa62dbe-2331-4905-b324-9de65fe8b8c7"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -352,23 +352,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="45" uuid="49d0d2c4-9d0a-4a47-9a8f-9b4e163c9eb8">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="aac01343-f8d1-49a2-824a-224795968630" x="0" y="0" width="45" height="30"/>
+								<reportElement x="0" y="0" width="45" height="30" uuid="aac01343-f8d1-49a2-824a-224795968630"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[مستوى رفيع]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="b9dd6df9-b3d9-40c4-83b4-654972247bc2" x="20" y="0" width="25" height="20"/>
+								<reportElement x="20" y="0" width="25" height="20" uuid="b9dd6df9-b3d9-40c4-83b4-654972247bc2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{high_lvl}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="073d0cec-b64c-4b4b-9dd4-1eaaea53d8c0" x="0" y="0" width="20" height="20"/>
+								<reportElement x="0" y="0" width="20" height="20" uuid="073d0cec-b64c-4b4b-9dd4-1eaaea53d8c0"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -380,23 +380,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="46" uuid="1a388876-0ece-4cd4-8647-b590eaf431f4">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="aa1e8827-17c5-4822-a926-0ab50be2dce6" x="0" y="0" width="46" height="30"/>
+								<reportElement x="0" y="0" width="46" height="30" uuid="aa1e8827-17c5-4822-a926-0ab50be2dce6"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[تربية دينية]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="4c623ca7-adf3-464d-bcec-e3233206f402" x="21" y="0" width="25" height="20"/>
+								<reportElement x="21" y="0" width="25" height="20" uuid="4c623ca7-adf3-464d-bcec-e3233206f402"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{religion}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="69f0a18a-b3d7-4641-822c-480242b8ef23" x="0" y="0" width="21" height="20"/>
+								<reportElement x="0" y="0" width="21" height="20" uuid="69f0a18a-b3d7-4641-822c-480242b8ef23"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -408,23 +408,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="39" uuid="f4705e6b-1b8f-46bc-8077-0fab3739442e">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="cd1cd2e2-db49-46d8-b662-cb8b031fbe6b" x="0" y="0" width="39" height="30"/>
+								<reportElement x="0" y="0" width="39" height="30" uuid="cd1cd2e2-db49-46d8-b662-cb8b031fbe6b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[الأنشطة-2]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="9fd34ad7-cbdf-4784-83c2-6d1d76887f50" x="14" y="0" width="25" height="20"/>
+								<reportElement x="14" y="0" width="25" height="20" uuid="9fd34ad7-cbdf-4784-83c2-6d1d76887f50"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{activities_2}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="dfe1e5d3-1f97-4d0d-8370-1d2d3841d15a" x="0" y="0" width="14" height="20"/>
+								<reportElement x="0" y="0" width="14" height="20" uuid="dfe1e5d3-1f97-4d0d-8370-1d2d3841d15a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -436,23 +436,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="39" uuid="c5f1b151-1306-486e-ad6c-e2be1072b88f">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="8836fd96-6fa8-459c-84c7-6a8050d11383" x="0" y="0" width="39" height="30"/>
+								<reportElement x="0" y="0" width="39" height="30" uuid="8836fd96-6fa8-459c-84c7-6a8050d11383"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[الأنشطة-1]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="853d7062-a04c-4be1-a75d-f066573534e5" x="14" y="0" width="25" height="20"/>
+								<reportElement x="14" y="0" width="25" height="20" uuid="853d7062-a04c-4be1-a75d-f066573534e5"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{activities_1}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="34c9b533-83e8-45e6-82b6-431db945b4bf" x="0" y="0" width="14" height="20"/>
+								<reportElement x="0" y="0" width="14" height="20" uuid="34c9b533-83e8-45e6-82b6-431db945b4bf"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -464,23 +464,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="43" uuid="d824c2a9-64ad-4830-9cda-b0e122d9b4df">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="018a82e9-44b6-4e96-81a1-355fd62ae685" x="0" y="0" width="43" height="30"/>
+								<reportElement x="0" y="0" width="43" height="30" uuid="018a82e9-44b6-4e96-81a1-355fd62ae685"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[المواد الإجتماعية]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="26771784-32d2-400f-9939-7678e5fbffd8" x="18" y="0" width="25" height="20"/>
+								<reportElement x="18" y="0" width="25" height="20" uuid="26771784-32d2-400f-9939-7678e5fbffd8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{social}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="00a367ca-42b8-4b37-9ad5-7d970b5a58da" x="0" y="0" width="18" height="20"/>
+								<reportElement x="0" y="0" width="18" height="20" uuid="00a367ca-42b8-4b37-9ad5-7d970b5a58da"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -492,23 +492,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="39" uuid="5cd0351c-fedf-4dff-ae1e-a2df060581ce">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="7d038cc1-c762-491d-b62a-859c4b11df7b" x="0" y="0" width="39" height="30"/>
+								<reportElement x="0" y="0" width="39" height="30" uuid="7d038cc1-c762-491d-b62a-859c4b11df7b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[العلوم]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="74a3a342-bc8e-44b5-9e15-9357201e6a71" x="14" y="0" width="25" height="20"/>
+								<reportElement x="14" y="0" width="25" height="20" uuid="74a3a342-bc8e-44b5-9e15-9357201e6a71"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{science}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="03825c4c-9162-4ba3-8f1d-0c501ec66cd4" x="0" y="0" width="14" height="20"/>
+								<reportElement x="0" y="0" width="14" height="20" uuid="03825c4c-9162-4ba3-8f1d-0c501ec66cd4"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -520,23 +520,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="51" uuid="083f252a-08db-46da-8c1b-5548c57560d8">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="418c6d14-cf2e-4c7e-b115-b0409d1b4fb3" x="0" y="0" width="51" height="30"/>
+								<reportElement x="0" y="0" width="51" height="30" uuid="418c6d14-cf2e-4c7e-b115-b0409d1b4fb3"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[اللغة الانجليزية]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="09de8f91-476e-4c9f-ba5c-3f348f8a0924" x="26" y="0" width="25" height="20"/>
+								<reportElement x="26" y="0" width="25" height="20" uuid="09de8f91-476e-4c9f-ba5c-3f348f8a0924"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{english}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="7417d630-87c9-498d-a90b-8541387041f7" x="0" y="0" width="26" height="20"/>
+								<reportElement x="0" y="0" width="26" height="20" uuid="7417d630-87c9-498d-a90b-8541387041f7"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -548,23 +548,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="39" uuid="5a46f7f7-e4e5-4255-a65e-8871f70ef412">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="fbdea137-5b89-4663-98e7-3b8652af6765" x="0" y="0" width="39" height="30"/>
+								<reportElement x="0" y="0" width="39" height="30" uuid="fbdea137-5b89-4663-98e7-3b8652af6765"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[رياضيات]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="e775e72b-38fe-400a-8aee-3e21a9d04872" x="14" y="0" width="25" height="20"/>
+								<reportElement x="14" y="0" width="25" height="20" uuid="e775e72b-38fe-400a-8aee-3e21a9d04872"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{math}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="1ef24bae-0479-4b3d-bb5d-a884778feee8" x="0" y="0" width="14" height="20"/>
+								<reportElement x="0" y="0" width="14" height="20" uuid="1ef24bae-0479-4b3d-bb5d-a884778feee8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -575,23 +575,23 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="51" uuid="d3e494dd-4d1e-4702-879b-90fca9a7cd31">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="9c59a2bf-eb89-4586-be8c-beb99bdd78ae" x="0" y="0" width="51" height="30"/>
+								<reportElement x="0" y="0" width="51" height="30" uuid="9c59a2bf-eb89-4586-be8c-beb99bdd78ae"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[اللغة العربية]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="75c35e0d-924c-4012-82d0-3d34b7707f3b" x="26" y="0" width="25" height="20"/>
+								<reportElement x="26" y="0" width="25" height="20" uuid="75c35e0d-924c-4012-82d0-3d34b7707f3b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{arabic}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement uuid="c575d5e2-ba34-491c-9666-ef92960591a8" x="0" y="0" width="26" height="20"/>
+								<reportElement x="0" y="0" width="26" height="20" uuid="c575d5e2-ba34-491c-9666-ef92960591a8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10"/>
 								</textElement>
@@ -602,14 +602,14 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="52" uuid="4e9fbfaf-5085-46bb-93e4-a46572644613">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="0df8544b-4145-46d4-ae8c-39fe3cfdd41b" x="0" y="0" width="52" height="15"/>
+								<reportElement x="0" y="0" width="52" height="15" uuid="0df8544b-4145-46d4-ae8c-39fe3cfdd41b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[السن في 1/10]]></text>
 							</staticText>
 							<staticText>
-								<reportElement uuid="140c9483-c65c-4c2f-aff0-368fbb2fee4c" x="0" y="15" width="52" height="15"/>
+								<reportElement x="0" y="15" width="52" height="15" uuid="140c9483-c65c-4c2f-aff0-368fbb2fee4c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial"/>
 								</textElement>
@@ -618,7 +618,7 @@ order by abs(s2.SEATING_NO) asc]]>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="91e6425c-5ec5-4995-94d2-2b62b90afa5a" x="0" y="0" width="52" height="20"/>
+								<reportElement x="0" y="0" width="52" height="20" uuid="91e6425c-5ec5-4995-94d2-2b62b90afa5a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial"/>
 								</textElement>
@@ -634,16 +634,16 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="55" uuid="671a3f7e-617e-4278-844a-01473d56a8f6">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="7c4e5ca9-c47b-440f-b007-ea223e20688a" x="0" y="0" width="55" height="30"/>
+								<reportElement x="0" y="0" width="55" height="30" uuid="7c4e5ca9-c47b-440f-b007-ea223e20688a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[تاريخ الميلاد]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="688b77e7-8c86-4c4b-87ee-25064db40e1b" x="0" y="0" width="55" height="20"/>
+								<reportElement x="0" y="0" width="55" height="20" uuid="688b77e7-8c86-4c4b-87ee-25064db40e1b"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial"/>
 								</textElement>
@@ -657,16 +657,16 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="40" uuid="ce5809be-de90-4bcf-be42-bcb6b703adbe">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="f4d22958-c9e2-43cd-86f1-a4fc7cdd547e" x="0" y="0" width="40" height="30"/>
+								<reportElement x="0" y="0" width="40" height="30" uuid="f4d22958-c9e2-43cd-86f1-a4fc7cdd547e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[الديانة]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="fdc7e0a6-1098-4335-a21b-db27de8bca53" x="0" y="0" width="40" height="20"/>
+								<reportElement x="0" y="0" width="40" height="20" uuid="fdc7e0a6-1098-4335-a21b-db27de8bca53"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial"/>
 								</textElement>
@@ -677,16 +677,16 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="90" uuid="b5d84604-6cdd-44d1-9139-b8e1319d2347">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="337c4478-676a-45c8-858b-56b204551321" x="0" y="0" width="90" height="30"/>
+								<reportElement x="0" y="0" width="90" height="30" uuid="337c4478-676a-45c8-858b-56b204551321"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[اسم التلميذ]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="6d0da038-c99c-4573-aac1-40145188e555" x="0" y="0" width="90" height="20"/>
+								<reportElement x="0" y="0" width="90" height="20" uuid="6d0da038-c99c-4573-aac1-40145188e555"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial"/>
 								</textElement>
@@ -697,16 +697,16 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="33" uuid="2b66196f-8630-4aae-b6c5-fd7adeb8d160">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="72340331-fe2b-42b4-96b7-ca103fef494e" x="1" y="0" width="32" height="30"/>
+								<reportElement x="1" y="0" width="32" height="30" uuid="72340331-fe2b-42b4-96b7-ca103fef494e"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[رقم الجلوس]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
-							<textField>
-								<reportElement uuid="183d38bb-949c-4b49-8470-785f2bcabaff" x="0" y="0" width="33" height="20"/>
+							<textField isBlankWhenNull="true">
+								<reportElement x="0" y="0" width="33" height="20" uuid="183d38bb-949c-4b49-8470-785f2bcabaff"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial"/>
 								</textElement>
@@ -720,16 +720,16 @@ order by abs(s2.SEATING_NO) asc]]>
 					<jr:column width="22" uuid="d60f8b51-dc69-4acf-9ca8-303d4bd4e493">
 						<jr:columnHeader style="table 3_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement uuid="1896045f-0f4c-4d10-85e2-990617500308" x="0" y="0" width="22" height="30"/>
+								<reportElement x="0" y="0" width="22" height="30" uuid="1896045f-0f4c-4d10-85e2-990617500308"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial"/>
+									<font fontName="Arial" isBold="true"/>
 								</textElement>
 								<text><![CDATA[م]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement uuid="970f2057-f3cb-4e75-a16b-8869768976e8" x="0" y="0" width="22" height="20"/>
+								<reportElement x="0" y="0" width="22" height="20" uuid="970f2057-f3cb-4e75-a16b-8869768976e8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>
@@ -742,7 +742,7 @@ order by abs(s2.SEATING_NO) asc]]>
 	<pageFooter>
 		<band height="48">
 			<staticText>
-				<reportElement uuid="69ecfb94-a1a4-427d-9fc7-5ae226f02c06" mode="Transparent" x="0" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="0" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="69ecfb94-a1a4-427d-9fc7-5ae226f02c06"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -750,7 +750,7 @@ order by abs(s2.SEATING_NO) asc]]>
 				<text><![CDATA[ناظر المدرسة]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="afcdef91-c327-4968-b47e-b2782e4f5227" mode="Transparent" x="710" y="0" width="92" height="27" forecolor="#000000" backcolor="#FFFFFF"/>
+				<reportElement mode="Transparent" x="710" y="0" width="92" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="afcdef91-c327-4968-b47e-b2782e4f5227"/>
 				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
 					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 					<paragraph lineSpacing="Single"/>

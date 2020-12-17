@@ -116,33 +116,29 @@
 			<defaultValueExpression><![CDATA[$P{syId}]]></defaultValueExpression>
 		</parameter>
 		<queryString>
-			<![CDATA[SELECT
-     sum(se.AMOUNT),
-     p.`NAME`,
-	c.class_desc
-FROM
-     `student` s INNER JOIN `persons` p ON s.`P_ID` = p.`P_ID`
-     INNER JOIN `student_expenses` se ON s.`S_ID` = se.`S_ID`
-     inner join student_expenses_lkp sel on se.STE_TYPE = sel.expense_desc
-     inner join class_students cs on s.S_ID = cs.S_ID
-     inner join classes c on cs.C_ID = c.C_ID
-     inner join study_years year2 on c.SY_ID = year2.SY_ID
-WHERE
-     sel.id = $P{id}
-     and year2.SY_ID = $P{syId}
-     and se.STE_STATUS = true
-group by 2
-order by 2;]]>
+			<![CDATA[select p.NAME,
+		se.AMOUNT,
+        se.STE_NOTE
+from student_expenses se inner join student s on s.S_ID = se.S_ID
+inner join persons p on p.P_ID = s.P_ID
+inner join class_students cs on s.S_ID = cs.S_ID
+inner join classes c on cs.C_ID = c.C_ID
+inner join study_years year2 on c.SY_ID = year2.SY_ID
+where STE_TYPE in (SELECT  expense_desc FROM student_expenses_lkp where id= 3)
+and STE_STATUS = 0  and year2.SY_ID = $P{syId}
+     order by 1 asc;]]>
 		</queryString>
-		<field name="sum(se.AMOUNT)" class="java.math.BigDecimal"/>
 		<field name="NAME" class="java.lang.String">
 			<fieldDescription><![CDATA[]]></fieldDescription>
 		</field>
-		<field name="class_desc" class="java.lang.String">
+		<field name="AMOUNT" class="java.math.BigDecimal">
 			<fieldDescription><![CDATA[]]></fieldDescription>
 		</field>
-		<variable name="TotalExpense" class="java.math.BigDecimal" calculation="Sum">
-			<variableExpression><![CDATA[$F{sum(se.AMOUNT)}]]></variableExpression>
+		<field name="STE_NOTE" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<variable name="Total" class="java.math.BigDecimal" calculation="Sum">
+			<variableExpression><![CDATA[$F{AMOUNT}]]></variableExpression>
 		</variable>
 		<group name="NAME">
 			<groupExpression><![CDATA[$F{NAME}]]></groupExpression>
@@ -178,11 +174,11 @@ order by 2;]]>
 				<reportElement x="0" y="79" width="555" height="1" uuid="05412d6c-9769-43bd-90ea-9d79c396d96c"/>
 			</line>
 			<textField>
-				<reportElement x="128" y="15" width="247" height="40" uuid="2b8a5163-92ad-4a81-94ed-a86d7a3bb8a9"/>
+				<reportElement x="128" y="26" width="298" height="40" uuid="2b8a5163-92ad-4a81-94ed-a86d7a3bb8a9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="28"/>
+					<font fontName="Arial" size="28" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{expense_desc}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["القسط الثاني الغير مدفوع"]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -203,9 +199,11 @@ order by 2;]]>
 					<jr:column width="90" uuid="1f2ecbc8-2f6b-4f85-8e86-be96bc102f06">
 						<jr:tableFooter height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="f65a4762-5d48-43f4-a546-6f2650c96151"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$V{TotalExpense}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="30" uuid="f95dfb6e-5b27-4609-9737-d65b45f3027b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
 							</textField>
 						</jr:tableFooter>
 						<jr:columnHeader style="table 4_CH" height="31" rowSpan="1">
@@ -214,14 +212,16 @@ order by 2;]]>
 								<textElement textAlignment="Center">
 									<font fontName="Arial" size="18" isBold="true"/>
 								</textElement>
-								<text><![CDATA[الاجمالي]]></text>
+								<text><![CDATA[المبلغ]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="cf9e1014-e0d1-45c7-94a6-8cb2149d7e14"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{sum(se.AMOUNT)}]]></textFieldExpression>
+								<reportElement x="0" y="0" width="90" height="30" uuid="d199d7be-1a2a-4163-923a-f6eb7c862cc0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{AMOUNT}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -232,7 +232,7 @@ order by 2;]]>
 								<textElement textAlignment="Center">
 									<font fontName="Arial" size="18" isBold="true"/>
 								</textElement>
-								<text><![CDATA[الصف]]></text>
+								<text><![CDATA[ملاحظات]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 4_TD" height="30" rowSpan="1">
@@ -241,7 +241,7 @@ order by 2;]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="14" isBold="false"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{class_desc}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{STE_NOTE}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -281,7 +281,7 @@ order by 2;]]>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="18" isBold="true"/>
 								</textElement>
-								<text><![CDATA[الإجمالي]]></text>
+								<text><![CDATA[م]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="table 3_TD" height="30" rowSpan="1">

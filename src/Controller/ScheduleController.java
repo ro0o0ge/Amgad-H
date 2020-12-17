@@ -1,197 +1,197 @@
-/*     */ package Controller;
-/*     */ 
-/*     */ import Entity.Classes;
-/*     */ import Entity.LectureDatetime;
-/*     */ import Entity.Schedule;
-/*     */ import Entity.Teacher;
-/*     */ import amgad.h.TeachingStaff;
-/*     */ import java.net.URL;
-/*     */ import java.util.ArrayList;
-/*     */ import java.util.List;
-/*     */ import java.util.ResourceBundle;
-/*     */ import javafx.beans.value.ObservableValue;
-/*     */ import javafx.fxml.FXML;
-/*     */ import javafx.fxml.Initializable;
-/*     */ import javafx.geometry.NodeOrientation;
-/*     */ import javafx.scene.control.Alert;
-/*     */ import javafx.scene.control.ComboBox;
-/*     */ import javafx.scene.control.TextField;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ public class ScheduleController
-/*     */   implements Initializable
-/*     */ {
-/*     */   @FXML
-/*     */   private TextField Sun1;
-/*     */   @FXML
-/*     */   private TextField Sun2;
-/*     */   @FXML
-/*     */   private TextField Sun3;
-/*     */   @FXML
-/*     */   private TextField Sun4;
-/*     */   @FXML
-/*     */   private TextField Sun5;
-/*     */   @FXML
-/*     */   private TextField Sun6;
-/*     */   @FXML
-/*     */   private TextField Sun7;
-/*     */   @FXML
-/*     */   private TextField Mon1;
-/*     */   @FXML
-/*     */   private TextField Mon2;
-/*     */   @FXML
-/*     */   private TextField Mon3;
-/*     */   @FXML
-/*     */   private TextField Mon4;
-/*     */   @FXML
-/*     */   private TextField Mon5;
-/*     */   @FXML
-/*     */   private TextField Mon6;
-/*     */   @FXML
-/*     */   private TextField Mon7;
-/*     */   @FXML
-/*     */   private TextField Tue1;
-/*     */   @FXML
-/*     */   private TextField Tue2;
-/*     */   @FXML
-/*     */   private TextField Tue3;
-/*     */   @FXML
-/*     */   private TextField Tue4;
-/*     */   @FXML
-/*     */   private TextField Tue5;
-/*     */   @FXML
-/*     */   private TextField Tue6;
-/*     */   @FXML
-/*     */   private TextField Tue7;
-/*     */   @FXML
-/*     */   private TextField Wed1;
-/*     */   @FXML
-/*     */   private TextField Wed2;
-/*     */   @FXML
-/*     */   private TextField Wed3;
-/*     */   @FXML
-/*     */   private TextField Wed4;
-/*     */   @FXML
-/*     */   private TextField Wed5;
-/*     */   @FXML
-/*     */   private TextField Wed6;
-/*     */   @FXML
-/*     */   private TextField Wed7;
-/*     */   @FXML
-/*     */   private TextField Thu1;
-/*     */   @FXML
-/*     */   private TextField Thu2;
-/*     */   @FXML
-/*     */   private TextField Thu3;
-/*     */   @FXML
-/*     */   private TextField Thu4;
-/*     */   @FXML
-/*     */   private TextField Thu5;
-/*     */   @FXML
-/*     */   private TextField Thu6;
-/*     */   @FXML
-/*     */   private TextField Thu7;
-/*     */   @FXML
-/*     */   private ComboBox comboClass;
-/*     */   @FXML
-/*     */   private ComboBox TSun1;
-/*     */   @FXML
-/*     */   private ComboBox TSun2;
-/*     */   @FXML
-/*     */   private ComboBox TSun3;
-/*     */   @FXML
-/*     */   private ComboBox TSun4;
-/*     */   @FXML
-/*     */   private ComboBox TSun5;
-/*     */   @FXML
-/*     */   private ComboBox TSun6;
-/*     */   @FXML
-/*     */   private ComboBox TSun7;
-/*     */   @FXML
-/*     */   private ComboBox TMon1;
-/*     */   @FXML
-/*     */   private ComboBox TMon2;
-/*     */   @FXML
-/*     */   private ComboBox TMon3;
-/*     */   @FXML
-/*     */   private ComboBox TMon4;
-/*     */   @FXML
-/*     */   private ComboBox TMon5;
-/*     */   @FXML
-/*     */   private ComboBox TMon6;
-/*     */   @FXML
-/*     */   private ComboBox TMon7;
-/*     */   @FXML
-/*     */   private ComboBox TTue1;
-/*     */   @FXML
-/*     */   private ComboBox TTue2;
-/*     */   @FXML
-/*     */   private ComboBox TTue3;
-/*     */   @FXML
-/*     */   private ComboBox TTue4;
-/*     */   @FXML
-/*     */   private ComboBox TTue5;
-/*     */   @FXML
-/*     */   private ComboBox TTue6;
-/*     */   @FXML
-/*     */   private ComboBox TTue7;
-/*     */   @FXML
-/*     */   private ComboBox TWed1;
-/*     */   @FXML
-/*     */   private ComboBox TWed2;
-/*     */   @FXML
-/*     */   private ComboBox TWed3;
-/*     */   @FXML
-/*     */   private ComboBox TWed4;
-/*     */   @FXML
-/*     */   private ComboBox TWed5;
-/*     */   @FXML
-/*     */   private ComboBox TWed6;
-/*     */   @FXML
-/*     */   private ComboBox TWed7;
-/*     */   @FXML
-/*     */   private ComboBox TThu1;
-/*     */   @FXML
-/*     */   private ComboBox TThu2;
-/*     */   @FXML
-/*     */   private ComboBox TThu3;
-/*     */   @FXML
-/*     */   private ComboBox TThu4;
-/*     */   @FXML
-/*     */   private ComboBox TThu5;
-/*     */   @FXML
-/*     */   private ComboBox TThu6;
-/*     */   @FXML
-/*     */   private ComboBox TThu7;
-/*     */   TeachingStaff MA;
-/*     */   Schedule sc;
-/*     */   Classes c;
-/*     */   List<LectureDatetime> lecList;
+ package Controller;
+ 
+ import Entity.Classes;
+ import Entity.LectureDatetime;
+ import Entity.Schedule;
+ import Entity.Teacher;
+ import amgad.h.TeachingStaff;
+ import java.net.URL;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.ResourceBundle;
+ import javafx.beans.value.ObservableValue;
+ import javafx.fxml.FXML;
+ import javafx.fxml.Initializable;
+ import javafx.geometry.NodeOrientation;
+ import javafx.scene.control.Alert;
+ import javafx.scene.control.ComboBox;
+ import javafx.scene.control.TextField;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ public class ScheduleController
+   implements Initializable
+ {
+   @FXML
+   private TextField Sun1;
+   @FXML
+   private TextField Sun2;
+   @FXML
+   private TextField Sun3;
+   @FXML
+   private TextField Sun4;
+   @FXML
+   private TextField Sun5;
+   @FXML
+   private TextField Sun6;
+   @FXML
+   private TextField Sun7;
+   @FXML
+   private TextField Mon1;
+   @FXML
+   private TextField Mon2;
+   @FXML
+   private TextField Mon3;
+   @FXML
+   private TextField Mon4;
+   @FXML
+   private TextField Mon5;
+   @FXML
+   private TextField Mon6;
+   @FXML
+   private TextField Mon7;
+   @FXML
+   private TextField Tue1;
+   @FXML
+   private TextField Tue2;
+   @FXML
+   private TextField Tue3;
+   @FXML
+   private TextField Tue4;
+   @FXML
+   private TextField Tue5;
+   @FXML
+   private TextField Tue6;
+   @FXML
+   private TextField Tue7;
+   @FXML
+   private TextField Wed1;
+   @FXML
+   private TextField Wed2;
+   @FXML
+   private TextField Wed3;
+   @FXML
+   private TextField Wed4;
+   @FXML
+   private TextField Wed5;
+   @FXML
+   private TextField Wed6;
+   @FXML
+   private TextField Wed7;
+   @FXML
+   private TextField Thu1;
+   @FXML
+   private TextField Thu2;
+   @FXML
+   private TextField Thu3;
+   @FXML
+   private TextField Thu4;
+   @FXML
+   private TextField Thu5;
+   @FXML
+   private TextField Thu6;
+   @FXML
+   private TextField Thu7;
+   @FXML
+   private ComboBox comboClass;
+   @FXML
+   private ComboBox TSun1;
+   @FXML
+   private ComboBox TSun2;
+   @FXML
+   private ComboBox TSun3;
+   @FXML
+   private ComboBox TSun4;
+   @FXML
+   private ComboBox TSun5;
+   @FXML
+   private ComboBox TSun6;
+   @FXML
+   private ComboBox TSun7;
+   @FXML
+   private ComboBox TMon1;
+   @FXML
+   private ComboBox TMon2;
+   @FXML
+   private ComboBox TMon3;
+   @FXML
+   private ComboBox TMon4;
+   @FXML
+   private ComboBox TMon5;
+   @FXML
+   private ComboBox TMon6;
+   @FXML
+   private ComboBox TMon7;
+   @FXML
+   private ComboBox TTue1;
+   @FXML
+   private ComboBox TTue2;
+   @FXML
+   private ComboBox TTue3;
+   @FXML
+   private ComboBox TTue4;
+   @FXML
+   private ComboBox TTue5;
+   @FXML
+   private ComboBox TTue6;
+   @FXML
+   private ComboBox TTue7;
+   @FXML
+   private ComboBox TWed1;
+   @FXML
+   private ComboBox TWed2;
+   @FXML
+   private ComboBox TWed3;
+   @FXML
+   private ComboBox TWed4;
+   @FXML
+   private ComboBox TWed5;
+   @FXML
+   private ComboBox TWed6;
+   @FXML
+   private ComboBox TWed7;
+   @FXML
+   private ComboBox TThu1;
+   @FXML
+   private ComboBox TThu2;
+   @FXML
+   private ComboBox TThu3;
+   @FXML
+   private ComboBox TThu4;
+   @FXML
+   private ComboBox TThu5;
+   @FXML
+   private ComboBox TThu6;
+   @FXML
+   private ComboBox TThu7;
+   TeachingStaff MA;
+   Schedule sc;
+   Classes c;
+   List<LectureDatetime> lecList;
 /* 180 */   int tempcheck = 0;
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */   
-/*     */   public void initialize(URL url, ResourceBundle rb) {
-/*     */     try {
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+   public void initialize(URL url, ResourceBundle rb) {
+     try {
 /* 192 */       this.MA = new TeachingStaff();
 /* 193 */       this.comboClass.getItems().addAll(getClasses());
-/*     */       
+       
 /* 195 */       this.comboClass.valueProperty().addListener((ov, oldValue, newValue) -> {
 /* 196 */             List<Schedule> s = this.MA.getSchedulebyClassDesc(newValue.toString());
 /* 197 */             List<String> Ts = this.MA.getClassTeachers(newValue.toString());
@@ -248,8 +248,8 @@
 /* 248 */               this.TThu3.getItems().clear();
 /* 249 */               this.TThu4.getItems().clear();
 /* 250 */               this.TThu5.getItems().clear();
-/*     */             } 
-/*     */             
+             } 
+             
 /* 253 */             if (s.size() < 1) {
 /* 254 */               this.Sun1.setText("");
 /* 255 */               this.Sun2.setText("");
@@ -276,7 +276,7 @@
 /* 276 */               this.Thu3.setText("");
 /* 277 */               this.Thu4.setText("");
 /* 278 */               this.Thu5.setText("");
-/*     */             } else {
+             } else {
 /* 280 */               this.Sun1.setText(((Schedule)s.get(0)).getSuId());
 /* 281 */               this.Sun2.setText(((Schedule)s.get(1)).getSuId());
 /* 282 */               this.Sun3.setText(((Schedule)s.get(2)).getSuId());
@@ -302,7 +302,7 @@
 /* 302 */               this.Thu3.setText(((Schedule)s.get(30)).getSuId());
 /* 303 */               this.Thu4.setText(((Schedule)s.get(31)).getSuId());
 /* 304 */               this.Thu5.setText(((Schedule)s.get(32)).getSuId());
-/*     */               
+               
 /* 306 */               this.TSun1.setValue(this.MA.getTeacherNameByID(((Schedule)s.get(0)).getTId().getTId().intValue()));
 /* 307 */               this.TSun2.setValue(this.MA.getTeacherNameByID(((Schedule)s.get(1)).getTId().getTId().intValue()));
 /* 308 */               this.TSun3.setValue(this.MA.getTeacherNameByID(((Schedule)s.get(2)).getTId().getTId().intValue()));
@@ -328,39 +328,39 @@
 /* 328 */               this.TThu3.setValue(this.MA.getTeacherNameByID(((Schedule)s.get(30)).getTId().getTId().intValue()));
 /* 329 */               this.TThu4.setValue(this.MA.getTeacherNameByID(((Schedule)s.get(31)).getTId().getTId().intValue()));
 /* 330 */               this.TThu5.setValue(this.MA.getTeacherNameByID(((Schedule)s.get(32)).getTId().getTId().intValue()));
-/*     */             } 
-/*     */           });
+             } 
+           });
 /* 333 */     } catch (Exception e) {
 /* 334 */       System.err.println("Table not full : " + e);
 /* 335 */       System.err.println("ERROR IN HIBERNATE : " + e.getCause());
-/*     */     } 
-/*     */   }
-/*     */   
-/*     */   private List<String> getClasses() {
+     } 
+   }
+   
+   private List<String> getClasses() {
 /* 340 */     List<String> StudY = new ArrayList<String>();
 /* 341 */     for (Classes sy : this.MA.getClasses()) {
 /* 342 */       StudY.add(sy.getClassDesc());
-/*     */     }
+     }
 /* 344 */     return StudY;
-/*     */   }
-/*     */   
-/*     */   public void createNew(String s, LectureDatetime ldt, Teacher tId) {
+   }
+   
+   public void createNew(String s, LectureDatetime ldt, Teacher tId) {
 /* 348 */     this.sc.setCId(this.c);
 /* 349 */     this.sc.setLecId(ldt);
 /* 350 */     this.sc.setSuId(s);
 /* 351 */     this.sc.setTId(tId);
 /* 352 */     this.MA.PersistNewSchedule(this.sc);
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   @FXML
-/*     */   public void Save() {
-/*     */     try {
+   }
+ 
+   
+   @FXML
+   public void Save() {
+     try {
 /* 359 */       if (!this.comboClass.getValue().equals("")) {
 /* 360 */         this.sc = new Schedule();
 /* 361 */         this.c = this.MA.getClassesByDesc(this.comboClass.getValue().toString());
 /* 362 */         this.lecList = this.MA.getLectures();
-/*     */         
+         
 /* 364 */         createNew(this.Sun1.getText(), (LectureDatetime)this.lecList.get(0), this.MA
 /* 365 */             .getTeacherByName(this.TSun1.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
 /* 366 */         this.sc = new Schedule();
@@ -375,12 +375,12 @@
 /* 375 */         this.sc = new Schedule();
 /* 376 */         createNew(this.Sun5.getText(), (LectureDatetime)this.lecList.get(4), this.MA
 /* 377 */             .getTeacherByName(this.TSun5.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */         
+ 
+ 
+ 
+ 
+ 
+         
 /* 384 */         this.sc = new Schedule();
 /* 385 */         createNew(this.Mon1.getText(), (LectureDatetime)this.lecList.get(5), this.MA
 /* 386 */             .getTeacherByName(this.TMon1.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
@@ -396,12 +396,12 @@
 /* 396 */         this.sc = new Schedule();
 /* 397 */         createNew(this.Mon5.getText(), (LectureDatetime)this.lecList.get(9), this.MA
 /* 398 */             .getTeacherByName(this.TMon5.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */         
+ 
+ 
+ 
+ 
+ 
+         
 /* 405 */         this.sc = new Schedule();
 /* 406 */         createNew(this.Tue1.getText(), (LectureDatetime)this.lecList.get(10), this.MA
 /* 407 */             .getTeacherByName(this.TTue1.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
@@ -417,12 +417,12 @@
 /* 417 */         this.sc = new Schedule();
 /* 418 */         createNew(this.Tue5.getText(), (LectureDatetime)this.lecList.get(14), this.MA
 /* 419 */             .getTeacherByName(this.TTue5.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */         
+ 
+ 
+ 
+ 
+ 
+         
 /* 426 */         this.sc = new Schedule();
 /* 427 */         createNew(this.Wed1.getText(), (LectureDatetime)this.lecList.get(15), this.MA
 /* 428 */             .getTeacherByName(this.TWed1.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
@@ -438,12 +438,12 @@
 /* 438 */         this.sc = new Schedule();
 /* 439 */         createNew(this.Wed5.getText(), (LectureDatetime)this.lecList.get(19), this.MA
 /* 440 */             .getTeacherByName(this.TWed5.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */ 
-/*     */         
+ 
+ 
+ 
+ 
+ 
+         
 /* 447 */         this.sc = new Schedule();
 /* 448 */         createNew(this.Thu1.getText(), (LectureDatetime)this.lecList.get(20), this.MA
 /* 449 */             .getTeacherByName(this.TThu1.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
@@ -459,31 +459,31 @@
 /* 459 */         this.sc = new Schedule();
 /* 460 */         createNew(this.Thu5.getText(), (LectureDatetime)this.lecList.get(24), this.MA
 /* 461 */             .getTeacherByName(this.TThu5.getSelectionModel().getSelectedItem().toString(), this.c.getClassDesc()));
-/*     */ 
-/*     */ 
-/*     */       
-/*     */       }
-/*     */       else {
-/*     */ 
-/*     */ 
-/*     */         
+ 
+ 
+       
+       }
+       else {
+ 
+ 
+         
 /* 470 */         Alert alert = new Alert(Alert.AlertType.ERROR);
 /* 471 */         alert.setTitle("يوجد خطأ");
 /* 472 */         alert.setHeaderText("خطأ");
 /* 473 */         alert.setContentText("برجاء التأكد من البيانات");
 /* 474 */         alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
 /* 475 */         alert.showAndWait();
-/*     */       } 
+       } 
 /* 477 */     } catch (Exception e) {
 /* 478 */       System.err.println("Table not full : " + e);
 /* 479 */       System.err.println("ERROR IN HIBERNATE : " + e.getCause());
-/*     */     } 
-/*     */   }
-/*     */ 
-/*     */   
-/*     */   @FXML
+     } 
+   }
+ 
+   
+   @FXML
 /* 485 */   public void Cancel() { this.MA.getDialogStage2().close(); }
-/*     */ }
+ }
 
 
 /* Location:              C:\Users\Abdo\Documents\Amgad-H.jar!\Controller\ScheduleController.class

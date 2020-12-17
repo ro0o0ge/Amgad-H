@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="teachers_data" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d55ee861-a853-404f-9840-b486e24ee179">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="teachersData" uuid="ba7c5e78-542e-48dc-88a7-a46c30deb63a">
+		<parameter name="syid" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[$P{syid}]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[select  p.NAME,
+	p.RELIGION,
+        SUBSTRING_INDEX(p.DOB, " ", -2)as DOB,
+        if (length(p.NATIONAL_ID) =14 ,p.NATIONAL_ID,'') as  NATIONAL_ID,
+        p.QUALIFICATION,
+	SUBSTRING_INDEX(p.HIRING_DATE, " ", 1)as Hiring_Date,
+        p.GRAD_YEAR,
+        if (length(c.CON_DEATAILS)=11,c.CON_DEATAILS,'') as CON_DEATAILS
+from persons p inner join teacher t on t.P_ID = p.P_ID inner join contacts c on p.P_ID = c.P_ID
+where t.STATUS= 1 order by name asc]]>
+		</queryString>
+		<field name="NAME" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="RELIGION" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="DOB" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="NATIONAL_ID" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="QUALIFICATION" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="Hiring_Date" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="GRAD_YEAR" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="CON_DEATAILS" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="class_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[3]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select SY_DESC from study_years where SY_ID = $P{class_ID}]]>
+	</queryString>
+	<field name="SY_DESC" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="class" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="72" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="622" y="2" width="180" height="26" forecolor="#000000" backcolor="#FFFFFF" uuid="db915390-091c-4dd3-bb05-51be9ce76ca8"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[مدرسة الأمجاد الخاصة الجديدة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="2" width="181" height="36" uuid="fb31baca-0180-401d-84dd-50506af35ded"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="30" isBold="true" isUnderline="true" pdfFontName="Helvetica" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[بيانات المدرسات]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="56" width="802" height="1" uuid="05412d6c-9769-43bd-90ea-9d79c396d96c"/>
+			</line>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="1" width="120" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="862bf8c1-a512-40db-9165-c14aa5dfae62"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[شعار الأمجاد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="28" width="152" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="75e83c41-8bdf-40f9-8339-3c177471ce58"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[احترام - تعاون - عمل]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="247" splitType="Stretch">
+			<elementGroup>
+				<componentElement>
+					<reportElement key="table 2" style="table 2" isPrintRepeatedValues="false" x="0" y="0" width="802" height="50" isPrintInFirstWholeBand="true" uuid="f20d5ff6-e75f-4dc1-81be-66062251ebf7"/>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="teachersData" uuid="e8fed8fc-c5db-4661-af8f-aa20a041a395">
+							<datasetParameter name="syid">
+								<datasetParameterExpression><![CDATA[$P{class_ID}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:column width="64" uuid="6bf48aba-d99f-40e7-a7d6-de415b2cf650">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="64" height="30" uuid="8b2a9c21-08b4-40d3-924c-c991b414c614"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" size="14"/>
+									</textElement>
+									<text><![CDATA[التقدير]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1"/>
+						</jr:column>
+						<jr:column width="79" uuid="d254132e-d1fe-4aef-b717-a95cac2f4bbf">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="79" height="30" uuid="96819035-dd13-40e8-bb71-c58ac3958cbb"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" size="12" isStrikeThrough="false"/>
+									</textElement>
+									<text><![CDATA[التليفون]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="79" height="19" uuid="11f432dd-1d18-4b70-85c5-1358e3369616"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{CON_DEATAILS}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="67" uuid="574d0545-cf17-4ffe-94fc-7719fd4e847c">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="67" height="30" uuid="cd17134a-8daa-456a-bce2-67678a52f504"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<text><![CDATA[الديانة]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="67" height="18" uuid="cc9757f0-fc6b-43de-a2e7-503c74a59327"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{RELIGION}.replaceAll( "1", "مسلم").replaceAll( "2", "مسيحي" )]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="58" uuid="757789f2-49c2-4e70-9d91-68f58aec44bb">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="58" height="30" uuid="e17061ba-3ed7-473d-bc91-d07ab02224ed"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" size="10"/>
+									</textElement>
+									<text><![CDATA[سنة التعيين]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="58" height="19" uuid="b4001ae2-3a45-453c-bfdd-2c51bfc1d3e9"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{Hiring_Date}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="57" uuid="2a2a7bd3-3e61-42c5-952f-cff5d61d2693">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="56" height="30" uuid="996ce0cf-3cec-4866-a304-a3d4a2bc23b7"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<text><![CDATA[سنة التخرج]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="57" height="19" uuid="0b2d42aa-74b8-4a3e-b993-4ab9228400c4"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{GRAD_YEAR}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="106" uuid="14c29cd2-13bf-4c24-ae34-b40aa5bcd380">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="105" height="30" uuid="b5dcc4f3-296a-41e8-9316-ee082d731614"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<text><![CDATA[المؤهل]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="106" height="19" uuid="01947653-4575-4c11-8192-ef20468ffcd0"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{QUALIFICATION}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="139" uuid="3b766c8a-8fa8-4a8c-9554-92670367a8d0">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="139" height="30" uuid="2295b483-70df-4117-89ed-a7bd32d2dc70"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<text><![CDATA[الرقم القومي]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="139" height="19" uuid="74110d16-0385-4c8e-b01a-7782f8c356fc"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle"/>
+									<textFieldExpression><![CDATA[$F{NATIONAL_ID}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="208" uuid="d7a62c5a-ba7e-43d6-abb1-25eaa4718bd3">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="208" height="30" uuid="4719dc4a-b1b7-45eb-ad3f-9241d30ba4b2"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" size="14"/>
+									</textElement>
+									<text><![CDATA[الاسم]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="208" height="18" uuid="a57de676-f46b-4c8f-bccb-dd945c56efa5"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial" size="10"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{NAME}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="24" uuid="1a34acca-776c-4c41-b45e-e423edef85b5">
+							<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="24" height="30" uuid="8e8e1d93-5ac8-408f-b9cb-dc62b3a77ab9"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<text><![CDATA[م]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="table 2_TD" height="19" rowSpan="1">
+								<textField>
+									<reportElement x="0" y="0" width="24" height="18" uuid="1ffa5a4c-58ed-4c79-8f95-1109f1d6d9a9"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Arial"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</elementGroup>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="33">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="69ecfb94-a1a4-427d-9fc7-5ae226f02c06"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[مدير المدارس]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="722" y="0" width="80" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="afcdef91-c327-4968-b47e-b2782e4f5227"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="Arial" size="18" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[يعتمد]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

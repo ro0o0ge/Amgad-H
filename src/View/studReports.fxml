@@ -11,7 +11,7 @@
    <children>
       <VBox layoutX="202.0" layoutY="14.0" prefHeight="200.0" prefWidth="276.0">
          <children>
-            <GridPane prefHeight="211.0" prefWidth="163.0">
+            <GridPane prefHeight="200.0" prefWidth="347.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="54.0" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.0" minWidth="10.0" prefWidth="166.0" />
@@ -38,7 +38,8 @@
                         <ComboBox fx:id="ExpenseType" prefWidth="150.0">
                            <VBox.margin>
                               <Insets bottom="5.0" />
-                           </VBox.margin></ComboBox>
+                           </VBox.margin>
+                        </ComboBox>
                         <ComboBox fx:id="sClass1" prefWidth="150.0" />
                      </children>
                   </VBox>
@@ -66,6 +67,9 @@
                   </VBox>
                   <Label text="غياب الفصل" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <Button mnemonicParsing="false" onAction="#generateClassAbsence" text="التقرير" GridPane.rowIndex="3" />
+                  <Label text="القسط الثاني" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="sClass4" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#generate2ndInstalment" text="التقرير" GridPane.rowIndex="4" />
                </children>
             </GridPane>
          </children>

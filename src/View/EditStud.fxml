@@ -45,8 +45,13 @@
                         </ComboBox>
                      </children>
                   </HBox>
-                  <Button layoutX="540.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleExpensesReport" text="تقرير المصاريف" AnchorPane.rightAnchor="76.0" AnchorPane.topAnchor="131.0" />
-                  <Button layoutX="464.0" layoutY="131.0" mnemonicParsing="false" onAction="#handleAbsentReport" text="تقرير الغياب" AnchorPane.rightAnchor="169.0" AnchorPane.topAnchor="131.0" />
+                  <Button layoutX="526.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleExpensesReport" text="تقرير المصاريف" AnchorPane.rightAnchor="76.0" AnchorPane.topAnchor="148.0" />
+                  <Button layoutX="452.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleAbsentReport" text="تقرير الغياب" AnchorPane.rightAnchor="169.0" AnchorPane.topAnchor="148.0" />
+                  <ComboBox fx:id="ComboSearchClass" layoutX="526.0" layoutY="103.0" prefHeight="25.0" prefWidth="101.0" promptText="الصف" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="103.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </ComboBox>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">

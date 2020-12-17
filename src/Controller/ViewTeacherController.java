@@ -14,6 +14,7 @@ import Entity.Schedule;
 import Entity.Teacher;
 import Util.LoginSec;
 import amgad.h.Main;
+import amgad.h.Management;
 import amgad.h.TeachingStaff;
 import amgad.h.root;
 import java.io.File;
@@ -284,6 +285,22 @@ public class ViewTeacherController implements Initializable {
     @FXML
     private TableColumn<Payroll, Boolean> PenaltyStatusColumn;
 
+    @FXML
+    private Button saveBonus;
+    @FXML
+    private Tab bonusTab;
+    @FXML
+    private TableView<Payroll> BonusTable;
+    @FXML
+    private TableColumn<Payroll, String> BonusAmountColumn;
+    @FXML
+    private TableColumn<Payroll, String> BonusDateColumn;
+    @FXML
+    private TableColumn<Payroll, String> BonusNotesColumn;
+    @FXML
+    private TableColumn<Payroll, Boolean> BonusStatusColumn;
+    @FXML
+    private TableColumn<Payroll, String> BonusTypeColumn;
     @FXML
     private TabPane pane2020;
     @FXML
@@ -764,6 +781,10 @@ public class ViewTeacherController implements Initializable {
             penalty.selectedProperty().addListener((ov, oldTab, newTab) -> {
                 savePenalty.setVisible(newTab);
             });
+            
+            bonusTab.selectedProperty().addListener((ov, oldTab, newTab) -> {
+                saveBonus.setVisible(newTab);
+            });
 
             payroll.selectedProperty().addListener((ov, oldTab, newTab) -> {
                 calculateSalary.setVisible(newTab);
@@ -934,7 +955,7 @@ public class ViewTeacherController implements Initializable {
             List<Payroll> tempBonus = new ArrayList();
             List<Payroll> tempDeduction = new ArrayList();
             if (current.getPId().getPayrollList() != null) {
-
+                
                 for (Payroll bonus : current.getPId().getPayrollList()) {
                     if (bonus.getPrType().equals("1")) {
                         tempBonus.add(bonus);
@@ -951,6 +972,15 @@ public class ViewTeacherController implements Initializable {
                 PenaltyStatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
                 PenaltyStatusColumn.setCellFactory(CheckBoxTableCell.forTableColumn(PenaltyStatusColumn));
 
+                ObservableList<Payroll> BonusObserv = FXCollections.observableArrayList(tempBonus);
+                BonusTable.setItems(BonusObserv);
+                BonusAmountColumn.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
+                BonusDateColumn.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
+                BonusNotesColumn.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                BonusTypeColumn.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
+                BonusStatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                BonusStatusColumn.setCellFactory(CheckBoxTableCell.forTableColumn(BonusStatusColumn));
+                
                 //2020
                 List<Payroll> tempBonus201 = new ArrayList();
                 List<Payroll> tempDeduction201 = new ArrayList();
@@ -1691,10 +1721,10 @@ public class ViewTeacherController implements Initializable {
                         == Calendar.getInstance().get(Calendar.YEAR)) {
                     switch (tPR.getPrType()) {
                         case "1":
-                            if (!tPR.getPrStatus()) {
+                            if (tPR.getPrStatus()) {
                                 netsalDouble += tPR.getAmount();
                                 bonus += tPR.getAmount();
-                                tPR.setPrStatus(true);
+//                                tPR.setPrStatus(true);
                                 TS.UpdatePayroll(tPR);
                             }
                             break;
@@ -1897,6 +1927,33 @@ public class ViewTeacherController implements Initializable {
             ObservableList<Payroll> tempPenalty = FXCollections.observableArrayList(tempDeduction);
             PenaltyTable.getItems().clear();
             PenaltyTable.setItems(tempPenalty);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("يوجد خطأ");
+            alert.setHeaderText("لم يتم تحديد العنصر المراد تعديله");
+            alert.setContentText("من فضلك قم بتحديد العنصر من الجدول");
+            alert.getDialogPane().setNodeOrientation(NodeOrientation.RIGHT_TO_LEFT);
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    public void handleBonusEdit() {
+        int selectedIndex = BonusTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+
+            TeachingStaff.setEditPayrollStatus(BonusTable.getItems().get(selectedIndex));
+            TS.ViewEditPenaltyStatus();
+
+            List<Payroll> tempDeduction = new ArrayList();
+            for (Payroll p : current.getPId().getPayrollList()) {
+                if (p.getPrType().equals("1")) {
+                    tempDeduction.add(p);
+                }
+            }
+            ObservableList<Payroll> tempPenalty = FXCollections.observableArrayList(tempDeduction);
+            BonusTable.getItems().clear();
+            BonusTable.setItems(tempPenalty);
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("يوجد خطأ");

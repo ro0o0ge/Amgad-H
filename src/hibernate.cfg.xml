@@ -48,14 +48,14 @@ Contributor(s):
         <property name="hibernate.show_sql">false</property>
         
         <!--local-->
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/amgad_sc?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">123456</property> 
-        
-        <!--localPC-->
 <!--        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/amgad_sc?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password"></property> -->
+        <property name="hibernate.connection.password">123456</property> -->
+        
+        <!--localPC-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/amgad_sc?zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;useUnicode=true&amp;createDatabaseIfNotExist=true&amp;characterEncoding=utf-8</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property> 
         
         <!--remote-->
 <!--        <property name="hibernate.connection.url">jdbc:mysql://192.168.1.107:3306/amgad_sc?zeroDateTimeBehavior=convertToNull</property>
