@@ -37,7 +37,7 @@
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <HBox layoutX="40.0" layoutY="222.0" prefHeight="27.0" prefWidth="289.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="222.0">
+                              <HBox layoutX="40.0" layoutY="195.0" prefHeight="27.0" prefWidth="289.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="195.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#Search" text="بحث" />
                                     <TextField fx:id="SearchQuery">
@@ -55,7 +55,7 @@
                                     </Label>
                                  </children>
                               </HBox>
-                              <Separator layoutY="210.0" prefHeight="2.0" prefWidth="369.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="210.0" />
+                              <Separator layoutY="186.0" prefHeight="2.0" prefWidth="369.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="186.0" />
                               <VBox layoutX="103.0" layoutY="101.0" prefHeight="61.0" prefWidth="112.0" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="101.0">
                                  <children>
                                     <Button mnemonicParsing="false" onAction="#handleAdd" prefHeight="25.0" prefWidth="116.0" text="إضافة الطالب للفصل" />
@@ -66,6 +66,11 @@
                                     </Button>
                                  </children>
                               </VBox>
+                              <ComboBox fx:id="ComboSearchClass" layoutX="169.0" layoutY="222.0" prefHeight="25.0" prefWidth="160.0" promptText="الصف">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </ComboBox>
                            </children>
                         </AnchorPane>
                     </items>

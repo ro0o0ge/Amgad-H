@@ -134,6 +134,15 @@ public class StudentAffair {
         /* 144 */ this.s.close();
         /* 145 */ return sy;
     }
+    
+    public List<String> getSYasStringList() {
+        /* 140 */ this.s = this.sf.openSession();
+        /* 141 */ this.s.beginTransaction();
+        /* 142 */ Query query = this.s.getNamedQuery("StudyYears.findAllDesc");
+        /* 143 */ List<String> sy = query.list();
+        /* 144 */ this.s.close();
+        /* 145 */ return sy;
+    }
 
     public List<Classes> getClasses() {
         /* 149 */ this.s = this.sf.openSession();
@@ -340,10 +349,16 @@ public class StudentAffair {
         /* 350 */ return sy;
     }
 
-    public List<Student> searchStudentbyName(String st) {
+    public List<Student> searchStudentbyName(String st,Integer syId) {
         /* 354 */ this.s = this.sf.openSession();
         /* 355 */ this.s.beginTransaction();
-        /* 356 */ Query query = this.s.getNamedQuery("Student.findByName").setParameter("name", '%' + st + '%');
+        Query query;
+        if (syId !=null)
+        /* 356 */ query = this.s.getNamedQuery("Student.findByNameAndClass").setParameter("name", '%' + st + '%').setParameter("sy_id", syId);
+        else{
+            query = this.s.getNamedQuery("Student.findByNameAndNoClass").setParameter("name", '%' + st + '%');
+
+        }
         /* 357 */ List<Student> sy = query.list();
         /* 358 */ this.s.close();
         /* 359 */ return sy;

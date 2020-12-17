@@ -1012,6 +1012,7 @@
 /* 1011 */       this.ul.setLogDESC(log);
 /* 1012 */       this.s.persist(this.ul);
 /* 1013 */       t.commit();
+                    s.refresh(editPayrollStatus);
 /* 1014 */     } catch (Exception e) {
 /* 1015 */       System.err.println("ERROR IN HIBERNATE : " + e);
 /* 1016 */       System.err.println("ERROR IN HIBERNATE : " + e.getCause());

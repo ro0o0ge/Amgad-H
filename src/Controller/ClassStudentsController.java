@@ -47,6 +47,8 @@
    @FXML
    private TextField SearchQuery;
    @FXML
+   private ComboBox ComboSearchClass;
+   @FXML
    private TableView<Student> StudentsTable;
    @FXML
    private TableColumn<Student, String> NameColumn;
@@ -74,6 +76,10 @@
 /*  74 */           this.SA.LoadStudentsInClass(newValue.toString());
 /*  75 */           this.StudentsInClassTable.setItems(this.SA.getStudentsInClassList());
          });
+         ComboSearchClass.getItems().removeAll(this.ComboSearchClass.getItems());
+         ComboSearchClass.getItems().add("");
+        ComboSearchClass.getItems().addAll(SA.getSYasStringList());
+        ComboSearchClass.getSelectionModel().select(0);
      
 /*  78 */     if (!this.StudentsTable.getItems().isEmpty()) {
 /*  79 */       this.StudentsTable.getItems().clear();
@@ -108,14 +114,18 @@
    @FXML
    public void Search() {
 /* 110 */     if (!this.SearchQuery.getText().equals("")) {
-/* 111 */       ObservableList<Student> TempList = FXCollections.observableArrayList(this.SA.getStudents(2));
+                Integer year=null;
+                 if(!ComboSearchClass.getSelectionModel().getSelectedItem().equals(""))
+                    year = SA.getStudyYearbyDesc(ComboSearchClass.getSelectionModel().getSelectedItem().toString());
+/* 111 */       ObservableList<Student> TempList = FXCollections.observableArrayList(this.SA.searchStudentbyName(this.SearchQuery.getText(),
+                        year));
 /* 112 */       this.StudentsTable.getItems().clear();
-/* 113 */       for (int i = 0; i < TempList.size(); i++) {
-/* 114 */         if (!((Student)TempList.get(i)).getPId().getName().contains(this.SearchQuery.getText())) {
-/* 115 */           TempList.remove(i);
-/* 116 */           i--;
-         } 
-       } 
+///* 113 */       for (int i = 0; i < TempList.size(); i++) {
+///* 114 */         if (!((Student)TempList.get(i)).getPId().getName().contains(this.SearchQuery.getText())) {
+///* 115 */           TempList.remove(i);
+///* 116 */           i--;
+//         } 
+//       } 
 /* 119 */       this.StudentsTable.setItems(TempList);
      } else {
 /* 121 */       Alert alert = new Alert(Alert.AlertType.WARNING);

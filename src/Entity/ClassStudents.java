@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,7 +46,7 @@ public class ClassStudents implements Serializable {
     @OneToOne
     private Student sId;
     @JoinColumn(name = "C_ID", referencedColumnName = "C_ID")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Classes cId;
 
     public ClassStudents() {

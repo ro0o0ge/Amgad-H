@@ -718,6 +718,7 @@ public class Management {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
+            s.refresh(PR);
             EmpList.clear();
             EmpList.addAll(getActiveEmp());
             return true;
@@ -772,6 +773,7 @@ public class Management {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
+            s.refresh(PR);
             EmpList.clear();
             EmpList.addAll(getActiveEmp());
             return true;
@@ -1053,6 +1055,7 @@ public class Management {
             ul.setLogDESC(log);
             s.persist(ul);
             t.commit();
+            s.refresh(editPayrollStatus);
         } catch (Exception e) {
             System.err.println("ERROR IN HIBERNATE : " + e);
             System.err.println("ERROR IN HIBERNATE : " + e.getCause());

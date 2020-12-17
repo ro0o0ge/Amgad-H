@@ -299,7 +299,8 @@ public class ViewTeacherController implements Initializable {
     private TableColumn<Payroll, String> BonusNotesColumn;
     @FXML
     private TableColumn<Payroll, Boolean> BonusStatusColumn;
-    
+    @FXML
+    private TableColumn<Payroll, String> BonusTypeColumn;
     @FXML
     private TabPane pane2020;
     @FXML
@@ -954,7 +955,7 @@ public class ViewTeacherController implements Initializable {
             List<Payroll> tempBonus = new ArrayList();
             List<Payroll> tempDeduction = new ArrayList();
             if (current.getPId().getPayrollList() != null) {
-
+                
                 for (Payroll bonus : current.getPId().getPayrollList()) {
                     if (bonus.getPrType().equals("1")) {
                         tempBonus.add(bonus);
@@ -976,6 +977,7 @@ public class ViewTeacherController implements Initializable {
                 BonusAmountColumn.setCellValueFactory(cellData -> cellData.getValue().AmountProperty());
                 BonusDateColumn.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
                 BonusNotesColumn.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
+                BonusTypeColumn.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
                 BonusStatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
                 BonusStatusColumn.setCellFactory(CheckBoxTableCell.forTableColumn(BonusStatusColumn));
                 

@@ -143,6 +143,8 @@ public class ViewStaffController implements Initializable {
     private TableColumn<Payroll, String> BonusNotesColumn;
     @FXML
     private TableColumn<Payroll, Boolean> BonusStatusColumn;
+    @FXML
+    private TableColumn<Payroll, String> BonusTypeColumn;
     
     @FXML
     private TabPane pane2020;
@@ -671,6 +673,7 @@ public class ViewStaffController implements Initializable {
                 BonusDateColumn.setCellValueFactory(cellData -> cellData.getValue().DateProperty());
                 BonusNotesColumn.setCellValueFactory(cellData -> cellData.getValue().NoteProperty());
                 BonusStatusColumn.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
+                BonusTypeColumn.setCellValueFactory(cellData -> cellData.getValue().TypeBonusProperty());
                 BonusStatusColumn.setCellFactory(CheckBoxTableCell.forTableColumn(BonusStatusColumn));
                 
             //2020
@@ -1587,6 +1590,7 @@ public class ViewStaffController implements Initializable {
                 }
             }
             ObservableList<Payroll> tempPenalty = FXCollections.observableArrayList(tempDeduction);
+            
             PenaltyTable.getItems().clear();
             PenaltyTable.setItems(tempPenalty);
         } else {

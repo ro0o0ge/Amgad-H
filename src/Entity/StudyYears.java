@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "StudyYears.findAll", query = "SELECT s FROM StudyYears s")
+     ,@NamedQuery(name = "StudyYears.findAllDesc", query = "SELECT s.syDesc FROM StudyYears s")
     , @NamedQuery(name = "StudyYears.findBySyId", query = "SELECT s FROM StudyYears s WHERE s.syId = :syId")
         , @NamedQuery(name = "StudyYears.findBySyDesc1", query = "SELECT s.syId FROM StudyYears s WHERE s.syDesc = :syDesc")
     , @NamedQuery(name = "StudyYears.findBySyDesc", query = "SELECT s FROM StudyYears s WHERE s.syDesc = :syDesc")})
